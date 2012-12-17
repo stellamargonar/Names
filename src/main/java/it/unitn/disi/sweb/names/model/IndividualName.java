@@ -1,0 +1,96 @@
+package it.unitn.disi.sweb.names.model;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+/**
+ * Entity implementation class for Entity: IndividualName
+ * 
+ * Class representing an individual name, which can compose a full name.
+ * Examples of individual names: Mario, Garda, Fausto, Trento
+ * 
+ * Some names can have translations which are stored in a specific table
+ * 
+ */
+@Entity
+@Table(name = "individualname")
+@SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
+@NamedQueries({ @NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name") })
+public class IndividualName implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "individualname_seq")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "frequency")
+	private int frequency;
+
+	@ManyToMany
+	@JoinTable(name = "nametranslation", joinColumns = @JoinColumn(name = "source_name_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "target_name_id", referencedColumnName = "id"))
+	private Set<IndividualName> translations;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "element_id", nullable = false)
+	private NameElement nameElement;
+
+	@OneToMany(mappedBy = "individualName", cascade = CascadeType.ALL)
+	private Set<NameToken> nameTokens;
+
+	private static final long serialVersionUID = 1L;
+
+	public IndividualName() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(int frequency) {
+		this.frequency = frequency;
+	}
+
+	public Set<IndividualName> getTranslations() {
+		return translations;
+	}
+
+	public void setTranslations(Set<IndividualName> translations) {
+		this.translations = translations;
+	}
+
+}
