@@ -2,10 +2,11 @@ package it.unitn.disi.sweb.names.repository;
 
 import java.util.List;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWord;
 
 public interface TriggerWordDAO {
-	public void save(TriggerWord triggerWord);
+	public TriggerWord save(TriggerWord triggerWord);
 
 	public void update(TriggerWord triggerWord);
 
@@ -15,5 +16,10 @@ public interface TriggerWordDAO {
 
 	public List<TriggerWord> findByTriggerWord(String triggerWord);
 
+	public List<TriggerWord> findByTriggerWordEtype(String triggerWord,
+			EType etype);
+
 	public List<TriggerWord> findVariations(TriggerWord triggerWord);
+
+	public void deleteAll();
 }

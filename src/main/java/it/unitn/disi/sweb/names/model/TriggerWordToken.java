@@ -74,4 +74,47 @@ public class TriggerWordToken implements Serializable {
 		this.position = position;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((fullName == null) ? 0 : fullName.hashCode());
+		result = prime * result + id;
+		result = prime * result
+				+ ((triggerWord == null) ? 0 : triggerWord.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TriggerWordToken other = (TriggerWordToken) obj;
+		if (fullName == null) {
+			if (other.fullName != null)
+				return false;
+		} else if (!fullName.equals(other.fullName))
+			return false;
+		if (id != other.id)
+			return false;
+		if (triggerWord == null) {
+			if (other.triggerWord != null)
+				return false;
+		} else if (!triggerWord.equals(other.triggerWord))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TriggerWordToken [triggerWord=" + triggerWord + ", position="
+				+ position + "]";
+	}
+
+	
 }

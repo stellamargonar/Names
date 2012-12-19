@@ -1,9 +1,12 @@
 package it.unitn.disi.sweb.names.utils;
 
-import java.util.Arrays;
-
 import it.unitn.disi.sweb.names.MisspellingsComparator;
 
+import java.util.Arrays;
+
+import org.springframework.stereotype.Service;
+
+@Service("misspellingsComparator")
 public class JaroWinkler implements MisspellingsComparator {
 
 	private final double mWeightThreshold;

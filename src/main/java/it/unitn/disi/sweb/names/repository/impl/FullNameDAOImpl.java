@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository.impl;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
+import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 
 import java.util.List;
@@ -20,14 +21,18 @@ public class FullNameDAOImpl implements FullNameDAO {
 
 	@Override
 	@Transactional
-	public void save(FullName fullname) {
-		em.merge(fullname);
+	public FullName save(FullName fullname) {
+		FullName result = em.merge(fullname);
+		em.flush();
+		return result;
 	}
 
 	@Override
 	@Transactional
-	public void update(FullName fullname) {
-		em.merge(fullname);
+	public FullName update(FullName fullname) {
+		FullName result = em.merge(fullname);
+		em.flush();
+		return result;
 	}
 
 	@Override
@@ -69,6 +74,28 @@ public class FullNameDAOImpl implements FullNameDAO {
 		return em.createNamedQuery("FullName.byNameEtype", FullName.class)
 				.setParameter("name", name).setParameter("etype", etype)
 				.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public List<FullName> findByEntity(NamedEntity entity) {
+		return em.createNamedQuery("FullName.byEntity", FullName.class)
+				.setParameter("entity", entity).getResultList();
+	}
+
+	@Override
+	@Transactional
+	public FullName findByEntityName(String name, NamedEntity entity) {
+		List<FullName> result = em
+				.createNamedQuery("FullName.byEntityName", FullName.class)
+				.setParameter("name", name).setParameter("entity", entity)
+				.getResultList();
+		if (result == null)
+			return null;
+		if (result.size() > 0)
+			return result.get(0);
+		else
+			return null;
 	}
 
 }

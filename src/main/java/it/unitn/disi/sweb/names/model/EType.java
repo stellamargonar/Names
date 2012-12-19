@@ -35,9 +35,9 @@ public class EType implements Serializable {
 
 	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
 	private Set<NameElement> nameElements;
-
-	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
-	private Set<TriggerWordStatistic> triggerWordStats;
+//
+//	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
+//	private Set<TriggerWordStatistic> triggerWordStats;
 
 	private static final long serialVersionUID = 1L;
 
@@ -69,11 +69,41 @@ public class EType implements Serializable {
 		this.entities = entities;
 	}
 
-	public Set<NameElement> getNameFields() {
+	public Set<NameElement> getNameElements() {
 		return nameElements;
 	}
 
-	public void setNameFields(Set<NameElement> nameFields) {
-		this.nameElements = nameFields;
+	public void setNameElements(Set<NameElement> nameElements) {
+		this.nameElements = nameElements;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((etype == null) ? 0 : etype.hashCode());
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EType other = (EType) obj;
+		if (etype == null) {
+			if (other.etype != null)
+				return false;
+		} else if (!etype.equals(other.etype))
+			return false;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+	
 }

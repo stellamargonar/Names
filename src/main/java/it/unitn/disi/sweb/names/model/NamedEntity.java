@@ -74,4 +74,34 @@ public class NamedEntity implements Serializable {
 	public Set<FullName> getNames() {
 		return names;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + GUID;
+		result = prime * result + ((eType == null) ? 0 : eType.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NamedEntity other = (NamedEntity) obj;
+		if (GUID != other.GUID)
+			return false;
+		if (eType == null) {
+			if (other.eType != null)
+				return false;
+		} else if (!eType.equals(other.eType))
+			return false;
+		return true;
+	}
+
+	
 }

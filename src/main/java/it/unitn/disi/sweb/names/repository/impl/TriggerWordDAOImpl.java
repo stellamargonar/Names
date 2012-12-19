@@ -1,5 +1,6 @@
 package it.unitn.disi.sweb.names.repository.impl;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWord;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 
@@ -19,8 +20,8 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 
 	@Override
 	@Transactional
-	public void save(TriggerWord triggerWord) {
-		em.merge(triggerWord);
+	public TriggerWord save(TriggerWord triggerWord) {
+		return em.merge(triggerWord);
 	}
 
 	@Override
@@ -57,4 +58,20 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 				.getResultList();
 	}
 
+	@Override
+	@Transactional
+	public void deleteAll() {
+		for (TriggerWord t : em.createQuery("from TriggerWord",
+				TriggerWord.class).getResultList())
+			delete(t);
+	}
+
+	@Override
+	@Transactional
+	public List<TriggerWord> findByTriggerWordEtype(String triggerWord,
+			EType etype) {
+		return em.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
+				.setParameter("tw", triggerWord).setParameter("etype", etype)
+				.getResultList();
+	}
 }

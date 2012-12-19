@@ -31,7 +31,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "individualname")
 @SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
-@NamedQueries({ @NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name") })
+@NamedQueries({
+		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),
+		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype") })
 public class IndividualName implements Serializable {
 
 	@Id
@@ -92,5 +94,55 @@ public class IndividualName implements Serializable {
 	public void setTranslations(Set<IndividualName> translations) {
 		this.translations = translations;
 	}
+
+	public NameElement getNameElement() {
+		return nameElement;
+	}
+
+	public void setNameElement(NameElement nameElement) {
+		this.nameElement = nameElement;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((nameElement == null) ? 0 : nameElement.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IndividualName other = (IndividualName) obj;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (nameElement == null) {
+			if (other.nameElement != null)
+				return false;
+		} else if (!nameElement.equals(other.nameElement))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "IndividualName [name=" + name + "]";
+	}
+
+
 
 }

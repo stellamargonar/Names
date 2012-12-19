@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository;
 
 import java.util.List;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
 
 public interface TriggerWordTypeDAO {
@@ -15,6 +16,10 @@ public interface TriggerWordTypeDAO {
 	public TriggerWordType findById(int id);
 
 	public List<TriggerWordType> findAll();
+
+	public TriggerWordType findByName(String name);
+
+	public List<TriggerWordType> findByEType(EType etype);
 
 	public void deleteAll();
 }

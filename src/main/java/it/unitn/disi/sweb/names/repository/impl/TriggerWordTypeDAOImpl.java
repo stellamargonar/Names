@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository.impl;
 
 import java.util.List;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
 
@@ -51,10 +52,21 @@ public class TriggerWordTypeDAOImpl implements TriggerWordTypeDAO {
 	@Override
 	@Transactional
 	public void deleteAll() {
-		for (TriggerWordType t: findAll())
+		for (TriggerWordType t : findAll())
 			delete(t);
 	}
 
-	
-	
+	@Override
+	@Transactional
+	public TriggerWordType findByName(String name) {
+		return em.createNamedQuery("TWType.findByName", TriggerWordType.class)
+				.setParameter("name", name).getSingleResult();
+	}
+
+	@Override
+	public List<TriggerWordType> findByEType(EType etype) {
+		return em.createNamedQuery("TWType.findByEtype", TriggerWordType.class)
+				.setParameter("etype", etype).getResultList();
+	}
+
 }

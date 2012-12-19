@@ -22,6 +22,7 @@ public class NameTokenDAOImpl implements NameTokenDAO {
 	@Override
 	@Transactional
 	public void save(NameToken token) {
+		em.clear();
 		em.merge(token);
 	}
 

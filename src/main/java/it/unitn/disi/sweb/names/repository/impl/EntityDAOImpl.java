@@ -19,14 +19,17 @@ public class EntityDAOImpl implements EntityDAO {
 
 	@Override
 	@Transactional
-	public void save(NamedEntity entity) {
-		em.merge(entity);
+	public NamedEntity save(NamedEntity entity) {
+		NamedEntity result = em.merge(entity);
+		em.flush();
+		return result;
 	}
 
 	@Override
 	@Transactional
 	public void update(NamedEntity entity) {
 		em.merge(entity);
+		em.flush();
 	}
 
 	@Override

@@ -21,5 +21,7 @@ public interface NameElementDAO {
 
 	public List<NameElement> findByEType(EType etype);
 
+	public NameElement findByNameEType(String name, EType etype);
+
 	public void deleteAll();
 }

@@ -64,6 +64,15 @@ public class NameElementDAOImpl implements NameElementDAO {
 
 	@Override
 	@Transactional
+	public NameElement findByNameEType(String name, EType etype) {
+		return em
+				.createNamedQuery("NameElement.byNameEtype", NameElement.class)
+				.setParameter("eType", etype).setParameter("name", name)
+				.getSingleResult();
+	}
+
+	@Override
+	@Transactional
 	public void deleteAll() {
 		for (NameElement e : findAll())
 			delete(e);

@@ -26,7 +26,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "triggerwordtype")
 @SequenceGenerator(name = "twtype_seq", sequenceName = "twtype_id_seq")
-@NamedQueries({ @NamedQuery(name = "TWType.findAll", query = "from TriggerWordType") })
+@NamedQueries({
+		@NamedQuery(name = "TWType.findAll", query = "from TriggerWordType"),
+		@NamedQuery(name = "TWType.findByName", query = "from TriggerWordType where type=:name"),
+		@NamedQuery(name = "TWType.findByEtype", query = "from TriggerWordType where eType=:etype") })
 public class TriggerWordType implements Serializable {
 
 	@Id
@@ -78,6 +81,44 @@ public class TriggerWordType implements Serializable {
 
 	public EType geteType() {
 		return eType;
+	}
+
+	public boolean isComparable() {
+		return getComparable();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((eType == null) ? 0 : eType.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TriggerWordType other = (TriggerWordType) obj;
+		if (eType == null) {
+			if (other.eType != null)
+				return false;
+		} else if (!eType.equals(other.eType))
+			return false;
+		if (id != other.id)
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
 	}
 
 }

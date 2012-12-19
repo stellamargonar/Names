@@ -18,7 +18,7 @@ public class EtypeDAOImpl implements ETypeDAO {
 	EntityManager em;
 
 	@Override
-	@Transactional
+	
 	public void save(EType e) {
 		em.merge(e);
 	}

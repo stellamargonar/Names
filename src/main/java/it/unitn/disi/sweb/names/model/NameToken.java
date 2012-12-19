@@ -21,9 +21,11 @@ import javax.persistence.*;
 		@NamedQuery(name = "NameToken.byFullIndividualName", query = "from NameToken where individualName= :individualName and fullName=:fullname)") })
 public class NameToken implements Serializable {
 
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nametoken_seq")
-	int id;
+	private int id;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "full_name_id", nullable = false)
@@ -40,6 +42,14 @@ public class NameToken implements Serializable {
 
 	public NameToken() {
 		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public FullName getFullName() {
@@ -66,4 +76,45 @@ public class NameToken implements Serializable {
 		this.position = position;
 	}
 
+	@Override
+	public String toString() {
+		return "NameToken [individualName=" + individualName + ", position="
+				+ position + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((fullName == null) ? 0 : fullName.hashCode());
+		result = prime * result + id;
+		result = prime * result
+				+ ((individualName == null) ? 0 : individualName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NameToken other = (NameToken) obj;
+		if (fullName == null) {
+			if (other.fullName != null)
+				return false;
+		} else if (!fullName.equals(other.fullName))
+			return false;
+		if (id != other.id)
+			return false;
+		if (individualName == null) {
+			if (other.individualName != null)
+				return false;
+		} else if (!individualName.equals(other.individualName))
+			return false;
+		return true;
+	}
 }

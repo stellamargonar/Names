@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository;
 
 import java.util.List;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.IndividualName;
 
 public interface IndividualNameDAO {
@@ -15,5 +16,7 @@ public interface IndividualNameDAO {
 	public IndividualName findById(int id);
 
 	public List<IndividualName> findByName(String name);
+
+	public List<IndividualName> findByNameEtype(String name, EType etype);
 
 }

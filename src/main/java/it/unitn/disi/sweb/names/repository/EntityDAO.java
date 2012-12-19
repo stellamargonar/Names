@@ -6,7 +6,7 @@ import it.unitn.disi.sweb.names.model.NamedEntity;
 
 public interface EntityDAO {
 
-	public void save(NamedEntity entity);
+	public NamedEntity save(NamedEntity entity);
 
 	public void update(NamedEntity entity);
 

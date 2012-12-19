@@ -5,6 +5,7 @@ import it.unitn.disi.sweb.names.utils.TokenPositionComparator;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,7 +42,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "FullName.byName", query = "from FullName where name = :name"),
 		@NamedQuery(name = "FullName.byNameNormalized", query = "from FullName where nameNormalized = :nameNormalized"),
 		@NamedQuery(name = "FullName.byNameToCompare", query = "from FullName where nameToCompare = :nameToCompare"),
-		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype") })
+		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype"),
+		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
+		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity") })
 public class FullName implements Serializable {
 
 	@Id
@@ -186,4 +189,58 @@ public class FullName implements Serializable {
 		Collections.sort(list, new TokenPositionComparator());
 		return list;
 	}
+
+	public void addNameToken(NameToken nameToken) {
+		if (getNameTokens() == null)
+			nameTokens = new HashSet<>();
+		nameTokens.add(nameToken);
+	}
+
+	public void addTriggerWordToken(TriggerWordToken token) {
+		if (getTriggerWordTokens() == null)
+			triggerWordTokens = new HashSet<>();
+		triggerWordTokens.add(token);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((entity == null) ? 0 : entity.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FullName other = (FullName) obj;
+		if (entity == null) {
+			if (other.entity != null)
+				return false;
+		} else if (!entity.equals(other.entity))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "FullName [id=" + id + ", name=" + name + ", entity=" + entity
+				+ ", nameTokens=" + nameTokens + ", triggerWordTokens="
+				+ triggerWordTokens + "]";
+	}
+
 }

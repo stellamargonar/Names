@@ -1,5 +1,6 @@
 package it.unitn.disi.sweb.names.repository.impl;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.IndividualName;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 
@@ -48,6 +49,15 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 		return em
 				.createNamedQuery("IndividualName.byName", IndividualName.class)
 				.setParameter("name", name).getResultList();
+	}
+
+	@Override
+	@Transactional
+	public List<IndividualName> findByNameEtype(String name, EType etype) {
+		return em
+				.createNamedQuery("IndividualName.byNameEtype", IndividualName.class)
+				.setParameter("name", name).setParameter("etype", etype)
+				.getResultList();
 	}
 
 }

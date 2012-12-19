@@ -2,14 +2,15 @@ package it.unitn.disi.sweb.names.repository;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
+import it.unitn.disi.sweb.names.model.NamedEntity;
 
 import java.util.List;
 
 public interface FullNameDAO {
 
-	public void save(FullName fullname);
+	public FullName save(FullName fullname);
 
-	public void update(FullName fullname);
+	public FullName update(FullName fullname);
 
 	public void delete(FullName fullname);
 
@@ -22,5 +23,9 @@ public interface FullNameDAO {
 	public List<FullName> findByNameToCompare(String name);
 
 	public List<FullName> findByNameEtype(String name, EType etype);
+
+	public List<FullName> findByEntity(NamedEntity entity);
+
+	public FullName findByEntityName(String name, NamedEntity entity);
 
 }
