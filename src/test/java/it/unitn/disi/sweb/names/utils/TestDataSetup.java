@@ -40,7 +40,7 @@ public class TestDataSetup {
 		// assertNotNull("entity not stored", entityDao.findById(ne.getGUID()));
 
 		// nameCreation.createFullName(name, ne);
-		NameElement el = nameElementDao.findByNameEType("GivenName", e);
+		NameElement el = nameElementDao.findName("GivenName").get(0);
 		nameCreation.createIndividualName("stefano", el);
 
 //		List<FullName> result = fullnameDao.findByName(name);
