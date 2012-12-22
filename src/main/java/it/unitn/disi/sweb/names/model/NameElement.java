@@ -31,7 +31,7 @@ public class NameElement implements Serializable {
 	@Column(name = "elementname")
 	private String elementName;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
 
@@ -69,7 +69,7 @@ public class NameElement implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((eType == null) ? 0 : eType.hashCode());
+//		result = prime * result + ((eType == null) ? 0 : eType.hashCode());
 		result = prime * result
 				+ ((elementName == null) ? 0 : elementName.hashCode());
 		result = prime * result + id;
@@ -85,11 +85,11 @@ public class NameElement implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		NameElement other = (NameElement) obj;
-		if (eType == null) {
-			if (other.eType != null)
-				return false;
-		} else if (!eType.equals(other.eType))
-			return false;
+//		if (eType == null) {
+//			if (other.eType != null)
+//				return false;
+//		} else if (!eType.equals(other.eType))
+//			return false;
 		if (elementName == null) {
 			if (other.elementName != null)
 				return false;

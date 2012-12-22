@@ -1,12 +1,10 @@
 package it.unitn.disi.sweb.names.utils;
 
 import it.unitn.disi.sweb.names.model.EType;
-import it.unitn.disi.sweb.names.model.NameElement;
+import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.ETypeDAO;
-import it.unitn.disi.sweb.names.repository.EntityDAO;
-import it.unitn.disi.sweb.names.repository.FullNameDAO;
-import it.unitn.disi.sweb.names.repository.NameElementDAO;
-import it.unitn.disi.sweb.names.service.NameCreation;
+import it.unitn.disi.sweb.names.service.EntityManager;
+import it.unitn.disi.sweb.names.service.NameManager;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,43 +17,28 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestDataSetup {
 
 	@Autowired
-	NameCreation nameCreation;
+	NameManager nameManager;
+	@Autowired
+	EntityManager entityManager;
+	
 	@Autowired
 	ETypeDAO etypeDao;
-	@Autowired
-	EntityDAO entityDao;
-	@Autowired
-	FullNameDAO fullnameDao;
-	@Autowired
-	NameElementDAO nameElementDao;
+
 
 	@Test
 	public void testNewFullNames() {
 		String etype = "Person";
-		String name = "Stella Margonar";
+		String name1 = "Stella Margonar";
+		String name2 = "Dott.ssa Stella Margonar";
+		String name3 = "Sig.ra Stella Jr.";
+
 		EType e = etypeDao.findByName(etype);
-		// NamedEntity ne =
-		// nameCreation.createEntity(etypeDao.findByName(etype));
-		// System.out.println(ne.getGUID());
-		// assertNotNull("entity not stored", entityDao.findById(ne.getGUID()));
+		
+		NamedEntity ne = entityManager.createEntity(e, "https://www.facebook.com/stella.margonar");
 
-		// nameCreation.createFullName(name, ne);
-		NameElement el = nameElementDao.findByNameEType("GivenName", e);
-		nameCreation.createIndividualName("stefano", el);
-
-//		List<FullName> result = fullnameDao.findByName(name);
-		// assertNotNull("name \"" + name + "\" not stored", result);
-		// assertTrue("result empty", result.size() > 0);
-		// assertEquals("different entitties", 1,
-		// fullnameDao.findByEntityName(name, ne));
+		nameManager.createFullName(name1, ne);
+		nameManager.createFullName(name2, ne);
+		nameManager.createFullName(name3, ne);
 	}
 }
 
-/*
- * 
- * FullName [id=0, name=Stella Margonar,
- * entity=it.unitn.disi.sweb.names.model.NamedEntity@3ac96e25,
- * nameTokens=[NameToken [individualName=IndividualName [name=Margonar],
- * position=1], NameToken [individualName=IndividualName [name=Stella],
- * position=0]], triggerWordTokens=null]
- */

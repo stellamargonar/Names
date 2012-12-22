@@ -27,7 +27,7 @@ public class NamedEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entity_seq")
 	private int GUID;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
 

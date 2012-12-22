@@ -1,10 +1,16 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
-import java.lang.String;
-import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: EType
@@ -29,12 +35,12 @@ public class EType implements Serializable {
 
 	@Column(name = "etype")
 	private String etype;
-
-	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
-	private Set<NamedEntity> entities;
-
-	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
-	private Set<NameElement> nameElements;
+//
+//	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+//	private Set<NamedEntity> entities;
+//
+//	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+//	private Set<NameElement> nameElements;
 //
 //	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
 //	private Set<TriggerWordStatistic> triggerWordStats;
@@ -61,21 +67,21 @@ public class EType implements Serializable {
 		this.etype = etype;
 	}
 
-	public Set<NamedEntity> getEntities() {
-		return entities;
-	}
-
-	public void setEntities(Set<NamedEntity> entities) {
-		this.entities = entities;
-	}
-
-	public Set<NameElement> getNameElements() {
-		return nameElements;
-	}
-
-	public void setNameElements(Set<NameElement> nameElements) {
-		this.nameElements = nameElements;
-	}
+//	public Set<NamedEntity> getEntities() {
+//		return entities;
+//	}
+//
+//	public void setEntities(Set<NamedEntity> entities) {
+//		this.entities = entities;
+//	}
+//
+//	public Set<NameElement> getNameElements() {
+//		return nameElements;
+//	}
+//
+//	public void setNameElements(Set<NameElement> nameElements) {
+//		this.nameElements = nameElements;
+//	}
 
 	@Override
 	public int hashCode() {

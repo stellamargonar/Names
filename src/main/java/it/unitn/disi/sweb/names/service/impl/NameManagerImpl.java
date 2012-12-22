@@ -14,21 +14,18 @@ import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.NameTokenDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
-import it.unitn.disi.sweb.names.service.NameCreation;
+import it.unitn.disi.sweb.names.service.NameManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service("nameCreation")
-public class NameCreationImpl implements NameCreation {
+@Component("nameManager")
+public class NameManagerImpl implements NameManager {
 
 	@Autowired
 	FullNameDAO fullnameDao;
@@ -45,7 +42,9 @@ public class NameCreationImpl implements NameCreation {
 
 	@Override
 	public FullName createFullName(String name, NamedEntity en) {
-		// List<FullName> foundList = fullnameDao.findByNameEtype(name, etype);
+		if (en == null || name == null || name.equals(""))
+			return null;
+
 		List<FullName> foundList = fullnameDao.findByNameToCompare(name);
 
 		for (FullName f : foundList) {
@@ -55,41 +54,35 @@ public class NameCreationImpl implements NameCreation {
 		FullName fullname = new FullName();
 		fullname.setName(name);
 		fullname.setEntity(en);
-		// fullname = fullnameDao.save(fullname);
-		// fullnameDao.save(fullname);
 
-		fullname.setnGramCode("ciao");
-		Set empty = new HashSet<>();
-		fullname.setNameTokens(empty);
-		fullname.setTriggerWordTokens(Collections.EMPTY_SET);
-		// FullName returned = fullnameDao.update(fullname);
-
-		//
-		NameToken nt = new NameToken();
-		nt.setFullName(fullname);
-		IndividualName ind = nameDao.findById(100);
-		nt.setIndividualName(ind);
-		nt.setPosition(0);
-		nameTokenDao.save(nt);
-		fullname.addNameToken(nt);
-		fullnameDao.update(fullname);
-		//
-		// fullname = parse(fullname, etype);
-		// System.out.println(fullname);
-
+		fullname = parse(fullname, en.getEType());
 		fullname.setNameToCompare(getNameToCompare(fullname));
 		fullname.setNameNormalized(getNameNormalized(fullname));
 
 		FullName returned = fullnameDao.update(fullname);
-		System.out.println("returned: " + returned.getId());
-		System.out.println("original: " + fullname.getId());
+
 		return returned;
 	}
 
+	/**
+	 * generate the nameToCompare field for the FullName. The string is compute
+	 * deleting the tokens (some trigger words) that should not be considered in
+	 * the comparison (see TriggerWordType)
+	 * 
+	 * @param fullname
+	 * @return
+	 */
 	private String getNameToCompare(FullName fullname) {
 		return getNameModified(fullname, false, true);
 	}
 
+	/**
+	 * generate the normalized field for the FullName. In this implementation
+	 * the normalized name cosists in the tokens in lexical graphic order
+	 * 
+	 * @param fullname
+	 * @return
+	 */
 	private String getNameNormalized(FullName fullname) {
 		return getNameModified(fullname, true, false);
 	}
@@ -120,6 +113,11 @@ public class NameCreationImpl implements NameCreation {
 
 		if (normalized)
 			Collections.sort(tokens);
+
+		for (String s : tokens)
+			if (s != null)
+				name += s + " ";
+
 		return name;
 	}
 
@@ -129,7 +127,6 @@ public class NameCreationImpl implements NameCreation {
 		String[] tokens = name.split(" ");
 		int position = 0;
 		for (String s : tokens) {
-			System.out.println(s);
 			if (!s.equals(" ")) {
 				// check if it is a known name
 				List<IndividualName> listName = nameDao.findByNameEtype(s,
@@ -151,7 +148,6 @@ public class NameCreationImpl implements NameCreation {
 						twt.setTriggerWord(listTW.get(0));
 						fullname.addTriggerWordToken(twt);
 					} else {
-						System.out.println("new individual Name " + s);
 						// add not existing token
 						NameToken nt = new NameToken();
 						nt.setIndividualName(addNewIndividualName(s, eType,
@@ -165,15 +161,16 @@ public class NameCreationImpl implements NameCreation {
 			}
 		}
 
-		System.out.println("Name Created: ");
-		for (NameToken n : fullname.getNameTokens())
-			System.out.println(n.getIndividualName().getNameElement()
-					.getElementName()
-					+ ": " + n.getIndividualName().getName());
-		if (fullname.getTriggerWordTokens() != null)
-			for (TriggerWordToken t : fullname.getTriggerWordTokens())
-				System.out.println(t.getTriggerWord().getType().getType()
-						+ ": " + t.getTriggerWord().getTriggerWord());
+		/* DEBUG */
+		// System.out.println("Name Created: ");
+		// for (NameToken n : fullname.getNameTokens())
+		// System.out.println(n.getIndividualName().getNameElement()
+		// .getElementName()
+		// + ": " + n.getIndividualName().getName());
+		// if (fullname.getTriggerWordTokens() != null)
+		// for (TriggerWordToken t : fullname.getTriggerWordTokens())
+		// System.out.println(t.getTriggerWord().getType().getType()
+		// + ": " + t.getTriggerWord().getTriggerWord());
 
 		return fullname;
 	}
@@ -207,13 +204,6 @@ public class NameCreationImpl implements NameCreation {
 	}
 
 	@Override
-	public NamedEntity createEntity(EType etype) {
-		NamedEntity e = new NamedEntity();
-		e.setEType(etype);
-		return entityDao.save(e);
-	}
-
-	@Override
 	public void createIndividualName(String string, NameElement el) {
 		IndividualName name = new IndividualName();
 		name.setName(string);
@@ -225,7 +215,7 @@ public class NameCreationImpl implements NameCreation {
 		nt.setIndividualName(name);
 		nt.setPosition(0);
 		nameTokenDao.save(nt);
-		
+
 	}
 
 }
