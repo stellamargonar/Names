@@ -33,7 +33,7 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),
-	/*	@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype") */})
+		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype") })
 public class IndividualName implements Serializable {
 
 	@Id

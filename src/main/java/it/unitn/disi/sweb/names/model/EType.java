@@ -33,7 +33,7 @@ public class EType implements Serializable {
 	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
 	private Set<NamedEntity> entities;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
 	private Set<NameElement> nameElements;
 //
 //	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
