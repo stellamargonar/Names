@@ -12,6 +12,7 @@ import it.unitn.disi.sweb.names.repository.EntityDAO;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
+import it.unitn.disi.sweb.names.service.EntityManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
 import it.unitn.disi.sweb.names.utils.Pair;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
@@ -22,7 +23,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("nameMatcher")
 public class NameMatchImpl implements NameMatch {
 
 	private static int MAX_LENGTH_DIFFERENCE = 3;
@@ -32,7 +35,7 @@ public class NameMatchImpl implements NameMatch {
 	private FullNameDAO nameDao;
 	private NameElementDAO nameElementDao;
 	private TriggerWordTypeDAO twtDao;
-	private EntityDAO entityDao;
+	private EntityManager entityManager;
 
 	private MisspellingsComparator comparator;
 
@@ -287,8 +290,9 @@ public class NameMatchImpl implements NameMatch {
 	}
 
 	private boolean dictionaryExactLookup(String n1, String n2, EType e) {
-		List<NamedEntity> list1 = entityDao.findByNameEtype(n1, e);
-		List<NamedEntity> list2 = entityDao.findByNameEtype(n2, e);
+
+		List<NamedEntity> list1 = entityManager.find(n1, e);
+		List<NamedEntity> list2 = entityManager.find(n2, e);
 
 		for (NamedEntity en1 : list1)
 			for (NamedEntity en2 : list2)
@@ -297,6 +301,11 @@ public class NameMatchImpl implements NameMatch {
 		return false;
 	}
 
+	@Autowired
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+	
 	@Autowired
 	public void setComparator(MisspellingsComparator comparator) {
 		this.comparator = comparator;

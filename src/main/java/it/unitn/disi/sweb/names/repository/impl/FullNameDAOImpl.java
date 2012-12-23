@@ -6,6 +6,7 @@ import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -105,5 +106,4 @@ public class FullNameDAOImpl implements FullNameDAO {
 				.setParameter("name", name).setParameter("etype", etype)
 				.getResultList();
 	}
-
 }

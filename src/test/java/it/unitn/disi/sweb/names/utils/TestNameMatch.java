@@ -1,10 +1,12 @@
 package it.unitn.disi.sweb.names.utils;
 
+import static org.junit.Assert.*;
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.service.EtypeManager;
 import it.unitn.disi.sweb.names.service.EtypeName;
 import it.unitn.disi.sweb.names.service.NameMatch;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,46 +22,55 @@ public class TestNameMatch {
 	@Autowired
 	EtypeManager etypeManager;
 
+	EType etype;
+
+	@Before
+	public void setEtype() {
+		etype = etypeManager.getEtype(EtypeName.PERSON);
+	}
+
 	@Test
 	public void testStringEquals() {
-		EType etype = etypeManager.getEtype(EtypeName.PERSON);
-
 		String name1 = "Stella Margonar";
 		String name2 = "Stella Margonar";
-
-		nameMatcher.stringSimilarity(name1, name2, etype);
+		double similarity = nameMatcher.stringSimilarity(name1, name2, etype);
+		printResult(name1, name2, similarity);
+		assertEquals(similarity, 1, 0.1);
 	}
-	
-	
+
 	@Test
 	public void testStringSimilarity() {
-		EType etype = etypeManager.getEtype(EtypeName.PERSON);
-
 		String name1 = "Stella Margonar";
-		String name2 = "Dott.ssa Stella Margonar";
+		String name2 = "stelaa Margar";
 
-		nameMatcher.stringSimilarity(name1, name2, etype);
+		double similarity = nameMatcher.stringSimilarity(name1, name2, etype);
+
+		printResult(name1, name2, similarity);
+		assertTrue(similarity > 0.5);
 	}
-	
+
 	@Test
 	public void testDictionaryExact() {
-		EType etype = etypeManager.getEtype(EtypeName.PERSON);
-
 		String name1 = "Stella Margonar";
 		String name2 = "Marietto";
 
-		nameMatcher.dictionaryLookup(name1, name2, etype);
+		double similarity = nameMatcher.dictionaryLookup(name1, name2, etype);
+		printResult(name1, name2, similarity);
+		assertEquals(similarity, 1, 0.1);
 	}
-	
+
 	@Test
 	public void testDictionaryVariant() {
-		EType etype = etypeManager.getEtype(EtypeName.PERSON);
-
 		String name1 = "Stella Margonar";
 		String name2 = "Marietta";
 
-		nameMatcher.dictionaryLookup(name1, name2, etype);
+		double similarity = nameMatcher.dictionaryLookup(name1, name2, etype);
+		printResult(name1, name2, similarity);
+		assertTrue(similarity > 0.5);
 	}
-	
+
+	private void printResult(String name1, String name2, double result) {
+		System.out.println("f(" + name1 + ", " + name2 + ") = " + result);
+	}
 
 }
