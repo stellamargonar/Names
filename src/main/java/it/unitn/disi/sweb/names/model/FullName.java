@@ -44,7 +44,8 @@ import javax.persistence.Table;
 		@NamedQuery(name = "FullName.byNameToCompare", query = "from FullName where nameToCompare = :nameToCompare"),
 		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
-		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity") })
+		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity"),
+		@NamedQuery(name = "FullName.variantForName", query = "select namedentity.names from NamedEntity as namedentity where GUID in (select fullname.entity from FullName as fullname where name= :name) and etype=:etype)") })
 public class FullName implements Serializable {
 
 	@Id

@@ -1,5 +1,7 @@
 package it.unitn.disi.sweb.names.utils;
 
+import java.util.List;
+
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.ETypeDAO;
@@ -20,10 +22,9 @@ public class TestDataSetup {
 	NameManager nameManager;
 	@Autowired
 	EntityManager entityManager;
-	
+
 	@Autowired
 	ETypeDAO etypeDao;
-
 
 	@Test
 	public void testNewFullNames() {
@@ -31,14 +32,23 @@ public class TestDataSetup {
 		String name1 = "Stella Margonar";
 		String name2 = "Dott.ssa Stella Margonar";
 		String name3 = "Sig.ra Stella Jr.";
+		String nickname = "Marietto";
+
+		String description = "https://www.facebook.com/stella.margonar";
 
 		EType e = etypeDao.findByName(etype);
+
+		NamedEntity ne = null;
+		List<NamedEntity> list = entityManager.find(description, name1);
+		if (list != null && !list.isEmpty())
+			ne = list.get(0);
+		else
+			ne = entityManager.createEntity(e, description);
 		
-		NamedEntity ne = entityManager.createEntity(e, "https://www.facebook.com/stella.margonar");
+		nameManager.createFullName(nickname, ne);
 
 		nameManager.createFullName(name1, ne);
 		nameManager.createFullName(name2, ne);
 		nameManager.createFullName(name3, ne);
 	}
 }
-

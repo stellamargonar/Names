@@ -5,8 +5,10 @@ import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NameElement;
 import it.unitn.disi.sweb.names.model.NameToken;
+import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
+import it.unitn.disi.sweb.names.repository.EntityDAO;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
@@ -25,10 +27,12 @@ public class NameMatchImpl implements NameMatch {
 
 	private static int MAX_LENGTH_DIFFERENCE = 3;
 	private static double THRESHOLD_MISSPELLINGS = 0.4;
+	private static double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
 
 	private FullNameDAO nameDao;
 	private NameElementDAO nameElementDao;
 	private TriggerWordTypeDAO twtDao;
+	private EntityDAO entityDao;
 
 	private MisspellingsComparator comparator;
 
@@ -232,8 +236,65 @@ public class NameMatchImpl implements NameMatch {
 
 	@Override
 	public double dictionaryLookup(String name1, String name2, EType eType) {
-		// TODO Auto-generated method stub
+		this.name1 = name1;
+		this.name2 = name2;
+		this.etype = eType;
+		double similarity = 0;
+
+		// check exact tuple (name1,name2,eType)
+		if (dictionaryExactLookup(name1, name2, eType))
+			return 1;
+		else
+			// check variations on alternative names
+			similarity = nameVariantSimilarity(name1, name2, eType);
+		return (similarity > THRESHOLD_DICTIONARY) ? similarity : 0;
+	}
+
+	private double nameVariantSimilarity(String n1, String n2, EType e) {
+		double similarity = 0;
+		// retrieves alternative names for n1
+		List<FullName> variants = retrieveVariants(n1);
+
+		// order list of variant accordingly to some criteria for analyzing
+		// first
+		// variants which are highly probable to match name2
+		variants = orderVariant(variants);
+
+		// for each variant of n1
+		for (FullName name : variants) {
+			// check plain string sim
+			if (stringEquality(name.getName(), n2))
+				return 1;
+			else {
+				similarity = stringSimilarity(name.getName(), n2, e);
+				if (similarity > 0)
+					return similarity;
+			}
+		}
 		return 0;
+	}
+
+	private List<FullName> orderVariant(List<FullName> variants) {
+		// TODO Auto-generated method stub
+		return variants;
+	}
+
+	private List<FullName> retrieveVariants(String n1) {
+		// select namedentity.names from NamedEntity as namedentity where GUID
+		// in (select fullname.entity from FullName as fullname where name=
+		// :name) and etype=:etype)
+		return nameDao.findVariant(n1, etype);
+	}
+
+	private boolean dictionaryExactLookup(String n1, String n2, EType e) {
+		List<NamedEntity> list1 = entityDao.findByNameEtype(n1, e);
+		List<NamedEntity> list2 = entityDao.findByNameEtype(n2, e);
+
+		for (NamedEntity en1 : list1)
+			for (NamedEntity en2 : list2)
+				if (en1.equals(en2))
+					return true;
+		return false;
 	}
 
 	@Autowired

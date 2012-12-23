@@ -1,5 +1,6 @@
 package it.unitn.disi.sweb.names.repository.impl;
 
+import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.EntityDAO;
 
@@ -51,6 +52,46 @@ public class EntityDAOImpl implements EntityDAO {
 				.createNamedQuery("NamedEntity.byName", NamedEntity.class)
 				.setParameter("name", name).getResultList();
 		return resultList;
+	}
+
+	@Override
+	@Transactional
+	public List<NamedEntity> findByNameEtype(String name, EType etype) {
+		List<NamedEntity> resultList = em
+				.createNamedQuery("NamedEntity.byNameEtype", NamedEntity.class)
+				.setParameter("name", name).setParameter("etype", etype)
+				.getResultList();
+		return resultList;
+
+	}
+
+	@Override
+	@Transactional
+	public List<NamedEntity> findByUrl(String url) {
+		return em
+				.createNamedQuery("NamedEntity.byUrl",
+						NamedEntity.class)
+				.setParameter("url", url).getResultList();
+	}
+
+	@Override
+	@Transactional
+	public List<NamedEntity> findByNameUrl(String name,
+			String url) {
+		return em
+				.createNamedQuery("NamedEntity.byNameUrl",
+						NamedEntity.class)
+				.setParameter("url", url)
+				.setParameter("name", name).getResultList();
+	}
+
+	@Override
+	@Transactional
+	public List<NamedEntity> findByEtype(EType etype) {
+		return em
+				.createNamedQuery("NamedEntity.byEType",
+						NamedEntity.class)
+				.setParameter("etype", etype).getResultList();
 	}
 
 }

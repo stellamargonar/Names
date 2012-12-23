@@ -28,4 +28,6 @@ public interface FullNameDAO {
 
 	public FullName findByEntityName(String name, NamedEntity entity);
 
+	public List<FullName> findVariant(String name, EType etype);
+
 }

@@ -19,15 +19,18 @@ import javax.persistence.*;
 @Table(name = "namedentity")
 @SequenceGenerator(name = "entity_seq", sequenceName = "entity_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "NamedEntity.byName", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where name= :name)"),
-		@NamedQuery(name = "NamedEntity.byNameEtype", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where name= :name) and etype=:etype") })
+		@NamedQuery(name = "NamedEntity.byName", query = "select fullname.entity from FullName as fullname where name= :name"),
+		@NamedQuery(name = "NamedEntity.byNameEtype", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where name= :name) and eType=:etype"),
+		@NamedQuery(name = "NamedEntity.byNameUrl", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where name= :name) and url=:url"),
+		@NamedQuery(name = "NamedEntity.byUrl", query = "from NamedEntity where url=:url"),
+		@NamedQuery(name = "NamedEntity.byEType", query = "from NamedEntity where eType=:etype") })
 public class NamedEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entity_seq")
 	private int GUID;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
 
@@ -103,5 +106,4 @@ public class NamedEntity implements Serializable {
 		return true;
 	}
 
-	
 }
