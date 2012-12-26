@@ -1,6 +1,7 @@
 package it.unitn.disi.sweb.names.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.service.EtypeManager;
 import it.unitn.disi.sweb.names.service.EtypeName;
@@ -29,7 +30,7 @@ public class TestNameMatch {
 		etype = etypeManager.getEtype(EtypeName.PERSON);
 	}
 
-	@Test
+	// @Test
 	public void testStringEquals() {
 		String name1 = "Stella Margonar";
 		String name2 = "Stella Margonar";
@@ -38,7 +39,7 @@ public class TestNameMatch {
 		assertEquals(similarity, 1, 0.1);
 	}
 
-	@Test
+	// @Test
 	public void testStringSimilarity() {
 		String name1 = "Stella Margonar";
 		String name2 = "stelaa Margar";
@@ -49,7 +50,7 @@ public class TestNameMatch {
 		assertTrue(similarity > 0.5);
 	}
 
-	@Test
+	// @Test
 	public void testDictionaryExact() {
 		String name1 = "Stella Margonar";
 		String name2 = "Marietto";
@@ -59,7 +60,7 @@ public class TestNameMatch {
 		assertEquals(similarity, 1, 0.1);
 	}
 
-	@Test
+	// @Test
 	public void testDictionaryVariant() {
 		String name1 = "Stella Margonar";
 		String name2 = "Marietta";
@@ -67,6 +68,28 @@ public class TestNameMatch {
 		double similarity = nameMatcher.dictionaryLookup(name1, name2, etype);
 		printResult(name1, name2, similarity);
 		assertTrue(similarity > 0.5);
+	}
+
+	@Test
+	public void testTokenAnalysis() {
+		etype = etypeManager.getEtype(EtypeName.LOCATION);
+
+		String name1 = "Lago di Garda";
+		String name2 = "Garda Loke";
+
+		double similarity = nameMatcher.tokenAnalysis(name1, name2, etype);
+		printResult(name1, name2, similarity);
+		assertTrue(similarity > 0.5);
+	}
+
+//	@Test
+	public void testTokenVariations() {
+		etype = etypeManager.getEtype(EtypeName.LOCATION);
+
+		String name1 = "ALLEY";
+		String name2 = "ALY";
+
+//		System.out.println(nameMatcher.tokenVariant(name1, name2, etype));
 	}
 
 	private void printResult(String name1, String name2, double result) {

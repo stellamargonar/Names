@@ -55,9 +55,20 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	@Transactional
 	public List<IndividualName> findByNameEtype(String name, EType etype) {
 		return em
-				.createNamedQuery("IndividualName.byNameEtype", IndividualName.class)
-				.setParameter("name", name).setParameter("etype", etype)
-				.getResultList();
+				.createNamedQuery("IndividualName.byNameEtype",
+						IndividualName.class).setParameter("name", name)
+				.setParameter("etype", etype).getResultList();
+	}
+
+	@Override
+	@Transactional
+	public boolean isTranslation(String name1, String name2) {
+		List<IndividualName> result = em
+				.createNamedQuery("IndividualName.translation",
+						IndividualName.class).setParameter("name1", name1)
+				.setParameter("name2", name2).getResultList();
+
+		return (result != null && !result.isEmpty()) ? true : false;
 	}
 
 }

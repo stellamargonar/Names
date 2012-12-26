@@ -2,6 +2,8 @@ package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.Set;
+
 import javax.persistence.*;
 
 /**
@@ -34,7 +36,10 @@ public class NameElement implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
-
+	
+	@OneToMany(mappedBy = "nameElement", cascade = CascadeType.ALL)
+	private Set<IndividualName> individualNames;
+	
 	private static final long serialVersionUID = 1L;
 
 	public NameElement() {

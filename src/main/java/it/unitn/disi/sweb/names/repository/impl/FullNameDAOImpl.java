@@ -2,7 +2,9 @@ package it.unitn.disi.sweb.names.repository.impl;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
+import it.unitn.disi.sweb.names.model.NameToken;
 import it.unitn.disi.sweb.names.model.NamedEntity;
+import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 
 import java.util.List;
@@ -23,9 +25,7 @@ public class FullNameDAOImpl implements FullNameDAO {
 	@Override
 	@Transactional
 	public FullName save(FullName fullname) {
-		FullName result = em.merge(fullname);
-		em.flush();
-		return result;
+		return update(fullname);
 	}
 
 	@Override

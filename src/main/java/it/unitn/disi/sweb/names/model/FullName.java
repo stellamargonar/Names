@@ -12,6 +12,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -69,10 +70,10 @@ public class FullName implements Serializable {
 	@Column(name = "ngramcode")
 	private String nGramCode;
 
-	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Set<NameToken> nameTokens;
 
-	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Set<TriggerWordToken> triggerWordTokens;
 
 	private static final long serialVersionUID = 1L;

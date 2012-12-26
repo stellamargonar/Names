@@ -54,7 +54,8 @@ public class NameManagerImpl implements NameManager {
 		FullName fullname = new FullName();
 		fullname.setName(name);
 		fullname.setEntity(en);
-
+//		en.addFullName(fullname);
+		
 		fullname = parse(fullname, en.getEType());
 		fullname.setNameToCompare(getNameToCompare(fullname));
 		fullname.setNameNormalized(getNameNormalized(fullname));
@@ -121,7 +122,7 @@ public class NameManagerImpl implements NameManager {
 		return name;
 	}
 
-	private FullName parse(FullName fullname, EType eType) {
+	protected FullName parse(FullName fullname, EType eType) {
 		String name = fullname.getName();
 
 		String[] tokens = name.split(" ");
@@ -141,6 +142,7 @@ public class NameManagerImpl implements NameManager {
 					// check if it is a known triggerword
 					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(s,
 							eType);
+					System.out.println(s + " " + listTW);
 					if (listTW != null && listTW.size() > 0) {
 						TriggerWordToken twt = new TriggerWordToken();
 						twt.setFullName(fullname);

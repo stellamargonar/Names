@@ -36,7 +36,8 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "TriggerWord.byTW", query = "from TriggerWord where triggerWord = :tw"),
 		@NamedQuery(name = "TriggerWord.variationsByTW", query = "from TriggerWord as trig where trig.variations = :tw"),
-		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where triggerWord = :tw and trig.type.eType=:etype") })
+		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where triggerWord = :tw and trig.type.eType=:etype"),
+		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)") })
 public class TriggerWord implements Serializable {
 
 	@Id

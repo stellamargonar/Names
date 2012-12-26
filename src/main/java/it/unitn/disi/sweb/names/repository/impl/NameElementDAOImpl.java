@@ -59,7 +59,7 @@ public class NameElementDAOImpl implements NameElementDAO {
 	@Transactional
 	public List<NameElement> findByEType(EType etype) {
 		return em.createNamedQuery("NameElement.byEtype", NameElement.class)
-				.setParameter("eTupe", etype).getResultList();
+				.setParameter("eType", etype).getResultList();
 	}
 
 	@Override

@@ -18,5 +18,7 @@ public interface IndividualNameDAO {
 	public List<IndividualName> findByName(String name);
 
 	public List<IndividualName> findByNameEtype(String name, EType etype);
+	
+	public boolean isTranslation(String name1, String name2);
 
 }

@@ -6,11 +6,14 @@ import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NameElement;
 import it.unitn.disi.sweb.names.model.NameToken;
 import it.unitn.disi.sweb.names.model.NamedEntity;
+import it.unitn.disi.sweb.names.model.TriggerWord;
 import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
 import it.unitn.disi.sweb.names.repository.EntityDAO;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
+import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
+import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
 import it.unitn.disi.sweb.names.service.EntityManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
@@ -36,6 +39,8 @@ public class NameMatchImpl implements NameMatch {
 	private NameElementDAO nameElementDao;
 	private TriggerWordTypeDAO twtDao;
 	private EntityManager entityManager;
+	private IndividualNameDAO individualNameDao;
+	private TriggerWordDAO triggerWordDao;
 
 	private MisspellingsComparator comparator;
 
@@ -101,6 +106,9 @@ public class NameMatchImpl implements NameMatch {
 
 		List<FullName> nameList1 = nameDao.findByNameEtype(name1, eType);
 		List<FullName> nameList2 = nameDao.findByNameEtype(name2, eType);
+		// TODO
+		// when a name is not present in the db, which means, namelist empty,
+		// parse it for creating the name tokens
 
 		double similarity = 0;
 		List<List<Pair<String, String>>> listPairs = generateListPairs(
@@ -110,13 +118,46 @@ public class NameMatchImpl implements NameMatch {
 			double totalSimilarity = 0;
 			for (Pair<String, String> pair : list) {
 				double simToken = stringSimilarity(pair.key, pair.value, eType);
-				totalSimilarity += simToken
+
+				// TODO aggiungere anche variation sulle variant
+				double simVariation = tokenVariant(pair.key, pair.value, etype);
+				totalSimilarity += Math.max(simToken, simVariation)
 						* ((double) (pair.value.length()) / name2.length());
 			}
 			if (totalSimilarity > similarity)
 				similarity = totalSimilarity;
 		}
 		return similarity;
+	}
+
+	private double tokenVariant(String key, String value, EType e) {
+		if (key.equals(value))
+			return 1.0;
+		
+		// cercare in traduzioni e varianti se c'e' un match
+		boolean nameTranslation = individualNameDao.isTranslation(key, value);
+		boolean triggerWordVariations = triggerWordDao.isVariation(key, value);
+		double sim = 0.0;
+		
+		if (nameTranslation || triggerWordVariations)
+			sim = 1.0;
+		else {
+			List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(
+					key, e);
+			if (tList != null) {
+				for (TriggerWord t : tList) {
+					List<TriggerWord> variations = triggerWordDao
+							.findVariations(t);
+					for (TriggerWord v : variations) {
+						double tmp = stringMatching(t.getTriggerWord(),
+								v.getTriggerWord(), e);
+						if (tmp > sim)
+							sim = tmp;
+					}
+				}
+			}
+		}
+		return sim;
 	}
 
 	/**
@@ -222,21 +263,6 @@ public class NameMatchImpl implements NameMatch {
 		return list;
 	}
 
-	public static void main(String[] args) {
-		NameMatch nameMatch = new NameMatchImpl();
-		double sim = nameMatch.stringSimilarity("Stella", "Stello", null);
-		System.out.println("(Stella, Stello): " + sim);
-
-		sim = nameMatch.stringSimilarity("Fausto", "Fasuto", null);
-		System.out.println("(Fausto, Fasuto): " + sim);
-
-		sim = nameMatch.stringSimilarity("CANE", "ACEN", null);
-		System.out.println("(CANE, ACEN): " + sim);
-
-		sim = nameMatch.stringSimilarity("abc", "aef", null);
-		System.out.println("(abc, aef): " + sim);
-	}
-
 	@Override
 	public double dictionaryLookup(String name1, String name2, EType eType) {
 		this.name1 = name1;
@@ -305,7 +331,7 @@ public class NameMatchImpl implements NameMatch {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-	
+
 	@Autowired
 	public void setComparator(MisspellingsComparator comparator) {
 		this.comparator = comparator;
@@ -324,5 +350,15 @@ public class NameMatchImpl implements NameMatch {
 	@Autowired
 	public void setTwtDao(TriggerWordTypeDAO twtDao) {
 		this.twtDao = twtDao;
+	}
+
+	@Autowired
+	public void setIndividualNameDao(IndividualNameDAO individualNameDao) {
+		this.individualNameDao = individualNameDao;
+	}
+
+	@Autowired
+	public void setTriggerWordDao(TriggerWordDAO triggerWordDao) {
+		this.triggerWordDao = triggerWordDao;
 	}
 }

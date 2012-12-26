@@ -74,4 +74,14 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 				.setParameter("tw", triggerWord).setParameter("etype", etype)
 				.getResultList();
 	}
+
+	@Override
+	@Transactional
+	public boolean isVariation(String t1, String t2) {
+		List<TriggerWord> result = em
+				.createNamedQuery("TriggerWord.isVariations", TriggerWord.class)
+				.setParameter("t1", t1).setParameter("t2", t2)
+				.getResultList();
+		return (result != null && !result.isEmpty()) ? true : false;
+	}
 }

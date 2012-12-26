@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -39,9 +40,6 @@ public class NamedEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(mappedBy = "entity", cascade = CascadeType.ALL)
-	private Set<FullName> names;
-
 	public NamedEntity() {
 		super();
 	}
@@ -68,14 +66,6 @@ public class NamedEntity implements Serializable {
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	public void setNames(Set<FullName> names) {
-		this.names = names;
-	}
-
-	public Set<FullName> getNames() {
-		return names;
 	}
 
 	@Override

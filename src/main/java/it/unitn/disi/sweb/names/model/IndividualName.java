@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,8 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),
-		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype") })
+		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype"),
+		@NamedQuery(name = "IndividualName.translation", query = "select i from IndividualName i join i.translations o where (o.name = :name1 and i.name=:name2) or (o.name=:name2 and i.name=:name1)") })
 public class IndividualName implements Serializable {
 
 	@Id
@@ -50,7 +52,7 @@ public class IndividualName implements Serializable {
 	@JoinTable(name = "nametranslation", joinColumns = @JoinColumn(name = "source_name_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "target_name_id", referencedColumnName = "id"))
 	private Set<IndividualName> translations;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "element_id", nullable = false)
 	private NameElement nameElement;
 
@@ -142,7 +144,5 @@ public class IndividualName implements Serializable {
 	public String toString() {
 		return "IndividualName [name=" + name + "]";
 	}
-
-
 
 }

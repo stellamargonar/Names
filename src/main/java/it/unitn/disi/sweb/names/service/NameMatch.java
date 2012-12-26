@@ -71,4 +71,6 @@ public interface NameMatch {
 	 */
 	public double tokenAnalysis(String name1, String name2, EType eType);
 
+	
+	
 }

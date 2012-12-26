@@ -21,5 +21,8 @@ public interface TriggerWordDAO {
 
 	public List<TriggerWord> findVariations(TriggerWord triggerWord);
 
+	public boolean isVariation(String t1, String t2);
+
+	
 	public void deleteAll();
 }
