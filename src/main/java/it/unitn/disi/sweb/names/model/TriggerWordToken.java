@@ -88,25 +88,33 @@ public class TriggerWordToken implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		TriggerWordToken other = (TriggerWordToken) obj;
 		if (fullName == null) {
-			if (other.fullName != null)
+			if (other.fullName != null) {
 				return false;
-		} else if (!fullName.equals(other.fullName))
+			}
+		} else if (!fullName.equals(other.fullName)) {
 			return false;
-		if (id != other.id)
+		}
+		if (id != other.id) {
 			return false;
+		}
 		if (triggerWord == null) {
-			if (other.triggerWord != null)
+			if (other.triggerWord != null) {
 				return false;
-		} else if (!triggerWord.equals(other.triggerWord))
+			}
+		} else if (!triggerWord.equals(other.triggerWord)) {
 			return false;
+		}
 		return true;
 	}
 
@@ -116,5 +124,4 @@ public class TriggerWordToken implements Serializable {
 				+ position + "]";
 	}
 
-	
 }

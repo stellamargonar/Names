@@ -2,13 +2,10 @@ package it.unitn.disi.sweb.names.repository.impl;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
-import it.unitn.disi.sweb.names.model.NameToken;
 import it.unitn.disi.sweb.names.model.NamedEntity;
-import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -105,5 +102,18 @@ public class FullNameDAOImpl implements FullNameDAO {
 		return em.createNamedQuery("FullName.variantForName", FullName.class)
 				.setParameter("name", name).setParameter("etype", etype)
 				.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public List<FullName> findByToken(String token) {
+		return em.createNamedQuery("FullName.byToken", FullName.class)
+				.setParameter("name", token).getResultList();
+	}
+
+	@Override
+	public List<FullName> findByNgram(int ngram, int diff) {
+		return em.createNamedQuery("FullName.byNgram", FullName.class)
+				.setParameter("code", ngram).setParameter("diff", diff).getResultList();
 	}
 }

@@ -46,8 +46,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
 		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity"),
-		@NamedQuery(name = "FullName.variantForName", 
-		query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name) and fn1.entity.eType=:etype))") })
+		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name) and fn1.entity.eType=:etype))"),
+		@NamedQuery(name = "FullName.byToken", query = "from FullName where name like CONCAT('%', :name, '%')"),
+		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff")})
 public class FullName implements Serializable {
 
 	@Id
@@ -68,12 +69,12 @@ public class FullName implements Serializable {
 	private NamedEntity entity;
 
 	@Column(name = "ngramcode")
-	private String nGramCode;
+	private Integer nGramCode;
 
-	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<NameToken> nameTokens;
 
-	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<TriggerWordToken> triggerWordTokens;
 
 	private static final long serialVersionUID = 1L;
@@ -140,11 +141,11 @@ public class FullName implements Serializable {
 		this.entity = GUID;
 	}
 
-	public String getNGramCode() {
+	public Integer getNGramCode() {
 		return this.nGramCode;
 	}
 
-	public void setNGramCode(String nGramCode) {
+	public void setNGramCode(Integer nGramCode) {
 		this.nGramCode = nGramCode;
 	}
 
@@ -156,11 +157,11 @@ public class FullName implements Serializable {
 		this.entity = entity;
 	}
 
-	public String getnGramCode() {
+	public Integer getnGramCode() {
 		return nGramCode;
 	}
 
-	public void setnGramCode(String nGramCode) {
+	public void setnGramCode(Integer nGramCode) {
 		this.nGramCode = nGramCode;
 	}
 

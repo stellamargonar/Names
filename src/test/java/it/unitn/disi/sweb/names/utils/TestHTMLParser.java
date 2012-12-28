@@ -26,14 +26,14 @@ public class TestHTMLParser {
 	// System.out.println("test dao: " + dao);
 	// }
 
-	@Test
+//	@Test
 	public void testTranslation() {
 
 		html = new HtmlParser();
 		html.setDictionaryDAO(dao);
 		html.extractTranslations();
 	}
-
+	
 	// @Test
 	// public void testJobs() {
 	// try {
@@ -46,4 +46,8 @@ public class TestHTMLParser {
 	// }
 	// }
 
+	@Test
+	public void nothing() {
+		
+	}
 }

@@ -9,13 +9,11 @@ import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.model.TriggerWord;
 import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
-import it.unitn.disi.sweb.names.repository.EntityDAO;
-import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
-import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
-import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
+import it.unitn.disi.sweb.names.service.ElementManager;
 import it.unitn.disi.sweb.names.service.EntityManager;
+import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
 import it.unitn.disi.sweb.names.utils.Pair;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
@@ -32,16 +30,17 @@ import org.springframework.stereotype.Service;
 public class NameMatchImpl implements NameMatch {
 
 	private static int MAX_LENGTH_DIFFERENCE = 3;
-	private static double THRESHOLD_MISSPELLINGS = 0.4;
+	private static double THRESHOLD_MISSPELLINGS = 0.5;
 	private static double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
 
-	private FullNameDAO nameDao;
-	private NameElementDAO nameElementDao;
-	private TriggerWordTypeDAO twtDao;
-	private EntityManager entityManager;
+
 	private IndividualNameDAO individualNameDao;
 	private TriggerWordDAO triggerWordDao;
 
+	private EntityManager entityManager;
+	private NameManager nameManager;
+	private ElementManager elementManager;
+	
 	private MisspellingsComparator comparator;
 
 	private String name1;
@@ -104,8 +103,8 @@ public class NameMatchImpl implements NameMatch {
 		this.name2 = name2;
 		this.etype = eType;
 
-		List<FullName> nameList1 = nameDao.findByNameEtype(name1, eType);
-		List<FullName> nameList2 = nameDao.findByNameEtype(name2, eType);
+		List<FullName> nameList1 = nameManager.find(name1, eType);
+		List<FullName> nameList2 = nameManager.find(name2, eType);
 		// TODO
 		// when a name is not present in the db, which means, namelist empty,
 		// parse it for creating the name tokens
@@ -191,7 +190,7 @@ public class NameMatchImpl implements NameMatch {
 	private List<Pair<String, String>> generatePairs(FullName n1, FullName n2) {
 		List<Pair<String, String>> result = new ArrayList<Pair<String, String>>();
 
-		for (NameElement nameElement : nameElementDao.findByEType(etype)) {
+		for (NameElement nameElement : elementManager.findNameElement(etype)) {
 
 			List<String> list1 = getTokenByElement(n1, nameElement);
 			List<String> list2 = getTokenByElement(n2, nameElement);
@@ -199,7 +198,7 @@ public class NameMatchImpl implements NameMatch {
 			result.addAll(combinePairs(list1, list2));
 		}
 
-		for (TriggerWordType twtype : twtDao.findByEType(etype)) {
+		for (TriggerWordType twtype : elementManager.findTriggerWordType(etype)) {
 			if (twtype.isComparable()) {
 				List<String> list1 = getTokenByElement(n1, twtype);
 				List<String> list2 = getTokenByElement(n2, twtype);
@@ -312,7 +311,7 @@ public class NameMatchImpl implements NameMatch {
 		// select namedentity.names from NamedEntity as namedentity where GUID
 		// in (select fullname.entity from FullName as fullname where name=
 		// :name) and etype=:etype)
-		return nameDao.findVariant(n1, etype);
+		return nameManager.retrieveVariants(n1, etype);
 	}
 
 	private boolean dictionaryExactLookup(String n1, String n2, EType e) {
@@ -331,6 +330,11 @@ public class NameMatchImpl implements NameMatch {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
+	
+	@Autowired
+	public void setNameManager(NameManager nameManager) {
+		this.nameManager = nameManager;
+	}
 
 	@Autowired
 	public void setComparator(MisspellingsComparator comparator) {
@@ -338,18 +342,8 @@ public class NameMatchImpl implements NameMatch {
 	}
 
 	@Autowired
-	public void setNameDAO(FullNameDAO dao) {
-		nameDao = dao;
-	}
-
-	@Autowired
-	public void setNameElementDao(NameElementDAO nameElementDao) {
-		this.nameElementDao = nameElementDao;
-	}
-
-	@Autowired
-	public void setTwtDao(TriggerWordTypeDAO twtDao) {
-		this.twtDao = twtDao;
+	public void setElementManager(ElementManager elementManager) {
+		this.elementManager = elementManager;
 	}
 
 	@Autowired

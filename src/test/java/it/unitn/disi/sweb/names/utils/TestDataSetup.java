@@ -1,14 +1,13 @@
 package it.unitn.disi.sweb.names.utils;
 
-import java.util.List;
-import javax.persistence.EnumType;
-
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.service.EntityManager;
 import it.unitn.disi.sweb.names.service.EtypeManager;
 import it.unitn.disi.sweb.names.service.EtypeName;
 import it.unitn.disi.sweb.names.service.NameManager;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,45 +27,38 @@ public class TestDataSetup {
 	@Autowired
 	EtypeManager etypeManager;
 
+	@Test
+	public void nothing() {
+		
+	}
+	
 //	@Test
 	public void testNewFullNames() {
-		String name1 = "Stella Margonar";
-		String name2 = "Dott.ssa Stella Margonar";
-		String name3 = "Sig.ra Stella Jr.";
-		String nickname = "Marietto";
-
+		String[] names = { "Stella Margonar", "Dott.ssa Stella Margonar",
+				"Sig.ra Stella Jr.", "Marietto" };
 		String description = "https://www.facebook.com/stella.margonar";
-		EType e = etypeManager.getEtype(EtypeName.PERSON);
+		createEntity(names, EtypeName.PERSON, description);
 
-		NamedEntity ne = null;
-		List<NamedEntity> list = entityManager.find(description, name1);
-		if (list != null && !list.isEmpty())
-			ne = list.get(0);
-		else
-			ne = entityManager.createEntity(e, description);
+		String[] names4 = { "Fausto Giunchiglia", "Professor Giunchiglia" };
+		String url4 = "http://disi.unitn.it/~fausto/";
 
-		nameManager.createFullName(nickname, ne);
-
-		nameManager.createFullName(name1, ne);
-		nameManager.createFullName(name2, ne);
-		nameManager.createFullName(name3, ne);
+		createEntity(names4, EtypeName.PERSON, url4);
 	}
 
-	@Test
+//	@Test
 	public void testNewEntities() {
 		String[] names1 = { "Garda", "Citta' Garda" };
 		String url1 = "http://www.comunedigarda.it";
 
 		String[] names2 = { "Lago di Garda", "Garda" };
 		String url2 = "http://it.wikipedia.org/wiki/Lago_di_Garda";
-		
-		String[] names3 = { "Garda Loke" };
-		String url3 = "http://en.wikipedia.org/wiki/Loke_Garda";
 
+		String[] names3 = { "Garda Lake" };
+		String url3 = "http://en.wikipedia.org/wiki/Lake_Garda";
 		EtypeName type = EtypeName.LOCATION;
 
-//		createEntity(names1, type, url1);
-//		createEntity(names2, type, url2);
+		createEntity(names1, type, url1);
+		createEntity(names2, type, url2);
 		createEntity(names3, type, url3);
 
 	}

@@ -30,4 +30,9 @@ public interface FullNameDAO {
 
 	public List<FullName> findVariant(String name, EType etype);
 
+	public List<FullName> findByToken(String token);
+	
+	public List<FullName> findByNgram(int ngram, int diff);
+	
+	
 }
