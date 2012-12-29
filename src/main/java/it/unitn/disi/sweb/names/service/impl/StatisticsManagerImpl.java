@@ -5,10 +5,11 @@ import it.unitn.disi.sweb.names.model.UsageStatistic;
 import it.unitn.disi.sweb.names.repository.UsageStatisticsDAO;
 import it.unitn.disi.sweb.names.service.StatisticsManager;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,8 +21,18 @@ public class StatisticsManagerImpl implements StatisticsManager {
 
 	@Override
 	public void updateSearchStatistic(String query, FullName selected) {
-		// TODO Auto-generated method stub
-
+		UsageStatistic old = this.statDao.findByQuerySelected(query, selected);
+		if (old == null) {
+			UsageStatistic u = new UsageStatistic();
+			u.setFrequency(1);
+			u.setQuery(query);
+			u.setSelected(selected);
+			this.statDao.save(u);
+		} else {
+			double oldFrequency = old.getFrequency();
+			old.setFrequency(oldFrequency + 1);
+			this.statDao.update(old);
+		}
 	}
 
 	@Override
@@ -32,9 +43,14 @@ public class StatisticsManagerImpl implements StatisticsManager {
 	}
 
 	@Override
-	public List<FullName> retrieveTopResults(String query, int maxNrResults) {
+	public Map<FullName, Double> retrieveTopResults(String query,
+			int maxNrResults) {
 		List<UsageStatistic> list = this.statDao.findByQuery(query);
-		List<FullName> result = new ArrayList<>(maxNrResults);
+		if (list == null || list.isEmpty()) {
+			return null;
+		}
+
+		Map<FullName, Double> result = new HashMap<>(maxNrResults);
 
 		// sort list based on the frequency of the selected result for that
 		// specific query
@@ -46,11 +62,10 @@ public class StatisticsManagerImpl implements StatisticsManager {
 		});
 
 		for (int i = 0; i < list.size() && i < maxNrResults; i++) {
-			result.add(list.get(i).getSelected());
+			result.put(list.get(i).getSelected(), list.get(i).getFrequency());
 		}
 		return result;
 	}
-
 
 	@Autowired
 	public void setStatDao(UsageStatisticsDAO statDao) {

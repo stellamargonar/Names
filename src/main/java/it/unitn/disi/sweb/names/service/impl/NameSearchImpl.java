@@ -6,6 +6,7 @@ import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
 import it.unitn.disi.sweb.names.service.NameSearch;
 import it.unitn.disi.sweb.names.service.SearchType;
+import it.unitn.disi.sweb.names.service.StatisticsManager;
 import it.unitn.disi.sweb.names.utils.Pair;
 
 import java.util.ArrayList;
@@ -24,9 +25,11 @@ public class NameSearchImpl implements NameSearch {
 
 	private static final double WEIGHT_EQUALS = 1.0;
 	private static final double WEIGHT_REORDER = 0.8;
+	private static final int MAXRESULT = 10;
 
 	private NameManager nameManager;
 	private NameMatch nameMatch;
+	private StatisticsManager statManager;
 
 	@Override
 	public List<Pair<String, Double>> nameSearch(String input) {
@@ -51,21 +54,38 @@ public class NameSearchImpl implements NameSearch {
 
 	@Override
 	public List<Pair<NamedEntity, Double>> entityNameSearch(String input) {
-		// List <GUID ,float > listEquals = searchEquals ( input );
-		List<Pair<NamedEntity, Double>> listEquals = searchEquals(input);
+
+		Map<NamedEntity, Double> listTopRank = searchTopRank(input);
+
+		Map<NamedEntity, Double> listEquals = searchEquals(input);
 
 		String[] tokens = generateTokens(input); // tokens used also by other
 													// functions
 
-		List<Pair<NamedEntity, Double>> listReordering = searchReordered(tokens);
+		Map<NamedEntity, Double> listReordering = searchReordered(tokens);
 
-		List<Pair<NamedEntity, Double>> listMisspellings = searchMisspllings(input);
+		Map<NamedEntity, Double> listMisspellings = searchMisspllings(input);
 
-		List<Pair<NamedEntity, Double>> listToken = searchToken(tokens);
+		Map<NamedEntity, Double> listToken = searchToken(tokens);
 
-		return union(listEquals, listReordering, listMisspellings, listToken);
-		// return union(null, null, listMisspellings, null);
+		return union(listTopRank, listEquals, listReordering, listMisspellings,
+				listToken);
+	}
 
+	private Map<NamedEntity, Double> searchTopRank(String input) {
+		Map<FullName, Double> names = this.statManager.retrieveTopResults(
+				input, MAXRESULT);
+		if (names == null) {
+			return null;
+		}
+
+		Map<NamedEntity, Double> result = new HashMap<>(names.size());
+
+		for (FullName name : names.keySet()) {
+			result.put(name.getEntity(), names.get(name));
+		}
+
+		return result;
 	}
 
 	private String[] generateTokens(String input) {
@@ -80,24 +100,22 @@ public class NameSearchImpl implements NameSearch {
 	 * @param input
 	 * @return list of entities
 	 */
-	private List<Pair<NamedEntity, Double>> searchEquals(String input) {
+	private Map<NamedEntity, Double> searchEquals(String input) {
 		List<FullName> found = this.nameManager.find(input,
 				SearchType.TOCOMPARE);
 		if (found == null || found.isEmpty()) {
 			return null;
 		}
 
-		List<Pair<NamedEntity, Double>> result = new ArrayList<>();
+		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : found) {
-			Pair<NamedEntity, Double> p = new Pair<NamedEntity, Double>(
-					n.getEntity(), WEIGHT_EQUALS);
-			result.add(p);
+			result.put(n.getEntity(), WEIGHT_EQUALS);
 		}
 
 		return result;
 	}
 
-	private List<Pair<NamedEntity, Double>> searchReordered(String[] tokens) {
+	private Map<NamedEntity, Double> searchReordered(String[] tokens) {
 		String inputOrdered = "";
 		List<String> tokensList = Arrays.asList(tokens);
 		Collections.sort(tokensList);
@@ -108,11 +126,9 @@ public class NameSearchImpl implements NameSearch {
 		List<FullName> found = this.nameManager.find(inputOrdered,
 				SearchType.NORMALIZED);
 
-		List<Pair<NamedEntity, Double>> result = new ArrayList<>();
+		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : found) {
-			Pair<NamedEntity, Double> p = new Pair<NamedEntity, Double>(
-					n.getEntity(), WEIGHT_REORDER);
-			result.add(p);
+			result.put(n.getEntity(), WEIGHT_REORDER);
 		}
 
 		// orderByField ( tokens )); TODO ???
@@ -120,24 +136,25 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
-	private List<Pair<NamedEntity, Double>> searchMisspllings(String input) {
+	private Map<NamedEntity, Double> searchMisspllings(String input) {
 		List<FullName> candidates = this.nameManager.find(input,
 				SearchType.NGRAM);
 
-		List<Pair<NamedEntity, Double>> result = new ArrayList<>();
+		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : candidates) {
 			double similarity = this.nameMatch.stringSimilarity(input,
 					n.getName(), null);
-			if (similarity > 0.0) {
-				result.add(new Pair<NamedEntity, Double>(n.getEntity(),
-						similarity));
+			double oldSimilarity = result.get(n.getEntity()) != null ? result
+					.get(n.getEntity()) : 0.0;
+			if (similarity > 0.0 && oldSimilarity < similarity) {
+				result.put(n.getEntity(), similarity);
 			}
 
 		}
 		return result;
 	}
 
-	private List<Pair<NamedEntity, Double>> searchToken(String[] tokens) {
+	private Map<NamedEntity, Double> searchToken(String[] tokens) {
 		HashMap<NamedEntity, Double> candidates = new HashMap<>();
 		// TODO search also variations and translation of tokens (if this is the
 		// case)
@@ -156,9 +173,9 @@ public class NameSearchImpl implements NameSearch {
 			}
 		}
 
-		List<Pair<NamedEntity, Double>> result = new ArrayList<>();
+		Map<NamedEntity, Double> result = new HashMap<>();
 		for (NamedEntity e : candidates.keySet()) {
-			result.add(new Pair(e, candidates.get(e) / size));
+			result.put(e, candidates.get(e) / size);
 		}
 		return result;
 	}
@@ -184,11 +201,13 @@ public class NameSearchImpl implements NameSearch {
 	}
 
 	private List<Pair<NamedEntity, Double>> union(
-			List<Pair<NamedEntity, Double>> listEquals,
-			List<Pair<NamedEntity, Double>> listReordering,
-			List<Pair<NamedEntity, Double>> listMisspellings,
-			List<Pair<NamedEntity, Double>> listToken) {
+			Map<NamedEntity, Double> listRank,
+			Map<NamedEntity, Double> listEquals,
+			Map<NamedEntity, Double> listReordering,
+			Map<NamedEntity, Double> listMisspellings,
+			Map<NamedEntity, Double> listToken) {
 		Map<NamedEntity, Double> all = new HashMap<>();
+		all = addToResult(listRank, all);
 		all = addToResult(listEquals, all);
 		all = addToResult(listReordering, all);
 		all = addToResult(listMisspellings, all);
@@ -210,15 +229,15 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
-	private Map<NamedEntity, Double> addToResult(
-			List<Pair<NamedEntity, Double>> list, Map<NamedEntity, Double> all) {
+	private Map<NamedEntity, Double> addToResult(Map<NamedEntity, Double> list,
+			Map<NamedEntity, Double> all) {
 		if (list == null || list.isEmpty()) {
 			return all;
 		}
-		for (Pair<NamedEntity, Double> p : list) {
-			if (all.containsKey(p.key) && all.get(p.key) < p.value
-					|| !all.containsKey(p.key)) {
-				all.put(p.key, p.value);
+		for (NamedEntity e : list.keySet()) {
+			if (all.containsKey(e) && all.get(e) < list.get(e)
+					|| !all.containsKey(e)) {
+				all.put(e, list.get(e));
 			}
 
 		}
@@ -233,5 +252,9 @@ public class NameSearchImpl implements NameSearch {
 	@Autowired
 	public void setNameMatch(NameMatch nameMatch) {
 		this.nameMatch = nameMatch;
+	}
+	@Autowired
+	public void setStatManager(StatisticsManager statManager) {
+		this.statManager = statManager;
 	}
 }

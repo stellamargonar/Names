@@ -18,7 +18,9 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "usagestatistic", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"query", "fullname_id"}))
 @SequenceGenerator(name = "stat_seq", sequenceName = "stat_id_seq")
-@NamedQueries({@NamedQuery(name = "UsageStatistic.byQuery", query = "from UsageStatistic where query=:query")})
+@NamedQueries({
+		@NamedQuery(name = "UsageStatistic.byQuery", query = "from UsageStatistic where query=:query"),
+		@NamedQuery(name = "UsageStatistic.byQuerySelected", query = "from UsageStatistic where query=:query and selected=:selected")})
 public class UsageStatistic {
 
 	@Id
