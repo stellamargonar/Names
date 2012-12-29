@@ -2,7 +2,7 @@ package it.unitn.disi.sweb.names.utils;
 
 import it.unitn.disi.sweb.names.MisspellingsComparator;
 
-public class LevenstheinDamearau implements MisspellingsComparator {
+public final class LevenstheinDamearau implements MisspellingsComparator {
 
 	private static LevenstheinDamearau instance;
 

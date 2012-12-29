@@ -15,8 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("triggerWordDAO")
 public class TriggerWordDAOImpl implements TriggerWordDAO {
 
+	private EntityManager em;
+
 	@PersistenceContext
-	EntityManager em;
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
 	@Transactional
@@ -71,7 +75,8 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Transactional
 	public List<TriggerWord> findByTriggerWordEtype(String triggerWord,
 			EType etype) {
-		return this.em.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
+		return this.em
+				.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
 				.setParameter("tw", triggerWord).setParameter("etype", etype)
 				.getResultList();
 	}
@@ -81,8 +86,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	public boolean isVariation(String t1, String t2) {
 		List<TriggerWord> result = this.em
 				.createNamedQuery("TriggerWord.isVariations", TriggerWord.class)
-				.setParameter("t1", t1).setParameter("t2", t2)
-				.getResultList();
+				.setParameter("t1", t1).setParameter("t2", t2).getResultList();
 		return result != null && !result.isEmpty() ? true : false;
 	}
 }

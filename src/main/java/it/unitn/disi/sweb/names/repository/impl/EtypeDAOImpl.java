@@ -14,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("etypeDAO")
 public class EtypeDAOImpl implements ETypeDAO {
 
+	private EntityManager em;
+
 	@PersistenceContext
-	EntityManager em;
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
-
 	public void save(EType e) {
 		this.em.merge(e);
 	}

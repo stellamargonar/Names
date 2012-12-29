@@ -35,7 +35,7 @@ public class NameManagerImpl implements NameManager {
 	private NameElementDAO nameElementDao;
 	private NameTokenDAO nameTokenDao;
 
-	private static int NGRAM_DIFFERENCE = 70;
+	private final static int NGRAM_DIFFERENCE = 70;
 
 	@Override
 	public FullName createFullName(String name, NamedEntity en) {
@@ -147,7 +147,6 @@ public class NameManagerImpl implements NameManager {
 					// check if it is a known triggerword
 					List<TriggerWord> listTW = this.twDao
 							.findByTriggerWordEtype(s, eType);
-					System.out.println(s + " " + listTW);
 					if (listTW != null && listTW.size() > 0) {
 						TriggerWordToken twt = new TriggerWordToken();
 						twt.setFullName(fullname);
@@ -167,17 +166,6 @@ public class NameManagerImpl implements NameManager {
 				position++;
 			}
 		}
-
-		/* DEBUG */
-		// System.out.println("Name Created: ");
-		// for (NameToken n : fullname.getNameTokens())
-		// System.out.println(n.getIndividualName().getNameElement()
-		// .getElementName()
-		// + ": " + n.getIndividualName().getName());
-		// if (fullname.getTriggerWordTokens() != null)
-		// for (TriggerWordToken t : fullname.getTriggerWordTokens())
-		// System.out.println(t.getTriggerWord().getType().getType()
-		// + ": " + t.getTriggerWord().getTriggerWord());
 
 		return fullname;
 	}
@@ -285,8 +273,7 @@ public class NameManagerImpl implements NameManager {
 			}
 		}
 
-		return sumAll(sums);
-		// return concatenateAll(sums);
+		return sumAll(sums); // return concatenateAll(sums);
 	}
 
 	private int computeMaxDifference(String name) {

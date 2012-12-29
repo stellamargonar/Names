@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("twStatisticDAO")
 public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 
+	private EntityManager em;
+
 	@PersistenceContext
-	EntityManager em;
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
 	@Transactional
@@ -49,8 +53,9 @@ public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 			EType eType) {
 		return this.em
 				.createNamedQuery("TWStatistic.byTriggerWordEtype",
-						TriggerWordStatistic.class).setParameter("tw", triggerWord)
-				.setParameter("etype", eType).getSingleResult();
+						TriggerWordStatistic.class)
+				.setParameter("tw", triggerWord).setParameter("etype", eType)
+				.getSingleResult();
 	}
 
 	@Override
@@ -58,8 +63,8 @@ public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 	public List<TriggerWordStatistic> findByTriggerWord(TriggerWord triggerWord) {
 		return this.em
 				.createNamedQuery("TWStatistic.byTriggerWord",
-						TriggerWordStatistic.class).setParameter("tw", triggerWord)
-				.getResultList();
+						TriggerWordStatistic.class)
+				.setParameter("tw", triggerWord).getResultList();
 	}
 
 }

@@ -52,9 +52,6 @@ public class TriggerWord implements Serializable {
 	@JoinTable(name = "triggerwordvariations", joinColumns = @JoinColumn(name = "source_tw_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "target_tw_id", referencedColumnName = "id"))
 	private Set<TriggerWord> variations;
 
-	@OneToMany(mappedBy = "triggerWord", cascade = CascadeType.ALL)
-	private Set<TriggerWordToken> tokens;
-
 	@ManyToOne
 	@JoinColumn(name = "type_id", nullable = false)
 	private TriggerWordType type;
@@ -108,6 +105,14 @@ public class TriggerWord implements Serializable {
 			this.variations = new HashSet<TriggerWord>();
 		}
 		this.variations.add(variation);
+	}
+
+	public Set<TriggerWordStatistic> geteTypeStats() {
+		return this.eTypeStats;
+	}
+
+	public void seteTypeStats(Set<TriggerWordStatistic> eTypeStats) {
+		this.eTypeStats = eTypeStats;
 	}
 
 	@Override

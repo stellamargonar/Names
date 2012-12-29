@@ -14,8 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository("nameElementDAO")
 public class NameElementDAOImpl implements NameElementDAO {
+
+	private EntityManager em;
+
 	@PersistenceContext
-	EntityManager em;
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
 	@Transactional
@@ -44,7 +49,8 @@ public class NameElementDAOImpl implements NameElementDAO {
 	@Override
 	@Transactional
 	public List<NameElement> findName(String name) {
-		return this.em.createNamedQuery("NameElement.byName", NameElement.class)
+		return this.em
+				.createNamedQuery("NameElement.byName", NameElement.class)
 				.setParameter("name", name).getResultList();
 	}
 
@@ -58,7 +64,8 @@ public class NameElementDAOImpl implements NameElementDAO {
 	@Override
 	@Transactional
 	public List<NameElement> findByEType(EType etype) {
-		return this.em.createNamedQuery("NameElement.byEtype", NameElement.class)
+		return this.em
+				.createNamedQuery("NameElement.byEtype", NameElement.class)
 				.setParameter("eType", etype).getResultList();
 	}
 

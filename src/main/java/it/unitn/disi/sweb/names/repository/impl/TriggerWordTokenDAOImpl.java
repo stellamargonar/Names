@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("twTokenDAO")
 public class TriggerWordTokenDAOImpl implements TriggerWordTokenDAO {
 
+	private EntityManager em;
+
 	@PersistenceContext
-	EntityManager em;
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
 	@Transactional

@@ -35,15 +35,6 @@ public class EType implements Serializable {
 
 	@Column(name = "etype")
 	private String etype;
-//
-//	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-//	private Set<NamedEntity> entities;
-//
-//	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-//	private Set<NameElement> nameElements;
-//
-//	@OneToMany(mappedBy = "eType", cascade = CascadeType.ALL)
-//	private Set<TriggerWordStatistic> triggerWordStats;
 
 	private static final long serialVersionUID = 1L;
 
@@ -67,27 +58,12 @@ public class EType implements Serializable {
 		this.etype = etype;
 	}
 
-//	public Set<NamedEntity> getEntities() {
-//		return entities;
-//	}
-//
-//	public void setEntities(Set<NamedEntity> entities) {
-//		this.entities = entities;
-//	}
-//
-//	public Set<NameElement> getNameElements() {
-//		return nameElements;
-//	}
-//
-//	public void setNameElements(Set<NameElement> nameElements) {
-//		this.nameElements = nameElements;
-//	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.etype == null ? 0 : this.etype.hashCode());
+		result = prime * result
+				+ (this.etype == null ? 0 : this.etype.hashCode());
 		result = prime * result + this.id;
 		return result;
 	}
@@ -116,6 +92,5 @@ public class EType implements Serializable {
 		}
 		return true;
 	}
-
 
 }

@@ -12,9 +12,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "namestatistic")
+@Table(name = "namestatistic", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"individualname_id", "nameelement_id"}))
 @SequenceGenerator(name = "namestat_seq", sequenceName = "namestat_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "NameStatistic.byName", query = "from NameStatistics where name= :name"),
@@ -23,18 +25,18 @@ public class NameStatistics {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "namestat_seq")
-	int id;
+	private int id;
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "individualname_id", nullable = false)
-	IndividualName name;
+	private IndividualName name;
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "nameelement_id", nullable = false)
-	NameElement nameElement;
+	private NameElement nameElement;
 
 	@Column(name = "frequency")
-	double frequency;
+	private double frequency;
 
 	public int getId() {
 		return this.id;

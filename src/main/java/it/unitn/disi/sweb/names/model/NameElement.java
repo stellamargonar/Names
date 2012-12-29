@@ -1,12 +1,10 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -46,12 +43,9 @@ public class NameElement implements Serializable {
 	@Column(name = "elementname")
 	private String elementName;
 
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.REFRESH) // TODO!!!!! fetch.lazi?
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
-
-	@OneToMany(mappedBy = "nameElement", cascade = CascadeType.ALL)
-	private Set<IndividualName> individualNames;
 
 	private static final long serialVersionUID = 1L;
 
@@ -87,7 +81,8 @@ public class NameElement implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		 result = prime * result + (this.eType == null ? 0 : this.eType.hashCode());
+		result = prime * result
+				+ (this.eType == null ? 0 : this.eType.hashCode());
 		result = prime * result
 				+ (this.elementName == null ? 0 : this.elementName.hashCode());
 		result = prime * result + this.id;

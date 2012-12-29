@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("nameTokenDAO")
 public class NameTokenDAOImpl implements NameTokenDAO {
 
+	private EntityManager em;
+
 	@PersistenceContext
-	EntityManager em;
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
 	@Transactional
@@ -57,7 +61,8 @@ public class NameTokenDAOImpl implements NameTokenDAO {
 	@Override
 	@Transactional
 	public List<NameToken> findByFullName(FullName fullName) {
-		return this.em.createNamedQuery("NameToken.byFullName", NameToken.class)
+		return this.em
+				.createNamedQuery("NameToken.byFullName", NameToken.class)
 				.setParameter("fullName", fullName).getResultList();
 	}
 

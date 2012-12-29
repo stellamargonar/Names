@@ -5,6 +5,9 @@ import it.unitn.disi.sweb.names.model.TriggerWordToken;
 
 import java.util.Comparator;
 
+import org.springframework.stereotype.Component;
+
+@Component("tokenPositionComparator")
 public class TokenPositionComparator implements Comparator<Object> {
 
 	@Override

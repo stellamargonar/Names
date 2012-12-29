@@ -1,7 +1,8 @@
 package it.unitn.disi.sweb.names.utils;
 
-
-public class StringCompareUtils {
+public final class StringCompareUtils {
+	private StringCompareUtils() {
+	}
 
 	public static int lengthDifference(String string1, String string2) {
 		if (string1 == null || string2 == null) {

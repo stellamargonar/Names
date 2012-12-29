@@ -1,10 +1,9 @@
 package it.unitn.disi.sweb.names.model;
 
-import it.unitn.disi.sweb.names.utils.TokenPositionComparator;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +22,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Entity implementation class for Entity: FullName
@@ -76,6 +78,9 @@ public class FullName implements Serializable {
 
 	@OneToMany(mappedBy = "fullName", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<TriggerWordToken> triggerWordTokens;
+
+	@Transient
+	Comparator<Object> tokenPositionComparator;
 
 	private static final long serialVersionUID = 1L;
 
@@ -183,14 +188,14 @@ public class FullName implements Serializable {
 
 	public List<NameToken> getNameTokensOrdered() {
 		ArrayList<NameToken> list = new ArrayList<NameToken>(getNameTokens());
-		Collections.sort(list, new TokenPositionComparator());
+		Collections.sort(list, this.tokenPositionComparator);
 		return list;
 	}
 
 	public List<TriggerWordToken> getTriggerWordTokensOrdered() {
 		ArrayList<TriggerWordToken> list = new ArrayList<TriggerWordToken>(
 				getTriggerWordTokens());
-		Collections.sort(list, new TokenPositionComparator());
+		Collections.sort(list, this.tokenPositionComparator);
 		return list;
 	}
 
@@ -208,13 +213,24 @@ public class FullName implements Serializable {
 		this.triggerWordTokens.add(token);
 	}
 
+	@Autowired
+	public void setTokenPositionComparator(
+			Comparator<Object> tokenPositionComparator) {
+		this.tokenPositionComparator = tokenPositionComparator;
+	}
+	public Comparator<Object> getTokenPositionComparator() {
+		return this.tokenPositionComparator;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.entity == null ? 0 : this.entity.hashCode());
+		result = prime * result
+				+ (this.entity == null ? 0 : this.entity.hashCode());
 		result = prime * result + this.id;
-		result = prime * result + (this.name == null ? 0 : this.name.hashCode());
+		result = prime * result
+				+ (this.name == null ? 0 : this.name.hashCode());
 		return result;
 	}
 
@@ -252,9 +268,9 @@ public class FullName implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FullName [id=" + this.id + ", name=" + this.name + ", entity=" + this.entity
-				+ ", nameTokens=" + this.nameTokens + ", triggerWordTokens="
-				+ this.triggerWordTokens + "]";
+		return "FullName [id=" + this.id + ", name=" + this.name + ", entity="
+				+ this.entity + ", nameTokens=" + this.nameTokens
+				+ ", triggerWordTokens=" + this.triggerWordTokens + "]";
 	}
 
 }

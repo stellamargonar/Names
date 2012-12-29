@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,8 @@ import org.springframework.stereotype.Service;
 @Service("nameSearch")
 public class NameSearchImpl implements NameSearch {
 
-	private final static double WEIGHT_EQUALS = 1.0;
-	private final static double WEIGHT_REORDER = 0.8;
+	private static final double WEIGHT_EQUALS = 1.0;
+	private static final double WEIGHT_REORDER = 0.8;
 
 	private NameManager nameManager;
 	private NameMatch nameMatch;
@@ -97,7 +98,7 @@ public class NameSearchImpl implements NameSearch {
 	}
 
 	private List<Pair<NamedEntity, Double>> searchReordered(String[] tokens) {
-		String inputOrdered = new String();
+		String inputOrdered = "";
 		List<String> tokensList = Arrays.asList(tokens);
 		Collections.sort(tokensList);
 		for (String s : tokensList) {
@@ -131,8 +132,6 @@ public class NameSearchImpl implements NameSearch {
 				result.add(new Pair<NamedEntity, Double>(n.getEntity(),
 						similarity));
 			}
-			// result.add(new Pair<NamedEntity, Double>(n.getEntity(),
-			// (double)n.getnGramCode()));
 
 		}
 		return result;
@@ -189,7 +188,7 @@ public class NameSearchImpl implements NameSearch {
 			List<Pair<NamedEntity, Double>> listReordering,
 			List<Pair<NamedEntity, Double>> listMisspellings,
 			List<Pair<NamedEntity, Double>> listToken) {
-		HashMap<NamedEntity, Double> all = new HashMap<>();
+		Map<NamedEntity, Double> all = new HashMap<>();
 		all = addToResult(listEquals, all);
 		all = addToResult(listReordering, all);
 		all = addToResult(listMisspellings, all);
@@ -211,14 +210,12 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
-	private HashMap<NamedEntity, Double> addToResult(
-			List<Pair<NamedEntity, Double>> list,
-			HashMap<NamedEntity, Double> all) {
+	private Map<NamedEntity, Double> addToResult(
+			List<Pair<NamedEntity, Double>> list, Map<NamedEntity, Double> all) {
 		if (list == null || list.isEmpty()) {
 			return all;
 		}
 		for (Pair<NamedEntity, Double> p : list) {
-			System.out.println(p.key + " " + p.value);
 			if (all.containsKey(p.key) && all.get(p.key) < p.value
 					|| !all.containsKey(p.key)) {
 				all.put(p.key, p.value);
@@ -232,7 +229,6 @@ public class NameSearchImpl implements NameSearch {
 	public void setNameManager(NameManager nameManager) {
 		this.nameManager = nameManager;
 	}
-
 
 	@Autowired
 	public void setNameMatch(NameMatch nameMatch) {
