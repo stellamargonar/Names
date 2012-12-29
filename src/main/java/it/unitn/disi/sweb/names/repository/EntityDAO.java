@@ -1,29 +1,29 @@
 package it.unitn.disi.sweb.names.repository;
 
-import java.util.List;
-
-import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.model.EType;
+import it.unitn.disi.sweb.names.model.NamedEntity;
+
+import java.util.List;
 
 public interface EntityDAO {
 
-	public NamedEntity save(NamedEntity entity);
+	NamedEntity save(NamedEntity entity);
 
-	public void update(NamedEntity entity);
+	void update(NamedEntity entity);
 
-	public void delete(NamedEntity entity);
+	void delete(NamedEntity entity);
 
-	public NamedEntity findById(int id);
+	NamedEntity findById(int id);
 
-	public List<NamedEntity> findByName(String name);
+	List<NamedEntity> findByName(String name);
 
-	public List<NamedEntity> findByNameEtype(String name, EType etype);
+	List<NamedEntity> findByNameEtype(String name, EType etype);
 
-	public List<NamedEntity> findByUrl(String url);
+	List<NamedEntity> findByUrl(String url);
 
-	public List<NamedEntity> findByNameUrl(String name,
+	List<NamedEntity> findByNameUrl(String name,
 			String url);
 
-	public List<NamedEntity> findByEtype(EType etype);
+	List<NamedEntity> findByEtype(EType etype);
 
 }

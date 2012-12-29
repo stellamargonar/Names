@@ -1,13 +1,26 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Entity implementation class for Entity: NameToken
- * 
+ *
  * Class representing the relation (N to N) between FullName and IndividualName.
- * 
+ *
  * In particular it provides the information about which element each name
  * represents and in which position it appears in the fullname
  */
@@ -45,7 +58,7 @@ public class NameToken implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -53,7 +66,7 @@ public class NameToken implements Serializable {
 	}
 
 	public FullName getFullName() {
-		return fullName;
+		return this.fullName;
 	}
 
 	public void setFullName(FullName fullName) {
@@ -61,7 +74,7 @@ public class NameToken implements Serializable {
 	}
 
 	public IndividualName getIndividualName() {
-		return individualName;
+		return this.individualName;
 	}
 
 	public void setIndividualName(IndividualName individualName) {
@@ -69,7 +82,7 @@ public class NameToken implements Serializable {
 	}
 
 	public int getPosition() {
-		return position;
+		return this.position;
 	}
 
 	public void setPosition(int position) {
@@ -78,8 +91,8 @@ public class NameToken implements Serializable {
 
 	@Override
 	public String toString() {
-		return "NameToken [individualName=" + individualName + ", position="
-				+ position + "]";
+		return "NameToken [individualName=" + this.individualName + ", position="
+				+ this.position + "]";
 	}
 
 	@Override
@@ -87,34 +100,42 @@ public class NameToken implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((fullName == null) ? 0 : fullName.hashCode());
-		result = prime * result + id;
+				+ (this.fullName == null ? 0 : this.fullName.hashCode());
+		result = prime * result + this.id;
 		result = prime * result
-				+ ((individualName == null) ? 0 : individualName.hashCode());
+				+ (this.individualName == null ? 0 : this.individualName.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		NameToken other = (NameToken) obj;
-		if (fullName == null) {
-			if (other.fullName != null)
+		if (this.fullName == null) {
+			if (other.fullName != null) {
 				return false;
-		} else if (!fullName.equals(other.fullName))
+			}
+		} else if (!this.fullName.equals(other.fullName)) {
 			return false;
-		if (id != other.id)
+		}
+		if (this.id != other.id) {
 			return false;
-		if (individualName == null) {
-			if (other.individualName != null)
+		}
+		if (this.individualName == null) {
+			if (other.individualName != null) {
 				return false;
-		} else if (!individualName.equals(other.individualName))
+			}
+		} else if (!this.individualName.equals(other.individualName)) {
 			return false;
+		}
 		return true;
 	}
 }

@@ -22,33 +22,33 @@ public class NameTokenDAOImpl implements NameTokenDAO {
 	@Override
 	@Transactional
 	public void save(NameToken token) {
-		em.clear();
-		em.merge(token);
+		this.em.clear();
+		this.em.merge(token);
 	}
 
 	@Override
 	@Transactional
 	public void update(NameToken token) {
-		em.merge(token);
+		this.em.merge(token);
 	}
 
 	@Override
 	@Transactional
 	public void delete(NameToken token) {
-		em.remove(token);
+		this.em.remove(token);
 	}
 
 	@Override
 	@Transactional
 	public NameToken findById(int id) {
-		return em.find(NameToken.class, id);
+		return this.em.find(NameToken.class, id);
 	}
 
 	@Override
 	@Transactional
 	public NameToken findByFullNameIndividualName(FullName fullName,
 			IndividualName name) {
-		return em
+		return this.em
 				.createNamedQuery("NameToken.byFullIndividualName",
 						NameToken.class).setParameter("fullName", fullName)
 				.setParameter("individualName", name).getSingleResult();
@@ -57,14 +57,14 @@ public class NameTokenDAOImpl implements NameTokenDAO {
 	@Override
 	@Transactional
 	public List<NameToken> findByFullName(FullName fullName) {
-		return em.createNamedQuery("NameToken.byFullName", NameToken.class)
+		return this.em.createNamedQuery("NameToken.byFullName", NameToken.class)
 				.setParameter("fullName", fullName).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<NameToken> findByIndividualName(IndividualName name) {
-		return em
+		return this.em
 				.createNamedQuery("NameToken.byIndividualName", NameToken.class)
 				.setParameter("individualName", name).getResultList();
 	}

@@ -8,20 +8,19 @@ import java.util.List;
 
 public interface NameTokenDAO {
 
-	public void save(NameToken token);
+	void save(NameToken token);
 
-	public void update(NameToken token);
+	void update(NameToken token);
 
-	public void delete(NameToken token);
+	void delete(NameToken token);
 
-	public NameToken findById(int id);
+	NameToken findById(int id);
 
-	public NameToken findByFullNameIndividualName(FullName fullName,
+	NameToken findByFullNameIndividualName(FullName fullName,
 			IndividualName name);
 
-	public List<NameToken> findByFullName(FullName fullName);
+	List<NameToken> findByFullName(FullName fullName);
 
-	public List<NameToken> findByIndividualName(IndividualName name);
-
+	List<NameToken> findByIndividualName(IndividualName name);
 
 }

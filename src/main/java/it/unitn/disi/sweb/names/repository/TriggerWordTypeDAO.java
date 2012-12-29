@@ -1,25 +1,25 @@
 package it.unitn.disi.sweb.names.repository;
 
-import java.util.List;
-
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
 
+import java.util.List;
+
 public interface TriggerWordTypeDAO {
 
-	public void save(TriggerWordType twType);
+	void save(TriggerWordType twType);
 
-	public void update(TriggerWordType twType);
+	void update(TriggerWordType twType);
 
-	public void delete(TriggerWordType twType);
+	void delete(TriggerWordType twType);
 
-	public TriggerWordType findById(int id);
+	TriggerWordType findById(int id);
 
-	public List<TriggerWordType> findAll();
+	List<TriggerWordType> findAll();
 
-	public TriggerWordType findByName(String name);
+	TriggerWordType findByName(String name);
 
-	public List<TriggerWordType> findByEType(EType etype);
+	List<TriggerWordType> findByEType(EType etype);
 
-	public void deleteAll();
+	void deleteAll();
 }

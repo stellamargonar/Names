@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ElementManager {
 
-	public List<NameElement> findNameElement(EType etype);
-	
-	public List<TriggerWordType> findTriggerWordType(EType etype);
-	
+	List<NameElement> findNameElement(EType etype);
+
+	List<TriggerWordType> findTriggerWordType(EType etype);
+
 }

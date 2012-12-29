@@ -26,15 +26,15 @@ import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: FullName
- * 
+ *
  * Class representing one of the possible name for an entity. For full name is
  * intended the entire string representing the name of an entity.
- * 
+ *
  * The relation between NamedEntity and FullName is 1 to N.
- * 
+ *
  * Each FullName is composed by Tokens which are divided into IndividualNames
  * and TriggerWords.
- * 
+ *
  */
 @Entity
 @Table(name = "fullname")
@@ -103,7 +103,7 @@ public class FullName implements Serializable {
 	 * accessor to the field representing the normalized name. Used for
 	 * particular name search. At the moment for name normalized is intended the
 	 * name where tokens are ordered in lexical graphic order
-	 * 
+	 *
 	 * @return the name normalized
 	 */
 	public String getNameNormalized() {
@@ -122,7 +122,7 @@ public class FullName implements Serializable {
 	 * <li>all the name tokens</li>
 	 * <li>trigger word tokens (depending on the value "to compare)</li>
 	 * </ul>
-	 * 
+	 *
 	 * @return string used for comparison
 	 */
 	public String getNameToCompare() {
@@ -150,7 +150,7 @@ public class FullName implements Serializable {
 	}
 
 	public NamedEntity getEntity() {
-		return entity;
+		return this.entity;
 	}
 
 	public void setEntity(NamedEntity entity) {
@@ -158,7 +158,7 @@ public class FullName implements Serializable {
 	}
 
 	public Integer getnGramCode() {
-		return nGramCode;
+		return this.nGramCode;
 	}
 
 	public void setnGramCode(Integer nGramCode) {
@@ -166,7 +166,7 @@ public class FullName implements Serializable {
 	}
 
 	public Set<NameToken> getNameTokens() {
-		return nameTokens;
+		return this.nameTokens;
 	}
 
 	public void setNameTokens(Set<NameToken> nameTokens) {
@@ -174,7 +174,7 @@ public class FullName implements Serializable {
 	}
 
 	public Set<TriggerWordToken> getTriggerWordTokens() {
-		return triggerWordTokens;
+		return this.triggerWordTokens;
 	}
 
 	public void setTriggerWordTokens(Set<TriggerWordToken> triggerWordTokens) {
@@ -195,56 +195,66 @@ public class FullName implements Serializable {
 	}
 
 	public void addNameToken(NameToken nameToken) {
-		if (getNameTokens() == null)
-			nameTokens = new HashSet<>();
-		nameTokens.add(nameToken);
+		if (getNameTokens() == null) {
+			this.nameTokens = new HashSet<>();
+		}
+		this.nameTokens.add(nameToken);
 	}
 
 	public void addTriggerWordToken(TriggerWordToken token) {
-		if (getTriggerWordTokens() == null)
-			triggerWordTokens = new HashSet<>();
-		triggerWordTokens.add(token);
+		if (getTriggerWordTokens() == null) {
+			this.triggerWordTokens = new HashSet<>();
+		}
+		this.triggerWordTokens.add(token);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((entity == null) ? 0 : entity.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (this.entity == null ? 0 : this.entity.hashCode());
+		result = prime * result + this.id;
+		result = prime * result + (this.name == null ? 0 : this.name.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		FullName other = (FullName) obj;
-		if (entity == null) {
-			if (other.entity != null)
+		if (this.entity == null) {
+			if (other.entity != null) {
 				return false;
-		} else if (!entity.equals(other.entity))
+			}
+		} else if (!this.entity.equals(other.entity)) {
 			return false;
-		if (id != other.id)
+		}
+		if (this.id != other.id) {
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		}
+		if (this.name == null) {
+			if (other.name != null) {
 				return false;
-		} else if (!name.equals(other.name))
+			}
+		} else if (!this.name.equals(other.name)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "FullName [id=" + id + ", name=" + name + ", entity=" + entity
-				+ ", nameTokens=" + nameTokens + ", triggerWordTokens="
-				+ triggerWordTokens + "]";
+		return "FullName [id=" + this.id + ", name=" + this.name + ", entity=" + this.entity
+				+ ", nameTokens=" + this.nameTokens + ", triggerWordTokens="
+				+ this.triggerWordTokens + "]";
 	}
 
 }

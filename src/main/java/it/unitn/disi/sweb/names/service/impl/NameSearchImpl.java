@@ -2,7 +2,6 @@ package it.unitn.disi.sweb.names.service.impl;
 
 import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
-import it.unitn.disi.sweb.names.service.ElementManager;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
 import it.unitn.disi.sweb.names.service.NameSearch;
@@ -22,17 +21,11 @@ import org.springframework.stereotype.Service;
 @Service("nameSearch")
 public class NameSearchImpl implements NameSearch {
 
-	private static double WEIGHT_EQUALS = 1.0;
-	private static double WEIGHT_REORDER = 0.8;
-	private static double WEIGHT_MISSPELLING = 1.0; // TODO
-	private static double WEIGHT_TOKEN = 1.0; // TODO
+	private final static double WEIGHT_EQUALS = 1.0;
+	private final static double WEIGHT_REORDER = 0.8;
 
-	@Autowired
-	NameManager nameManager;
-	@Autowired
-	ElementManager elementManager;
-	@Autowired
-	NameMatch nameMatch;
+	private NameManager nameManager;
+	private NameMatch nameMatch;
 
 	@Override
 	public List<Pair<String, Double>> nameSearch(String input) {
@@ -46,9 +39,10 @@ public class NameSearchImpl implements NameSearch {
 		for (Pair<NamedEntity, Double> el : list) {
 			// TODO rimettere lista nomi in namedentity
 
-			List<FullName> names = nameManager.find(el.key);
-			for (FullName n : names)
+			List<FullName> names = this.nameManager.find(el.key);
+			for (FullName n : names) {
 				result.add(new Pair<String, Double>(n.getName(), el.value));
+			}
 		}
 
 		return result;
@@ -81,12 +75,13 @@ public class NameSearchImpl implements NameSearch {
 	/**
 	 * search for entities which have "input" as one of the possible names. The
 	 * weight is equal 1.
-	 * 
+	 *
 	 * @param input
 	 * @return list of entities
 	 */
 	private List<Pair<NamedEntity, Double>> searchEquals(String input) {
-		List<FullName> found = nameManager.find(input, SearchType.TOCOMPARE);
+		List<FullName> found = this.nameManager.find(input,
+				SearchType.TOCOMPARE);
 		if (found == null || found.isEmpty()) {
 			return null;
 		}
@@ -109,7 +104,7 @@ public class NameSearchImpl implements NameSearch {
 			inputOrdered += s + " ";
 		}
 
-		List<FullName> found = nameManager.find(inputOrdered,
+		List<FullName> found = this.nameManager.find(inputOrdered,
 				SearchType.NORMALIZED);
 
 		List<Pair<NamedEntity, Double>> result = new ArrayList<>();
@@ -125,12 +120,13 @@ public class NameSearchImpl implements NameSearch {
 	}
 
 	private List<Pair<NamedEntity, Double>> searchMisspllings(String input) {
-		List<FullName> candidates = nameManager.find(input, SearchType.NGRAM);
+		List<FullName> candidates = this.nameManager.find(input,
+				SearchType.NGRAM);
 
 		List<Pair<NamedEntity, Double>> result = new ArrayList<>();
 		for (FullName n : candidates) {
-			double similarity = nameMatch.stringSimilarity(input, n.getName(),
-					null);
+			double similarity = this.nameMatch.stringSimilarity(input,
+					n.getName(), null);
 			if (similarity > 0.0) {
 				result.add(new Pair<NamedEntity, Double>(n.getEntity(),
 						similarity));
@@ -170,12 +166,13 @@ public class NameSearchImpl implements NameSearch {
 
 	/**
 	 * search for entity with names that contain the string in input
-	 * 
+	 *
 	 * @param t
 	 * @return list of entities
 	 */
 	private List<NamedEntity> searchSingleToken(String input) {
-		List<FullName> names = nameManager.find(input, SearchType.SINGLETOKEN);
+		List<FullName> names = this.nameManager.find(input,
+				SearchType.SINGLETOKEN);
 		if (names == null || names.isEmpty()) {
 			return null;
 		}
@@ -207,7 +204,7 @@ public class NameSearchImpl implements NameSearch {
 			@Override
 			public int compare(Pair<NamedEntity, Double> o1,
 					Pair<NamedEntity, Double> o2) {
-				return (-1) * Double.compare(o1.value, o2.value);
+				return -1 * Double.compare(o1.value, o2.value);
 			}
 		});
 
@@ -222,12 +219,23 @@ public class NameSearchImpl implements NameSearch {
 		}
 		for (Pair<NamedEntity, Double> p : list) {
 			System.out.println(p.key + " " + p.value);
-			if ((all.containsKey(p.key) && all.get(p.key) < p.value)
+			if (all.containsKey(p.key) && all.get(p.key) < p.value
 					|| !all.containsKey(p.key)) {
 				all.put(p.key, p.value);
 			}
 
 		}
 		return all;
+	}
+
+	@Autowired
+	public void setNameManager(NameManager nameManager) {
+		this.nameManager = nameManager;
+	}
+
+
+	@Autowired
+	public void setNameMatch(NameMatch nameMatch) {
+		this.nameMatch = nameMatch;
 	}
 }

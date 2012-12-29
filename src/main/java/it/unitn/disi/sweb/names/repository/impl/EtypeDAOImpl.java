@@ -18,48 +18,49 @@ public class EtypeDAOImpl implements ETypeDAO {
 	EntityManager em;
 
 	@Override
-	
+
 	public void save(EType e) {
-		em.merge(e);
+		this.em.merge(e);
 	}
 
 	@Override
 	@Transactional
 	public void update(EType e) {
-		em.merge(e);
+		this.em.merge(e);
 	}
 
 	@Override
 	@Transactional
 	public void delete(EType e) {
-		em.remove(e);
+		this.em.remove(e);
 	}
 
 	@Override
 	@Transactional
 	public EType findById(int id) {
-		return em.find(EType.class, id);
+		return this.em.find(EType.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<EType> findAll() {
-		return em.createNamedQuery("EType.findAll", EType.class)
+		return this.em.createNamedQuery("EType.findAll", EType.class)
 				.getResultList();
 	}
 
 	@Override
 	@Transactional
 	public EType findByName(String name) {
-		return em.createNamedQuery("EType.findByName", EType.class)
+		return this.em.createNamedQuery("EType.findByName", EType.class)
 				.setParameter("name", name).getSingleResult();
 	}
 
 	@Override
 	@Transactional
 	public void deleteAll() {
-		for (EType e : findAll())
-			em.remove(e);
+		for (EType e : findAll()) {
+			this.em.remove(e);
+		}
 	}
 
 }

@@ -1,24 +1,26 @@
 package it.unitn.disi.sweb.names.repository;
 
-import java.util.List;
-
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.IndividualName;
 
+import java.util.List;
+
 public interface IndividualNameDAO {
 
-	public void save(IndividualName name);
+	void save(IndividualName name);
 
-	public void update(IndividualName name);
+	void update(IndividualName name);
 
-	public void delete(IndividualName name);
+	void delete(IndividualName name);
 
-	public IndividualName findById(int id);
+	IndividualName findById(int id);
 
-	public List<IndividualName> findByName(String name);
+	List<IndividualName> findByName(String name);
 
-	public List<IndividualName> findByNameEtype(String name, EType etype);
-	
-	public boolean isTranslation(String name1, String name2);
+	List<IndividualName> findByNameEtype(String name, EType etype);
+
+	boolean isTranslation(String name1, String name2);
+
+	List<IndividualName> findTranslations(IndividualName name);
 
 }

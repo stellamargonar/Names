@@ -1,19 +1,27 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
-import java.lang.String;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Entity
- * 
+ *
  * Class representing an Entity. Each entity is identified by a unique GUID
  * (Global Unique Identifier), and belongs to an EType. It can have multiple
  * names (see FullName)
- * 
+ *
  */
 
 @Entity
@@ -72,27 +80,33 @@ public class NamedEntity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + GUID;
-		result = prime * result + ((eType == null) ? 0 : eType.hashCode());
+		result = prime * result + this.GUID;
+		result = prime * result + (this.eType == null ? 0 : this.eType.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		NamedEntity other = (NamedEntity) obj;
-		if (GUID != other.GUID)
+		if (this.GUID != other.GUID) {
 			return false;
-		if (eType == null) {
-			if (other.eType != null)
+		}
+		if (this.eType == null) {
+			if (other.eType != null) {
 				return false;
-		} else if (!eType.equals(other.eType))
+			}
+		} else if (!this.eType.equals(other.eType)) {
 			return false;
+		}
 		return true;
 	}
 

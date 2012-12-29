@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface NameSearch {
 
-	public List<Pair<String, Double>> nameSearch(String input);
+	List<Pair<String, Double>> nameSearch(String input);
 
-	public List<Pair<NamedEntity, Double>> entityNameSearch(String input);
+	List<Pair<NamedEntity, Double>> entityNameSearch(String input);
 }

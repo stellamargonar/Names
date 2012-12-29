@@ -22,13 +22,13 @@ import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: TriggerWord
- * 
+ *
  * Class representing trigger words, which are words part of a full name, but
  * does not represent a name. Example : Dottor, Professor, Lake
- * 
+ *
  * Some trigger can have translations and variations which are stored in a
  * specific table
- * 
+ *
  */
 @Entity
 @Table(name = "triggerword")
@@ -37,7 +37,7 @@ import javax.persistence.Table;
 		@NamedQuery(name = "TriggerWord.byTW", query = "from TriggerWord where triggerWord = :tw"),
 		@NamedQuery(name = "TriggerWord.variationsByTW", query = "from TriggerWord as trig where trig.variations = :tw"),
 		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where triggerWord = :tw and trig.type.eType=:etype"),
-		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)") })
+		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)")})
 public class TriggerWord implements Serializable {
 
 	@Id
@@ -88,7 +88,7 @@ public class TriggerWord implements Serializable {
 	}
 
 	public Set<TriggerWord> getVariations() {
-		return variations;
+		return this.variations;
 	}
 
 	public void setVariations(Set<TriggerWord> variations) {
@@ -96,7 +96,7 @@ public class TriggerWord implements Serializable {
 	}
 
 	public TriggerWordType getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(TriggerWordType type) {
@@ -104,49 +104,59 @@ public class TriggerWord implements Serializable {
 	}
 
 	public void addVariation(TriggerWord variation) {
-		if (getVariations() == null)
-			variations = new HashSet();
-		variations.add(variation);
+		if (getVariations() == null) {
+			this.variations = new HashSet<TriggerWord>();
+		}
+		this.variations.add(variation);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + this.id;
 		result = prime * result
-				+ ((triggerWord == null) ? 0 : triggerWord.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+				+ (this.triggerWord == null ? 0 : this.triggerWord.hashCode());
+		result = prime * result
+				+ (this.type == null ? 0 : this.type.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		TriggerWord other = (TriggerWord) obj;
-		if (id != other.id)
+		if (this.id != other.id) {
 			return false;
-		if (triggerWord == null) {
-			if (other.triggerWord != null)
+		}
+		if (this.triggerWord == null) {
+			if (other.triggerWord != null) {
 				return false;
-		} else if (!triggerWord.equals(other.triggerWord))
+			}
+		} else if (!this.triggerWord.equals(other.triggerWord)) {
 			return false;
-		if (type == null) {
-			if (other.type != null)
+		}
+		if (this.type == null) {
+			if (other.type != null) {
 				return false;
-		} else if (!type.equals(other.type))
+			}
+		} else if (!this.type.equals(other.type)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "TriggerWord [triggerWord=" + triggerWord + "]";
+		return "TriggerWord [triggerWord=" + this.triggerWord + "]";
 	}
 
 }

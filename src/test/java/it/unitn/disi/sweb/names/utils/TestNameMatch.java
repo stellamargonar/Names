@@ -15,7 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/testApplicationContext.xml" })
+@ContextConfiguration(locations = {"/testApplicationContext.xml"})
 public class TestNameMatch {
 
 	@Autowired
@@ -27,69 +27,75 @@ public class TestNameMatch {
 
 	@Before
 	public void setEtype() {
-		etype = etypeManager.getEtype(EtypeName.PERSON);
+		this.etype = this.etypeManager.getEtype(EtypeName.PERSON);
 	}
 
-	// @Test
+	@Test
 	public void testStringEquals() {
 		String name1 = "Stella Margonar";
 		String name2 = "Stella Margonar";
-		double similarity = nameMatcher.stringSimilarity(name1, name2, etype);
+		double similarity = this.nameMatcher.stringSimilarity(name1, name2,
+				this.etype);
 		printResult(name1, name2, similarity);
 		assertEquals(similarity, 1, 0.1);
 	}
 
-	// @Test
+	@Test
 	public void testStringSimilarity() {
 		String name1 = "Stella Margonar";
 		String name2 = "stelaa Margar";
 
-		double similarity = nameMatcher.stringSimilarity(name1, name2, etype);
+		double similarity = this.nameMatcher.stringSimilarity(name1, name2,
+				this.etype);
 
 		printResult(name1, name2, similarity);
 		assertTrue(similarity > 0.5);
 	}
 
-	// @Test
+	@Test
 	public void testDictionaryExact() {
 		String name1 = "Stella Margonar";
 		String name2 = "Marietto";
 
-		double similarity = nameMatcher.dictionaryLookup(name1, name2, etype);
+		double similarity = this.nameMatcher.dictionaryLookup(name1, name2,
+				this.etype);
 		printResult(name1, name2, similarity);
 		assertEquals(similarity, 1, 0.1);
 	}
 
-	// @Test
+	@Test
 	public void testDictionaryVariant() {
 		String name1 = "Stella Margonar";
 		String name2 = "Marietta";
 
-		double similarity = nameMatcher.dictionaryLookup(name1, name2, etype);
+		double similarity = this.nameMatcher.dictionaryLookup(name1, name2,
+				this.etype);
 		printResult(name1, name2, similarity);
 		assertTrue(similarity > 0.5);
 	}
 
 	@Test
 	public void testTokenAnalysis() {
-		etype = etypeManager.getEtype(EtypeName.LOCATION);
+		this.etype = this.etypeManager.getEtype(EtypeName.LOCATION);
 
 		String name1 = "Lago di Garda";
 		String name2 = "Garda Loke";
 
-		double similarity = nameMatcher.tokenAnalysis(name1, name2, etype);
+		double similarity = this.nameMatcher.tokenAnalysis(name1, name2,
+				this.etype);
 		printResult(name1, name2, similarity);
-		assertTrue(similarity >= 0.0); // TODO change to 0.5
+		assertTrue(similarity >= 0.5); // TODO change to 0.5
 	}
 
 	// @Test
 	public void testTokenVariations() {
-		etype = etypeManager.getEtype(EtypeName.LOCATION);
+		this.etype = this.etypeManager.getEtype(EtypeName.LOCATION);
 
 		String name1 = "ALLEY";
 		String name2 = "ALY";
 
-		// System.out.println(nameMatcher.tokenVariant(name1, name2, etype));
+		// System.out.println(this.nameMatcher.tokenVariant(name1, name2,
+		// this.etype));
 	}
 
 	private void printResult(String name1, String name2, double result) {

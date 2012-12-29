@@ -22,31 +22,31 @@ public class TriggerWordTokenDAOImpl implements TriggerWordTokenDAO {
 	@Override
 	@Transactional
 	public void save(TriggerWordToken twToken) {
-		em.merge(twToken);
+		this.em.merge(twToken);
 	}
 
 	@Override
 	@Transactional
 	public void upload(TriggerWordToken twToken) {
-		em.merge(twToken);
+		this.em.merge(twToken);
 	}
 
 	@Override
 	@Transactional
 	public void delete(TriggerWordToken twToken) {
-		em.remove(twToken);
+		this.em.remove(twToken);
 	}
 
 	@Override
 	@Transactional
 	public TriggerWordToken findById(int id) {
-		return em.find(TriggerWordToken.class, id);
+		return this.em.find(TriggerWordToken.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<TriggerWordToken> findByFullName(FullName fullName) {
-		return em
+		return this.em
 				.createNamedQuery("TWToken.byFullName", TriggerWordToken.class)
 				.setParameter("name", fullName).getResultList();
 	}
@@ -54,7 +54,7 @@ public class TriggerWordTokenDAOImpl implements TriggerWordTokenDAO {
 	@Override
 	@Transactional
 	public List<TriggerWordToken> findByTriggerWord(TriggerWord triggerWord) {
-		return em
+		return this.em
 				.createNamedQuery("TWToken.byTriggerWord",
 						TriggerWordToken.class).setParameter("tw", triggerWord)
 				.getResultList();
@@ -64,7 +64,7 @@ public class TriggerWordTokenDAOImpl implements TriggerWordTokenDAO {
 	@Transactional
 	public TriggerWordToken findByTriggerWordFullName(TriggerWord triggerWord,
 			FullName fullName) {
-		return em
+		return this.em
 				.createNamedQuery("TWToken.byTriggerWordFullName",
 						TriggerWordToken.class)
 				.setParameter("fullName", fullName)

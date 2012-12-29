@@ -28,48 +28,48 @@ public class FullNameDAOImpl implements FullNameDAO {
 	@Override
 	@Transactional
 	public FullName update(FullName fullname) {
-		FullName result = em.merge(fullname);
-		em.flush();
+		FullName result = this.em.merge(fullname);
+		this.em.flush();
 		return result;
 	}
 
 	@Override
 	@Transactional
 	public void delete(FullName fullname) {
-		em.remove(fullname);
+		this.em.remove(fullname);
 	}
 
 	@Override
 	@Transactional
 	public FullName findById(int id) {
-		return em.find(FullName.class, id);
+		return this.em.find(FullName.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> findByName(String name) {
-		return em.createNamedQuery("FullName.byName", FullName.class)
+		return this.em.createNamedQuery("FullName.byName", FullName.class)
 				.setParameter("name", name).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> findByNameNormalized(String name) {
-		return em.createNamedQuery("FullName.byNameNormalized", FullName.class)
+		return this.em.createNamedQuery("FullName.byNameNormalized", FullName.class)
 				.setParameter("nameNormalized", name).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> findByNameToCompare(String name) {
-		return em.createNamedQuery("FullName.byNameToCompare", FullName.class)
+		return this.em.createNamedQuery("FullName.byNameToCompare", FullName.class)
 				.setParameter("nameToCompare", name).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> findByNameEtype(String name, EType etype) {
-		return em.createNamedQuery("FullName.byNameEtype", FullName.class)
+		return this.em.createNamedQuery("FullName.byNameEtype", FullName.class)
 				.setParameter("name", name).setParameter("etype", etype)
 				.getResultList();
 	}
@@ -77,29 +77,31 @@ public class FullNameDAOImpl implements FullNameDAO {
 	@Override
 	@Transactional
 	public List<FullName> findByEntity(NamedEntity entity) {
-		return em.createNamedQuery("FullName.byEntity", FullName.class)
+		return this.em.createNamedQuery("FullName.byEntity", FullName.class)
 				.setParameter("entity", entity).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public FullName findByEntityName(String name, NamedEntity entity) {
-		List<FullName> result = em
+		List<FullName> result = this.em
 				.createNamedQuery("FullName.byEntityName", FullName.class)
 				.setParameter("name", name).setParameter("entity", entity)
 				.getResultList();
-		if (result == null)
+		if (result == null) {
 			return null;
-		if (result.size() > 0)
+		}
+		if (result.size() > 0) {
 			return result.get(0);
-		else
+		} else {
 			return null;
+		}
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> findVariant(String name, EType etype) {
-		return em.createNamedQuery("FullName.variantForName", FullName.class)
+		return this.em.createNamedQuery("FullName.variantForName", FullName.class)
 				.setParameter("name", name).setParameter("etype", etype)
 				.getResultList();
 	}
@@ -107,13 +109,13 @@ public class FullNameDAOImpl implements FullNameDAO {
 	@Override
 	@Transactional
 	public List<FullName> findByToken(String token) {
-		return em.createNamedQuery("FullName.byToken", FullName.class)
+		return this.em.createNamedQuery("FullName.byToken", FullName.class)
 				.setParameter("name", token).getResultList();
 	}
 
 	@Override
 	public List<FullName> findByNgram(int ngram, int diff) {
-		return em.createNamedQuery("FullName.byNgram", FullName.class)
+		return this.em.createNamedQuery("FullName.byNgram", FullName.class)
 				.setParameter("code", ngram).setParameter("diff", diff).getResultList();
 	}
 }

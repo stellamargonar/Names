@@ -18,7 +18,7 @@ public class DictionaryDAOImpl implements DictionaryDAO {
 	@Override
 	@Transactional
 	public Translation create(Translation created) {
-		em.merge(created);
+		this.em.merge(created);
 		return created;
 
 	}
@@ -26,7 +26,7 @@ public class DictionaryDAOImpl implements DictionaryDAO {
 	@Override
 	@Transactional
 	public Translation getById(int id) {
-		return em.find(Translation.class, id);
+		return this.em.find(Translation.class, id);
 	}
 
 }

@@ -14,10 +14,10 @@ import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: EType
- * 
+ *
  * Class representing an type per an entity. Examples of ETypes: Person,
  * Location, Organization, Event
- * 
+ *
  */
 @Entity
 @Table(name = "etype")
@@ -87,29 +87,35 @@ public class EType implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((etype == null) ? 0 : etype.hashCode());
-		result = prime * result + id;
+		result = prime * result + (this.etype == null ? 0 : this.etype.hashCode());
+		result = prime * result + this.id;
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		EType other = (EType) obj;
-		if (etype == null) {
-			if (other.etype != null)
+		if (this.etype == null) {
+			if (other.etype != null) {
 				return false;
-		} else if (!etype.equals(other.etype))
+			}
+		} else if (!this.etype.equals(other.etype)) {
 			return false;
-		if (id != other.id)
+		}
+		if (this.id != other.id) {
 			return false;
+		}
 		return true;
 	}
 
-	
+
 }

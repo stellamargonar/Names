@@ -154,7 +154,7 @@
       </testResource>
     </testResources>
     <directory>/Users/stella/Documents/Programming/workspace/names/target</directory>
-    <finalName>javaactivedirectory</finalName>
+    <finalName>names-0.0.1-SNAPSHOT</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -340,7 +340,7 @@
           </execution>
         </executions>
         <configuration>
-          <argLine>-javaagent:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent7093137662989244515.jar=destfile=target/jacoco.exec,excludes=*_javassist_*</argLine>
+          <argLine>-javaagent:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent4846818111186236739.jar=destfile=target/jacoco.exec,excludes=*_javassist_*</argLine>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
       </plugin>

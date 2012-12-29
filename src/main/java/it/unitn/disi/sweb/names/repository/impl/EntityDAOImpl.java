@@ -21,34 +21,34 @@ public class EntityDAOImpl implements EntityDAO {
 	@Override
 	@Transactional
 	public NamedEntity save(NamedEntity entity) {
-		NamedEntity result = em.merge(entity);
-		em.flush();
+		NamedEntity result = this.em.merge(entity);
+		this.em.flush();
 		return result;
 	}
 
 	@Override
 	@Transactional
 	public void update(NamedEntity entity) {
-		em.merge(entity);
-		em.flush();
+		this.em.merge(entity);
+		this.em.flush();
 	}
 
 	@Override
 	@Transactional
 	public void delete(NamedEntity entity) {
-		em.remove(entity);
+		this.em.remove(entity);
 	}
 
 	@Override
 	@Transactional
 	public NamedEntity findById(int id) {
-		return em.find(NamedEntity.class, id);
+		return this.em.find(NamedEntity.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<NamedEntity> findByName(String name) {
-		List<NamedEntity> resultList = em
+		List<NamedEntity> resultList = this.em
 				.createNamedQuery("NamedEntity.byName", NamedEntity.class)
 				.setParameter("name", name).getResultList();
 		return resultList;
@@ -57,7 +57,7 @@ public class EntityDAOImpl implements EntityDAO {
 	@Override
 	@Transactional
 	public List<NamedEntity> findByNameEtype(String name, EType etype) {
-		List<NamedEntity> resultList = em
+		List<NamedEntity> resultList = this.em
 				.createNamedQuery("NamedEntity.byNameEtype", NamedEntity.class)
 				.setParameter("name", name).setParameter("etype", etype)
 				.getResultList();
@@ -68,7 +68,7 @@ public class EntityDAOImpl implements EntityDAO {
 	@Override
 	@Transactional
 	public List<NamedEntity> findByUrl(String url) {
-		return em
+		return this.em
 				.createNamedQuery("NamedEntity.byUrl",
 						NamedEntity.class)
 				.setParameter("url", url).getResultList();
@@ -78,7 +78,7 @@ public class EntityDAOImpl implements EntityDAO {
 	@Transactional
 	public List<NamedEntity> findByNameUrl(String name,
 			String url) {
-		return em
+		return this.em
 				.createNamedQuery("NamedEntity.byNameUrl",
 						NamedEntity.class)
 				.setParameter("url", url)
@@ -88,7 +88,7 @@ public class EntityDAOImpl implements EntityDAO {
 	@Override
 	@Transactional
 	public List<NamedEntity> findByEtype(EType etype) {
-		return em
+		return this.em
 				.createNamedQuery("NamedEntity.byEType",
 						NamedEntity.class)
 				.setParameter("etype", etype).getResultList();

@@ -1,24 +1,37 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Entity implementation class for Entity: TriggerWordToken
- * 
+ *
  * Class representing the relation (N to N) between FullName and TriggerWord.
- * 
+ *
  * In particular it provides the information the position it appears in the
  * fullname
  */
 @Entity
 @Table(name = "triggerwordtoken", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"full_name_id", "trigger_word_id" }))
+		"full_name_id", "trigger_word_id"}))
 @SequenceGenerator(name = "twtoken_seq", sequenceName = "twtoken_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "TWToken.byFullName", query = "from TriggerWordToken where fullName=:name"),
 		@NamedQuery(name = "TWToken.byTriggerWord", query = "from TriggerWordToken where triggerWord=:tw"),
-		@NamedQuery(name = "TWToken.byTriggerWordFullName", query = "from TriggerWordToken where triggerWord=:tw and fullName= :fullname") })
+		@NamedQuery(name = "TWToken.byTriggerWordFullName", query = "from TriggerWordToken where triggerWord=:tw and fullName= :fullname")})
 public class TriggerWordToken implements Serializable {
 
 	@Id
@@ -43,7 +56,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -51,7 +64,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public FullName getFullName() {
-		return fullName;
+		return this.fullName;
 	}
 
 	public void setFullName(FullName fullName) {
@@ -59,7 +72,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public TriggerWord getTriggerWord() {
-		return triggerWord;
+		return this.triggerWord;
 	}
 
 	public void setTriggerWord(TriggerWord triggerWord) {
@@ -67,7 +80,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public int getPosition() {
-		return position;
+		return this.position;
 	}
 
 	public void setPosition(int position) {
@@ -79,10 +92,10 @@ public class TriggerWordToken implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((fullName == null) ? 0 : fullName.hashCode());
-		result = prime * result + id;
+				+ (this.fullName == null ? 0 : this.fullName.hashCode());
+		result = prime * result + this.id;
 		result = prime * result
-				+ ((triggerWord == null) ? 0 : triggerWord.hashCode());
+				+ (this.triggerWord == null ? 0 : this.triggerWord.hashCode());
 		return result;
 	}
 
@@ -98,21 +111,21 @@ public class TriggerWordToken implements Serializable {
 			return false;
 		}
 		TriggerWordToken other = (TriggerWordToken) obj;
-		if (fullName == null) {
+		if (this.fullName == null) {
 			if (other.fullName != null) {
 				return false;
 			}
-		} else if (!fullName.equals(other.fullName)) {
+		} else if (!this.fullName.equals(other.fullName)) {
 			return false;
 		}
-		if (id != other.id) {
+		if (this.id != other.id) {
 			return false;
 		}
-		if (triggerWord == null) {
+		if (this.triggerWord == null) {
 			if (other.triggerWord != null) {
 				return false;
 			}
-		} else if (!triggerWord.equals(other.triggerWord)) {
+		} else if (!this.triggerWord.equals(other.triggerWord)) {
 			return false;
 		}
 		return true;
@@ -120,8 +133,8 @@ public class TriggerWordToken implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TriggerWordToken [triggerWord=" + triggerWord + ", position="
-				+ position + "]";
+		return "TriggerWordToken [triggerWord=" + this.triggerWord
+				+ ", position=" + this.position + "]";
 	}
 
 }

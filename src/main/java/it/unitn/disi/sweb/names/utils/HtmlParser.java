@@ -142,40 +142,46 @@ public class HtmlParser {
 		// private List<Translation> translations = new
 		// ArrayList<Translation>();
 
+		@Override
 		public void startElement(String uri, String localName, String qName,
 				Attributes attributes) throws SAXException {
 
 			if (isPageTag(qName)) {
-				bfpage = true;
-				list = new ArrayList<String>();
+				this.bfpage = true;
+				this.list = new ArrayList<String>();
 			}
-			if (bfpage && !isPageTag(qName))
-				bflang = true;
+			if (this.bfpage && !isPageTag(qName)) {
+				this.bflang = true;
+			}
 		}
 
+		@Override
 		public void endElement(String uri, String localName, String qName)
 				throws SAXException {
 
 			if (isPageTag(qName)) {
-				bfpage = false;
-				bflang = false;
+				this.bfpage = false;
+				this.bflang = false;
 				// add translations to some external data structure
-				for (int i = 0; i < list.size(); i++) {
-					String source = list.get(i);
-					for (int j = i+1; j < list.size(); j++)
-						if (!source.equals(list.get(j))) {
-							dao.create(new Translation(source, list.get(j)));
+				for (int i = 0; i < this.list.size(); i++) {
+					String source = this.list.get(i);
+					for (int j = i+1; j < this.list.size(); j++) {
+						if (!source.equals(this.list.get(j))) {
+							HtmlParser.this.dao.create(new Translation(source, this.list.get(j)));
 						}
+					}
 				}
 			}
 		}
 
+		@Override
 		public void characters(char ch[], int start, int length)
 				throws SAXException {
-			if (bflang) {
-				String s = (new String(ch, start, length));
-				if (!s.equals("\n") && !s.equals("\n\t"))
-					list.add(s);
+			if (this.bflang) {
+				String s = new String(ch, start, length);
+				if (!s.equals("\n") && !s.equals("\n\t")) {
+					this.list.add(s);
+				}
 			}
 		}
 

@@ -1,25 +1,24 @@
 package it.unitn.disi.sweb.names.repository;
 
-import java.util.List;
-
 import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.TriggerWord;
 import it.unitn.disi.sweb.names.model.TriggerWordToken;
 
+import java.util.List;
+
 public interface TriggerWordTokenDAO {
+	void save(TriggerWordToken twToken);
 
-	public void save(TriggerWordToken twToken);
+	void upload(TriggerWordToken twToken);
 
-	public void upload(TriggerWordToken twToken);
+	void delete(TriggerWordToken twToken);
 
-	public void delete(TriggerWordToken twToken);
+	TriggerWordToken findById(int id);
 
-	public TriggerWordToken findById(int id);
+	List<TriggerWordToken> findByFullName(FullName fullName);
 
-	public List<TriggerWordToken> findByFullName(FullName fullName);
+	List<TriggerWordToken> findByTriggerWord(TriggerWord triggerWord);
 
-	public List<TriggerWordToken> findByTriggerWord(TriggerWord triggerWord);
-
-	public TriggerWordToken findByTriggerWordFullName(TriggerWord triggerWord,
+	TriggerWordToken findByTriggerWordFullName(TriggerWord triggerWord,
 			FullName fullName);
 }

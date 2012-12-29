@@ -8,31 +8,30 @@ import java.util.List;
 
 public interface FullNameDAO {
 
-	public FullName save(FullName fullname);
+	FullName save(FullName fullname);
 
-	public FullName update(FullName fullname);
+	FullName update(FullName fullname);
 
-	public void delete(FullName fullname);
+	void delete(FullName fullname);
 
-	public FullName findById(int id);
+	FullName findById(int id);
 
-	public List<FullName> findByName(String name);
+	List<FullName> findByName(String name);
 
-	public List<FullName> findByNameNormalized(String name);
+	List<FullName> findByNameNormalized(String name);
 
-	public List<FullName> findByNameToCompare(String name);
+	List<FullName> findByNameToCompare(String name);
 
-	public List<FullName> findByNameEtype(String name, EType etype);
+	List<FullName> findByNameEtype(String name, EType etype);
 
-	public List<FullName> findByEntity(NamedEntity entity);
+	List<FullName> findByEntity(NamedEntity entity);
 
-	public FullName findByEntityName(String name, NamedEntity entity);
+	FullName findByEntityName(String name, NamedEntity entity);
 
-	public List<FullName> findVariant(String name, EType etype);
+	List<FullName> findVariant(String name, EType etype);
 
-	public List<FullName> findByToken(String token);
-	
-	public List<FullName> findByNgram(int ngram, int diff);
-	
-	
+	List<FullName> findByToken(String token);
+
+	List<FullName> findByNgram(int ngram, int diff);
+
 }

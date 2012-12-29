@@ -15,11 +15,11 @@ import javax.persistence.UniqueConstraint;
 
 /**
  * Entity implementation class for Entity: Translation
- * 
+ *
  * Class representing the dictionary where are contained all the tranlsation in
  * the system. Those translations are retrieved from external sources (see
  * Heiner tranlsationDictionary)
- * 
+ *
  */
 
 @Table(name = "translation", uniqueConstraints = @UniqueConstraint(columnNames = {
@@ -49,7 +49,7 @@ public class Translation implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {

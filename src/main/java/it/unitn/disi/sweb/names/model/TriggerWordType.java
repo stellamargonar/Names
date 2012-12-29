@@ -1,24 +1,35 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
-import java.lang.String;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: TriggerWordType Correspoing of
  * NameField for IndividualName.
- * 
+ *
  * Represents the possible types of trigger words the we can have in a FullName.
  * Depending on their type a trigger word could be included or not in the
  * comparsion.
- * 
+ *
  * For example, fullName = "Professor Fausto Giunchiglia". In this case the
  * trigger word = "Professor", and should not be used for comparison, since the
  * name would not match the string "Fausto Giunchiglia" representing the same
  * person.
- * 
+ *
  * Other example, fullName = "Garda Lake". Triggerword = "Lake". In this case it
  * must be considered, since otherwise this name would match with for example
  * "Garda City" which does not represent the same entity
@@ -29,16 +40,19 @@ import javax.persistence.*;
 @NamedQueries({
 		@NamedQuery(name = "TWType.findAll", query = "from TriggerWordType"),
 		@NamedQuery(name = "TWType.findByName", query = "from TriggerWordType where type=:name"),
-		@NamedQuery(name = "TWType.findByEtype", query = "from TriggerWordType where eType=:etype") })
+		@NamedQuery(name = "TWType.findByEtype", query = "from TriggerWordType where eType=:etype")})
 public class TriggerWordType implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "twtype_seq")
 	private int id;
+
 	@Column(name = "type")
 	private String type;
+
 	@Column(name = "comparable")
 	private boolean comparable;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
@@ -80,7 +94,7 @@ public class TriggerWordType implements Serializable {
 	}
 
 	public EType geteType() {
-		return eType;
+		return this.eType;
 	}
 
 	public boolean isComparable() {
@@ -91,9 +105,11 @@ public class TriggerWordType implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((eType == null) ? 0 : eType.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result
+				+ (this.eType == null ? 0 : this.eType.hashCode());
+		result = prime * result + this.id;
+		result = prime * result
+				+ (this.type == null ? 0 : this.type.hashCode());
 		return result;
 	}
 
@@ -109,21 +125,21 @@ public class TriggerWordType implements Serializable {
 			return false;
 		}
 		TriggerWordType other = (TriggerWordType) obj;
-		if (eType == null) {
+		if (this.eType == null) {
 			if (other.eType != null) {
 				return false;
 			}
-		} else if (!eType.equals(other.eType)) {
+		} else if (!this.eType.equals(other.eType)) {
 			return false;
 		}
-		if (id != other.id) {
+		if (this.id != other.id) {
 			return false;
 		}
-		if (type == null) {
+		if (this.type == null) {
 			if (other.type != null) {
 				return false;
 			}
-		} else if (!type.equals(other.type)) {
+		} else if (!this.type.equals(other.type)) {
 			return false;
 		}
 		return true;

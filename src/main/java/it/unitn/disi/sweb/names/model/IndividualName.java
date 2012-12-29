@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,18 +15,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: IndividualName
- * 
+ *
  * Class representing an individual name, which can compose a full name.
  * Examples of individual names: Mario, Garda, Fausto, Trento
- * 
+ *
  * Some names can have translations which are stored in a specific table
- * 
+ *
  */
 @Entity
 @Table(name = "individualname")
@@ -35,7 +33,9 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),
 		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype"),
-		@NamedQuery(name = "IndividualName.translation", query = "select i from IndividualName i join i.translations o where (o.name = :name1 and i.name=:name2) or (o.name=:name2 and i.name=:name1)") })
+		@NamedQuery(name = "IndividualName.translation", query = "select i from IndividualName i join i.translations o where (o.name = :name1 and i.name=:name2) or (o.name=:name2 and i.name=:name1)"),
+		@NamedQuery(name = "IndividualName.alltranslation1", query = "select o from IndividualName i join i.translations o where i.name=:name"),
+		@NamedQuery(name = "IndividualName.alltranslation2", query = "select i from IndividualName i join i.translations o where o.name=:name")})
 public class IndividualName implements Serializable {
 
 	@Id
@@ -56,9 +56,6 @@ public class IndividualName implements Serializable {
 	@JoinColumn(name = "element_id", nullable = false)
 	private NameElement nameElement;
 
-	@OneToMany(mappedBy = "individualName", cascade = CascadeType.ALL)
-	private Set<NameToken> nameTokens;
-
 	private static final long serialVersionUID = 1L;
 
 	public IndividualName() {
@@ -66,7 +63,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -74,7 +71,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -82,7 +79,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public int getFrequency() {
-		return frequency;
+		return this.frequency;
 	}
 
 	public void setFrequency(int frequency) {
@@ -90,7 +87,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public Set<IndividualName> getTranslations() {
-		return translations;
+		return this.translations;
 	}
 
 	public void setTranslations(Set<IndividualName> translations) {
@@ -98,7 +95,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public NameElement getNameElement() {
-		return nameElement;
+		return this.nameElement;
 	}
 
 	public void setNameElement(NameElement nameElement) {
@@ -109,40 +106,49 @@ public class IndividualName implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + this.id;
 		result = prime * result
-				+ ((nameElement == null) ? 0 : nameElement.hashCode());
+				+ (this.name == null ? 0 : this.name.hashCode());
+		result = prime * result
+				+ (this.nameElement == null ? 0 : this.nameElement.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		IndividualName other = (IndividualName) obj;
-		if (id != other.id)
+		if (this.id != other.id) {
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		}
+		if (this.name == null) {
+			if (other.name != null) {
 				return false;
-		} else if (!name.equals(other.name))
+			}
+		} else if (!this.name.equals(other.name)) {
 			return false;
-		if (nameElement == null) {
-			if (other.nameElement != null)
+		}
+		if (this.nameElement == null) {
+			if (other.nameElement != null) {
 				return false;
-		} else if (!nameElement.equals(other.nameElement))
+			}
+		} else if (!this.nameElement.equals(other.nameElement)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "IndividualName [name=" + name + "]";
+		return "IndividualName [name=" + this.name + "]";
 	}
 
 }

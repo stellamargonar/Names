@@ -20,52 +20,52 @@ public class NameElementDAOImpl implements NameElementDAO {
 	@Override
 	@Transactional
 	public void save(NameElement field) {
-		em.merge(field);
+		this.em.merge(field);
 	}
 
 	@Override
 	@Transactional
 	public void update(NameElement field) {
-		em.merge(field);
+		this.em.merge(field);
 	}
 
 	@Override
 	@Transactional
 	public void delete(NameElement field) {
-		em.remove(field);
+		this.em.remove(field);
 	}
 
 	@Override
 	@Transactional
 	public NameElement findById(int id) {
-		return em.find(NameElement.class, id);
+		return this.em.find(NameElement.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<NameElement> findName(String name) {
-		return em.createNamedQuery("NameElement.byName", NameElement.class)
+		return this.em.createNamedQuery("NameElement.byName", NameElement.class)
 				.setParameter("name", name).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<NameElement> findAll() {
-		return em.createNamedQuery("NameElement.all", NameElement.class)
+		return this.em.createNamedQuery("NameElement.all", NameElement.class)
 				.getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<NameElement> findByEType(EType etype) {
-		return em.createNamedQuery("NameElement.byEtype", NameElement.class)
+		return this.em.createNamedQuery("NameElement.byEtype", NameElement.class)
 				.setParameter("eType", etype).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public NameElement findByNameEType(String name, EType etype) {
-		return em
+		return this.em
 				.createNamedQuery("NameElement.byNameEtype", NameElement.class)
 				.setParameter("eType", etype).setParameter("name", name)
 				.getSingleResult();
@@ -74,8 +74,9 @@ public class NameElementDAOImpl implements NameElementDAO {
 	@Override
 	@Transactional
 	public void deleteAll() {
-		for (NameElement e : findAll())
+		for (NameElement e : findAll()) {
 			delete(e);
+		}
 	}
 
 }

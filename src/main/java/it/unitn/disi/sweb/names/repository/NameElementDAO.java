@@ -1,27 +1,27 @@
 package it.unitn.disi.sweb.names.repository;
 
-import java.util.List;
-
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NameElement;
 
+import java.util.List;
+
 public interface NameElementDAO {
 
-	public void save(NameElement field);
+	void save(NameElement field);
 
-	public void update(NameElement field);
+	void update(NameElement field);
 
-	public void delete(NameElement field);
+	void delete(NameElement field);
 
-	public NameElement findById(int id);
+	NameElement findById(int id);
 
-	public List<NameElement> findName(String name);
+	List<NameElement> findName(String name);
 
-	public List<NameElement> findAll();
+	List<NameElement> findAll();
 
-	public List<NameElement> findByEType(EType etype);
+	List<NameElement> findByEType(EType etype);
 
-	public NameElement findByNameEType(String name, EType etype);
+	NameElement findByNameEType(String name, EType etype);
 
-	public void deleteAll();
+	void deleteAll();
 }
