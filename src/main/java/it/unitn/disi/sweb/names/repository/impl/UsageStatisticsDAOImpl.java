@@ -58,12 +58,16 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 	@Override
 	@Transactional
 	public UsageStatistic findByQuerySelected(String query, FullName selected) {
-		return this.em
+		List<UsageStatistic> result = this.em
 				.createNamedQuery("UsageStatistic.byQuerySelected",
 						UsageStatistic.class).setParameter("query", query)
-				.setParameter("selected", selected).getSingleResult();
+				.setParameter("selected", selected).getResultList();
+		if (result == null || result.isEmpty()) {
+			return null;
+		} else {
+			return result.get(0);
+		}
 	}
-
 	@Override
 	public List<UsageStatistic> findAll() {
 		return this.em.createQuery("from UsageStatistic", UsageStatistic.class)

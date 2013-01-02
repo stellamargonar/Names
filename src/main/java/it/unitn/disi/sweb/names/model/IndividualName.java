@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Entity implementation class for Entity: IndividualName
@@ -28,7 +29,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "individualname")
+@Table(name = "individualname", uniqueConstraints=@UniqueConstraint(columnNames={"name", "element_id"}))
 @SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),

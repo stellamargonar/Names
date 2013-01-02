@@ -55,9 +55,15 @@ public class PrefixDAOImpl implements PrefixDAO {
 	@Override
 	@Transactional
 	public Prefix findByPrefixSelected(String prefix, FullName name) {
-		return this.em.createNamedQuery("Prefix.byPrefixSelected", Prefix.class)
+		List<Prefix> result = this.em
+				.createNamedQuery("Prefix.byPrefixSelected", Prefix.class)
 				.setParameter("prefix", prefix).setParameter("name", name)
-				.getSingleResult();
+				.getResultList();
+		if (result == null || result.isEmpty()) {
+			return null;
+		} else {
+			return result.get(0);
+		}
 	}
 
 }

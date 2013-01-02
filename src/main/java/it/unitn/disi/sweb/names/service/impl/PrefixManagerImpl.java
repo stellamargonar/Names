@@ -24,24 +24,32 @@ public class PrefixManagerImpl implements PrefixManager {
 	private PrefixDAO prefixDao;
 	private UsageStatisticsDAO statDao;
 
+	private static final boolean NORMALIZE = true;
+
 	@Override
 	public void updatePrefixes() {
-		this.prefixDao.save(null);
 		List<UsageStatistic> all = this.statDao.findAll();
 
 		// TODO add prefix for each name token
+		// TODO check prefix empty
 		for (UsageStatistic u : all) {
 			String[] prefixes = computePrefixes(u.getQuery());
 			for (String p : prefixes) {
+				p = NORMALIZE ? normalize(p) : p;
 				update(p, u.getSelected(), u.getFrequency());
 			}
 		}
 
 	}
-
 	private void update(String prefix, FullName name, double frequency) {
 		Prefix p = this.prefixDao.findByPrefixSelected(prefix, name);
-		if (p.getFrequency() < frequency) {
+		if (p == null) {
+			p = new Prefix();
+			p.setFrequency(frequency);
+			p.setPrefix(prefix);
+			p.setSelected(name);
+			this.prefixDao.save(p);
+		} else if (p.getFrequency() < frequency) {
 			p.setFrequency(frequency);
 			this.prefixDao.update(p);
 		}
@@ -63,7 +71,7 @@ public class PrefixManagerImpl implements PrefixManager {
 
 	@Override
 	public List<Pair<FullName, Double>> search(String prefix) {
-		String normalized = normalize(prefix);
+		prefix = NORMALIZE ? normalize(prefix) : prefix;
 		List<Prefix> list = this.prefixDao.findByPrefix(prefix);
 		if (list == null || list.isEmpty()) {
 			return Collections.emptyList();
@@ -80,15 +88,17 @@ public class PrefixManagerImpl implements PrefixManager {
 
 	@Override
 	public String normalize(String prefix) {
+		prefix = prefix.toLowerCase();
 		if (!Normalizer.isNormalized(prefix, Normalizer.Form.NFKD)) {
-			String normalized =  Normalizer.normalize(prefix, Normalizer.Form.NFKD);
-			normalized = normalized.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+			String normalized = Normalizer.normalize(prefix,
+					Normalizer.Form.NFKD);
+			normalized = normalized.replaceAll(
+					"\\p{InCombiningDiacriticalMarks}+", "");
 			return normalized;
 		} else {
 			return prefix;
 		}
 	}
-
 
 	@Override
 	public List<Pair<FullName, Double>> search(String prefix, EType etype) {

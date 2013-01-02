@@ -3,12 +3,12 @@ package it.unitn.disi.sweb.names.service;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.utils.Pair;
 
-import java.text.Normalizer;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class TestSearch {
 	@Autowired
 	NameSearch nameSearch;
 
-	// @Before
+	@Before
 	public void setUp() throws Exception {
 		String[] names1 = {"Garda", "Citta' Garda"};
 		String url1 = "http://www.comunedigarda.it";
@@ -74,25 +74,13 @@ public class TestSearch {
 	}
 
 	@Test
-	public void testing() {
-		String prefix = "àòèùßǶȠǽƱö";
-		if (!Normalizer.isNormalized(prefix, Normalizer.Form.NFKD)) {
-			String normalized = Normalizer.normalize(prefix,
-					Normalizer.Form.NFKD);
-			normalized = normalized.replaceAll(
-					"\\p{InCombiningDiacriticalMarks}+", "");
-			System.out.println(normalized);
-		} else {
-			System.out.println(prefix);
-		}
-	}
-	// @Test
 	public final void testNameSearch() {
 		String query = "Garda Loke";
 		List<Pair<String, Double>> result = this.nameSearch.nameSearch(query);
 		printResult(query, result);
 
 	}
+
 
 	private void printResult(String query, List<Pair<String, Double>> result) {
 		Logger logger = Logger.getAnonymousLogger();
