@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.service;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
+import it.unitn.disi.sweb.names.utils.Pair;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface PrefixManager {
 	 * @param prefix
 	 * @return list of names corresponding to input prefix
 	 */
-	List<FullName> search(String prefix);
+	List<Pair<FullName, Double>> search(String prefix);
 
 	/**
 	 * search in the database for all the entries corresponding to the input
@@ -34,6 +35,14 @@ public interface PrefixManager {
 	 * @param etype
 	 * @return list of name with etype in input, and corresponding to the prefix
 	 */
-	List<FullName> search(String prefix, EType etype);
+	List<Pair<FullName, Double>> search(String prefix, EType etype);
+
+	/**
+	 * normalize input prefix for accents and other special characters
+	 *
+	 * @param prefix
+	 * @return prefix with letter substitued
+	 */
+	String normalize(String prefix);
 
 }

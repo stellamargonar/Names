@@ -64,4 +64,10 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 				.setParameter("selected", selected).getSingleResult();
 	}
 
+	@Override
+	public List<UsageStatistic> findAll() {
+		return this.em.createQuery("from UsageStatistic", UsageStatistic.class)
+				.getResultList();
+	}
+
 }

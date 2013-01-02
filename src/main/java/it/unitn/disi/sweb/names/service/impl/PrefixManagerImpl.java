@@ -3,9 +3,13 @@ package it.unitn.disi.sweb.names.service.impl;
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.Prefix;
+import it.unitn.disi.sweb.names.model.UsageStatistic;
 import it.unitn.disi.sweb.names.repository.PrefixDAO;
+import it.unitn.disi.sweb.names.repository.UsageStatisticsDAO;
 import it.unitn.disi.sweb.names.service.PrefixManager;
+import it.unitn.disi.sweb.names.utils.Pair;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,29 +22,76 @@ import org.springframework.stereotype.Component;
 public class PrefixManagerImpl implements PrefixManager {
 
 	private PrefixDAO prefixDao;
+	private UsageStatisticsDAO statDao;
 
 	@Override
 	public void updatePrefixes() {
 		this.prefixDao.save(null);
-		// TODO Auto-generated method stub
+		List<UsageStatistic> all = this.statDao.findAll();
+
+		// TODO add prefix for each name token
+		for (UsageStatistic u : all) {
+			String[] prefixes = computePrefixes(u.getQuery());
+			for (String p : prefixes) {
+				update(p, u.getSelected(), u.getFrequency());
+			}
+		}
 
 	}
+
+	private void update(String prefix, FullName name, double frequency) {
+		Prefix p = this.prefixDao.findByPrefixSelected(prefix, name);
+		if (p.getFrequency() < frequency) {
+			p.setFrequency(frequency);
+			this.prefixDao.update(p);
+		}
+
+	}
+
+	private String[] computePrefixes(String query) {
+		if (query == null || query.length() == 0) {
+			return null;
+		}
+
+		String[] prefixes = new String[query.length()];
+		for (int i = 0; i < query.length(); i++) {
+			prefixes[i] = query.substring(0, i);
+		}
+
+		return prefixes;
+	}
+
 	@Override
-	public List<FullName> search(String prefix) {
+	public List<Pair<FullName, Double>> search(String prefix) {
+		String normalized = normalize(prefix);
 		List<Prefix> list = this.prefixDao.findByPrefix(prefix);
 		if (list == null || list.isEmpty()) {
 			return Collections.emptyList();
 		}
 
-		List<FullName> result = new ArrayList<>(list.size());
+		List<Pair<FullName, Double>> result = new ArrayList<>(list.size());
 		Collections.sort(list, new PrefixComparator());
 		for (Prefix p : list) {
-			result.add(p.getSelected());
+			result.add(new Pair<FullName, Double>(p.getSelected(), p
+					.getFrequency()));
 		}
 		return result;
 	}
+
 	@Override
-	public List<FullName> search(String prefix, EType etype) {
+	public String normalize(String prefix) {
+		if (!Normalizer.isNormalized(prefix, Normalizer.Form.NFKD)) {
+			String normalized =  Normalizer.normalize(prefix, Normalizer.Form.NFKD);
+			normalized = normalized.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+			return normalized;
+		} else {
+			return prefix;
+		}
+	}
+
+
+	@Override
+	public List<Pair<FullName, Double>> search(String prefix, EType etype) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -48,6 +99,11 @@ public class PrefixManagerImpl implements PrefixManager {
 	@Autowired
 	public void setPrefixDao(PrefixDAO prefixDao) {
 		this.prefixDao = prefixDao;
+	}
+
+	@Autowired
+	public void setStatDao(UsageStatisticsDAO statDao) {
+		this.statDao = statDao;
 	}
 
 	private class PrefixComparator implements Comparator<Prefix> {
