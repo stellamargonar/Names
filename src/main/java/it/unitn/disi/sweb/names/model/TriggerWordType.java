@@ -38,7 +38,8 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "TWType.findAll", query = "from TriggerWordType"),
 		@NamedQuery(name = "TWType.findByName", query = "from TriggerWordType where type=:name"),
-		@NamedQuery(name = "TWType.findByEtype", query = "from TriggerWordType where eType=:etype")})
+		@NamedQuery(name = "TWType.findByEtype", query = "from TriggerWordType where eType=:etype"),
+		@NamedQuery(name = "TWType.findByNameEtype", query = "from TriggerWordType where type=:name and eType=:etype")})
 public class TriggerWordType implements Serializable {
 
 	@Id
@@ -62,7 +63,7 @@ public class TriggerWordType implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -70,7 +71,7 @@ public class TriggerWordType implements Serializable {
 	}
 
 	public String getType() {
-		return this.type;
+		return type;
 	}
 
 	public void setType(String type) {
@@ -78,7 +79,7 @@ public class TriggerWordType implements Serializable {
 	}
 
 	public boolean getComparable() {
-		return this.comparable;
+		return comparable;
 	}
 
 	public void setComparable(boolean comparable) {
@@ -90,7 +91,7 @@ public class TriggerWordType implements Serializable {
 	}
 
 	public EType geteType() {
-		return this.eType;
+		return eType;
 	}
 
 	public boolean isComparable() {
@@ -102,10 +103,10 @@ public class TriggerWordType implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.eType == null ? 0 : this.eType.hashCode());
-		result = prime * result + this.id;
+				+ (eType == null ? 0 : eType.hashCode());
+		result = prime * result + id;
 		result = prime * result
-				+ (this.type == null ? 0 : this.type.hashCode());
+				+ (type == null ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -121,21 +122,21 @@ public class TriggerWordType implements Serializable {
 			return false;
 		}
 		TriggerWordType other = (TriggerWordType) obj;
-		if (this.eType == null) {
+		if (eType == null) {
 			if (other.eType != null) {
 				return false;
 			}
-		} else if (!this.eType.equals(other.eType)) {
+		} else if (!eType.equals(other.eType)) {
 			return false;
 		}
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
-		if (this.type == null) {
+		if (type == null) {
 			if (other.type != null) {
 				return false;
 			}
-		} else if (!this.type.equals(other.type)) {
+		} else if (!type.equals(other.type)) {
 			return false;
 		}
 		return true;

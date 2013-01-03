@@ -25,33 +25,36 @@ public class NameStatisticDAOImpl implements NameStatisticDAO {
 
 	@Override
 	@Transactional
-	public void save(NameStatistics nameStat) {
-		this.em.merge(nameStat);
+	public NameStatistics save(NameStatistics nameStat) {
+		NameStatistics s = em.merge(nameStat);
+		em.flush();
+		return s;
 	}
 	@Override
 	@Transactional
-	public void update(NameStatistics nameStat) {
-		save(nameStat);
+	public NameStatistics update(NameStatistics nameStat) {
+		return save(nameStat);
 	}
 
 	@Override
 	@Transactional
 	public void delete(NameStatistics nameStat) {
-		this.em.remove(nameStat);
+		em.remove(nameStat);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public NameStatistics findById(int id) {
-		return this.em.find(NameStatistics.class, id);
+		return em.find(NameStatistics.class, id);
 	}
 
 	@Override
 	@Transactional
 	public NameStatistics findByNameElement(IndividualName name,
 			NameElement element) {
-		return this.em
-				.createNamedQuery("NameStatistics.byNameElement",
+		return em
+				.createNamedQuery("NameStatistic.byNameElement",
 						NameStatistics.class).setParameter("name", name)
 				.setParameter("element", element).getSingleResult();
 	}
@@ -59,8 +62,8 @@ public class NameStatisticDAOImpl implements NameStatisticDAO {
 	@Override
 	@Transactional
 	public List<NameStatistics> findByName(IndividualName name) {
-		return this.em
-				.createNamedQuery("NameStatistics.byName", NameStatistics.class)
+		return em
+				.createNamedQuery("NameStatistic.byName", NameStatistics.class)
 				.setParameter("name", name).getResultList();
 	}
 

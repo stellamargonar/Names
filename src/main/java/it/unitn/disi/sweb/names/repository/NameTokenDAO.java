@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface NameTokenDAO {
 
-	void save(NameToken token);
+	NameToken save(NameToken token);
 
-	void update(NameToken token);
+	NameToken update(NameToken token);
 
 	void delete(NameToken token);
 

@@ -1,6 +1,7 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,7 +30,8 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "individualname", uniqueConstraints=@UniqueConstraint(columnNames={"name", "element_id"}))
+@Table(name = "individualname", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"name", "element_id"}))
 @SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),
@@ -64,7 +66,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -72,7 +74,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -80,7 +82,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public int getFrequency() {
-		return this.frequency;
+		return frequency;
 	}
 
 	public void setFrequency(int frequency) {
@@ -88,7 +90,7 @@ public class IndividualName implements Serializable {
 	}
 
 	public Set<IndividualName> getTranslations() {
-		return this.translations;
+		return translations;
 	}
 
 	public void setTranslations(Set<IndividualName> translations) {
@@ -96,22 +98,27 @@ public class IndividualName implements Serializable {
 	}
 
 	public NameElement getNameElement() {
-		return this.nameElement;
+		return nameElement;
 	}
 
 	public void setNameElement(NameElement nameElement) {
 		this.nameElement = nameElement;
 	}
 
+	public void addTranslation(IndividualName t) {
+		if (getTranslations() == null) {
+			translations = new HashSet<>();
+		}
+		getTranslations().add(t);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + this.id;
+		result = prime * result + (name == null ? 0 : name.hashCode());
 		result = prime * result
-				+ (this.name == null ? 0 : this.name.hashCode());
-		result = prime * result
-				+ (this.nameElement == null ? 0 : this.nameElement.hashCode());
+				+ (nameElement == null ? 0 : nameElement.hashCode());
 		return result;
 	}
 
@@ -127,21 +134,19 @@ public class IndividualName implements Serializable {
 			return false;
 		}
 		IndividualName other = (IndividualName) obj;
-		if (this.id != other.id) {
-			return false;
-		}
-		if (this.name == null) {
+
+		if (name == null) {
 			if (other.name != null) {
 				return false;
 			}
-		} else if (!this.name.equals(other.name)) {
+		} else if (!name.equals(other.name)) {
 			return false;
 		}
-		if (this.nameElement == null) {
+		if (nameElement == null) {
 			if (other.nameElement != null) {
 				return false;
 			}
-		} else if (!this.nameElement.equals(other.nameElement)) {
+		} else if (!nameElement.equals(other.nameElement)) {
 			return false;
 		}
 		return true;
@@ -149,7 +154,7 @@ public class IndividualName implements Serializable {
 
 	@Override
 	public String toString() {
-		return "IndividualName [name=" + this.name + "]";
+		return "IndividualName [name=" + name + "]";
 	}
 
 }

@@ -24,32 +24,35 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 
 	@Override
 	@Transactional
-	public void save(UsageStatistic stat) {
-		this.em.merge(stat);
+	public UsageStatistic save(UsageStatistic stat) {
+		UsageStatistic u = em.merge(stat);
+		em.flush();
+		return u;
 	}
 
 	@Override
 	@Transactional
-	public void update(UsageStatistic stat) {
-		save(stat);
+	public UsageStatistic update(UsageStatistic stat) {
+		return save(stat);
 	}
 
 	@Override
 	@Transactional
 	public void delete(UsageStatistic stat) {
-		this.em.remove(stat);
+		em.remove(stat);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public UsageStatistic findById(int id) {
-		return this.em.find(UsageStatistic.class, id);
+		return em.find(UsageStatistic.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<UsageStatistic> findByQuery(String query) {
-		return this.em
+		return em
 				.createNamedQuery("UsageStatistic.byQuery",
 						UsageStatistic.class).setParameter("query", query)
 				.getResultList();
@@ -58,7 +61,7 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 	@Override
 	@Transactional
 	public UsageStatistic findByQuerySelected(String query, FullName selected) {
-		List<UsageStatistic> result = this.em
+		List<UsageStatistic> result = em
 				.createNamedQuery("UsageStatistic.byQuerySelected",
 						UsageStatistic.class).setParameter("query", query)
 				.setParameter("selected", selected).getResultList();
@@ -70,7 +73,7 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 	}
 	@Override
 	public List<UsageStatistic> findAll() {
-		return this.em.createQuery("from UsageStatistic", UsageStatistic.class)
+		return em.createQuery("from UsageStatistic", UsageStatistic.class)
 				.getResultList();
 	}
 

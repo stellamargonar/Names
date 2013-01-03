@@ -24,32 +24,35 @@ public class TriggerWordTypeDAOImpl implements TriggerWordTypeDAO {
 
 	@Override
 	@Transactional
-	public void save(TriggerWordType twType) {
-		this.em.merge(twType);
+	public TriggerWordType save(TriggerWordType twType) {
+		TriggerWordType t = em.merge(twType);
+		em.flush();
+		return t;
 	}
 
 	@Override
 	@Transactional
-	public void update(TriggerWordType twType) {
-		this.em.merge(twType);
+	public TriggerWordType update(TriggerWordType twType) {
+		return save(twType);
 	}
 
 	@Override
 	@Transactional
 	public void delete(TriggerWordType twType) {
-		this.em.remove(twType);
+		em.remove(twType);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public TriggerWordType findById(int id) {
-		return this.em.find(TriggerWordType.class, id);
+		return em.find(TriggerWordType.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<TriggerWordType> findAll() {
-		return this.em.createNamedQuery("TWType.findAll", TriggerWordType.class)
+		return em.createNamedQuery("TWType.findAll", TriggerWordType.class)
 				.getResultList();
 	}
 
@@ -64,14 +67,22 @@ public class TriggerWordTypeDAOImpl implements TriggerWordTypeDAO {
 	@Override
 	@Transactional
 	public TriggerWordType findByName(String name) {
-		return this.em.createNamedQuery("TWType.findByName", TriggerWordType.class)
+		return em.createNamedQuery("TWType.findByName", TriggerWordType.class)
 				.setParameter("name", name).getSingleResult();
 	}
 
 	@Override
 	public List<TriggerWordType> findByEType(EType etype) {
-		return this.em.createNamedQuery("TWType.findByEtype", TriggerWordType.class)
+		return em.createNamedQuery("TWType.findByEtype", TriggerWordType.class)
 				.setParameter("etype", etype).getResultList();
+	}
+
+	@Override
+	public TriggerWordType findByNameEType(String name, EType etype) {
+		return em
+				.createNamedQuery("TWType.findByNameEtype",
+						TriggerWordType.class).setParameter("etype", etype)
+				.setParameter("name", name).getSingleResult();
 	}
 
 }

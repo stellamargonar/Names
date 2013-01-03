@@ -8,7 +8,7 @@ import java.util.List;
 public interface TriggerWordDAO {
 	TriggerWord save(TriggerWord triggerWord);
 
-	void update(TriggerWord triggerWord);
+	TriggerWord update(TriggerWord triggerWord);
 
 	void delete(TriggerWord triggerWord);
 

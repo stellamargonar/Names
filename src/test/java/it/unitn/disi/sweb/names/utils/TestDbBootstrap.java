@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/testApplicationContext.xml" })
+@ContextConfiguration(locations = {"/testApplicationContext.xml"})
 public class TestDbBootstrap {
 
 	@Autowired
@@ -20,10 +20,11 @@ public class TestDbBootstrap {
 
 	}
 
-	// @Test
+	 @Test
 	public void testBootstrap() {
 		try {
-			db.bootstrap();
+			 db.bootstrapAll();
+//			db.bootstrapEtype();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

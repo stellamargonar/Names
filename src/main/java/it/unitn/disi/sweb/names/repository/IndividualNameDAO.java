@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface IndividualNameDAO {
 
-	void save(IndividualName name);
+	IndividualName save(IndividualName name);
 
-	void update(IndividualName name);
+	IndividualName update(IndividualName name);
 
 	void delete(IndividualName name);
 

@@ -11,6 +11,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Entity implementation class for Entity: EType
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "etype")
+@Table(name = "etype", uniqueConstraints=@UniqueConstraint(columnNames="etype"))
 @SequenceGenerator(name = "etype_seq", sequenceName = "etype_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "EType.findAll", query = "from EType "),

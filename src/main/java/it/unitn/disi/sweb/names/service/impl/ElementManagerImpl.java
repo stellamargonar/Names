@@ -20,12 +20,12 @@ public class ElementManagerImpl implements ElementManager {
 
 	@Override
 	public List<NameElement> findNameElement(EType etype) {
-		return this.nameDao.findByEType(etype);
+		return nameDao.findByEType(etype);
 	}
 
 	@Override
 	public List<TriggerWordType> findTriggerWordType(EType etype) {
-		return this.twDao.findByEType(etype);
+		return twDao.findByEType(etype);
 	}
 
 	@Autowired
@@ -36,6 +36,16 @@ public class ElementManagerImpl implements ElementManager {
 	@Autowired
 	public void setTwDao(TriggerWordTypeDAO twDao) {
 		this.twDao = twDao;
+	}
+
+	@Override
+	public NameElement findNameElement(String element, EType etype) {
+		return nameDao.findByNameEType(element, etype);
+	}
+
+	@Override
+	public TriggerWordType findTriggerWordType(String type, EType etype) {
+		return twDao.findByNameEType(type, etype);
 	}
 
 }

@@ -43,7 +43,7 @@ public class NameManagerImpl implements NameManager {
 			return null;
 		}
 
-		List<FullName> foundList = this.fullnameDao.findByNameToCompare(name);
+		List<FullName> foundList = fullnameDao.findByNameToCompare(name);
 
 		for (FullName f : foundList) {
 			if (en.equals(f.getEntity())) {
@@ -58,7 +58,7 @@ public class NameManagerImpl implements NameManager {
 		fullname.setNameToCompare(getNameToCompare(fullname));
 		fullname.setNameNormalized(getNameNormalized(fullname));
 		fullname.setnGramCode(computeNGram(name));
-		FullName returned = this.fullnameDao.update(fullname);
+		FullName returned = fullnameDao.update(fullname);
 
 		return returned;
 	}
@@ -135,8 +135,13 @@ public class NameManagerImpl implements NameManager {
 		for (String s : tokens) {
 			if (!s.equals(" ")) {
 				// check if it is a known name
-				List<IndividualName> listName = this.nameDao.findByNameEtype(s,
+				List<IndividualName> listName = nameDao.findByNameEtype(s,
 						eType);
+				if (listName == null || listName.isEmpty()) {
+					listName = nameDao.findByName(s);
+					System.out.println("updated list witout etype");
+				}
+				System.out.println(listName);
 				if (listName != null && listName.size() > 0) {
 					NameToken nt = new NameToken();
 					nt.setFullName(fullname);
@@ -145,7 +150,7 @@ public class NameManagerImpl implements NameManager {
 					fullname.addNameToken(nt);
 				} else {
 					// check if it is a known triggerword
-					List<TriggerWord> listTW = this.twDao
+					List<TriggerWord> listTW = twDao
 							.findByTriggerWordEtype(s, eType);
 					if (listTW != null && listTW.size() > 0) {
 						TriggerWordToken twt = new TriggerWordToken();
@@ -175,7 +180,7 @@ public class NameManagerImpl implements NameManager {
 		IndividualName name = new IndividualName();
 		name.setName(s);
 		name.setNameElement(getNewNameElement(eType, position));
-		this.nameDao.save(name);
+//		nameDao.save(name);
 		return name;
 	}
 
@@ -183,17 +188,17 @@ public class NameManagerImpl implements NameManager {
 		switch (eType.getEtype()) {
 			case "Location" :
 			case "Organization" :
-				return this.nameElementDao.findByNameEType("ProperNoun", eType);
+				return nameElementDao.findByNameEType("ProperNoun", eType);
 			case "Person" :
 				switch (position) {
 					case 0 :
-						return this.nameElementDao.findByNameEType("GivenName",
+						return nameElementDao.findByNameEType("GivenName",
 								eType);
 					case 2 :
-						return this.nameElementDao.findByNameEType(
+						return nameElementDao.findByNameEType(
 								"MiddleName", eType);
 					default :
-						return this.nameElementDao.findByNameEType(
+						return nameElementDao.findByNameEType(
 								"FamilyName", eType);
 				}
 			default :
@@ -206,56 +211,56 @@ public class NameManagerImpl implements NameManager {
 		IndividualName name = new IndividualName();
 		name.setName(string);
 		name.setNameElement(el);
-		this.nameDao.save(name);
+		nameDao.save(name);
 
 		NameToken nt = new NameToken();
-		nt.setFullName(this.fullnameDao.findById(1650));
+		nt.setFullName(fullnameDao.findById(1650));
 		nt.setIndividualName(name);
 		nt.setPosition(0);
-		this.nameTokenDao.save(nt);
+		nameTokenDao.save(nt);
 
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> retrieveVariants(String name, EType etype) {
-		return this.fullnameDao.findVariant(name, etype);
+		return fullnameDao.findVariant(name, etype);
 	}
 
 	@Override
 	@Transactional
 	public FullName find(int id) {
-		return this.fullnameDao.findById(id);
+		return fullnameDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> find(String name, EType etype) {
-		return this.fullnameDao.findByNameEtype(name, etype);
+		return fullnameDao.findByNameEtype(name, etype);
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> find(String name) {
-		return this.fullnameDao.findByName(name);
+		return fullnameDao.findByName(name);
 	}
 
 	@Override
 	public List<FullName> find(NamedEntity entity) {
-		return this.fullnameDao.findByEntity(entity);
+		return fullnameDao.findByEntity(entity);
 	}
 
 	@Override
 	public List<FullName> find(String name, SearchType type) {
 		switch (type) {
 			case NORMALIZED :
-				return this.fullnameDao.findByNameNormalized(name);
+				return fullnameDao.findByNameNormalized(name);
 			case TOCOMPARE :
-				return this.fullnameDao.findByNameToCompare(name);
+				return fullnameDao.findByNameToCompare(name);
 			case SINGLETOKEN :
-				return this.fullnameDao.findByToken(name);
+				return fullnameDao.findByToken(name);
 			case NGRAM :
-				return this.fullnameDao.findByNgram(computeNGram(name),
+				return fullnameDao.findByNgram(computeNGram(name),
 						computeMaxDifference(name));
 			default :
 				break;

@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface TriggerWordTypeDAO {
 
-	void save(TriggerWordType twType);
+	TriggerWordType save(TriggerWordType twType);
 
-	void update(TriggerWordType twType);
+	TriggerWordType update(TriggerWordType twType);
 
 	void delete(TriggerWordType twType);
 
@@ -20,6 +20,7 @@ public interface TriggerWordTypeDAO {
 	TriggerWordType findByName(String name);
 
 	List<TriggerWordType> findByEType(EType etype);
+	TriggerWordType findByNameEType(String name, EType etype);
 
 	void deleteAll();
 }

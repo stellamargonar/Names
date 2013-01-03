@@ -23,39 +23,41 @@ public class PrefixDAOImpl implements PrefixDAO {
 	}
 	@Override
 	@Transactional
-	public void save(Prefix prefix) {
-		this.em.merge(prefix);
+	public Prefix save(Prefix prefix) {
+		Prefix p = em.merge(prefix);
+		em.flush();
+		return p;
 	}
 
 	@Override
 	@Transactional
-	public void update(Prefix prefix) {
-		save(prefix);
+	public Prefix update(Prefix prefix) {
+		return save(prefix);
 	}
-
 	@Override
 	@Transactional
 	public void delete(Prefix prefix) {
-		this.em.remove(prefix);
+		em.remove(prefix);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public Prefix findById(int id) {
-		return this.em.find(Prefix.class, id);
+		return em.find(Prefix.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<Prefix> findByPrefix(String prefix) {
-		return this.em.createNamedQuery("Prefix.byPrefix", Prefix.class)
+		return em.createNamedQuery("Prefix.byPrefix", Prefix.class)
 				.setParameter("prefix", prefix).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public Prefix findByPrefixSelected(String prefix, FullName name) {
-		List<Prefix> result = this.em
+		List<Prefix> result = em
 				.createNamedQuery("Prefix.byPrefixSelected", Prefix.class)
 				.setParameter("prefix", prefix).setParameter("name", name)
 				.getResultList();

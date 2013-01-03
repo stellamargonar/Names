@@ -9,7 +9,9 @@ import java.util.List;
 public interface ElementManager {
 
 	List<NameElement> findNameElement(EType etype);
+	NameElement findNameElement(String element, EType etype);
 
 	List<TriggerWordType> findTriggerWordType(EType etype);
+	TriggerWordType findTriggerWordType(String type, EType etype);
 
 }

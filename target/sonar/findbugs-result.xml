@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.1" sequence="0" timestamp="1357228244000" analysisTimestamp="1357228315221" release="">
+  <Project>
+    <Jar>/Users/stella/Documents/Programming/workspace/names/target/classes</Jar>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/hibernate/hibernate-core/4.1.9.Final/hibernate-core-4.1.9.Final.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/jboss-transaction-api_1.1_spec-1.0.0.Final.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/hibernate/common/hibernate-commons-annotations/4.0.1.Final/hibernate-commons-annotations-4.0.1.Final.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-core/3.1.3.RELEASE/spring-core-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-asm/3.1.3.RELEASE/spring-asm-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-orm/3.1.3.RELEASE/spring-orm-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-jdbc/3.1.3.RELEASE/spring-jdbc-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-tx/3.1.3.RELEASE/spring-tx-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-aop/3.1.3.RELEASE/spring-aop-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-context/3.1.3.RELEASE/spring-context-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-expression/3.1.3.RELEASE/spring-expression-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-beans/3.1.3.RELEASE/spring-beans-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/postgresql/postgresql/9.1-901-1.jdbc4/postgresql-9.1-901-1.jdbc4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/springframework/spring-test/3.1.3.RELEASE/spring-test-3.1.3.RELEASE.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/commons-dbcp/commons-dbcp/20030825.184428/commons-dbcp-20030825.184428.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/commons-pool/commons-pool/20030825.183949/commons-pool-20030825.183949.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/jtidy/jtidy/4aug2000r7-dev/jtidy-4aug2000r7-dev.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/com/itextpdf/itextpdf/5.3.4/itextpdf-5.3.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/com/itextpdf/tool/xmlworker/1.2.1/xmlworker-1.2.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/bouncycastle/bcmail-jdk16/1.46/bcmail-jdk16-1.46.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/bouncycastle/bcprov-jdk16/1.46/bcprov-jdk16-1.46.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/bouncycastle/bctsp-jdk16/1.46/bctsp-jdk16-1.46.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/bouncycastle/bcpg-jdk16/1.46/bcpg-jdk16-1.46.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/hibernate/hibernate-entitymanager/4.1.9.Final/hibernate-entitymanager-4.1.9.Final.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/cglib/cglib/2.2/cglib-2.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/asm/asm/3.1/asm-3.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs2521559734664085754.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs6079646228217531434.jar</AuxClasspathEntry>
+    <SrcDir>/Users/stella/Documents/Programming/workspace/names/src/main/java</SrcDir>
+    <WrkDir>/Users/stella/Documents/Programming/workspace/names/target</WrkDir>
+  </Project>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" abbrev="SBSC" category="PERFORMANCE" instanceHash="b0d53a61a1327b9459538436abd6fcd1" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Method concatenates strings using + in a loop</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameManagerImpl.getNameModified(FullName, boolean, boolean) concatenates strings using + in a loop</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" start="30" end="338" sourcefile="NameManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java">
+        <Message>At NameManagerImpl.java:[lines 30-338]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameManagerImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" name="getNameModified" signature="(Lit/unitn/disi/sweb/names/model/FullName;ZZ)Ljava/lang/String;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" start="91" end="127" startBytecode="0" endBytecode="660" sourcefile="NameManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameManagerImpl.getNameModified(FullName, boolean, boolean)</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" primary="true" start="123" end="123" startBytecode="242" endBytecode="242" sourcefile="NameManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java">
+      <Message>At NameManagerImpl.java:[line 123]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" abbrev="SBSC" category="PERFORMANCE" instanceHash="2f3ea5189d515106121f99a9476d166f" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Method concatenates strings using + in a loop</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameSearchImpl.searchReordered(String[]) concatenates strings using + in a loop</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="24" end="259" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 24-259]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="searchReordered" signature="([Ljava/lang/String;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="119" end="136" startBytecode="0" endBytecode="401" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.searchReordered(String[])</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="123" end="123" startBytecode="42" endBytecode="42" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 123]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE" instanceHash="2e04e4284020428084c55660bca827d" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameSearchImpl.addToResult(Map, Map) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="24" end="259" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 24-259]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="addToResult" signature="(Ljava/util/Map;Ljava/util/Map;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="234" end="244" startBytecode="0" endBytecode="285" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.addToResult(Map, Map)</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="238" end="238" startBytecode="75" endBytecode="75" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 238]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE" instanceHash="86a0189603eeb4999c038240df7e1921" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameSearchImpl.searchToken(String[]) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="24" end="259" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 24-259]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="searchToken" signature="([Ljava/lang/String;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="158" end="180" startBytecode="0" endBytecode="598" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.searchToken(String[])</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="178" end="178" startBytecode="196" endBytecode="196" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 178]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE" instanceHash="96b78afc9cedc399b9d62789df80785c" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameSearchImpl.searchTopRank(String) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="24" end="259" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 24-259]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="searchTopRank" signature="(Ljava/lang/String;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="76" end="88" startBytecode="0" endBytecode="266" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.searchTopRank(String)</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="85" end="85" startBytecode="77" endBytecode="77" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 85]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE" instanceHash="bccd2204355e177f3540f63ea66b5a33" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameSearchImpl.union(Map, Map, Map, Map, Map) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="24" end="259" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 24-259]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="union" signature="(Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Ljava/util/List;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="209" end="229" startBytecode="0" endBytecode="429" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.union(Map, Map, Map, Map, Map)</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="218" end="218" startBytecode="120" endBytecode="120" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 218]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" abbrev="DLS" category="STYLE" instanceHash="e90634b3dddb4c177371dd9b4aebe223" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to list in it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap.storeTriggerWordTypeList(String)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" start="33" end="193" sourcefile="DatabaseBootstrap.java" sourcepath="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" relSourcepath="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java">
+        <Message>At DatabaseBootstrap.java:[lines 33-193]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" name="storeTriggerWordTypeList" signature="(Ljava/lang/String;)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" start="91" end="106" startBytecode="0" endBytecode="66" sourcefile="DatabaseBootstrap.java" sourcepath="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" relSourcepath="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java"/>
+      <Message>In method it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap.storeTriggerWordTypeList(String)</Message>
+    </Method>
+    <LocalVariable name="list" register="4" pc="27" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named list</Message>
+    </LocalVariable>
+    <SourceLine classname="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" primary="true" start="93" end="93" startBytecode="25" endBytecode="25" sourcefile="DatabaseBootstrap.java" sourcepath="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" relSourcepath="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java">
+      <Message>At DatabaseBootstrap.java:[line 93]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="list"/>
+  </BugInstance>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="PERFORMANCE">
+    <Description>Performance</Description>
+  </BugCategory>
+  <BugPattern type="WMI_WRONG_MAP_ITERATOR" abbrev="WMI" category="PERFORMANCE">
+    <ShortDescription>Inefficient use of keySet iterator instead of entrySet iterator</ShortDescription>
+    <Details><![CDATA[
+
+<p> This method accesses the value of a Map entry, using a key that was retrieved from
+a keySet iterator. It is more efficient to use an iterator on the entrySet of the map, to avoid the
+Map.get(key) lookup.</p>
+
+        ]]></Details>
+  </BugPattern>
+  <BugPattern type="SBSC_USE_STRINGBUFFER_CONCATENATION" abbrev="SBSC" category="PERFORMANCE">
+    <ShortDescription>Method concatenates strings using + in a loop</ShortDescription>
+    <Details><![CDATA[
+
+<p> The method seems to be building a String using concatenation in a loop.
+In each iteration, the String is converted to a StringBuffer/StringBuilder,
+   appended to, and converted back to a String.
+   This can lead to a cost quadratic in the number of iterations,
+   as the growing string is recopied in each iteration. </p>
+
+<p>Better performance can be obtained by using
+a StringBuffer (or StringBuilder in Java 1.5) explicitly.</p>
+
+<p> For example:</p>
+<pre>
+  // This is bad
+  String s = "";
+  for (int i = 0; i &lt; field.length; ++i) {
+    s = s + field[i];
+  }
+
+  // This is better
+  StringBuffer buf = new StringBuffer();
+  for (int i = 0; i &lt; field.length; ++i) {
+    buf.append(field[i]);
+  }
+  String s = buf.toString();
+</pre>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="SBSC">
+    <Description>String concatenation in loop using + operator</Description>
+  </BugCode>
+  <BugCode abbrev="WMI">
+    <Description>Inefficient Map Iterator</Description>
+  </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Thu, 3 Jan 2013 16:50:44 +0100" total_classes="78" referenced_classes="168" total_bugs="7" total_size="2440" num_packages="8" vm_version="23.3-b01" cpu_seconds="29.06" clock_seconds="11.52" peak_mbytes="147.23" alloc_mbytes="494.94" gc_seconds="0.98" priority_2="6" priority_1="1">
+    <FileStats path="it/unitn/disi/sweb/names/MisspellingsComparator.java" bugCount="0" size="2"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/EType.java" bugCount="0" size="39"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/FullName.java" bugCount="0" size="117"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/IndividualName.java" bugCount="0" size="67"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/NameElement.java" bugCount="0" size="51"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/NameStatistics.java" bugCount="0" size="52"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/NameToken.java" bugCount="0" size="59"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/NamedEntity.java" bugCount="0" size="45"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/Prefix.java" bugCount="0" size="52"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/Translation.java" bugCount="0" size="28"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/TriggerWord.java" bugCount="0" size="75"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/TriggerWordStatistic.java" bugCount="0" size="57"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/TriggerWordToken.java" bugCount="0" size="59"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/TriggerWordType.java" bugCount="0" size="59"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/UsageStatistic.java" bugCount="0" size="52"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/DictionaryDAO.java" bugCount="0" size="3"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/ETypeDAO.java" bugCount="0" size="8"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/EntityDAO.java" bugCount="0" size="10"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/FullNameDAO.java" bugCount="0" size="14"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/IndividualNameDAO.java" bugCount="0" size="9"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/NameElementDAO.java" bugCount="0" size="10"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/NameStatisticDAO.java" bugCount="0" size="7"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/NameTokenDAO.java" bugCount="0" size="8"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/PrefixDAO.java" bugCount="0" size="7"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordDAO.java" bugCount="0" size="10"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordStatisticDAO.java" bugCount="0" size="7"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordTokenDAO.java" bugCount="0" size="8"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordTypeDAO.java" bugCount="0" size="10"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/UsageStatisticsDAO.java" bugCount="0" size="8"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/DictionaryDAOImpl.java" bugCount="0" size="12"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/EntityDAOImpl.java" bugCount="0" size="31"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/EtypeDAOImpl.java" bugCount="0" size="28"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/FullNameDAOImpl.java" bugCount="0" size="42"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/IndividualNameDAOImpl.java" bugCount="0" size="33"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameElementDAOImpl.java" bugCount="0" size="32"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameStatisticDAOImpl.java" bugCount="0" size="23"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameTokenDAOImpl.java" bugCount="0" size="25"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/PrefixDAOImpl.java" bugCount="0" size="26"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordDAOImpl.java" bugCount="0" size="33"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordStatisticDAOImpl.java" bugCount="0" size="23"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordTokenDAOImpl.java" bugCount="0" size="25"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordTypeDAOImpl.java" bugCount="0" size="32"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/UsageStatisticsDAOImpl.java" bugCount="0" size="28"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/ElementManager.java" bugCount="0" size="5"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/EntityManager.java" bugCount="0" size="7"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/EtypeManager.java" bugCount="0" size="2"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/EtypeName.java" bugCount="0" size="12"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameAutocompletion.java" bugCount="0" size="3"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameManager.java" bugCount="0" size="10"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameMatch.java" bugCount="0" size="5"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameSearch.java" bugCount="0" size="3"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/PrefixManager.java" bugCount="0" size="5"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/SearchType.java" bugCount="0" size="12"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/StatisticsManager.java" bugCount="0" size="4"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" bugCount="0" size="19"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/EntityManagerImpl.java" bugCount="0" size="28"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/EtypeManagerImpl.java" bugCount="0" size="24"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameAutocompletionImpl.java" bugCount="0" size="11"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" bugCount="1" size="176" bugHash="7b516e8299a7c73c8b6bd0647f93a06d"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" bugCount="0" size="197"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" bugCount="5" size="136" bugHash="34f2dc184e75f504893a3edebb94934b"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" bugCount="0" size="70"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/StatisticsManagerImpl.java" bugCount="0" size="38"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/HtmlParser.java" bugCount="0" size="100"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/JaroWinkler.java" bugCount="0" size="69"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/LevenstheinDamearau.java" bugCount="0" size="25"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/Pair.java" bugCount="0" size="8"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/StringCompareUtils.java" bugCount="0" size="8"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/TokenPositionComparator.java" bugCount="0" size="9"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" bugCount="1" size="128" bugHash="e1d7e3f40011f2b2d4c69aa3bce2dda0"/>
+    <PackageStats package="it.unitn.disi.sweb.names" total_bugs="0" total_types="1" total_size="2">
+      <ClassStats class="it.unitn.disi.sweb.names.MisspellingsComparator" sourceFile="MisspellingsComparator.java" interface="true" size="2" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.model" total_bugs="0" total_types="14" total_size="812">
+      <ClassStats class="it.unitn.disi.sweb.names.model.EType" sourceFile="EType.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.FullName" sourceFile="FullName.java" interface="false" size="117" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.IndividualName" sourceFile="IndividualName.java" interface="false" size="67" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.NameElement" sourceFile="NameElement.java" interface="false" size="51" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.NameStatistics" sourceFile="NameStatistics.java" interface="false" size="52" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.NameToken" sourceFile="NameToken.java" interface="false" size="59" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.NamedEntity" sourceFile="NamedEntity.java" interface="false" size="45" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.Prefix" sourceFile="Prefix.java" interface="false" size="52" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.Translation" sourceFile="Translation.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWord" sourceFile="TriggerWord.java" interface="false" size="75" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWordStatistic" sourceFile="TriggerWordStatistic.java" interface="false" size="57" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWordToken" sourceFile="TriggerWordToken.java" interface="false" size="59" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWordType" sourceFile="TriggerWordType.java" interface="false" size="59" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.UsageStatistic" sourceFile="UsageStatistic.java" interface="false" size="52" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.repository" total_bugs="0" total_types="14" total_size="119">
+      <ClassStats class="it.unitn.disi.sweb.names.repository.DictionaryDAO" sourceFile="DictionaryDAO.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.ETypeDAO" sourceFile="ETypeDAO.java" interface="true" size="8" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.EntityDAO" sourceFile="EntityDAO.java" interface="true" size="10" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.FullNameDAO" sourceFile="FullNameDAO.java" interface="true" size="14" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.IndividualNameDAO" sourceFile="IndividualNameDAO.java" interface="true" size="9" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.NameElementDAO" sourceFile="NameElementDAO.java" interface="true" size="10" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.NameStatisticDAO" sourceFile="NameStatisticDAO.java" interface="true" size="7" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.NameTokenDAO" sourceFile="NameTokenDAO.java" interface="true" size="8" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.PrefixDAO" sourceFile="PrefixDAO.java" interface="true" size="7" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordDAO" sourceFile="TriggerWordDAO.java" interface="true" size="10" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordStatisticDAO" sourceFile="TriggerWordStatisticDAO.java" interface="true" size="7" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordTokenDAO" sourceFile="TriggerWordTokenDAO.java" interface="true" size="8" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO" sourceFile="TriggerWordTypeDAO.java" interface="true" size="10" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.UsageStatisticsDAO" sourceFile="UsageStatisticsDAO.java" interface="true" size="8" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.repository.impl" total_bugs="0" total_types="14" total_size="393">
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.DictionaryDAOImpl" sourceFile="DictionaryDAOImpl.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.EntityDAOImpl" sourceFile="EntityDAOImpl.java" interface="false" size="31" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.EtypeDAOImpl" sourceFile="EtypeDAOImpl.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.FullNameDAOImpl" sourceFile="FullNameDAOImpl.java" interface="false" size="42" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.IndividualNameDAOImpl" sourceFile="IndividualNameDAOImpl.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameElementDAOImpl" sourceFile="NameElementDAOImpl.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameStatisticDAOImpl" sourceFile="NameStatisticDAOImpl.java" interface="false" size="23" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameTokenDAOImpl" sourceFile="NameTokenDAOImpl.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.PrefixDAOImpl" sourceFile="PrefixDAOImpl.java" interface="false" size="26" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordDAOImpl" sourceFile="TriggerWordDAOImpl.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordStatisticDAOImpl" sourceFile="TriggerWordStatisticDAOImpl.java" interface="false" size="23" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordTokenDAOImpl" sourceFile="TriggerWordTokenDAOImpl.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordTypeDAOImpl" sourceFile="TriggerWordTypeDAOImpl.java" interface="false" size="32" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.UsageStatisticsDAOImpl" sourceFile="UsageStatisticsDAOImpl.java" interface="false" size="28" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.service" total_bugs="0" total_types="11" total_size="68">
+      <ClassStats class="it.unitn.disi.sweb.names.service.ElementManager" sourceFile="ElementManager.java" interface="true" size="5" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.EntityManager" sourceFile="EntityManager.java" interface="true" size="7" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.EtypeManager" sourceFile="EtypeManager.java" interface="true" size="2" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.EtypeName" sourceFile="EtypeName.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameAutocompletion" sourceFile="NameAutocompletion.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameManager" sourceFile="NameManager.java" interface="true" size="10" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameMatch" sourceFile="NameMatch.java" interface="true" size="5" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameSearch" sourceFile="NameSearch.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.PrefixManager" sourceFile="PrefixManager.java" interface="true" size="5" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.SearchType" sourceFile="SearchType.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.StatisticsManager" sourceFile="StatisticsManager.java" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.service.impl" total_bugs="6" total_types="15" total_size="699" priority_2="6">
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl" sourceFile="ElementManagerImpl.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.EntityManagerImpl" sourceFile="EntityManagerImpl.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.EtypeManagerImpl" sourceFile="EtypeManagerImpl.java" interface="false" size="20" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.EtypeManagerImpl$1" sourceFile="EtypeManagerImpl.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameAutocompletionImpl" sourceFile="NameAutocompletionImpl.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" sourceFile="NameManagerImpl.java" interface="false" size="172" bugs="1" priority_2="1"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl$1" sourceFile="NameManagerImpl.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourceFile="NameMatchImpl.java" interface="false" size="197" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourceFile="NameSearchImpl.java" interface="false" size="129" bugs="5" priority_2="5"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl$1" sourceFile="NameSearchImpl.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" sourceFile="PrefixManagerImpl.java" interface="false" size="61" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl$1" sourceFile="PrefixManagerImpl.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl$PrefixComparator" sourceFile="PrefixManagerImpl.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.StatisticsManagerImpl" sourceFile="StatisticsManagerImpl.java" interface="false" size="31" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.StatisticsManagerImpl$1" sourceFile="StatisticsManagerImpl.java" interface="false" size="7" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.utils" total_bugs="0" total_types="8" total_size="219">
+      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser" sourceFile="HtmlParser.java" interface="false" size="64" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser$1" sourceFile="HtmlParser.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser$XMLHandler" sourceFile="HtmlParser.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.JaroWinkler" sourceFile="JaroWinkler.java" interface="false" size="69" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.LevenstheinDamearau" sourceFile="LevenstheinDamearau.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.Pair" sourceFile="Pair.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.StringCompareUtils" sourceFile="StringCompareUtils.java" interface="false" size="8" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.TokenPositionComparator" sourceFile="TokenPositionComparator.java" interface="false" size="9" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.utils.bootstrap" total_bugs="1" total_types="1" total_size="128" priority_1="1">
+      <ClassStats class="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" sourceFile="DatabaseBootstrap.java" interface="false" size="128" bugs="1" priority_1="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="668" invocations="613" avgMicrosecondsPerInvocation="1089" maxMicrosecondsPerInvocation="56805" standardDeviationMircosecondsPerInvocation="3142"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="549" invocations="477" avgMicrosecondsPerInvocation="1151" maxMicrosecondsPerInvocation="29689" standardDeviationMircosecondsPerInvocation="2443"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="531" invocations="168" avgMicrosecondsPerInvocation="3165" maxMicrosecondsPerInvocation="134566" standardDeviationMircosecondsPerInvocation="11697"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="517" invocations="474" avgMicrosecondsPerInvocation="1091" maxMicrosecondsPerInvocation="30075" standardDeviationMircosecondsPerInvocation="2153"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="424" invocations="477" avgMicrosecondsPerInvocation="890" maxMicrosecondsPerInvocation="26121" standardDeviationMircosecondsPerInvocation="1859"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="418" invocations="479" avgMicrosecondsPerInvocation="873" maxMicrosecondsPerInvocation="33067" standardDeviationMircosecondsPerInvocation="2259"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="397" invocations="477" avgMicrosecondsPerInvocation="832" maxMicrosecondsPerInvocation="22117" standardDeviationMircosecondsPerInvocation="1886"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="378" invocations="168" avgMicrosecondsPerInvocation="2252" maxMicrosecondsPerInvocation="34460" standardDeviationMircosecondsPerInvocation="5304"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="333" invocations="78" avgMicrosecondsPerInvocation="4277" maxMicrosecondsPerInvocation="262833" standardDeviationMircosecondsPerInvocation="29480"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="290" invocations="616" avgMicrosecondsPerInvocation="472" maxMicrosecondsPerInvocation="57275" standardDeviationMircosecondsPerInvocation="2703"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="273" invocations="168" avgMicrosecondsPerInvocation="1630" maxMicrosecondsPerInvocation="61348" standardDeviationMircosecondsPerInvocation="5506"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="265" invocations="477" avgMicrosecondsPerInvocation="556" maxMicrosecondsPerInvocation="34660" standardDeviationMircosecondsPerInvocation="1635"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="261" invocations="312" avgMicrosecondsPerInvocation="838" maxMicrosecondsPerInvocation="11413" standardDeviationMircosecondsPerInvocation="1163"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="178" invocations="168" avgMicrosecondsPerInvocation="1065" maxMicrosecondsPerInvocation="49666" standardDeviationMircosecondsPerInvocation="4612"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="174" invocations="697" avgMicrosecondsPerInvocation="250" maxMicrosecondsPerInvocation="8965" standardDeviationMircosecondsPerInvocation="505"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="169" invocations="477" avgMicrosecondsPerInvocation="355" maxMicrosecondsPerInvocation="11630" standardDeviationMircosecondsPerInvocation="751"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="153" invocations="168" avgMicrosecondsPerInvocation="916" maxMicrosecondsPerInvocation="6974" standardDeviationMircosecondsPerInvocation="1078"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="149" invocations="168" avgMicrosecondsPerInvocation="887" maxMicrosecondsPerInvocation="46462" standardDeviationMircosecondsPerInvocation="3773"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="138" invocations="201" avgMicrosecondsPerInvocation="687" maxMicrosecondsPerInvocation="44180" standardDeviationMircosecondsPerInvocation="3599"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindBadCast2" totalMilliseconds="136" invocations="78" avgMicrosecondsPerInvocation="1747" maxMicrosecondsPerInvocation="108247" standardDeviationMircosecondsPerInvocation="12150"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="130" invocations="618" avgMicrosecondsPerInvocation="210" maxMicrosecondsPerInvocation="62000" standardDeviationMircosecondsPerInvocation="2491"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="95" invocations="78" avgMicrosecondsPerInvocation="1227" maxMicrosecondsPerInvocation="23546" standardDeviationMircosecondsPerInvocation="3085"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="94" invocations="472" avgMicrosecondsPerInvocation="200" maxMicrosecondsPerInvocation="11166" standardDeviationMircosecondsPerInvocation="571"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="89" invocations="168" avgMicrosecondsPerInvocation="535" maxMicrosecondsPerInvocation="10163" standardDeviationMircosecondsPerInvocation="1314"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="84" invocations="78" avgMicrosecondsPerInvocation="1076" maxMicrosecondsPerInvocation="6603" standardDeviationMircosecondsPerInvocation="1422"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="83" invocations="595" avgMicrosecondsPerInvocation="140" maxMicrosecondsPerInvocation="8612" standardDeviationMircosecondsPerInvocation="420"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

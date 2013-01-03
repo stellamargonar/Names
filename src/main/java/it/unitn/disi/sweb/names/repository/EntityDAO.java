@@ -9,7 +9,7 @@ public interface EntityDAO {
 
 	NamedEntity save(NamedEntity entity);
 
-	void update(NamedEntity entity);
+	NamedEntity update(NamedEntity entity);
 
 	void delete(NamedEntity entity);
 

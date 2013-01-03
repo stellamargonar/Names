@@ -24,36 +24,36 @@ public class EntityManagerImpl implements EntityManager {
 		NamedEntity e = new NamedEntity();
 		e.setEType(etype);
 		e.setUrl(url);
-		return this.entityDao.save(e);
+		return entityDao.save(e);
 	}
 
 	@Override
 	public NamedEntity find(int id) {
-		return this.entityDao.findById(id);
+		return entityDao.findById(id);
 	}
 
 	@Override
 	public List<NamedEntity> find(String url, String name) {
 		if (name != null) {
-			return this.entityDao.findByNameUrl(name, url);
+			return entityDao.findByNameUrl(name, url);
 		} else {
-			return this.entityDao.findByUrl(url);
+			return entityDao.findByUrl(url);
 		}
 	}
 
 	@Override
 	public List<NamedEntity> find(String name) {
-		return this.entityDao.findByName(name);
+		return entityDao.findByName(name);
 	}
 
 	@Override
 	public List<NamedEntity> find(String name, EType etype) {
-		return this.entityDao.findByNameEtype(name, etype);
+		return entityDao.findByNameEtype(name, etype);
 	}
 
 	@Override
 	public List<NamedEntity> find(EType etype) {
-		return this.entityDao.findByEtype(etype);
+		return entityDao.findByEtype(etype);
 	}
 
 	@Autowired

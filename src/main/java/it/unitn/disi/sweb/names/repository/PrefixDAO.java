@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface PrefixDAO {
 
-	void save(Prefix prefix);
+	Prefix save(Prefix prefix);
 
-	void update(Prefix prefix);
+	Prefix update(Prefix prefix);
 
 	void delete(Prefix prefix);
 

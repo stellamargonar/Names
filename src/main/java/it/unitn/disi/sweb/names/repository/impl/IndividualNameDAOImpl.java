@@ -27,33 +27,36 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 
 	@Override
 	@Transactional
-	public void save(IndividualName name) {
-		this.em.merge(name);
+	public IndividualName save(IndividualName name) {
+		IndividualName n = em.merge(name);
+		em.flush();
+		return n;
 	}
 
 	@Override
 	@Transactional
-	public void update(IndividualName name) {
-		this.em.merge(name);
+	public IndividualName update(IndividualName name) {
+		return save(name);
 	}
 
 	@Override
 	@Transactional
 	public void delete(IndividualName name) {
-		this.em.remove(name);
+		em.remove(name);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public IndividualName findById(int id) {
-		return this.em.find(IndividualName.class, id);
+		return em.find(IndividualName.class, id);
 
 	}
 
 	@Override
 	@Transactional
 	public List<IndividualName> findByName(String name) {
-		return this.em
+		return em
 				.createNamedQuery("IndividualName.byName", IndividualName.class)
 				.setParameter("name", name).getResultList();
 	}
@@ -61,7 +64,7 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	@Override
 	@Transactional
 	public List<IndividualName> findByNameEtype(String name, EType etype) {
-		return this.em
+		return em
 				.createNamedQuery("IndividualName.byNameEtype",
 						IndividualName.class).setParameter("name", name)
 				.setParameter("etype", etype).getResultList();
@@ -70,7 +73,7 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	@Override
 	@Transactional
 	public boolean isTranslation(String name1, String name2) {
-		List<IndividualName> result = this.em
+		List<IndividualName> result = em
 				.createNamedQuery("IndividualName.translation",
 						IndividualName.class).setParameter("name1", name1)
 				.setParameter("name2", name2).getResultList();
@@ -83,15 +86,15 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	public List<IndividualName> findTranslations(IndividualName name) {
 		Set<IndividualName> result = new HashSet<>();
 
-		List<IndividualName> list1 = this.em
+		List<IndividualName> list1 = em
 				.createNamedQuery("IndividualName.alltranslation1",
-						IndividualName.class).setParameter("name", name)
+						IndividualName.class).setParameter("name", name.getName())
 				.getResultList();
 		result.addAll(list1);
 
-		List<IndividualName> list2 = this.em
+		List<IndividualName> list2 = em
 				.createNamedQuery("IndividualName.alltranslation2",
-						IndividualName.class).setParameter("name", name)
+						IndividualName.class).setParameter("name", name.getName())
 				.getResultList();
 		result.addAll(list2);
 

@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface TriggerWordStatisticDAO {
 
-	void save(TriggerWordStatistic twetype);
+	TriggerWordStatistic save(TriggerWordStatistic twetype);
 
-	void update(TriggerWordStatistic twetype);
+	TriggerWordStatistic update(TriggerWordStatistic twetype);
 
 	void delete(TriggerWordStatistic twetype);
 

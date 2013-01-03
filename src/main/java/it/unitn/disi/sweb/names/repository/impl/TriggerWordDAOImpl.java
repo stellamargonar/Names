@@ -25,38 +25,41 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	@Transactional
 	public TriggerWord save(TriggerWord triggerWord) {
-		return this.em.merge(triggerWord);
+		TriggerWord t =  em.merge(triggerWord);
+		em.flush();
+		return t;
 	}
 
 	@Override
 	@Transactional
-	public void update(TriggerWord triggerWord) {
-		this.em.merge(triggerWord);
+	public TriggerWord update(TriggerWord triggerWord) {
+		return save(triggerWord);
 	}
 
 	@Override
 	@Transactional
 	public void delete(TriggerWord triggerWord) {
-		this.em.remove(triggerWord);
+		em.remove(triggerWord);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public TriggerWord findById(int id) {
-		return this.em.find(TriggerWord.class, id);
+		return em.find(TriggerWord.class, id);
 	}
 
 	@Override
 	@Transactional
 	public List<TriggerWord> findByTriggerWord(String triggerWord) {
-		return this.em.createNamedQuery("TriggerWord.byTW", TriggerWord.class)
+		return em.createNamedQuery("TriggerWord.byTW", TriggerWord.class)
 				.setParameter("tw", triggerWord).getResultList();
 	}
 
 	@Override
 	@Transactional
 	public List<TriggerWord> findVariations(TriggerWord triggerWord) {
-		return this.em
+		return em
 				.createNamedQuery("TriggerWord.variationsByTW",
 						TriggerWord.class).setParameter("tw", triggerWord)
 				.getResultList();
@@ -65,7 +68,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	@Transactional
 	public void deleteAll() {
-		for (TriggerWord t : this.em.createQuery("from TriggerWord",
+		for (TriggerWord t : em.createQuery("from TriggerWord",
 				TriggerWord.class).getResultList()) {
 			delete(t);
 		}
@@ -75,7 +78,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Transactional
 	public List<TriggerWord> findByTriggerWordEtype(String triggerWord,
 			EType etype) {
-		return this.em
+		return em
 				.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
 				.setParameter("tw", triggerWord).setParameter("etype", etype)
 				.getResultList();
@@ -84,7 +87,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	@Transactional
 	public boolean isVariation(String t1, String t2) {
-		List<TriggerWord> result = this.em
+		List<TriggerWord> result = em
 				.createNamedQuery("TriggerWord.isVariations", TriggerWord.class)
 				.setParameter("t1", t1).setParameter("t2", t2).getResultList();
 		return result != null && !result.isEmpty() ? true : false;

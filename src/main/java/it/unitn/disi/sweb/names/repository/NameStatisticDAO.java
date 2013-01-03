@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface NameStatisticDAO {
 
-	void save(NameStatistics nameStat);
+	NameStatistics save(NameStatistics nameStat);
 
-	void update(NameStatistics nameStat);
+	NameStatistics update(NameStatistics nameStat);
 
 	void delete(NameStatistics nameStat);
 

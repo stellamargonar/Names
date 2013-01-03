@@ -7,9 +7,9 @@ import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import java.util.List;
 
 public interface TriggerWordTokenDAO {
-	void save(TriggerWordToken twToken);
+	TriggerWordToken save(TriggerWordToken twToken);
 
-	void upload(TriggerWordToken twToken);
+	TriggerWordToken upload(TriggerWordToken twToken);
 
 	void delete(TriggerWordToken twToken);
 

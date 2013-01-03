@@ -26,12 +26,12 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "nametoken", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"full_name_id", "name_id" }))
+		"full_name_id", "name_id", "position" }))
 @SequenceGenerator(name = "nametoken_seq", sequenceName = "nametoken_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "NameToken.byFullName", query = "from NameToken where fullName= :fullName"),
 		@NamedQuery(name = "NameToken.byIndividualName", query = "from NameToken where individualName= :individualName"),
-		@NamedQuery(name = "NameToken.byFullIndividualName", query = "from NameToken where individualName= :individualName and fullName=:fullname)") })
+		@NamedQuery(name = "NameToken.byFullIndividualName", query = "from NameToken where individualName= :individualName and fullName=:fullName)") })
 public class NameToken implements Serializable {
 
 
@@ -58,7 +58,7 @@ public class NameToken implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -66,7 +66,7 @@ public class NameToken implements Serializable {
 	}
 
 	public FullName getFullName() {
-		return this.fullName;
+		return fullName;
 	}
 
 	public void setFullName(FullName fullName) {
@@ -74,7 +74,7 @@ public class NameToken implements Serializable {
 	}
 
 	public IndividualName getIndividualName() {
-		return this.individualName;
+		return individualName;
 	}
 
 	public void setIndividualName(IndividualName individualName) {
@@ -82,7 +82,7 @@ public class NameToken implements Serializable {
 	}
 
 	public int getPosition() {
-		return this.position;
+		return position;
 	}
 
 	public void setPosition(int position) {
@@ -91,8 +91,8 @@ public class NameToken implements Serializable {
 
 	@Override
 	public String toString() {
-		return "NameToken [individualName=" + this.individualName + ", position="
-				+ this.position + "]";
+		return "NameToken [individualName=" + individualName + ", position="
+				+ position + "]";
 	}
 
 	@Override
@@ -100,10 +100,10 @@ public class NameToken implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.fullName == null ? 0 : this.fullName.hashCode());
-		result = prime * result + this.id;
+				+ (fullName == null ? 0 : fullName.hashCode());
+		result = prime * result + id;
 		result = prime * result
-				+ (this.individualName == null ? 0 : this.individualName.hashCode());
+				+ (individualName == null ? 0 : individualName.hashCode());
 		return result;
 	}
 
@@ -119,21 +119,21 @@ public class NameToken implements Serializable {
 			return false;
 		}
 		NameToken other = (NameToken) obj;
-		if (this.fullName == null) {
+		if (fullName == null) {
 			if (other.fullName != null) {
 				return false;
 			}
-		} else if (!this.fullName.equals(other.fullName)) {
+		} else if (!fullName.equals(other.fullName)) {
 			return false;
 		}
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
-		if (this.individualName == null) {
+		if (individualName == null) {
 			if (other.individualName != null) {
 				return false;
 			}
-		} else if (!this.individualName.equals(other.individualName)) {
+		} else if (!individualName.equals(other.individualName)) {
 			return false;
 		}
 		return true;

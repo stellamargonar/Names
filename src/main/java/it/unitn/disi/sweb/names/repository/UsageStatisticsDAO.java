@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface UsageStatisticsDAO {
 
-	void save(UsageStatistic stat);
+	UsageStatistic save(UsageStatistic stat);
 
-	void update(UsageStatistic stat);
+	UsageStatistic update(UsageStatistic stat);
 
 	void delete(UsageStatistic stat);
 

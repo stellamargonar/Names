@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface NameElementDAO {
 
-	void save(NameElement field);
+	NameElement save(NameElement field);
 
-	void update(NameElement field);
+	NameElement update(NameElement field);
 
 	void delete(NameElement field);
 

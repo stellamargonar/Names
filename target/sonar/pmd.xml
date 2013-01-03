@@ -261,5 +261,32 @@
   <rule ref="rulesets/strings.xml/AvoidDuplicateLiterals">
     <priority>3</priority>
   </rule>
+  <rule ref="rulesets/clone.xml/ProperCloneImplementation">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/basic.xml/EmptyCatchBlock">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/sunsecure.xml/MethodReturnsInternalArray">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/design.xml/MissingBreakInSwitch">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/basic.xml/OverrideBothEqualsAndHashcode">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/controversial.xml/DoNotCallGarbageCollectionExplicitly">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/j2ee.xml/UseProperClassLoader">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/basic.xml/AvoidThreadGroup">
+    <priority>2</priority>
+  </rule>
+  <rule ref="rulesets/basic.xml/MisplacedNullCheck">
+    <priority>2</priority>
+  </rule>
 </ruleset>
 

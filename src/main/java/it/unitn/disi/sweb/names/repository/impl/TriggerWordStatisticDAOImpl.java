@@ -25,33 +25,36 @@ public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 
 	@Override
 	@Transactional
-	public void save(TriggerWordStatistic twetype) {
-		this.em.merge(twetype);
+	public TriggerWordStatistic save(TriggerWordStatistic twetype) {
+		TriggerWordStatistic t = em.merge(twetype);
+		em.flush();
+		return t;
 	}
 
 	@Override
 	@Transactional
-	public void update(TriggerWordStatistic twetype) {
-		this.em.merge(twetype);
+	public TriggerWordStatistic update(TriggerWordStatistic twetype) {
+		return save(twetype);
 	}
 
 	@Override
 	@Transactional
 	public void delete(TriggerWordStatistic twetype) {
-		this.em.remove(twetype);
+		em.remove(twetype);
+		em.flush();
 	}
 
 	@Override
 	@Transactional
 	public TriggerWordStatistic findById(int id) {
-		return this.em.find(TriggerWordStatistic.class, id);
+		return em.find(TriggerWordStatistic.class, id);
 	}
 
 	@Override
 	@Transactional
 	public TriggerWordStatistic findByTriggerWordEtype(TriggerWord triggerWord,
 			EType eType) {
-		return this.em
+		return em
 				.createNamedQuery("TWStatistic.byTriggerWordEtype",
 						TriggerWordStatistic.class)
 				.setParameter("tw", triggerWord).setParameter("etype", eType)
@@ -61,7 +64,7 @@ public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 	@Override
 	@Transactional
 	public List<TriggerWordStatistic> findByTriggerWord(TriggerWord triggerWord) {
-		return this.em
+		return em
 				.createNamedQuery("TWStatistic.byTriggerWord",
 						TriggerWordStatistic.class)
 				.setParameter("tw", triggerWord).getResultList();

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ETypeDAO {
 
-	void save(EType e);
+	EType save(EType e);
 
-	void update(EType e);
+	EType update(EType e);
 
 	void delete(EType e);
 
