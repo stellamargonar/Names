@@ -21,17 +21,17 @@ public class StatisticsManagerImpl implements StatisticsManager {
 
 	@Override
 	public void updateSearchStatistic(String query, FullName selected) {
-		UsageStatistic old = this.statDao.findByQuerySelected(query, selected);
+		UsageStatistic old = statDao.findByQuerySelected(query, selected);
 		if (old == null) {
 			UsageStatistic u = new UsageStatistic();
 			u.setFrequency(1);
 			u.setQuery(query);
 			u.setSelected(selected);
-			this.statDao.save(u);
+			statDao.save(u);
 		} else {
 			double oldFrequency = old.getFrequency();
 			old.setFrequency(oldFrequency + 1);
-			this.statDao.update(old);
+			statDao.update(old);
 		}
 	}
 
@@ -45,7 +45,7 @@ public class StatisticsManagerImpl implements StatisticsManager {
 	@Override
 	public Map<FullName, Double> retrieveTopResults(String query,
 			int maxNrResults) {
-		List<UsageStatistic> list = this.statDao.findByQuery(query);
+		List<UsageStatistic> list = statDao.findByQuery(query);
 		if (list == null || list.isEmpty()) {
 			return null;
 		}
@@ -70,5 +70,11 @@ public class StatisticsManagerImpl implements StatisticsManager {
 	@Autowired
 	public void setStatDao(UsageStatisticsDAO statDao) {
 		this.statDao = statDao;
+	}
+
+	@Override
+	public double retrieveFrequency(String query, FullName selected) {
+		UsageStatistic u = statDao.findByQuerySelected(query, selected);
+		return u != null ? u.getFrequency() : 0;
 	}
 }

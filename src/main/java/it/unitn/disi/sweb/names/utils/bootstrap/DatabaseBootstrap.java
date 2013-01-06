@@ -8,6 +8,8 @@ import it.unitn.disi.sweb.names.repository.ETypeDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
+import it.unitn.disi.sweb.names.service.EtypeManager;
+import it.unitn.disi.sweb.names.service.EtypeName;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,6 +31,7 @@ public class DatabaseBootstrap {
 
 	private ETypeDAO etypeDao;
 	private NameElementDAO nameDao;
+	private EtypeManager etypeManager;
 
 	public DatabaseBootstrap() {
 	}
@@ -37,15 +40,16 @@ public class DatabaseBootstrap {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
 
-		TriggerWordType title = twtDao.findByName("Title");
+		TriggerWordType title = twtDao.findByNameEType("Title",
+				etypeManager.getEtype(EtypeName.PERSON));
 
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");
 			List<TriggerWord> tws = new ArrayList<>();
 			for (String s : token) {
 				TriggerWord t = new TriggerWord(s, title);
+				t = twDao.save(t);
 				tws.add(t);
-				twDao.save(t);
 			}
 
 			if (tws.size() > 1) {
@@ -54,7 +58,7 @@ public class DatabaseBootstrap {
 				var.remove(original);
 				original.setVariations(var);
 
-				twDao.update(original);
+				original  = twDao.update(original);
 			}
 		}
 		reader.close();
@@ -67,7 +71,6 @@ public class DatabaseBootstrap {
 			EType e = new EType();
 			e.setEtype(line);
 			etypeDao.save(e);
-			System.out.println("saved " + e.getEtype());
 		}
 		reader.close();
 	}
@@ -90,10 +93,8 @@ public class DatabaseBootstrap {
 	void storeTriggerWordTypeList(String fileName) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
-		List<TriggerWordType> list = new ArrayList<TriggerWordType>();
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");
-			System.out.println(token[1]);
 			EType e = etypeDao.findByName(token[1]);
 			TriggerWordType t = new TriggerWordType();
 			t.setType(token[0]);
@@ -108,21 +109,23 @@ public class DatabaseBootstrap {
 	void storeToponymList(String fileName) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
-		TriggerWordType top = twtDao.findByName("Toponym");
+		TriggerWordType top = twtDao.findByNameEType("Toponym",
+				etypeManager.getEtype(EtypeName.LOCATION));
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");
 
 			TriggerWord t = new TriggerWord(token[0], top);
-			TriggerWord abbr = new TriggerWord(token[1], top);
-
 			t = twDao.save(t);
-			abbr = twDao.save(abbr);
+			if (token.length > 1) {
+				TriggerWord abbr = new TriggerWord(token[1], top);
+				abbr = twDao.save(abbr);
 
-			t.addVariation(abbr);
-			abbr.addVariation(t);
+				t.addVariation(abbr);
+				abbr.addVariation(t);
+				twDao.update(t);
+				twDao.update(abbr);
+			}
 
-			twDao.update(t);
-			twDao.update(abbr);
 		}
 		reader.close();
 	}
@@ -190,5 +193,9 @@ public class DatabaseBootstrap {
 	@Autowired
 	public void setNameDao(NameElementDAO nameDao) {
 		this.nameDao = nameDao;
+	}
+	@Autowired
+	public void setEtypeMaanger(EtypeManager etypeMaanger) {
+		etypeManager = etypeMaanger;
 	}
 }

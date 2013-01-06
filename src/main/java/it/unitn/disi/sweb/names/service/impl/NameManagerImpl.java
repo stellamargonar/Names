@@ -35,7 +35,7 @@ public class NameManagerImpl implements NameManager {
 	private NameElementDAO nameElementDao;
 	private NameTokenDAO nameTokenDao;
 
-	private final static int NGRAM_DIFFERENCE = 70;
+	private static final int NGRAM_DIFFERENCE = 70;
 
 	@Override
 	public FullName createFullName(String name, NamedEntity en) {
@@ -89,8 +89,8 @@ public class NameManagerImpl implements NameManager {
 	private String getNameModified(FullName fullname, boolean normalized,
 			boolean compare) {
 		String name = "";
-		Collection a = fullname.getNameTokens();
-		Collection b = fullname.getTriggerWordTokens();
+		Collection<NameToken> a = fullname.getNameTokens();
+		Collection<TriggerWordToken> b = fullname.getTriggerWordTokens();
 		int max = 0;
 		if (a != null) {
 			max = a.size();
@@ -118,12 +118,13 @@ public class NameManagerImpl implements NameManager {
 			Collections.sort(tokens);
 		}
 
+		StringBuffer buf = new StringBuffer();
 		for (String s : tokens) {
 			if (s != null) {
-				name += s + " ";
+				buf.append(s + " ");
 			}
 		}
-
+		name = buf.toString();
 		return name;
 	}
 
@@ -139,9 +140,7 @@ public class NameManagerImpl implements NameManager {
 						eType);
 				if (listName == null || listName.isEmpty()) {
 					listName = nameDao.findByName(s);
-					System.out.println("updated list witout etype");
 				}
-				System.out.println(listName);
 				if (listName != null && listName.size() > 0) {
 					NameToken nt = new NameToken();
 					nt.setFullName(fullname);
@@ -150,8 +149,8 @@ public class NameManagerImpl implements NameManager {
 					fullname.addNameToken(nt);
 				} else {
 					// check if it is a known triggerword
-					List<TriggerWord> listTW = twDao
-							.findByTriggerWordEtype(s, eType);
+					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(s,
+							eType);
 					if (listTW != null && listTW.size() > 0) {
 						TriggerWordToken twt = new TriggerWordToken();
 						twt.setFullName(fullname);
@@ -180,13 +179,13 @@ public class NameManagerImpl implements NameManager {
 		IndividualName name = new IndividualName();
 		name.setName(s);
 		name.setNameElement(getNewNameElement(eType, position));
-//		nameDao.save(name);
 		return name;
 	}
 
 	private NameElement getNewNameElement(EType eType, int position) {
 		switch (eType.getEtype()) {
 			case "Location" :
+				return nameElementDao.findByNameEType("ProperNoun", eType);
 			case "Organization" :
 				return nameElementDao.findByNameEType("ProperNoun", eType);
 			case "Person" :
@@ -195,11 +194,11 @@ public class NameManagerImpl implements NameManager {
 						return nameElementDao.findByNameEType("GivenName",
 								eType);
 					case 2 :
-						return nameElementDao.findByNameEType(
-								"MiddleName", eType);
+						return nameElementDao.findByNameEType("MiddleName",
+								eType);
 					default :
-						return nameElementDao.findByNameEType(
-								"FamilyName", eType);
+						return nameElementDao.findByNameEType("FamilyName",
+								eType);
 				}
 			default :
 				return null;
@@ -278,7 +277,7 @@ public class NameManagerImpl implements NameManager {
 			}
 		}
 
-		return sumAll(sums); // return concatenateAll(sums);
+		return sumAll(sums);
 	}
 
 	private int computeMaxDifference(String name) {

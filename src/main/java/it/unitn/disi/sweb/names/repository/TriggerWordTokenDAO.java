@@ -9,7 +9,7 @@ import java.util.List;
 public interface TriggerWordTokenDAO {
 	TriggerWordToken save(TriggerWordToken twToken);
 
-	TriggerWordToken upload(TriggerWordToken twToken);
+	TriggerWordToken update(TriggerWordToken twToken);
 
 	void delete(TriggerWordToken twToken);
 
@@ -19,6 +19,8 @@ public interface TriggerWordTokenDAO {
 
 	List<TriggerWordToken> findByTriggerWord(TriggerWord triggerWord);
 
-	TriggerWordToken findByTriggerWordFullName(TriggerWord triggerWord,
+	List<TriggerWordToken> findByTriggerWordFullName(TriggerWord triggerWord,
 			FullName fullName);
+
+	TriggerWordToken findFullNamePosition(FullName fullName, int position);
 }

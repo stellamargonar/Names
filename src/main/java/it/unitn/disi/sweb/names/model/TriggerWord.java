@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Entity implementation class for Entity: TriggerWord
@@ -31,11 +32,12 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "triggerword")
+@Table(name = "triggerword", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"triggerWord", "type_id"}))
 @SequenceGenerator(name = "triggerword_seq", sequenceName = "triggerword_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "TriggerWord.byTW", query = "from TriggerWord where triggerWord = :tw"),
-		@NamedQuery(name = "TriggerWord.variationsByTW", query = "from TriggerWord as trig where trig.variations = :tw"),
+		@NamedQuery(name = "TriggerWord.variationsByTW", query = "from TriggerWord as trig where triggerWord = :tw and type=:type"),
 		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where triggerWord = :tw and trig.type.eType=:etype"),
 		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)")})
 public class TriggerWord implements Serializable {
@@ -69,7 +71,7 @@ public class TriggerWord implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -77,7 +79,7 @@ public class TriggerWord implements Serializable {
 	}
 
 	public String getTriggerWord() {
-		return this.triggerWord;
+		return triggerWord;
 	}
 
 	public void setTriggerWord(String triggerWord) {
@@ -85,7 +87,7 @@ public class TriggerWord implements Serializable {
 	}
 
 	public Set<TriggerWord> getVariations() {
-		return this.variations;
+		return variations;
 	}
 
 	public void setVariations(Set<TriggerWord> variations) {
@@ -93,7 +95,7 @@ public class TriggerWord implements Serializable {
 	}
 
 	public TriggerWordType getType() {
-		return this.type;
+		return type;
 	}
 
 	public void setType(TriggerWordType type) {
@@ -102,13 +104,27 @@ public class TriggerWord implements Serializable {
 
 	public void addVariation(TriggerWord variation) {
 		if (getVariations() == null) {
-			this.variations = new HashSet<TriggerWord>();
+			variations = new HashSet<TriggerWord>();
 		}
-		this.variations.add(variation);
+		variations.add(variation);
+
+		if (!variation.isVariationOf(this)) {
+			variation.addVariation(this);
+		}
+	}
+
+	public boolean isVariationOf(TriggerWord variant) {
+		if (getVariations() == null) {
+			return false;
+		}
+		if (getVariations().contains(variant)) {
+			return true;
+		}
+		return false;
 	}
 
 	public Set<TriggerWordStatistic> geteTypeStats() {
-		return this.eTypeStats;
+		return eTypeStats;
 	}
 
 	public void seteTypeStats(Set<TriggerWordStatistic> eTypeStats) {
@@ -119,11 +135,10 @@ public class TriggerWord implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + this.id;
+		result = prime * result + id;
 		result = prime * result
-				+ (this.triggerWord == null ? 0 : this.triggerWord.hashCode());
-		result = prime * result
-				+ (this.type == null ? 0 : this.type.hashCode());
+				+ (triggerWord == null ? 0 : triggerWord.hashCode());
+		result = prime * result + (type == null ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -139,21 +154,21 @@ public class TriggerWord implements Serializable {
 			return false;
 		}
 		TriggerWord other = (TriggerWord) obj;
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
-		if (this.triggerWord == null) {
+		if (triggerWord == null) {
 			if (other.triggerWord != null) {
 				return false;
 			}
-		} else if (!this.triggerWord.equals(other.triggerWord)) {
+		} else if (!triggerWord.equals(other.triggerWord)) {
 			return false;
 		}
-		if (this.type == null) {
+		if (type == null) {
 			if (other.type != null) {
 				return false;
 			}
-		} else if (!this.type.equals(other.type)) {
+		} else if (!type.equals(other.type)) {
 			return false;
 		}
 		return true;
@@ -161,7 +176,7 @@ public class TriggerWord implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TriggerWord [triggerWord=" + this.triggerWord + "]";
+		return "TriggerWord [triggerWord=" + triggerWord + "]";
 	}
 
 }

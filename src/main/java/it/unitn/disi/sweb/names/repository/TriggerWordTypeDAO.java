@@ -17,7 +17,7 @@ public interface TriggerWordTypeDAO {
 
 	List<TriggerWordType> findAll();
 
-	TriggerWordType findByName(String name);
+	List<TriggerWordType> findByName(String name);
 
 	List<TriggerWordType> findByEType(EType etype);
 	TriggerWordType findByNameEType(String name, EType etype);

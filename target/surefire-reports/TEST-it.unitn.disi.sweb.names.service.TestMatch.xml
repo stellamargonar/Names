@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="2" time="0.847" errors="0" skipped="0" tests="4" name="it.unitn.disi.sweb.names.service.TestMatch">
+<testsuite failures="2" time="0.835" errors="0" skipped="0" tests="4" name="it.unitn.disi.sweb.names.service.TestMatch">
   <properties>
     <property name="jboss.i18n.generate-proxies" value="true"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -21,7 +21,7 @@
     <property name="basedir" value="/Users/stella/Documents/Programming/workspace/names"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2578941845829841661.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent6968404576095506267.jar"/>
+    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2078207765057324352.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent5498629660452179360.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2578941845829841661.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire3645441379993391536tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire6914078991984812572tmp"/>
+    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2078207765057324352.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire8557827879092948495tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire2943152922015488515tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="it"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -63,8 +63,8 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.211" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testStringSimilarityString"/>
-  <testcase time="0.173" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testStringSimilarityFullName">
+  <testcase time="0.125" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testStringSimilarityString"/>
+  <testcase time="0.096" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testStringSimilarityFullName">
     <failure message="Not yet implemented" type="java.lang.AssertionError">java.lang.AssertionError: Not yet implemented
 	at org.junit.Assert.fail(Assert.java:91)
 	at it.unitn.disi.sweb.names.service.TestMatch.testStringSimilarityFullName(TestMatch.java:129)
@@ -105,25 +105,9 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
 </failure>
-    <system-out>[IndividualName [name=Garda]]
-[IndividualName [name=Citta&apos;]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Lago]]
-[IndividualName [name=di]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Lake]]
-[IndividualName [name=Fausto]]
-[IndividualName [name=Giunchiglia]]
-updated list witout etype
-[]
-[IndividualName [name=Giunchiglia]]
-[IndividualName [name=Supervisor]]
-</system-out>
   </testcase>
-  <testcase time="0.153" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testDictionaryLookup"/>
-  <testcase time="0.306" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testTokenAnalysis">
+  <testcase time="0.099" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testDictionaryLookup"/>
+  <testcase time="0.513" classname="it.unitn.disi.sweb.names.service.TestMatch" name="testTokenAnalysis">
     <failure message="" type="java.lang.AssertionError">java.lang.AssertionError: 
 	at org.junit.Assert.fail(Assert.java:91)
 	at org.junit.Assert.assertTrue(Assert.java:43)
@@ -166,23 +150,7 @@ updated list witout etype
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
 </failure>
-    <system-out>[IndividualName [name=Garda]]
-[IndividualName [name=Citta&apos;]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Lago]]
-[IndividualName [name=di]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Garda]]
-[IndividualName [name=Lake]]
-[IndividualName [name=Fausto]]
-[IndividualName [name=Giunchiglia]]
-updated list witout etype
-[]
-[IndividualName [name=Giunchiglia]]
-[IndividualName [name=Supervisor]]
-</system-out>
-    <system-err>gen 03, 2013 4:51:47 PM it.unitn.disi.sweb.names.service.TestMatch printResult
+    <system-err>gen 06, 2013 11:43:39 AM it.unitn.disi.sweb.names.service.TestMatch printResult
 INFO: f(Lago di Garda, Garda Loke) = 0.0
 </system-err>
   </testcase>

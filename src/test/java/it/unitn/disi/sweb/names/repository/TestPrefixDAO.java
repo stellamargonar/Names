@@ -101,6 +101,7 @@ public class TestPrefixDAO extends TestCase {
 	@Test
 	public final void testFindByPrefixSelected() {
 		checkEquals(p, dao.findByPrefixSelected(prefix, fullName));
+		assertNull(dao.findByPrefixSelected("", fullName));
 	}
 
 	private void checkEquals(Prefix source, Prefix target) {

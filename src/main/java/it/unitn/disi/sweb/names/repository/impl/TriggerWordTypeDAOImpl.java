@@ -66,9 +66,9 @@ public class TriggerWordTypeDAOImpl implements TriggerWordTypeDAO {
 
 	@Override
 	@Transactional
-	public TriggerWordType findByName(String name) {
+	public List<TriggerWordType> findByName(String name) {
 		return em.createNamedQuery("TWType.findByName", TriggerWordType.class)
-				.setParameter("name", name).getSingleResult();
+				.setParameter("name", name).getResultList();
 	}
 
 	@Override

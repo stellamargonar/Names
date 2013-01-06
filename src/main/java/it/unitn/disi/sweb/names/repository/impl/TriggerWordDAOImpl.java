@@ -4,7 +4,9 @@ import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWord;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,7 +27,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	@Transactional
 	public TriggerWord save(TriggerWord triggerWord) {
-		TriggerWord t =  em.merge(triggerWord);
+		TriggerWord t = em.merge(triggerWord);
 		em.flush();
 		return t;
 	}
@@ -59,10 +61,14 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	@Transactional
 	public List<TriggerWord> findVariations(TriggerWord triggerWord) {
-		return em
+
+		Set<TriggerWord> result = em
 				.createNamedQuery("TriggerWord.variationsByTW",
-						TriggerWord.class).setParameter("tw", triggerWord)
-				.getResultList();
+						TriggerWord.class)
+				.setParameter("tw", triggerWord.getTriggerWord())
+				.setParameter("type", triggerWord.getType()).getSingleResult()
+				.getVariations();
+		return new ArrayList<>(result);
 	}
 
 	@Override
@@ -78,8 +84,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Transactional
 	public List<TriggerWord> findByTriggerWordEtype(String triggerWord,
 			EType etype) {
-		return em
-				.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
+		return em.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
 				.setParameter("tw", triggerWord).setParameter("etype", etype)
 				.getResultList();
 	}

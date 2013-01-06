@@ -48,7 +48,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
 		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity"),
-		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name) and fn1.entity.eType=:etype))"),
+		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity = (select fullname.entity from FullName as fullname where name=:name and fn1.entity.eType=:etype) and fn1.name != :name))"),
 		@NamedQuery(name = "FullName.byToken", query = "from FullName where name like CONCAT('%', :name, '%')"),
 		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff")})
 public class FullName implements Serializable {
@@ -80,7 +80,7 @@ public class FullName implements Serializable {
 	private Set<TriggerWordToken> triggerWordTokens;
 
 	@Transient
-	Comparator<Object> tokenPositionComparator;
+	private Comparator<Object> tokenPositionComparator;
 
 	private static final long serialVersionUID = 1L;
 
@@ -89,7 +89,7 @@ public class FullName implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -97,7 +97,7 @@ public class FullName implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -112,7 +112,7 @@ public class FullName implements Serializable {
 	 * @return the name normalized
 	 */
 	public String getNameNormalized() {
-		return this.nameNormalized;
+		return nameNormalized;
 	}
 
 	public void setNameNormalized(String nameNormalized) {
@@ -131,7 +131,7 @@ public class FullName implements Serializable {
 	 * @return string used for comparison
 	 */
 	public String getNameToCompare() {
-		return this.nameToCompare;
+		return nameToCompare;
 	}
 
 	public void setNameToCompare(String nameToCompare) {
@@ -139,15 +139,15 @@ public class FullName implements Serializable {
 	}
 
 	public NamedEntity getGUID() {
-		return this.entity;
+		return entity;
 	}
 
 	public void setGUID(NamedEntity GUID) {
-		this.entity = GUID;
+		entity = GUID;
 	}
 
 	public Integer getNGramCode() {
-		return this.nGramCode;
+		return nGramCode;
 	}
 
 	public void setNGramCode(Integer nGramCode) {
@@ -155,7 +155,7 @@ public class FullName implements Serializable {
 	}
 
 	public NamedEntity getEntity() {
-		return this.entity;
+		return entity;
 	}
 
 	public void setEntity(NamedEntity entity) {
@@ -163,7 +163,7 @@ public class FullName implements Serializable {
 	}
 
 	public Integer getnGramCode() {
-		return this.nGramCode;
+		return nGramCode;
 	}
 
 	public void setnGramCode(Integer nGramCode) {
@@ -171,7 +171,7 @@ public class FullName implements Serializable {
 	}
 
 	public Set<NameToken> getNameTokens() {
-		return this.nameTokens;
+		return nameTokens;
 	}
 
 	public void setNameTokens(Set<NameToken> nameTokens) {
@@ -179,7 +179,7 @@ public class FullName implements Serializable {
 	}
 
 	public Set<TriggerWordToken> getTriggerWordTokens() {
-		return this.triggerWordTokens;
+		return triggerWordTokens;
 	}
 
 	public void setTriggerWordTokens(Set<TriggerWordToken> triggerWordTokens) {
@@ -188,29 +188,29 @@ public class FullName implements Serializable {
 
 	public List<NameToken> getNameTokensOrdered() {
 		ArrayList<NameToken> list = new ArrayList<NameToken>(getNameTokens());
-		Collections.sort(list, this.tokenPositionComparator);
+		Collections.sort(list, tokenPositionComparator);
 		return list;
 	}
 
 	public List<TriggerWordToken> getTriggerWordTokensOrdered() {
 		ArrayList<TriggerWordToken> list = new ArrayList<TriggerWordToken>(
 				getTriggerWordTokens());
-		Collections.sort(list, this.tokenPositionComparator);
+		Collections.sort(list, tokenPositionComparator);
 		return list;
 	}
 
 	public void addNameToken(NameToken nameToken) {
 		if (getNameTokens() == null) {
-			this.nameTokens = new HashSet<>();
+			nameTokens = new HashSet<>();
 		}
-		this.nameTokens.add(nameToken);
+		nameTokens.add(nameToken);
 	}
 
 	public void addTriggerWordToken(TriggerWordToken token) {
 		if (getTriggerWordTokens() == null) {
-			this.triggerWordTokens = new HashSet<>();
+			triggerWordTokens = new HashSet<>();
 		}
-		this.triggerWordTokens.add(token);
+		triggerWordTokens.add(token);
 	}
 
 	@Autowired
@@ -219,7 +219,7 @@ public class FullName implements Serializable {
 		this.tokenPositionComparator = tokenPositionComparator;
 	}
 	public Comparator<Object> getTokenPositionComparator() {
-		return this.tokenPositionComparator;
+		return tokenPositionComparator;
 	}
 
 	@Override
@@ -227,10 +227,10 @@ public class FullName implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.entity == null ? 0 : this.entity.hashCode());
-		result = prime * result + this.id;
+				+ (entity == null ? 0 : entity.hashCode());
+		result = prime * result + id;
 		result = prime * result
-				+ (this.name == null ? 0 : this.name.hashCode());
+				+ (name == null ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -246,21 +246,21 @@ public class FullName implements Serializable {
 			return false;
 		}
 		FullName other = (FullName) obj;
-		if (this.entity == null) {
+		if (entity == null) {
 			if (other.entity != null) {
 				return false;
 			}
-		} else if (!this.entity.equals(other.entity)) {
+		} else if (!entity.equals(other.entity)) {
 			return false;
 		}
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
-		if (this.name == null) {
+		if (name == null) {
 			if (other.name != null) {
 				return false;
 			}
-		} else if (!this.name.equals(other.name)) {
+		} else if (!name.equals(other.name)) {
 			return false;
 		}
 		return true;
@@ -268,9 +268,9 @@ public class FullName implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FullName [id=" + this.id + ", name=" + this.name + ", entity="
-				+ this.entity + ", nameTokens=" + this.nameTokens
-				+ ", triggerWordTokens=" + this.triggerWordTokens + "]";
+		return "FullName [id=" + id + ", name=" + name + ", entity="
+				+ entity + ", nameTokens=" + nameTokens
+				+ ", triggerWordTokens=" + triggerWordTokens + "]";
 	}
 
 }

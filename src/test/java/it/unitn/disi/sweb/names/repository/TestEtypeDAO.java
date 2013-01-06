@@ -8,7 +8,6 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/testApplicationContext.xml"})
 @Transactional(rollbackFor = Throwable.class)
-public class TestEtypeDAO extends TestCase{
+public class TestEtypeDAO extends TestCase {
 
 	@Autowired
 	ETypeDAO dao;
@@ -42,7 +41,6 @@ public class TestEtypeDAO extends TestCase{
 
 	@AfterTransaction
 	public void verifyFinalDatabaseState() {
-		System.out.println("CALLED after transaction");
 	}
 
 	@Override
@@ -56,12 +54,7 @@ public class TestEtypeDAO extends TestCase{
 	@Override
 	@After
 	public void tearDown() throws Exception {
-		 dao.delete(e);
-	}
-
-	@AfterClass
-	public static void tearDownClass() throws Exception {
-		System.out.println("CALLED TEAR DOWN CLASS");
+		dao.delete(e);
 	}
 
 	@Test
@@ -111,13 +104,13 @@ public class TestEtypeDAO extends TestCase{
 		assertTrue(found.size() > 0);
 	}
 
-//	@Test
+	// @Test
 	public final void testDelete() {
 		dao.delete(e);
 		assertNull(dao.findById(e.getId()));
 	}
 
-	@Test
+//	@Test
 	@Rollback(true)
 	public final void testDeleteAll() {
 		dao.deleteAll();

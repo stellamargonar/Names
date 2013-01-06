@@ -30,9 +30,9 @@ import org.springframework.stereotype.Service;
 @Service("nameMatcher")
 public class NameMatchImpl implements NameMatch {
 
-	private final static int MAX_LENGTH_DIFFERENCE = 3;
-	private final static double THRESHOLD_MISSPELLINGS = 0.5;
-	private final static double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
+	private static final int MAX_LENGTH_DIFFERENCE = 3;
+	private static final double THRESHOLD_MISSPELLINGS = 0.5;
+	private static final double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
 
 	private IndividualNameDAO individualNameDao;
 	private TriggerWordDAO triggerWordDao;
@@ -44,16 +44,12 @@ public class NameMatchImpl implements NameMatch {
 	private MisspellingsComparator comparator;
 
 	private EType etype;
-
-	public NameMatchImpl(String name1, String name2, EType eType) {
-		this.etype = eType;
-	}
-
 	public NameMatchImpl() {
 	}
 
 	@Override
 	public double stringSimilarity(String name1, String name2, EType eType) {
+		etype = etype;
 		// TODO should we consider at this point the titles ecc, or compare only
 		// the "name_to_compare" ?
 		/*
@@ -97,15 +93,15 @@ public class NameMatchImpl implements NameMatch {
 
 	private double misspellingsSimilarity(String string1, String string2,
 			EType eType) {
-		return this.comparator.getSimilarity(string1, string2);
+		return comparator.getSimilarity(string1, string2);
 	}
 
 	@Override
 	public double tokenAnalysis(String name1, String name2, EType eType) {
-		this.etype = eType;
+		etype = eType;
 
-		List<FullName> nameList1 = this.nameManager.find(name1, eType);
-		List<FullName> nameList2 = this.nameManager.find(name2, eType);
+		List<FullName> nameList1 = nameManager.find(name1, eType);
+		List<FullName> nameList2 = nameManager.find(name2, eType);
 		// TODO
 		// when a name is not present in the db, which means, namelist empty,
 		// parse it for creating the name tokens
@@ -121,7 +117,7 @@ public class NameMatchImpl implements NameMatch {
 
 				// TODO aggiungere anche variation sulle variant
 				double simVariation = tokenVariant(pair.key, pair.value,
-						this.etype);
+						etype);
 				totalSimilarity += Math.max(simToken, simVariation)
 						* ((double) pair.value.length() / name2.length());
 			}
@@ -138,9 +134,9 @@ public class NameMatchImpl implements NameMatch {
 		}
 
 		// cercare in traduzioni e varianti se c'e' un match
-		boolean nameTranslation = this.individualNameDao.isTranslation(key,
+		boolean nameTranslation = individualNameDao.isTranslation(key,
 				value);
-		boolean triggerWordVariations = this.triggerWordDao.isVariation(key,
+		boolean triggerWordVariations = triggerWordDao.isVariation(key,
 				value);
 		double sim = 0.0;
 
@@ -157,12 +153,12 @@ public class NameMatchImpl implements NameMatch {
 
 	private double tokenTranslationSimilarity(String key, String value, EType e) {
 		double sim = 0.0;
-		List<IndividualName> list = this.individualNameDao.findByNameEtype(key,
+		List<IndividualName> list = individualNameDao.findByNameEtype(key,
 				e);
 
 		if (list != null) {
 			for (IndividualName n : list) {
-				List<IndividualName> translations = this.individualNameDao
+				List<IndividualName> translations = individualNameDao
 						.findTranslations(n);
 				for (IndividualName t : translations) {
 					double tmp = stringMatching(n.getName(), t.getName(), e);
@@ -179,11 +175,11 @@ public class NameMatchImpl implements NameMatch {
 	private double triggerwordVariantSimilarity(String key, String value,
 			EType e) {
 		double sim = 0.0;
-		List<TriggerWord> tList = this.triggerWordDao.findByTriggerWordEtype(
+		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(
 				key, e);
 		if (tList != null) {
 			for (TriggerWord t : tList) {
-				List<TriggerWord> variations = this.triggerWordDao
+				List<TriggerWord> variations = triggerWordDao
 						.findVariations(t);
 				for (TriggerWord v : variations) {
 					double tmp = stringMatching(v.getTriggerWord(), value, e);
@@ -229,8 +225,8 @@ public class NameMatchImpl implements NameMatch {
 	private List<Pair<String, String>> generatePairs(FullName n1, FullName n2) {
 		List<Pair<String, String>> result = new ArrayList<Pair<String, String>>();
 
-		for (NameElement nameElement : this.elementManager
-				.findNameElement(this.etype)) {
+		for (NameElement nameElement : elementManager
+				.findNameElement(etype)) {
 
 			List<String> list1 = getTokenByElement(n1, nameElement);
 			List<String> list2 = getTokenByElement(n2, nameElement);
@@ -238,8 +234,8 @@ public class NameMatchImpl implements NameMatch {
 			result.addAll(combinePairs(list1, list2));
 		}
 
-		for (TriggerWordType twtype : this.elementManager
-				.findTriggerWordType(this.etype)) {
+		for (TriggerWordType twtype : elementManager
+				.findTriggerWordType(etype)) {
 			if (twtype.isComparable()) {
 				List<String> list1 = getTokenByElement(n1, twtype);
 				List<String> list2 = getTokenByElement(n2, twtype);
@@ -311,7 +307,7 @@ public class NameMatchImpl implements NameMatch {
 
 	@Override
 	public double dictionaryLookup(String name1, String name2, EType eType) {
-		this.etype = eType;
+		etype = eType;
 		double similarity = 0;
 
 		// check exact tuple (name1,name2,eType)
@@ -358,13 +354,13 @@ public class NameMatchImpl implements NameMatch {
 		// select namedentity.names from NamedEntity as namedentity where GUID
 		// in (select fullname.entity from FullName as fullname where name=
 		// :name) and etype=:etype)
-		return this.nameManager.retrieveVariants(n1, this.etype);
+		return nameManager.retrieveVariants(n1, etype);
 	}
 
 	private boolean dictionaryExactLookup(String n1, String n2, EType e) {
 
-		List<NamedEntity> list1 = this.entityManager.find(n1, e);
-		List<NamedEntity> list2 = this.entityManager.find(n2, e);
+		List<NamedEntity> list1 = entityManager.find(n1, e);
+		List<NamedEntity> list2 = entityManager.find(n2, e);
 
 		for (NamedEntity en1 : list1) {
 			for (NamedEntity en2 : list2) {

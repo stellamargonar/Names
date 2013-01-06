@@ -43,7 +43,7 @@ public class NameElement implements Serializable {
 	@Column(name = "elementname")
 	private String elementName;
 
-	@ManyToOne(cascade = CascadeType.REFRESH) // TODO!!!!! fetch.lazi?
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "etype_id", nullable = false)
 	private EType eType;
 
@@ -54,7 +54,7 @@ public class NameElement implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -62,7 +62,7 @@ public class NameElement implements Serializable {
 	}
 
 	public String getElementName() {
-		return this.elementName;
+		return elementName;
 	}
 
 	public void setElementName(String elementName) {
@@ -70,11 +70,11 @@ public class NameElement implements Serializable {
 	}
 
 	public EType getEtype() {
-		return this.eType;
+		return eType;
 	}
 
 	public void setEtype(EType etype) {
-		this.eType = etype;
+		eType = etype;
 	}
 
 	@Override
@@ -82,10 +82,10 @@ public class NameElement implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.eType == null ? 0 : this.eType.hashCode());
+				+ (eType == null ? 0 : eType.hashCode());
 		result = prime * result
-				+ (this.elementName == null ? 0 : this.elementName.hashCode());
-		result = prime * result + this.id;
+				+ (elementName == null ? 0 : elementName.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
@@ -101,21 +101,21 @@ public class NameElement implements Serializable {
 			return false;
 		}
 		NameElement other = (NameElement) obj;
-		if (this.eType == null) {
+		if (eType == null) {
 			if (other.eType != null) {
 				return false;
 			}
-		} else if (!this.eType.equals(other.eType)) {
+		} else if (!eType.equals(other.eType)) {
 			return false;
 		}
-		if (this.elementName == null) {
+		if (elementName == null) {
 			if (other.elementName != null) {
 				return false;
 			}
-		} else if (!this.elementName.equals(other.elementName)) {
+		} else if (!elementName.equals(other.elementName)) {
 			return false;
 		}
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
 		return true;

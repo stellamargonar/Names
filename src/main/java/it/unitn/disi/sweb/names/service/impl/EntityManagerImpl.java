@@ -34,13 +34,15 @@ public class EntityManagerImpl implements EntityManager {
 
 	@Override
 	public List<NamedEntity> find(String url, String name) {
-		if (name != null) {
+		if (name != null && url != null) {
 			return entityDao.findByNameUrl(name, url);
+		} else if (name != null) {
+			return entityDao.findByName(name);
 		} else {
+
 			return entityDao.findByUrl(url);
 		}
 	}
-
 	@Override
 	public List<NamedEntity> find(String name) {
 		return entityDao.findByName(name);

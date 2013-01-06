@@ -28,7 +28,7 @@ public class PrefixManagerImpl implements PrefixManager {
 
 	@Override
 	public void updatePrefixes() {
-		List<UsageStatistic> all = this.statDao.findAll();
+		List<UsageStatistic> all = statDao.findAll();
 
 		// TODO add prefix for each name token
 		// TODO check prefix empty
@@ -41,17 +41,18 @@ public class PrefixManagerImpl implements PrefixManager {
 		}
 
 	}
+
 	private void update(String prefix, FullName name, double frequency) {
-		Prefix p = this.prefixDao.findByPrefixSelected(prefix, name);
+		Prefix p = prefixDao.findByPrefixSelected(prefix, name);
 		if (p == null) {
 			p = new Prefix();
 			p.setFrequency(frequency);
 			p.setPrefix(prefix);
 			p.setSelected(name);
-			this.prefixDao.save(p);
+			prefixDao.save(p);
 		} else if (p.getFrequency() < frequency) {
 			p.setFrequency(frequency);
-			this.prefixDao.update(p);
+			prefixDao.update(p);
 		}
 
 	}
@@ -71,8 +72,8 @@ public class PrefixManagerImpl implements PrefixManager {
 
 	@Override
 	public List<Pair<FullName, Double>> search(String prefix) {
-		prefix = NORMALIZE ? normalize(prefix) : prefix;
-		List<Prefix> list = this.prefixDao.findByPrefix(prefix);
+		String prefixNormalized = NORMALIZE ? normalize(prefix) : prefix;
+		List<Prefix> list = prefixDao.findByPrefix(prefixNormalized);
 		if (list == null || list.isEmpty()) {
 			return Collections.emptyList();
 		}
@@ -88,22 +89,34 @@ public class PrefixManagerImpl implements PrefixManager {
 
 	@Override
 	public String normalize(String prefix) {
-		prefix = prefix.toLowerCase();
-		if (!Normalizer.isNormalized(prefix, Normalizer.Form.NFKD)) {
-			String normalized = Normalizer.normalize(prefix,
+		if (prefix == null) {
+			return null;
+		}
+
+		String prefixLC = prefix.toLowerCase();
+		if (!Normalizer.isNormalized(prefixLC, Normalizer.Form.NFKD)) {
+			String normalized = Normalizer.normalize(prefixLC,
 					Normalizer.Form.NFKD);
 			normalized = normalized.replaceAll(
 					"\\p{InCombiningDiacriticalMarks}+", "");
 			return normalized;
 		} else {
-			return prefix;
+			return prefixLC;
 		}
 	}
 
 	@Override
 	public List<Pair<FullName, Double>> search(String prefix, EType etype) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO improve implementation using directly a query
+		List<Pair<FullName, Double>> all = search(prefix);
+		List<Pair<FullName, Double>> result = new ArrayList<>(all.size());
+		for (Pair<FullName, Double> p : all) {
+			FullName f = p.key;
+			if (f.getEntity().getEType().equals(etype)) {
+				result.add(p);
+			}
+		}
+		return result;
 	}
 
 	@Autowired

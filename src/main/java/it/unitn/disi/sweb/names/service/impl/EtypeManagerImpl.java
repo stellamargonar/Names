@@ -15,6 +15,9 @@ public class EtypeManagerImpl implements EtypeManager {
 
 	@Override
 	public EType getEtype(EtypeName type) {
+		if (type == null) {
+			return null;
+		}
 		String name = "";
 		switch (type) {
 			case PERSON :
@@ -26,13 +29,8 @@ public class EtypeManagerImpl implements EtypeManager {
 			case ORGANIZATION :
 				name = "Organization";
 				break;
-			case EVENT :
-				name = "Event";
-				break;
-			default :
-				return null;
 		}
-		return this.etypeDao.findByName(name);
+		return etypeDao.findByName(name);
 	}
 
 	@Autowired

@@ -26,12 +26,13 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "triggerwordtoken", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"full_name_id", "trigger_word_id"}))
+		"full_name_id", "position"}))
 @SequenceGenerator(name = "twtoken_seq", sequenceName = "twtoken_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "TWToken.byFullName", query = "from TriggerWordToken where fullName=:name"),
 		@NamedQuery(name = "TWToken.byTriggerWord", query = "from TriggerWordToken where triggerWord=:tw"),
-		@NamedQuery(name = "TWToken.byTriggerWordFullName", query = "from TriggerWordToken where triggerWord=:tw and fullName= :fullname")})
+		@NamedQuery(name = "TWToken.byTriggerWordFullName", query = "from TriggerWordToken where triggerWord=:tw and fullName= :fullname"),
+		@NamedQuery(name = "TWToken.byFullNamePosition", query = "from TriggerWordToken where fullName=:name and position=:position")})
 public class TriggerWordToken implements Serializable {
 
 	@Id
@@ -56,7 +57,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -64,7 +65,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public FullName getFullName() {
-		return this.fullName;
+		return fullName;
 	}
 
 	public void setFullName(FullName fullName) {
@@ -72,7 +73,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public TriggerWord getTriggerWord() {
-		return this.triggerWord;
+		return triggerWord;
 	}
 
 	public void setTriggerWord(TriggerWord triggerWord) {
@@ -80,7 +81,7 @@ public class TriggerWordToken implements Serializable {
 	}
 
 	public int getPosition() {
-		return this.position;
+		return position;
 	}
 
 	public void setPosition(int position) {
@@ -91,11 +92,10 @@ public class TriggerWordToken implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (fullName == null ? 0 : fullName.hashCode());
+		result = prime * result + id;
 		result = prime * result
-				+ (this.fullName == null ? 0 : this.fullName.hashCode());
-		result = prime * result + this.id;
-		result = prime * result
-				+ (this.triggerWord == null ? 0 : this.triggerWord.hashCode());
+				+ (triggerWord == null ? 0 : triggerWord.hashCode());
 		return result;
 	}
 
@@ -111,21 +111,21 @@ public class TriggerWordToken implements Serializable {
 			return false;
 		}
 		TriggerWordToken other = (TriggerWordToken) obj;
-		if (this.fullName == null) {
+		if (fullName == null) {
 			if (other.fullName != null) {
 				return false;
 			}
-		} else if (!this.fullName.equals(other.fullName)) {
+		} else if (!fullName.equals(other.fullName)) {
 			return false;
 		}
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
-		if (this.triggerWord == null) {
+		if (triggerWord == null) {
 			if (other.triggerWord != null) {
 				return false;
 			}
-		} else if (!this.triggerWord.equals(other.triggerWord)) {
+		} else if (!triggerWord.equals(other.triggerWord)) {
 			return false;
 		}
 		return true;
@@ -133,8 +133,8 @@ public class TriggerWordToken implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TriggerWordToken [triggerWord=" + this.triggerWord
-				+ ", position=" + this.position + "]";
+		return "TriggerWordToken [triggerWord=" + triggerWord + ", position="
+				+ position + "]";
 	}
 
 }

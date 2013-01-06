@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.service.TestMatch
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.846 sec <<< FAILURE!
-testStringSimilarityFullName(it.unitn.disi.sweb.names.service.TestMatch)  Time elapsed: 0.173 sec  <<< FAILURE!
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.835 sec <<< FAILURE!
+testStringSimilarityFullName(it.unitn.disi.sweb.names.service.TestMatch)  Time elapsed: 0.096 sec  <<< FAILURE!
 java.lang.AssertionError: Not yet implemented
 	at org.junit.Assert.fail(Assert.java:91)
 	at it.unitn.disi.sweb.names.service.TestMatch.testStringSimilarityFullName(TestMatch.java:129)
@@ -43,7 +43,7 @@ java.lang.AssertionError: Not yet implemented
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
 
-testTokenAnalysis(it.unitn.disi.sweb.names.service.TestMatch)  Time elapsed: 0.306 sec  <<< FAILURE!
+testTokenAnalysis(it.unitn.disi.sweb.names.service.TestMatch)  Time elapsed: 0.513 sec  <<< FAILURE!
 java.lang.AssertionError: 
 	at org.junit.Assert.fail(Assert.java:91)
 	at org.junit.Assert.assertTrue(Assert.java:43)

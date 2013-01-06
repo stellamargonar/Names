@@ -16,6 +16,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,7 @@ public class NameSearchImpl implements NameSearch {
 		for (Pair<NamedEntity, Double> el : list) {
 			// TODO rimettere lista nomi in namedentity
 
-			List<FullName> names = this.nameManager.find(el.key);
+			List<FullName> names = nameManager.find(el.key);
 			for (FullName n : names) {
 				result.add(new Pair<String, Double>(n.getName(), el.value));
 			}
@@ -59,8 +60,8 @@ public class NameSearchImpl implements NameSearch {
 
 		Map<NamedEntity, Double> listEquals = searchEquals(input);
 
-		String[] tokens = generateTokens(input); // tokens used also by other
-													// functions
+		// tokens used also by other functions
+		String[] tokens = generateTokens(input);
 
 		Map<NamedEntity, Double> listReordering = searchReordered(tokens);
 
@@ -73,16 +74,16 @@ public class NameSearchImpl implements NameSearch {
 	}
 
 	private Map<NamedEntity, Double> searchTopRank(String input) {
-		Map<FullName, Double> names = this.statManager.retrieveTopResults(
-				input, MAXRESULT);
+		Map<FullName, Double> names = statManager.retrieveTopResults(input,
+				MAXRESULT);
 		if (names == null) {
 			return null;
 		}
 
 		Map<NamedEntity, Double> result = new HashMap<>(names.size());
 
-		for (FullName name : names.keySet()) {
-			result.put(name.getEntity(), names.get(name));
+		for (Entry<FullName, Double> entry : names.entrySet()) {
+			result.put(entry.getKey().getEntity(), entry.getValue());
 		}
 
 		return result;
@@ -101,8 +102,7 @@ public class NameSearchImpl implements NameSearch {
 	 * @return list of entities
 	 */
 	private Map<NamedEntity, Double> searchEquals(String input) {
-		List<FullName> found = this.nameManager.find(input,
-				SearchType.TOCOMPARE);
+		List<FullName> found = nameManager.find(input, SearchType.TOCOMPARE);
 		if (found == null || found.isEmpty()) {
 			return null;
 		}
@@ -119,11 +119,13 @@ public class NameSearchImpl implements NameSearch {
 		String inputOrdered = "";
 		List<String> tokensList = Arrays.asList(tokens);
 		Collections.sort(tokensList);
+		StringBuffer buf = new StringBuffer();
 		for (String s : tokensList) {
-			inputOrdered += s + " ";
+			buf.append(s + " ");
 		}
+		inputOrdered = buf.toString();
 
-		List<FullName> found = this.nameManager.find(inputOrdered,
+		List<FullName> found = nameManager.find(inputOrdered,
 				SearchType.NORMALIZED);
 
 		Map<NamedEntity, Double> result = new HashMap<>();
@@ -137,13 +139,12 @@ public class NameSearchImpl implements NameSearch {
 	}
 
 	private Map<NamedEntity, Double> searchMisspllings(String input) {
-		List<FullName> candidates = this.nameManager.find(input,
-				SearchType.NGRAM);
+		List<FullName> candidates = nameManager.find(input, SearchType.NGRAM);
 
 		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : candidates) {
-			double similarity = this.nameMatch.stringSimilarity(input,
-					n.getName(), null);
+			double similarity = nameMatch.stringSimilarity(input, n.getName(),
+					null);
 			double oldSimilarity = result.get(n.getEntity()) != null ? result
 					.get(n.getEntity()) : 0.0;
 			if (similarity > 0.0 && oldSimilarity < similarity) {
@@ -174,8 +175,8 @@ public class NameSearchImpl implements NameSearch {
 		}
 
 		Map<NamedEntity, Double> result = new HashMap<>();
-		for (NamedEntity e : candidates.keySet()) {
-			result.put(e, candidates.get(e) / size);
+		for (Entry<NamedEntity, Double> e : candidates.entrySet()) {
+			result.put(e.getKey(), e.getValue() / size);
 		}
 		return result;
 	}
@@ -187,8 +188,7 @@ public class NameSearchImpl implements NameSearch {
 	 * @return list of entities
 	 */
 	private List<NamedEntity> searchSingleToken(String input) {
-		List<FullName> names = this.nameManager.find(input,
-				SearchType.SINGLETOKEN);
+		List<FullName> names = nameManager.find(input, SearchType.SINGLETOKEN);
 		if (names == null || names.isEmpty()) {
 			return null;
 		}
@@ -214,8 +214,8 @@ public class NameSearchImpl implements NameSearch {
 		all = addToResult(listToken, all);
 
 		List<Pair<NamedEntity, Double>> result = new ArrayList<>(all.size());
-		for (NamedEntity e : all.keySet()) {
-			result.add(new Pair<NamedEntity, Double>(e, all.get(e)));
+		for (Entry<NamedEntity, Double> e : all.entrySet()) {
+			result.add(new Pair<NamedEntity, Double>(e.getKey(), e.getValue()));
 		}
 		Collections.sort(result, new Comparator<Pair<NamedEntity, Double>>() {
 
@@ -234,10 +234,11 @@ public class NameSearchImpl implements NameSearch {
 		if (list == null || list.isEmpty()) {
 			return all;
 		}
-		for (NamedEntity e : list.keySet()) {
-			if (all.containsKey(e) && all.get(e) < list.get(e)
-					|| !all.containsKey(e)) {
-				all.put(e, list.get(e));
+		for (Entry<NamedEntity, Double> e : list.entrySet()) {
+			if (all.containsKey(e.getKey())
+					&& all.get(e.getKey()) < e.getValue()
+					|| !all.containsKey(e.getKey())) {
+				all.put(e.getKey(), e.getValue());
 			}
 
 		}

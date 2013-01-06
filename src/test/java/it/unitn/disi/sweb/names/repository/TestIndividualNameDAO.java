@@ -91,7 +91,7 @@ public class TestIndividualNameDAO extends TestCase {
 		i = returned;
 	}
 
-//	@Test
+	// @Test
 	public final void testDelete() {
 		System.out.println(i);
 		dao.delete(i);
@@ -131,6 +131,7 @@ public class TestIndividualNameDAO extends TestCase {
 	@Test
 	public final void testIsTranslation() {
 		assertTrue(dao.isTranslation(name, translation));
+		assertFalse(dao.isTranslation(name, translation + "x"));
 	}
 
 	@Test

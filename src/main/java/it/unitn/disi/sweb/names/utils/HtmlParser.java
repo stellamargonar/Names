@@ -21,6 +21,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
@@ -30,11 +31,11 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class HtmlParser {
 
-	DictionaryDAO dao;
+	private DictionaryDAO dao;
 
+	@Autowired
 	public void setDictionaryDAO(DictionaryDAO dao) {
 		this.dao = dao;
-		System.out.println("dao setted " + dao);
 	}
 
 	private List<String> extractHTMLElement(String url, String path)
@@ -51,9 +52,7 @@ public class HtmlParser {
 		XPath xPath = xPathFactory.newXPath();
 		String expression = path;
 		XPathExpression xPathExpression = xPath.compile(expression);
-		// Object result = xPathExpression.evaluate(tidyDOM,
-		// XPathConstants.NODESET);
-		//
+
 		NodeList nodes = (NodeList) xPathExpression.evaluate(tidyDOM,
 				XPathConstants.NODESET);
 		List<String> nodesText = new ArrayList<String>();
@@ -77,7 +76,7 @@ public class HtmlParser {
 	}
 
 	public Set<String> extractJobList() {
-		try { // "/html/body/div/table/tbody/tr/td/div/ul/li/a/text()"
+		try {
 			List<String> result = extractHTMLElement(
 					"http://www.bls.gov/soc/2010/soc_alph.htm",
 					"//td/div/ul/li/a/text()");
@@ -85,8 +84,8 @@ public class HtmlParser {
 			for (String s : result) {
 				String job = s;
 				if (s.contains(",")) {
-					String[] tokens = s.split(","); // there is always at most 1
-													// comma per each row
+					// there is always at most 1 comma per each row
+					String[] tokens = s.split(",");
 					tokens[1] = tokens[1].substring(1, tokens[1].length());
 					tokens[0] = removePluralS(tokens[0]);
 					job = tokens[1] + " " + tokens[0];
@@ -139,19 +138,16 @@ public class HtmlParser {
 
 		List<String> list;
 
-		// private List<Translation> translations = new
-		// ArrayList<Translation>();
-
 		@Override
 		public void startElement(String uri, String localName, String qName,
 				Attributes attributes) throws SAXException {
 
 			if (isPageTag(qName)) {
-				this.bfpage = true;
-				this.list = new ArrayList<String>();
+				bfpage = true;
+				list = new ArrayList<String>();
 			}
-			if (this.bfpage && !isPageTag(qName)) {
-				this.bflang = true;
+			if (bfpage && !isPageTag(qName)) {
+				bflang = true;
 			}
 		}
 
@@ -160,14 +156,14 @@ public class HtmlParser {
 				throws SAXException {
 
 			if (isPageTag(qName)) {
-				this.bfpage = false;
-				this.bflang = false;
+				bfpage = false;
+				bflang = false;
 				// add translations to some external data structure
-				for (int i = 0; i < this.list.size(); i++) {
-					String source = this.list.get(i);
-					for (int j = i+1; j < this.list.size(); j++) {
-						if (!source.equals(this.list.get(j))) {
-							HtmlParser.this.dao.create(new Translation(source, this.list.get(j)));
+				for (int i = 0; i < list.size(); i++) {
+					String source = list.get(i);
+					for (int j = i + 1; j < list.size(); j++) {
+						if (!source.equals(list.get(j))) {
+							dao.create(new Translation(source, list.get(j)));
 						}
 					}
 				}
@@ -177,10 +173,10 @@ public class HtmlParser {
 		@Override
 		public void characters(char ch[], int start, int length)
 				throws SAXException {
-			if (this.bflang) {
+			if (bflang) {
 				String s = new String(ch, start, length);
 				if (!s.equals("\n") && !s.equals("\n\t")) {
-					this.list.add(s);
+					list.add(s);
 				}
 			}
 		}

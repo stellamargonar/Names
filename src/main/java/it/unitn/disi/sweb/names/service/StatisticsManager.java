@@ -21,4 +21,6 @@ public interface StatisticsManager {
 	 * @return list of most frequently selected names for the input query
 	 */
 	Map<FullName, Double> retrieveTopResults(String query, int maxNrResults);
+
+	double retrieveFrequency(String query, FullName selected);
 }

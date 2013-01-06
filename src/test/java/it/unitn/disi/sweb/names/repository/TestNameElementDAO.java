@@ -102,7 +102,7 @@ public class TestNameElementDAO extends TestCase {
 
 	@Test
 	public final void testFindAll() {
-		List<NameElement> found = dao.findName(name);
+		List<NameElement> found = dao.findAll();
 		assertNotNull(found);
 		assertTrue(found.size() > 0);
 	}
@@ -125,7 +125,7 @@ public class TestNameElementDAO extends TestCase {
 		assertEquals(found.getEtype(), el.getEtype());
 	}
 
-	@Test
+//	@Test
 	@Rollback(true)
 	public final void testDeleteAll() {
 		dao.deleteAll();

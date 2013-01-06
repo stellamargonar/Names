@@ -33,7 +33,7 @@ public class TriggerWordTokenDAOImpl implements TriggerWordTokenDAO {
 
 	@Override
 	@Transactional
-	public TriggerWordToken upload(TriggerWordToken twToken) {
+	public TriggerWordToken update(TriggerWordToken twToken) {
 		return save(twToken);
 	}
 
@@ -69,13 +69,23 @@ public class TriggerWordTokenDAOImpl implements TriggerWordTokenDAO {
 
 	@Override
 	@Transactional
-	public TriggerWordToken findByTriggerWordFullName(TriggerWord triggerWord,
-			FullName fullName) {
+	public List<TriggerWordToken> findByTriggerWordFullName(
+			TriggerWord triggerWord, FullName fullName) {
 		return em
 				.createNamedQuery("TWToken.byTriggerWordFullName",
 						TriggerWordToken.class)
-				.setParameter("fullName", fullName)
-				.setParameter("tw", triggerWord).getSingleResult();
+				.setParameter("fullname", fullName)
+				.setParameter("tw", triggerWord).getResultList();
+	}
+
+	@Override
+	@Transactional
+	public TriggerWordToken findFullNamePosition(FullName fullName, int position) {
+		return em
+				.createNamedQuery("TWToken.byFullNamePosition",
+						TriggerWordToken.class)
+				.setParameter("name", fullName)
+				.setParameter("position", position).getSingleResult();
 	}
 
 }

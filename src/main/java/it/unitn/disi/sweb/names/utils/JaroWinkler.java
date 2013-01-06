@@ -28,8 +28,8 @@ public final class JaroWinkler implements MisspellingsComparator {
 	 * on the exact algorithm and its parameters.
 	 */
 	private JaroWinkler(double weightThreshold, int numChars) {
-		this.mNumChars = numChars;
-		this.mWeightThreshold = weightThreshold;
+		mNumChars = numChars;
+		mWeightThreshold = weightThreshold;
 	}
 
 	/**
@@ -99,19 +99,17 @@ public final class JaroWinkler implements MisspellingsComparator {
 			}
 			++j;
 		}
-		// System.out.println("numHalfTransposed=" + numHalfTransposed);
 		int numTransposed = numHalfTransposed / 2;
 
-		// System.out.println("numCommon=" + numCommon
-		// + " numTransposed=" + numTransposed);
 		double numCommonD = numCommon;
 		double weight = (numCommonD / len1 + numCommonD / len2 + (numCommon - numTransposed)
 				/ numCommonD) / 3.0;
 
-		if (weight <= this.mWeightThreshold) {
+		if (weight <= mWeightThreshold) {
 			return weight;
 		}
-		int max = Math.min(this.mNumChars, Math.min(cSeq1.length(), cSeq2.length()));
+		int max = Math.min(mNumChars,
+				Math.min(cSeq1.length(), cSeq2.length()));
 		int pos = 0;
 		while (pos < max && cSeq1.charAt(pos) == cSeq2.charAt(pos)) {
 			++pos;
@@ -122,16 +120,6 @@ public final class JaroWinkler implements MisspellingsComparator {
 		return weight + 0.1 * pos * (1.0 - weight);
 
 	}
-
-	/**
-	 * A constant for the Jaro distance. The value is the same as would be
-	 * returned by the nullary constructor <code>JaroWinklerDistance()</code>.
-	 *
-	 * <p>
-	 * Instances are thread safe, so this single distance instance may be used
-	 * for all comparisons within an application.
-	 */
-	private static final JaroWinkler JARO_DISTANCE = new JaroWinkler();
 
 	/**
 	 * A constant for the Jaro-Winkler distance with defaults set as in

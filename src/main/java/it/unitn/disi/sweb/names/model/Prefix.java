@@ -42,8 +42,16 @@ public class Prefix {
 	@Column(name = "frequency")
 	private double frequency;
 
+	public Prefix() {
+	}
+
+	public Prefix(String prefix, FullName selected) {
+		setPrefix(prefix);
+		setSelected(selected);
+	}
+
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -51,7 +59,7 @@ public class Prefix {
 	}
 
 	public String getPrefix() {
-		return this.prefix;
+		return prefix;
 	}
 
 	public void setPrefix(String prefix) {
@@ -59,7 +67,7 @@ public class Prefix {
 	}
 
 	public FullName getSelected() {
-		return this.selected;
+		return selected;
 	}
 
 	public void setSelected(FullName selected) {
@@ -67,7 +75,7 @@ public class Prefix {
 	}
 
 	public double getFrequency() {
-		return this.frequency;
+		return frequency;
 	}
 
 	public void setFrequency(double frequency) {
@@ -79,9 +87,9 @@ public class Prefix {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.prefix == null ? 0 : this.prefix.hashCode());
+				+ (prefix == null ? 0 : prefix.hashCode());
 		result = prime * result
-				+ (this.selected == null ? 0 : this.selected.hashCode());
+				+ (selected == null ? 0 : selected.hashCode());
 		return result;
 	}
 
@@ -97,18 +105,18 @@ public class Prefix {
 			return false;
 		}
 		Prefix other = (Prefix) obj;
-		if (this.prefix == null) {
+		if (prefix == null) {
 			if (other.prefix != null) {
 				return false;
 			}
-		} else if (!this.prefix.equals(other.prefix)) {
+		} else if (!prefix.equals(other.prefix)) {
 			return false;
 		}
-		if (this.selected == null) {
+		if (selected == null) {
 			if (other.selected != null) {
 				return false;
 			}
-		} else if (!this.selected.equals(other.selected)) {
+		} else if (!selected.equals(other.selected)) {
 			return false;
 		}
 		return true;
