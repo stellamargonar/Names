@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.repository.TestNameElementDAO
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 sec
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.261 sec

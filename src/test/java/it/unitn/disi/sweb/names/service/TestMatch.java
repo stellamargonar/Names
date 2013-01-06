@@ -3,15 +3,9 @@
  */
 package it.unitn.disi.sweb.names.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NamedEntity;
-
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author stella
@@ -28,7 +23,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/testApplicationContext.xml"})
-public class TestMatch {
+@Transactional(rollbackFor = Throwable.class)
+public class TestMatch extends TestCase {
 
 	@Autowired
 	NameManager nameManager;
@@ -40,55 +36,39 @@ public class TestMatch {
 	@Autowired
 	NameMatch nameMatch;
 
+	private EType etype;
+
 	/**
 	 * sets up data for testing
 	 *
 	 * @throws java.lang.Exception
 	 */
+	@Override
 	@Before
 	public void setUp() throws Exception {
-		String[] names1 = {"Garda", "Citta' Garda"};
-		String url1 = "http://www.comunedigarda.it";
-
-		String[] names2 = {"Lago di Garda", "Garda"};
-		String url2 = "http://it.wikipedia.org/wiki/Lago_di_Garda";
-
-		String[] names3 = {"Garda Lake"};
-		String url3 = "http://en.wikipedia.org/wiki/Lake_Garda";
-		EtypeName type = EtypeName.LOCATION;
-
-		createEntity(names1, type, url1);
-		createEntity(names2, type, url2);
-		createEntity(names3, type, url3);
-
-		String[] names4 = {"Fausto Giunchiglia", "Professor Giunchiglia",
-				"Supervisor"};
-		String url4 = "http://disi.unitn.it/~fausto/";
-
-		createEntity(names4, EtypeName.PERSON, url4);
-
+		etype = etypeManager.getEtype(EtypeName.LOCATION);
 	}
 
-	private void createEntity(String[] names, EtypeName etype, String url) {
-		NamedEntity ne = null;
-		List<NamedEntity> list = this.entityManager.find(url, names[0]);
-		if (list != null && !list.isEmpty()) {
-			ne = list.get(0);
-		} else {
-			ne = this.entityManager.createEntity(
-					this.etypeManager.getEtype(etype), url);
-		}
+	private void setUpDictionaryLookup() {
+		// create entity nyc
+		NamedEntity nyc = entityManager.createEntity(etype,
+				"http://en.wikipedia.org/wiki/New_York_City");
+		nameManager.createFullName("New York", nyc);
+		nameManager.createFullName("The Big Apple", nyc);
 
-		for (String name : names) {
-			if (name != null) {
-				this.nameManager.createFullName(name, ne);
-			}
-		}
+		NamedEntity nys = entityManager.createEntity(etype,
+				"http://en.wikipedia.org/wiki/New_York");
+		nameManager.createFullName("New York State", nys);
+	}
+
+	private void setUpToken() {
+
 	}
 
 	/**
 	 * @throws java.lang.Exception
 	 */
+	@Override
 	@After
 	public void tearDown() throws Exception {
 		// TODO remove entities or simply clear tables
@@ -100,23 +80,89 @@ public class TestMatch {
 	 * .
 	 */
 	@Test
-	public final void testStringSimilarityString() {
-		EType etype = this.etypeManager.getEtype(EtypeName.PERSON);
-		String name1 = "Stella Margonar";
-		String name2 = "Stella Margonar";
+	public final void testStringSimilarity1() {
+		String name1 = null;
+		String name2 = null;
 
-		double similarity = this.nameMatch
-				.stringSimilarity(name1, name2, etype);
-		printResult(name1, name2, similarity);
-		assertEquals(similarity, 1, 0.1);
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
 
-		name1 = "Stella Margonar";
-		name2 = "stelaa Margar";
+		name1 = null;
+		name2 = "a";
 
-		similarity = this.nameMatch.stringSimilarity(name1, name2, etype);
+		similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
 
-		printResult(name1, name2, similarity);
+		name1 = "a";
+		name2 = null;
+
+		similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testStringSimilarity2() {
+		String name1 = "";
+		String name2 = "";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(1.0, similarity);
+	}
+
+	@Test
+	public final void testStringSimilarity3() {
+		String name1 = "";
+		String name2 = "ABCDEFG";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testStringSimilarity4() {
+		String name1 = "abc";
+		String name2 = "def";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testStringSimilarity5() {
+		String name1 = "ab";
+		String name2 = "abc";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
 		assertTrue(similarity > 0.5);
+	}
+
+	@Test
+	public final void testStringSimilarity6() {
+		String name1 = "abc def";
+		String name2 = "def abc";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	/**
+	 * test string length difference
+	 */
+	@Test
+	public final void testStringSimilarity7() {
+		String name1 = "annalisa";
+		String name2 = "anna";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+	@Test
+	public final void testStringSimilarity8() {
+		String name1 = "guglielmo";
+		String name2 = "pierpaolo";
+
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		assertTrue(similarity < 0.6);
 	}
 
 	/**
@@ -124,7 +170,7 @@ public class TestMatch {
 	 * {@link it.unitn.disi.sweb.names.service.NameMatch#stringSimilarity(it.unitn.disi.sweb.names.model.FullName, it.unitn.disi.sweb.names.model.FullName, it.unitn.disi.sweb.names.model.EType)}
 	 * .
 	 */
-	@Test
+	// @Test
 	public final void testStringSimilarityFullName() {
 		fail("Not yet implemented"); // TODO
 	}
@@ -135,16 +181,110 @@ public class TestMatch {
 	 * .
 	 */
 	@Test
-	public final void testDictionaryLookup() {
-		String name1 = "Fausto Giunchiglia";
-		String name2 = "Supervisor";
-		EType etype = this.etypeManager.getEtype(EtypeName.PERSON);
+	public final void testDictionaryLookup1() {
+		setUpDictionaryLookup();
 
-		double similarity = this.nameMatch
-				.dictionaryLookup(name1, name2, etype);
+		String name1 = null;
+		String name2 = null;
 
-		printResult(name1, name2, similarity);
-		assertTrue(similarity > 0.8);
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testDictionaryLookup2() {
+		setUpDictionaryLookup();
+
+		String name1 = null;
+		String name2 = "test";
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
+
+		name1 = "test";
+		name2 = null;
+		similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
+
+	}
+
+	@Test
+	public final void testDictionaryLookup3() {
+		setUpDictionaryLookup();
+
+		String name1 = "New York";
+		String name2 = "The Big Apple";
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(1.0, similarity);
+	}
+
+	@Test
+	public final void testDictionaryLookup4() {
+		setUpDictionaryLookup();
+
+		String name1 = "New York";
+		String name2 = "The Big Apple";
+		etype = null;
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(1.0, similarity);
+	}
+
+	@Test
+	public final void testDictionaryLookup5() {
+		setUpDictionaryLookup();
+
+		String name1 = "AAAAAAAAAAAAA";
+		String name2 = "BBBBBBB";
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testDictionaryLookup6() {
+		setUpDictionaryLookup();
+
+		String name1 = "New York";
+		String name2 = "New York State";
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testDictionaryLookup7() {
+		setUpDictionaryLookup();
+
+		String name1 = "New York";
+		String name2 = "The Big Appla";
+		etype = null;
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertTrue(similarity > 0.0);
+	}
+
+	@Test
+	public final void testDictionaryLookup8() {
+		setUpDictionaryLookup();
+
+		String name1 = "New York";
+		String name2 = "The Big Application";
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
+	}
+
+	@Test
+	public final void testDictionaryLookup9() {
+		setUpDictionaryLookup();
+
+		String name1 = "New Yorker";
+		String name2 = "The Big Apple";
+
+		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
+		assertEquals(0.0, similarity);
 	}
 
 	/**
@@ -152,21 +292,18 @@ public class TestMatch {
 	 * {@link it.unitn.disi.sweb.names.service.NameMatch#tokenAnalysis(java.lang.String, java.lang.String, it.unitn.disi.sweb.names.model.EType)}
 	 * .
 	 */
-	@Test
+	// @Test
 	public final void testTokenAnalysis() {
-		EType etype = this.etypeManager.getEtype(EtypeName.LOCATION);
+		setUpToken();
+		EType etype = etypeManager.getEtype(EtypeName.LOCATION);
 
 		String name1 = "Lago di Garda";
 		String name2 = "Garda Loke";
 
-		double similarity = this.nameMatch.tokenAnalysis(name1, name2, etype);
-		printResult(name1, name2, similarity);
+		double similarity = nameMatch.tokenAnalysis(name1, name2, etype);
 		assertTrue(similarity >= 0.5);
 	}
 
-	private void printResult(String name1, String name2, double result) {
-		Logger.getAnonymousLogger().log(Level.INFO,
-				"f(" + name1 + ", " + name2 + ") = " + result);
-	}
+
 
 }

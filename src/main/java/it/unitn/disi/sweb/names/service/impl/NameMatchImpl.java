@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
 public class NameMatchImpl implements NameMatch {
 
 	private static final int MAX_LENGTH_DIFFERENCE = 3;
-	private static final double THRESHOLD_MISSPELLINGS = 0.5;
+	private static final double THRESHOLD_MISSPELLINGS = 0.7;
 	private static final double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
 
 	private IndividualNameDAO individualNameDao;
@@ -49,27 +49,38 @@ public class NameMatchImpl implements NameMatch {
 
 	@Override
 	public double stringSimilarity(String name1, String name2, EType eType) {
-		etype = etype;
+		etype = eType;
+
 		// TODO should we consider at this point the titles ecc, or compare only
 		// the "name_to_compare" ?
 		/*
 		 * stringsim (obj 1, obj 2) { if (obj1 instance of string) nothing else
 		 * if obj instance of some hash map with name -> field & position
 		 */
-		double similarity = 0;
+
+		// if the strings are equals, then similarity is 1 (max value)
 		if (stringEquality(name1, name2)) {
-			similarity = 1;
+			return 1;
 		} else {
-			similarity = stringMatching(name1, name2, eType);
+			// otherwise check if they match wrt to misspellings
+			return stringMatching(name1, name2);
 		}
-		return similarity;
 	}
 
 	@Override
 	public double stringSimilarity(FullName name1, FullName name2, EType eType) {
+		// TODO not yet implemented
 		return 0;
 	}
 
+	/**
+	 * check wheter the two input strings are equals comparing their characters.
+	 * based on the Java.lang.String.equals method
+	 *
+	 * @param string1
+	 * @param string2
+	 * @return true if they are the same string and not null, false otherwise
+	 */
 	private boolean stringEquality(String string1, String string2) {
 		if (string1 != null && string2 != null) {
 			return string1.equals(string2);
@@ -78,12 +89,28 @@ public class NameMatchImpl implements NameMatch {
 		}
 	}
 
-	private double stringMatching(String name1, String name2, EType eType) {
+	/**
+	 * compute the confidence degree for two string to match, meaning to be the
+	 * same string with respect to misspellings and variations
+	 *
+	 * @param name1
+	 *            string representing name1
+	 * @param name2
+	 *            string representing name2
+	 * @return similarity value if they match in [0,1], or 0 if they do not
+	 *         match
+	 */
+	private double stringMatching(String name1, String name2) {
 		double sim = 0;
+
+		// applies string comparator function only if they strings have
+		// approximately the same length
 		if (StringCompareUtils.lengthDifference(name1, name2) < MAX_LENGTH_DIFFERENCE) {
-			sim = misspellingsSimilarity(name1, name2, eType);
+			sim = misspellingsSimilarity(name1, name2);
 		}
 
+		// similarity is returned only when it is acceptable
+		// which means higher than a threshold
 		if (sim > THRESHOLD_MISSPELLINGS) {
 			return sim;
 		} else {
@@ -91,9 +118,8 @@ public class NameMatchImpl implements NameMatch {
 		}
 	}
 
-	private double misspellingsSimilarity(String string1, String string2,
-			EType eType) {
-		return comparator.getSimilarity(string1, string2);
+	private double misspellingsSimilarity(String name1, String name2) {
+		return comparator.getSimilarity(name1, name2);
 	}
 
 	@Override
@@ -116,8 +142,7 @@ public class NameMatchImpl implements NameMatch {
 				double simToken = stringSimilarity(pair.key, pair.value, eType);
 
 				// TODO aggiungere anche variation sulle variant
-				double simVariation = tokenVariant(pair.key, pair.value,
-						etype);
+				double simVariation = tokenVariant(pair.key, pair.value, etype);
 				totalSimilarity += Math.max(simToken, simVariation)
 						* ((double) pair.value.length() / name2.length());
 			}
@@ -134,10 +159,8 @@ public class NameMatchImpl implements NameMatch {
 		}
 
 		// cercare in traduzioni e varianti se c'e' un match
-		boolean nameTranslation = individualNameDao.isTranslation(key,
-				value);
-		boolean triggerWordVariations = triggerWordDao.isVariation(key,
-				value);
+		boolean nameTranslation = individualNameDao.isTranslation(key, value);
+		boolean triggerWordVariations = triggerWordDao.isVariation(key, value);
 		double sim = 0.0;
 
 		if (nameTranslation || triggerWordVariations) {
@@ -153,15 +176,14 @@ public class NameMatchImpl implements NameMatch {
 
 	private double tokenTranslationSimilarity(String key, String value, EType e) {
 		double sim = 0.0;
-		List<IndividualName> list = individualNameDao.findByNameEtype(key,
-				e);
+		List<IndividualName> list = individualNameDao.findByNameEtype(key, e);
 
 		if (list != null) {
 			for (IndividualName n : list) {
 				List<IndividualName> translations = individualNameDao
 						.findTranslations(n);
 				for (IndividualName t : translations) {
-					double tmp = stringMatching(n.getName(), t.getName(), e);
+					double tmp = stringMatching(n.getName(), t.getName());
 					if (tmp > sim) {
 						sim = tmp;
 					}
@@ -175,14 +197,12 @@ public class NameMatchImpl implements NameMatch {
 	private double triggerwordVariantSimilarity(String key, String value,
 			EType e) {
 		double sim = 0.0;
-		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(
-				key, e);
+		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(key, e);
 		if (tList != null) {
 			for (TriggerWord t : tList) {
-				List<TriggerWord> variations = triggerWordDao
-						.findVariations(t);
+				List<TriggerWord> variations = triggerWordDao.findVariations(t);
 				for (TriggerWord v : variations) {
-					double tmp = stringMatching(v.getTriggerWord(), value, e);
+					double tmp = stringMatching(v.getTriggerWord(), value);
 					if (tmp > sim) {
 						sim = tmp;
 					}
@@ -225,8 +245,7 @@ public class NameMatchImpl implements NameMatch {
 	private List<Pair<String, String>> generatePairs(FullName n1, FullName n2) {
 		List<Pair<String, String>> result = new ArrayList<Pair<String, String>>();
 
-		for (NameElement nameElement : elementManager
-				.findNameElement(etype)) {
+		for (NameElement nameElement : elementManager.findNameElement(etype)) {
 
 			List<String> list1 = getTokenByElement(n1, nameElement);
 			List<String> list2 = getTokenByElement(n2, nameElement);
@@ -234,8 +253,7 @@ public class NameMatchImpl implements NameMatch {
 			result.addAll(combinePairs(list1, list2));
 		}
 
-		for (TriggerWordType twtype : elementManager
-				.findTriggerWordType(etype)) {
+		for (TriggerWordType twtype : elementManager.findTriggerWordType(etype)) {
 			if (twtype.isComparable()) {
 				List<String> list1 = getTokenByElement(n1, twtype);
 				List<String> list2 = getTokenByElement(n2, twtype);
@@ -310,9 +328,13 @@ public class NameMatchImpl implements NameMatch {
 		etype = eType;
 		double similarity = 0;
 
+		if (name1 == null || name2 == null) {
+			return 0.0;
+		}
+
 		// check exact tuple (name1,name2,eType)
 		if (dictionaryExactLookup(name1, name2, eType)) {
-			return 1;
+			return 1.0;
 		} else {
 			// check variations on alternative names
 			similarity = nameVariantSimilarity(name1, name2, eType);
@@ -320,24 +342,38 @@ public class NameMatchImpl implements NameMatch {
 		return similarity > THRESHOLD_DICTIONARY ? similarity : 0;
 	}
 
-	private double nameVariantSimilarity(String n1, String n2, EType e) {
+	/**
+	 * check whether name2 is a variation of one variant of name1
+	 *
+	 * @param name1
+	 * @param name2
+	 * @param etype
+	 * @return similarity of name2 with the variant of name1 (if any), 0
+	 *         otherwise
+	 */
+	private double nameVariantSimilarity(String name1, String name2, EType etype) {
 		double similarity = 0;
-		// retrieves alternative names for n1
-		List<FullName> variants = retrieveVariants(n1);
 
-		// order list of variant accordingly to some criteria for analyzing
-		// first
-		// variants which are highly probable to match name2
+		// retrieves alternative names for n1
+		List<FullName> variants = retrieveVariants(name1, etype);
+
+		// order list of variantfor analyzing first the most probable match for
+		// name2
 		variants = orderVariant(variants);
 
-		// for each variant of n1
+		// for each variant of name1
 		for (FullName name : variants) {
-			// check plain string sim
-			if (stringEquality(name.getName(), n2)) {
-				return 1;
+			// check exact string similarity
+			if (stringEquality(name.getName(), name2)) {
+				// TODO remove string equality check
+				// never reached since exact variant is checked by
+				// exactDictionaryLookup
+				return 1.0;
 			} else {
-				similarity = stringSimilarity(name.getName(), n2, e);
-				if (similarity > 0) {
+				similarity = stringSimilarity(name.getName(), name2, etype);
+				// TODO define a correct threshold for misspellings and
+				// dictionary
+				if (similarity > THRESHOLD_MISSPELLINGS) {
 					return similarity;
 				}
 			}
@@ -345,23 +381,58 @@ public class NameMatchImpl implements NameMatch {
 		return 0;
 	}
 
+	/**
+	 * order list of variant accordingly to some criteria for analyzing first
+	 * variants which are highly probable to match name2
+	 *
+	 * @param variants
+	 * @return list of names ordered
+	 */
 	private List<FullName> orderVariant(List<FullName> variants) {
 		// TODO Auto-generated method stub
 		return variants;
 	}
 
-	private List<FullName> retrieveVariants(String n1) {
-		// select namedentity.names from NamedEntity as namedentity where GUID
-		// in (select fullname.entity from FullName as fullname where name=
-		// :name) and etype=:etype)
-		return nameManager.retrieveVariants(n1, etype);
+	/**
+	 * query the database for all the other names of entities which have "name"
+	 * as name
+	 *
+	 *
+	 * @param name
+	 * @param etype
+	 *            (optional)
+	 * @return list of names
+	 */
+	private List<FullName> retrieveVariants(String name, EType etype) {
+		return nameManager.retrieveVariants(name, etype);
 	}
 
-	private boolean dictionaryExactLookup(String n1, String n2, EType e) {
+	/**
+	 * check if the two strings correspond to the different names for the same
+	 * entity.
+	 *
+	 * @param name1
+	 * @param name2
+	 * @param e
+	 *            etype of the entity (optional)
+	 * @return true if there is (at least) one entity which has name1 and name2
+	 *         as possible names, false otherwise
+	 */
+	private boolean dictionaryExactLookup(String name1, String name2, EType e) {
+		List<NamedEntity> list1, list2;
 
-		List<NamedEntity> list1 = entityManager.find(n1, e);
-		List<NamedEntity> list2 = entityManager.find(n2, e);
+		// if etype specified, restrict the search to entities of etype e
+		if (e != null) {
+			list1 = entityManager.find(name1, e);
+			list2 = entityManager.find(name2, e);
+		}
+		// otherwise do not consider the etype
+		else {
+			list1 = entityManager.find(name1);
+			list2 = entityManager.find(name2);
+		}
 
+		// check if at least one entity is included in both lists
 		for (NamedEntity en1 : list1) {
 			for (NamedEntity en2 : list2) {
 				if (en1.equals(en2)) {

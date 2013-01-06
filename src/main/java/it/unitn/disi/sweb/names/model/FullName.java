@@ -48,9 +48,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
 		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity"),
-		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity = (select fullname.entity from FullName as fullname where name=:name and fn1.entity.eType=:etype) and fn1.name != :name))"),
+		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name and fn1.entity.eType=:etype) and fn1.name != :name))"),
 		@NamedQuery(name = "FullName.byToken", query = "from FullName where name like CONCAT('%', :name, '%')"),
-		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff")})
+		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff"),
+		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name) and fn1.name != :name))"),
+		})
 public class FullName implements Serializable {
 
 	@Id

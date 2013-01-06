@@ -105,11 +105,18 @@ public class FullNameDAOImpl implements FullNameDAO {
 	@Override
 	@Transactional
 	public List<FullName> findVariant(String name, EType etype) {
-		return em.createNamedQuery("FullName.variantForName", FullName.class)
-				.setParameter("name", name).setParameter("etype", etype)
-				.getResultList();
+		if (etype != null) {
+			return em
+					.createNamedQuery("FullName.variantForName", FullName.class)
+					.setParameter("name", name).setParameter("etype", etype)
+					.getResultList();
+		} else {
+			return em
+					.createNamedQuery("FullName.variantForNameNoEtype",
+							FullName.class).setParameter("name", name)
+					.getResultList();
+		}
 	}
-
 	@Override
 	@Transactional
 	public List<FullName> findByToken(String token) {

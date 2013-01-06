@@ -1,11 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.service.TestStatisticManager
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.703 sec <<< FAILURE!
-testUpdateMatchStatistic(it.unitn.disi.sweb.names.service.TestStatisticManager)  Time elapsed: 0.018 sec  <<< FAILURE!
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.086 sec <<< FAILURE!
+testUpdateMatchStatistic(it.unitn.disi.sweb.names.service.TestStatisticManager)  Time elapsed: 0.02 sec  <<< FAILURE!
 junit.framework.AssertionFailedError: Not yet implemented
 	at junit.framework.Assert.fail(Assert.java:47)
-	at it.unitn.disi.sweb.names.service.TestStatisticManager.testUpdateMatchStatistic(TestStatisticManager.java:86)
+	at it.unitn.disi.sweb.names.service.TestStatisticManager.testUpdateMatchStatistic(TestStatisticManager.java:89)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
