@@ -38,42 +38,69 @@ public class NameSearchImpl implements NameSearch {
 		return retrieveNames(result);
 	}
 
+	/**
+	 * given a list of entities labeld with a weight, returns the list of
+	 * fullnames corresponding to the input entities, labeled with the
+	 * respective weight
+	 *
+	 * @param list
+	 *            of pair of entity, weight
+	 * @return list of pair of fullname, weight
+	 */
 	private List<Pair<String, Double>> retrieveNames(
 			List<Pair<NamedEntity, Double>> list) {
-		List<Pair<String, Double>> result = new ArrayList<Pair<String, Double>>();
-		for (Pair<NamedEntity, Double> el : list) {
-			// TODO rimettere lista nomi in namedentity
 
+		List<Pair<String, Double>> result = new ArrayList<Pair<String, Double>>();
+
+		// for each entity in the list
+		for (Pair<NamedEntity, Double> el : list) {
+			// TODO rimettere lista nomi in namedentity class
+
+			// retrieves from the db its names, and add them to the result list,
+			// with the entity's weight
 			List<FullName> names = nameManager.find(el.key);
 			for (FullName n : names) {
 				result.add(new Pair<String, Double>(n.getName(), el.value));
 			}
 		}
-
 		return result;
 	}
 
 	@Override
 	public List<Pair<NamedEntity, Double>> entityNameSearch(String input) {
 
+		// search for top results based on previous search statistics
 		Map<NamedEntity, Double> listTopRank = searchTopRank(input);
 
+		// search for entities with that exact name
 		Map<NamedEntity, Double> listEquals = searchEquals(input);
 
 		// tokens used also by other functions
 		String[] tokens = generateTokens(input);
 
+		// search for entities with name equals to the input with tokens in
+		// different order
 		Map<NamedEntity, Double> listReordering = searchReordered(tokens);
 
-		Map<NamedEntity, Double> listMisspellings = searchMisspllings(input);
+		// search for names that match input wrt misspellings
+		Map<NamedEntity, Double> listMisspellings = searchMisspellings(input);
 
+		// search for names which match tokens of the input name
 		Map<NamedEntity, Double> listToken = searchToken(tokens);
 
 		return union(listTopRank, listEquals, listReordering, listMisspellings,
 				listToken);
 	}
 
+	/**
+	 * search for the most selected result name (based on previous user
+	 * statistics) for the query "input"
+	 *
+	 * @param input
+	 * @return list of top ranked results
+	 */
 	private Map<NamedEntity, Double> searchTopRank(String input) {
+		// query the database for the most selected result for query "input"
 		Map<FullName, Double> names = statManager.retrieveTopResults(input,
 				MAXRESULT);
 		if (names == null) {
@@ -81,7 +108,6 @@ public class NameSearchImpl implements NameSearch {
 		}
 
 		Map<NamedEntity, Double> result = new HashMap<>(names.size());
-
 		for (Entry<FullName, Double> entry : names.entrySet()) {
 			result.put(entry.getKey().getEntity(), entry.getValue());
 		}
@@ -89,6 +115,14 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
+	/**
+	 * generate the tokens for the input strings, based on predefined rules
+	 * (spacing, puntaction..)
+	 *
+	 * @param input
+	 *            string
+	 * @return array of strings representing the tokens
+	 */
 	private String[] generateTokens(String input) {
 		// TODO improve implementation
 		return input.split(" ");
@@ -102,11 +136,19 @@ public class NameSearchImpl implements NameSearch {
 	 * @return list of entities
 	 */
 	private Map<NamedEntity, Double> searchEquals(String input) {
+		if (input == null) {
+			return null;
+		}
+
+		// search for names where name_to_compare equals to input
 		List<FullName> found = nameManager.find(input, SearchType.TOCOMPARE);
+		// search also in the entire string representing the name
+		found.addAll(nameManager.find(input));
 		if (found == null || found.isEmpty()) {
 			return null;
 		}
 
+		// add names to the result list with max weight
 		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : found) {
 			result.put(n.getEntity(), WEIGHT_EQUALS);
@@ -115,32 +157,76 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
+	/**
+	 * search for the names that are equals to the input with tokens reordered
+	 * by lexical graphic order
+	 *
+	 * @param tokens
+	 *            array of string representing the name tokens
+	 * @return entities that match the reordered name
+	 */
 	private Map<NamedEntity, Double> searchReordered(String[] tokens) {
-		String inputOrdered = "";
+		if (tokens == null || tokens.length == 0) {
+			return null;
+		}
+
+		// orders tokens
 		List<String> tokensList = Arrays.asList(tokens);
 		Collections.sort(tokensList);
+
+		// reconverts tokens to a single string
 		StringBuffer buf = new StringBuffer();
 		for (String s : tokensList) {
 			buf.append(s + " ");
 		}
-		inputOrdered = buf.toString();
+		String inputOrdered = buf.toString();
+		if (inputOrdered.startsWith(" ")) {
+			inputOrdered = inputOrdered.substring(1);
+		}
+		if (inputOrdered.endsWith(" ")) {
+			inputOrdered = inputOrdered.substring(0, inputOrdered.length() - 1);
+		}
 
+		// search for entities using the new generated string
 		List<FullName> found = nameManager.find(inputOrdered,
 				SearchType.NORMALIZED);
+		if (found == null || found.size() == 0) {
+			return null;
+		}
 
 		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : found) {
 			result.put(n.getEntity(), WEIGHT_REORDER);
 		}
 
-		// orderByField ( tokens )); TODO ???
+		// TODO implement order search based on fields
+		// orderByField ( tokens ));
 
 		return result;
 	}
 
-	private Map<NamedEntity, Double> searchMisspllings(String input) {
-		List<FullName> candidates = nameManager.find(input, SearchType.NGRAM);
+	/**
+	 * search for names that match the input query with respect to misspellings.
+	 * The search function uses a ngram based index to retrieve the most
+	 * probable name that match, and then uses the misspelling similarity
+	 * function fron NameMatch to identify the real match
+	 *
+	 * @param input
+	 * @return entities which names match the input query
+	 */
+	private Map<NamedEntity, Double> searchMisspellings(String input) {
+		if (input == null) {
+			return null;
+		}
 
+		// search for names which ngram is close to the one of the input query
+		List<FullName> candidates = nameManager.find(input, SearchType.NGRAM);
+		if (candidates == null || candidates.size() == 0) {
+			return null;
+		}
+
+		// add to the result list only the ones which really match the input
+		// query
 		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : candidates) {
 			double similarity = nameMatch.stringSimilarity(input, n.getName(),
@@ -152,10 +238,24 @@ public class NameSearchImpl implements NameSearch {
 			}
 
 		}
+		if (result.size() == 0) {
+			return null;
+		}
 		return result;
 	}
 
+	/**
+	 * search for names that match single tokens from the input query, using
+	 * also misspellings and token variations
+	 *
+	 * @param tokens
+	 * @return
+	 */
 	private Map<NamedEntity, Double> searchToken(String[] tokens) {
+		if (tokens == null || tokens.length == 0) {
+			return null;
+		}
+
 		HashMap<NamedEntity, Double> candidates = new HashMap<>();
 		// TODO search also variations and translation of tokens (if this is the
 		// case)
@@ -172,6 +272,9 @@ public class NameSearchImpl implements NameSearch {
 					candidates.put(r, value + 1);
 				}
 			}
+		}
+		if (candidates.isEmpty()) {
+			return null;
 		}
 
 		Map<NamedEntity, Double> result = new HashMap<>();

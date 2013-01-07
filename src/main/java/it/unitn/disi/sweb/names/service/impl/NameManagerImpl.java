@@ -15,6 +15,7 @@ import it.unitn.disi.sweb.names.repository.NameTokenDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.SearchType;
+import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -125,6 +126,14 @@ public class NameManagerImpl implements NameManager {
 			}
 		}
 		name = buf.toString();
+
+		// removes the first or last char if they are space
+		if (name.startsWith(" ")) {
+			name = name.substring(1);
+		}
+		if (name.endsWith(" ")) {
+			name = name.substring(0, name.length() - 1);
+		}
 		return name;
 	}
 
@@ -257,7 +266,8 @@ public class NameManagerImpl implements NameManager {
 			case TOCOMPARE :
 				return fullnameDao.findByNameToCompare(name);
 			case SINGLETOKEN :
-				return fullnameDao.findByToken(name);
+				return fullnameDao.findByToken(StringCompareUtils
+						.normalize(name));
 			case NGRAM :
 				return fullnameDao.findByNgram(computeNGram(name),
 						computeMaxDifference(name));
@@ -269,19 +279,23 @@ public class NameManagerImpl implements NameManager {
 
 	@Override
 	public int computeNGram(String name) {
-		String[] grams = genereteGrams(name, 3);
+		if (name.length() == 0) {
+			return 0;
+		}
+		String nameNormalized = StringCompareUtils.normalize(name);
+		String[] grams = genereteGrams(nameNormalized, 3);
 		List<Integer> sums = new ArrayList<Integer>(grams.length);
 		for (String g : grams) {
 			for (char c : g.toCharArray()) {
 				sums.add(c + 0);
 			}
 		}
-
-		return sumAll(sums);
+		int tmp = sumAll(sums);
+		return tmp;
 	}
 
 	private int computeMaxDifference(String name) {
-		return name.length() / 3 + 1 * NGRAM_DIFFERENCE;
+		return (name.length() / 3 + 1) * NGRAM_DIFFERENCE;
 	}
 
 	private int sumAll(List<Integer> sums) {
@@ -304,8 +318,8 @@ public class NameManagerImpl implements NameManager {
 			result[0] = name;
 			return result;
 		}
-		String[] grams = new String[name.length() - size];
-		for (int i = 0; i + size < name.length(); i++) {
+		String[] grams = new String[name.length() - size + 1];
+		for (int i = 0; i + size <= name.length(); i++) {
 			grams[i] = name.substring(i, i + size);
 		}
 		return grams;

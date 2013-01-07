@@ -8,8 +8,8 @@ import it.unitn.disi.sweb.names.repository.PrefixDAO;
 import it.unitn.disi.sweb.names.repository.UsageStatisticsDAO;
 import it.unitn.disi.sweb.names.service.PrefixManager;
 import it.unitn.disi.sweb.names.utils.Pair;
+import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -89,20 +89,7 @@ public class PrefixManagerImpl implements PrefixManager {
 
 	@Override
 	public String normalize(String prefix) {
-		if (prefix == null) {
-			return null;
-		}
-
-		String prefixLC = prefix.toLowerCase();
-		if (!Normalizer.isNormalized(prefixLC, Normalizer.Form.NFKD)) {
-			String normalized = Normalizer.normalize(prefixLC,
-					Normalizer.Form.NFKD);
-			normalized = normalized.replaceAll(
-					"\\p{InCombiningDiacriticalMarks}+", "");
-			return normalized;
-		} else {
-			return prefixLC;
-		}
+		return StringCompareUtils.normalize(prefix);
 	}
 
 	@Override
