@@ -23,4 +23,6 @@ public interface TriggerWordDAO {
 	boolean isVariation(String t1, String t2);
 
 	void deleteAll();
+
+	List<TriggerWord> findByNGram(int ngram, int diff);
 }

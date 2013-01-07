@@ -38,7 +38,9 @@ import javax.persistence.UniqueConstraint;
 		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype"),
 		@NamedQuery(name = "IndividualName.translation", query = "select i from IndividualName i join i.translations o where (o.name = :name1 and i.name=:name2) or (o.name=:name2 and i.name=:name1)"),
 		@NamedQuery(name = "IndividualName.alltranslation1", query = "select o from IndividualName i join i.translations o where i.name=:name"),
-		@NamedQuery(name = "IndividualName.alltranslation2", query = "select i from IndividualName i join i.translations o where o.name=:name")})
+		@NamedQuery(name = "IndividualName.alltranslation2", query = "select i from IndividualName i join i.translations o where o.name=:name"),
+		@NamedQuery(name = "IndividualName.byNgram", query = "from IndividualName where ABS(nGramCode - :ngram) < :diff"),
+})
 public class IndividualName implements Serializable {
 
 	@Id
@@ -58,6 +60,9 @@ public class IndividualName implements Serializable {
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "element_id", nullable = false)
 	private NameElement nameElement;
+
+	@Column(name = "ngram")
+	private int nGramCode;
 
 	private static final long serialVersionUID = 1L;
 
@@ -110,6 +115,13 @@ public class IndividualName implements Serializable {
 			translations = new HashSet<>();
 		}
 		getTranslations().add(t);
+	}
+
+	public int getnGramCode() {
+		return nGramCode;
+	}
+	public void setnGramCode(int nGramCode) {
+		this.nGramCode = nGramCode;
 	}
 
 	@Override

@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
 public class NameMatchImpl implements NameMatch {
 
 	private static final int MAX_LENGTH_DIFFERENCE = 3;
-	private static final double THRESHOLD_MISSPELLINGS = 0.7;
+	private static final double THRESHOLD_MISSPELLINGS = 0.75;
 	private static final double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
 
 	private IndividualNameDAO individualNameDao;

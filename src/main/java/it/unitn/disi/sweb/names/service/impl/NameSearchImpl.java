@@ -1,7 +1,10 @@
 package it.unitn.disi.sweb.names.service.impl;
 
 import it.unitn.disi.sweb.names.model.FullName;
+import it.unitn.disi.sweb.names.model.IndividualName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
+import it.unitn.disi.sweb.names.model.TriggerWord;
+import it.unitn.disi.sweb.names.service.ElementManager;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
 import it.unitn.disi.sweb.names.service.NameSearch;
@@ -11,12 +14,15 @@ import it.unitn.disi.sweb.names.utils.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +37,7 @@ public class NameSearchImpl implements NameSearch {
 	private NameManager nameManager;
 	private NameMatch nameMatch;
 	private StatisticsManager statManager;
+	private ElementManager elementManager;
 
 	@Override
 	public List<Pair<String, Double>> nameSearch(String input) {
@@ -141,10 +148,18 @@ public class NameSearchImpl implements NameSearch {
 		}
 
 		// search for names where name_to_compare equals to input
-		List<FullName> found = nameManager.find(input, SearchType.TOCOMPARE);
+		List<FullName> foundCompare = nameManager.find(input,
+				SearchType.TOCOMPARE);
 		// search also in the entire string representing the name
-		found.addAll(nameManager.find(input));
-		if (found == null || found.isEmpty()) {
+		List<FullName> foundEquals = nameManager.find(input);
+		List<FullName> found = foundCompare != null
+				? foundCompare
+				: new ArrayList<FullName>();
+		if (foundEquals != null) {
+			found.addAll(foundEquals);
+		}
+
+		if (found.isEmpty()) {
 			return null;
 		}
 
@@ -262,6 +277,9 @@ public class NameSearchImpl implements NameSearch {
 		int size = 0;
 		for (String t : tokens) {
 			List<NamedEntity> list = searchSingleToken(t);
+			list.addAll(searchTokenMisspellings(t));
+			list.addAll(searchTokenVariations(t));
+
 			if (list != null && !list.isEmpty()) {
 				size += list.size();
 				for (NamedEntity r : list) {
@@ -292,14 +310,80 @@ public class NameSearchImpl implements NameSearch {
 	 */
 	private List<NamedEntity> searchSingleToken(String input) {
 		List<FullName> names = nameManager.find(input, SearchType.SINGLETOKEN);
+		List<NamedEntity> result = new ArrayList<>();
+
 		if (names == null || names.isEmpty()) {
-			return null;
+			return result;
 		}
 
-		List<NamedEntity> result = new ArrayList<>();
 		for (FullName n : names) {
 			result.add(n.getEntity());
 		}
+		return result;
+	}
+
+	/**
+	 * search for names that contain the input token wrt misspellings
+	 *
+	 * @param token
+	 * @return
+	 */
+	private Collection<NamedEntity> searchTokenMisspellings(String token) {
+		Set<NamedEntity> result = new HashSet<>();
+		List<Object> resultToken = new ArrayList<>();
+		List<Object> candidates = elementManager.findMisspellings(token);
+
+		for (Object o : candidates) {
+			if (o instanceof IndividualName) {
+				IndividualName i = (IndividualName) o;
+				if (nameMatch.stringSimilarity(token, i.getName(), null) > 0) {
+					resultToken.add(i);
+				}
+			} else if (o instanceof TriggerWord) {
+				TriggerWord t = (TriggerWord) o;
+				if (nameMatch.stringSimilarity(token, t.getTriggerWord(), null) > 0) {
+					resultToken.add(t);
+				}
+			}
+		}
+
+		for (Object o : resultToken) {
+			if (o instanceof IndividualName) {
+				IndividualName i = (IndividualName) o;
+				for (FullName f : elementManager.find(i)) {
+					result.add(f.getEntity());
+				}
+			} else if (o instanceof TriggerWord) {
+				TriggerWord t = (TriggerWord) o;
+				for (FullName f : elementManager.find(t)) {
+					result.add(f.getEntity());
+				}
+			}
+		}
+		if (result == null) {
+			System.out.println(token);
+		}
+		return result;
+	}
+
+	private Collection<NamedEntity> searchTokenVariations(String t) {
+		List<TriggerWord> triggerWords = elementManager.findTriggerWord(t);
+		Set<NamedEntity> result = new HashSet<>();
+		Set<FullName> names = new HashSet<>();
+
+		if (triggerWords == null || triggerWords.size() == 0) {
+			return result;
+		}
+		for (TriggerWord w : triggerWords) {
+			for (TriggerWord var : w.getVariations()) {
+				names.addAll(elementManager.find(var));
+			}
+		}
+
+		for (FullName f : names) {
+			result.add(f.getEntity());
+		}
+
 		return result;
 	}
 
@@ -360,5 +444,9 @@ public class NameSearchImpl implements NameSearch {
 	@Autowired
 	public void setStatManager(StatisticsManager statManager) {
 		this.statManager = statManager;
+	}
+	@Autowired
+	public void setElementManager(ElementManager elementManager) {
+		this.elementManager = elementManager;
 	}
 }

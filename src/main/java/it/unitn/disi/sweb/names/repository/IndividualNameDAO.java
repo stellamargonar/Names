@@ -23,4 +23,6 @@ public interface IndividualNameDAO {
 
 	List<IndividualName> findTranslations(IndividualName name);
 
+	List<IndividualName> findByNGram(int ngram, int diff);
+
 }

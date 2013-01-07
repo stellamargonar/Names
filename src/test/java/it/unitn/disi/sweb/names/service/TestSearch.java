@@ -229,7 +229,6 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearchMisspellings9() {
-		// 4938 vs 5253
 		Map<NamedEntity, Double> result = searchMisspellings("Fasuto GIunichiglia");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -296,7 +295,8 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearchToken7() {
-		String[] input = {"pazza"};
+		String[] input = {"piaza"};
+
 		Map<NamedEntity, Double> result = searchToken(input);
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -322,7 +322,15 @@ public class TestSearch extends TestCase {
 		assertTrue(result.size() > 0);
 		assertTrue(result.containsKey(e1));
 		assertTrue(result.containsKey(e2));
-		assertEquals(2, result.size());
+	}
+
+	@Test
+	public void testSearchToken10() {
+		String[] input = {"Professor"};
+		Map<NamedEntity, Double> result = searchToken(input);
+		assertNotNull(result);
+		assertTrue(result.size() == 1);
+		assertTrue(result.containsKey(p1));
 	}
 
 	private final Map<NamedEntity, Double> searchEquals(String input) {

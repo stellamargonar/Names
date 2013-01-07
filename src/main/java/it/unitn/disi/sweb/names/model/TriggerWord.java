@@ -39,7 +39,9 @@ import javax.persistence.UniqueConstraint;
 		@NamedQuery(name = "TriggerWord.byTW", query = "from TriggerWord where triggerWord = :tw"),
 		@NamedQuery(name = "TriggerWord.variationsByTW", query = "from TriggerWord as trig where triggerWord = :tw and type=:type"),
 		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where triggerWord = :tw and trig.type.eType=:etype"),
-		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)")})
+		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)"),
+		@NamedQuery(name = "TriggerWord.byNgram", query = "from TriggerWord where ABS(nGramCode - :ngram) < :diff"),
+})
 public class TriggerWord implements Serializable {
 
 	@Id
@@ -60,6 +62,9 @@ public class TriggerWord implements Serializable {
 
 	@OneToMany(mappedBy = "triggerWord", cascade = CascadeType.ALL)
 	private Set<TriggerWordStatistic> eTypeStats;
+
+	@Column(name = "ngram")
+	private int nGramCode;
 
 	public TriggerWord() {
 		super();
@@ -129,6 +134,13 @@ public class TriggerWord implements Serializable {
 
 	public void seteTypeStats(Set<TriggerWordStatistic> eTypeStats) {
 		this.eTypeStats = eTypeStats;
+	}
+
+	public int getnGramCode() {
+		return nGramCode;
+	}
+	public void setnGramCode(int nGramCode) {
+		this.nGramCode = nGramCode;
 	}
 
 	@Override

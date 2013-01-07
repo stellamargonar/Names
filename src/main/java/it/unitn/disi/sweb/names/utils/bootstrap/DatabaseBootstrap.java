@@ -10,14 +10,13 @@ import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
 import it.unitn.disi.sweb.names.service.EtypeManager;
 import it.unitn.disi.sweb.names.service.EtypeName;
+import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,17 +47,20 @@ public class DatabaseBootstrap {
 			List<TriggerWord> tws = new ArrayList<>();
 			for (String s : token) {
 				TriggerWord t = new TriggerWord(s, title);
+				t.setnGramCode(StringCompareUtils.computeNGram(s));
 				t = twDao.save(t);
 				tws.add(t);
 			}
 
 			if (tws.size() > 1) {
-				TriggerWord original = tws.get(0);
-				Set<TriggerWord> var = new HashSet<>();
-				var.remove(original);
-				original.setVariations(var);
-
-				original  = twDao.update(original);
+				for (int i = 0; i < tws.size(); i++) {
+					for (int j = 0; j < tws.size(); j++) {
+						if (i != j) {
+							tws.get(i).addVariation(tws.get(j));
+						}
+						tws.set(i, twDao.update(tws.get(i)));
+					}
+				}
 			}
 		}
 		reader.close();
@@ -115,9 +117,11 @@ public class DatabaseBootstrap {
 			String[] token = line.split("\t");
 
 			TriggerWord t = new TriggerWord(token[0], top);
+			t.setnGramCode(StringCompareUtils.computeNGram(token[0]));
 			t = twDao.save(t);
 			if (token.length > 1) {
 				TriggerWord abbr = new TriggerWord(token[1], top);
+				abbr.setnGramCode(StringCompareUtils.computeNGram(token[1]));
 				abbr = twDao.save(abbr);
 
 				t.addVariation(abbr);
@@ -198,4 +202,5 @@ public class DatabaseBootstrap {
 	public void setEtypeMaanger(EtypeManager etypeMaanger) {
 		etypeManager = etypeMaanger;
 	}
+
 }

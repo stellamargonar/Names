@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.117" errors="0" skipped="0" tests="7" name="it.unitn.disi.sweb.names.repository.TestNameElementDAO">
+<testsuite failures="0" time="0.102" errors="0" skipped="0" tests="7" name="it.unitn.disi.sweb.names.repository.TestNameElementDAO">
   <properties>
     <property name="jboss.i18n.generate-proxies" value="true"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -21,7 +21,7 @@
     <property name="basedir" value="/Users/stella/Documents/Programming/workspace/names"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter3514566918444790218.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent4189027688860002210.jar"/>
+    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter1798943353678507997.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent8020246926410215356.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter3514566918444790218.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire3515244664397034197tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire8184063277018896282tmp"/>
+    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter1798943353678507997.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire348155545199211076tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire6476407204278522354tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="it"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -63,11 +63,11 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.046" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testSave"/>
-  <testcase time="0.012" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testUpdate"/>
-  <testcase time="0.008" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindById"/>
-  <testcase time="0.009" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindName"/>
-  <testcase time="0.012" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindByEType"/>
-  <testcase time="0.011" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindByNameEType"/>
-  <testcase time="0.013" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindAll"/>
+  <testcase time="0.031" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindAll"/>
+  <testcase time="0.014" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testSave"/>
+  <testcase time="0.013" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testUpdate"/>
+  <testcase time="0.009" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindById"/>
+  <testcase time="0.011" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindName"/>
+  <testcase time="0.011" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindByEType"/>
+  <testcase time="0.009" classname="it.unitn.disi.sweb.names.repository.TestNameElementDAO" name="testFindByNameEType"/>
 </testsuite>

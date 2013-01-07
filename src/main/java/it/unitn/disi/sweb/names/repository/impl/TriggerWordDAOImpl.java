@@ -97,4 +97,12 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 				.setParameter("t1", t1).setParameter("t2", t2).getResultList();
 		return result != null && !result.isEmpty() ? true : false;
 	}
+
+	@Override
+	public List<TriggerWord> findByNGram(int ngram, int diff) {
+		return em
+				.createNamedQuery("TriggerWord.byNgram",
+						TriggerWord.class).setParameter("ngram", ngram)
+				.setParameter("diff", diff).getResultList();
+	}
 }

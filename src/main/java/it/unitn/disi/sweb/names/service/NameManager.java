@@ -27,8 +27,6 @@ public interface NameManager {
 
 	List<FullName> retrieveVariants(String name, EType etype);
 
-	int computeNGram(String name);
-
 	// FIND METHODS
 
 	FullName find(int id);

@@ -88,17 +88,25 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 
 		List<IndividualName> list1 = em
 				.createNamedQuery("IndividualName.alltranslation1",
-						IndividualName.class).setParameter("name", name.getName())
-				.getResultList();
+						IndividualName.class)
+				.setParameter("name", name.getName()).getResultList();
 		result.addAll(list1);
 
 		List<IndividualName> list2 = em
 				.createNamedQuery("IndividualName.alltranslation2",
-						IndividualName.class).setParameter("name", name.getName())
-				.getResultList();
+						IndividualName.class)
+				.setParameter("name", name.getName()).getResultList();
 		result.addAll(list2);
 
 		return new ArrayList<>(result);
+	}
+
+	@Override
+	public List<IndividualName> findByNGram(int ngram, int diff) {
+		return em
+				.createNamedQuery("IndividualName.byNgram",
+						IndividualName.class).setParameter("ngram", ngram)
+				.setParameter("diff", diff).getResultList();
 	}
 
 }

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.service.TestStatisticManager
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.067 sec <<< FAILURE!
-testUpdateMatchStatistic(it.unitn.disi.sweb.names.service.TestStatisticManager)  Time elapsed: 0.014 sec  <<< FAILURE!
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.078 sec <<< FAILURE!
+testUpdateMatchStatistic(it.unitn.disi.sweb.names.service.TestStatisticManager)  Time elapsed: 0.013 sec  <<< FAILURE!
 junit.framework.AssertionFailedError: Not yet implemented
 	at junit.framework.Assert.fail(Assert.java:47)
 	at it.unitn.disi.sweb.names.service.TestStatisticManager.testUpdateMatchStatistic(TestStatisticManager.java:89)

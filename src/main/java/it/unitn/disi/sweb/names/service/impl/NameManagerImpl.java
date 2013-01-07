@@ -17,7 +17,6 @@ import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.SearchType;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -36,7 +35,6 @@ public class NameManagerImpl implements NameManager {
 	private NameElementDAO nameElementDao;
 	private NameTokenDAO nameTokenDao;
 
-	private static final int NGRAM_DIFFERENCE = 70;
 
 	@Override
 	public FullName createFullName(String name, NamedEntity en) {
@@ -58,7 +56,7 @@ public class NameManagerImpl implements NameManager {
 		fullname = parse(fullname, en.getEType());
 		fullname.setNameToCompare(getNameToCompare(fullname));
 		fullname.setNameNormalized(getNameNormalized(fullname));
-		fullname.setnGramCode(computeNGram(name));
+		fullname.setnGramCode(StringCompareUtils.computeNGram(name));
 		FullName returned = fullnameDao.update(fullname);
 
 		return returned;
@@ -188,6 +186,7 @@ public class NameManagerImpl implements NameManager {
 		IndividualName name = new IndividualName();
 		name.setName(s);
 		name.setNameElement(getNewNameElement(eType, position));
+		name.setnGramCode(StringCompareUtils.computeNGram(s));
 		return name;
 	}
 
@@ -269,61 +268,15 @@ public class NameManagerImpl implements NameManager {
 				return fullnameDao.findByToken(StringCompareUtils
 						.normalize(name));
 			case NGRAM :
-				return fullnameDao.findByNgram(computeNGram(name),
-						computeMaxDifference(name));
+				return fullnameDao.findByNgram(StringCompareUtils.computeNGram(name),
+						StringCompareUtils.computeMaxDifference(name));
 			default :
 				break;
 		}
 		return null;
 	}
 
-	@Override
-	public int computeNGram(String name) {
-		if (name.length() == 0) {
-			return 0;
-		}
-		String nameNormalized = StringCompareUtils.normalize(name);
-		String[] grams = genereteGrams(nameNormalized, 3);
-		List<Integer> sums = new ArrayList<Integer>(grams.length);
-		for (String g : grams) {
-			for (char c : g.toCharArray()) {
-				sums.add(c + 0);
-			}
-		}
-		int tmp = sumAll(sums);
-		return tmp;
-	}
 
-	private int computeMaxDifference(String name) {
-		return (name.length() / 3 + 1) * NGRAM_DIFFERENCE;
-	}
-
-	private int sumAll(List<Integer> sums) {
-		int sum = 0;
-		for (Integer i : sums) {
-			sum += i;
-		}
-
-		return sum;
-	}
-
-	private String[] genereteGrams(String name, int size) {
-		if (name == null || name.length() == 0) {
-			return null;
-		}
-
-		// case of name shorter than gram size
-		if (name.length() <= size) {
-			String[] result = new String[1];
-			result[0] = name;
-			return result;
-		}
-		String[] grams = new String[name.length() - size + 1];
-		for (int i = 0; i + size <= name.length(); i++) {
-			grams[i] = name.substring(i, i + size);
-		}
-		return grams;
-	}
 
 	@Autowired
 	public void setFullnameDao(FullNameDAO fullnameDao) {
