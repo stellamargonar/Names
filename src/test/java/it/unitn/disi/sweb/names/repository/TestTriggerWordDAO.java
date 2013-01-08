@@ -149,10 +149,10 @@ public class TestTriggerWordDAO extends TestCase {
 		t.addVariation(variation);
 		t = dao.update(t);
 
-		assertTrue(dao.isVariation(triggerWord, "testVar"));
-		assertTrue(dao.isVariation("testVar", triggerWord));
-		assertFalse(dao.isVariation(triggerWord, "xxxx"));
-		assertFalse(dao.isVariation(triggerWord, null));
+		assertTrue(dao.isVariation(triggerWord.toLowerCase(), "testVar".toLowerCase()));
+		assertTrue(dao.isVariation("testvar", triggerWord.toLowerCase()));
+		assertFalse(dao.isVariation(triggerWord.toLowerCase(), "xxxx"));
+		assertFalse(dao.isVariation(triggerWord.toLowerCase(), null));
 
 	}
 

@@ -25,7 +25,7 @@ import javax.persistence.UniqueConstraint;
 @SequenceGenerator(name = "etype_seq", sequenceName = "etype_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "EType.findAll", query = "from EType "),
-		@NamedQuery(name = "EType.findByName", query = "from EType where etype =:name")
+		@NamedQuery(name = "EType.findByName", query = "from EType where lower(etype) =:name")
 
 })
 public class EType implements Serializable {
@@ -44,7 +44,7 @@ public class EType implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -52,7 +52,7 @@ public class EType implements Serializable {
 	}
 
 	public String getEtype() {
-		return this.etype;
+		return etype;
 	}
 
 	public void setEtype(String etype) {
@@ -64,8 +64,8 @@ public class EType implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.etype == null ? 0 : this.etype.hashCode());
-		result = prime * result + this.id;
+				+ (etype == null ? 0 : etype.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
@@ -81,14 +81,14 @@ public class EType implements Serializable {
 			return false;
 		}
 		EType other = (EType) obj;
-		if (this.etype == null) {
+		if (etype == null) {
 			if (other.etype != null) {
 				return false;
 			}
-		} else if (!this.etype.equals(other.etype)) {
+		} else if (!etype.equals(other.etype)) {
 			return false;
 		}
-		if (this.id != other.id) {
+		if (id != other.id) {
 			return false;
 		}
 		return true;

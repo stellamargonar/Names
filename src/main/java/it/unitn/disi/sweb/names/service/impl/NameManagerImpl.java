@@ -42,7 +42,7 @@ public class NameManagerImpl implements NameManager {
 			return null;
 		}
 
-		List<FullName> foundList = fullnameDao.findByNameToCompare(name);
+		List<FullName> foundList = find(name, SearchType.TOCOMPARE);
 
 		for (FullName f : foundList) {
 			if (en.equals(f.getEntity())) {
@@ -143,7 +143,7 @@ public class NameManagerImpl implements NameManager {
 		for (String s : tokens) {
 			if (!s.equals(" ")) {
 				// check if it is a known name
-				List<IndividualName> listName = nameDao.findByNameEtype(s,
+				List<IndividualName> listName = nameDao.findByNameEtype(s.toLowerCase(),
 						eType);
 				if (listName == null || listName.isEmpty()) {
 					listName = nameDao.findByName(s);
@@ -156,7 +156,7 @@ public class NameManagerImpl implements NameManager {
 					fullname.addNameToken(nt);
 				} else {
 					// check if it is a known triggerword
-					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(s,
+					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(s.toLowerCase(),
 							eType);
 					if (listTW != null && listTW.size() > 0) {
 						TriggerWordToken twt = new TriggerWordToken();
@@ -193,19 +193,19 @@ public class NameManagerImpl implements NameManager {
 	private NameElement getNewNameElement(EType eType, int position) {
 		switch (eType.getEtype()) {
 			case "Location" :
-				return nameElementDao.findByNameEType("ProperNoun", eType);
+				return nameElementDao.findByNameEType("ProperNoun".toLowerCase(), eType);
 			case "Organization" :
-				return nameElementDao.findByNameEType("ProperNoun", eType);
+				return nameElementDao.findByNameEType("ProperNoun".toLowerCase(), eType);
 			case "Person" :
 				switch (position) {
 					case 0 :
-						return nameElementDao.findByNameEType("GivenName",
+						return nameElementDao.findByNameEType("GivenName".toLowerCase(),
 								eType);
 					case 2 :
-						return nameElementDao.findByNameEType("MiddleName",
+						return nameElementDao.findByNameEType("MiddleName".toLowerCase(),
 								eType);
 					default :
-						return nameElementDao.findByNameEType("FamilyName",
+						return nameElementDao.findByNameEType("FamilyName".toLowerCase(),
 								eType);
 				}
 			default :
@@ -231,7 +231,7 @@ public class NameManagerImpl implements NameManager {
 	@Override
 	@Transactional
 	public List<FullName> retrieveVariants(String name, EType etype) {
-		return fullnameDao.findVariant(name, etype);
+		return fullnameDao.findVariant(name.toLowerCase(), etype);
 	}
 
 	@Override
@@ -243,13 +243,13 @@ public class NameManagerImpl implements NameManager {
 	@Override
 	@Transactional
 	public List<FullName> find(String name, EType etype) {
-		return fullnameDao.findByNameEtype(name, etype);
+		return fullnameDao.findByNameEtype(name.toLowerCase(), etype);
 	}
 
 	@Override
 	@Transactional
 	public List<FullName> find(String name) {
-		return fullnameDao.findByName(name);
+		return fullnameDao.findByName(name.toLowerCase());
 	}
 
 	@Override
@@ -261,9 +261,9 @@ public class NameManagerImpl implements NameManager {
 	public List<FullName> find(String name, SearchType type) {
 		switch (type) {
 			case NORMALIZED :
-				return fullnameDao.findByNameNormalized(name);
+				return fullnameDao.findByNameNormalized(name.toLowerCase());
 			case TOCOMPARE :
-				return fullnameDao.findByNameToCompare(name);
+				return fullnameDao.findByNameToCompare(name.toLowerCase());
 			case SINGLETOKEN :
 				return fullnameDao.findByToken(StringCompareUtils
 						.normalize(name));

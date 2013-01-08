@@ -42,16 +42,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Table(name = "fullname")
 @SequenceGenerator(name = "fullname_seq", sequenceName = "fullname_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "FullName.byName", query = "from FullName where name = :name"),
-		@NamedQuery(name = "FullName.byNameNormalized", query = "from FullName where nameNormalized = :nameNormalized"),
-		@NamedQuery(name = "FullName.byNameToCompare", query = "from FullName where nameToCompare = :nameToCompare"),
-		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where name = :name and fn.entity.eType = :etype"),
+		@NamedQuery(name = "FullName.byName", query = "from FullName where lower(name) = :name"),
+		@NamedQuery(name = "FullName.byNameNormalized", query = "from FullName where lower(nameNormalized) = :nameNormalized"),
+		@NamedQuery(name = "FullName.byNameToCompare", query = "from FullName where lower(nameToCompare) = :nameToCompare"),
+		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where lower(name) = :name and fn.entity.eType = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
-		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where name=:name and fn.entity=:entity"),
-		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name and fn1.entity.eType=:etype) and fn1.name != :name))"),
+		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where lower(name) = :name and fn.entity=:entity"),
+		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where lower(name) = :name and fn1.entity.eType=:etype) and lower(fn1.name) != :name))"),
 		@NamedQuery(name = "FullName.byToken", query = "from FullName where lower(name) like CONCAT('%', :name, '%')"),
 		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff"),
-		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where name=:name) and fn1.name != :name))"),
+		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where lower(name) =:name) and lower(fn1.name) != :name))"),
 		})
 public class FullName implements Serializable {
 

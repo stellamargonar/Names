@@ -30,7 +30,7 @@ public class EtypeManagerImpl implements EtypeManager {
 				name = "Organization";
 				break;
 		}
-		return etypeDao.findByName(name);
+		return etypeDao.findByName(name.toLowerCase());
 	}
 
 	@Autowired

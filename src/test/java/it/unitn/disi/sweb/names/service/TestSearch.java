@@ -2,11 +2,11 @@ package it.unitn.disi.sweb.names.service;
 
 import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
-import it.unitn.disi.sweb.names.service.impl.NameSearchImpl;
+import it.unitn.disi.sweb.names.model.UsageStatistic;
+import it.unitn.disi.sweb.names.repository.UsageStatisticsDAO;
+import it.unitn.disi.sweb.names.utils.Pair;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Map;
+import java.util.List;
 
 import junit.framework.TestCase;
 
@@ -23,13 +23,16 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = {"/testApplicationContext.xml"})
 @Transactional(rollbackFor = Throwable.class)
 public class TestSearch extends TestCase {
-
 	@Autowired
 	NameManager nameManager;
 	@Autowired
 	EntityManager entityManager;
 	@Autowired
 	EtypeManager etypeManager;
+	@Autowired
+	StatisticsManager statManager;
+	@Autowired
+	UsageStatisticsDAO dao;
 
 	@Autowired
 	NameSearch nameSearch;
@@ -38,6 +41,10 @@ public class TestSearch extends TestCase {
 	private NamedEntity e2;
 	private NamedEntity e3;
 	private NamedEntity p1;
+	private NamedEntity roma;
+	private NamedEntity romano;
+	private NamedEntity romaCalcio;
+
 	@Override
 	@Before
 	public void setUp() throws Exception {
@@ -63,305 +70,277 @@ public class TestSearch extends TestCase {
 				"http://it.wikipedia.org/wiki/Roma");
 		nameManager.createFullName("Roma", e3);
 
+		roma = entityManager.createEntity(
+				etypeManager.getEtype(EtypeName.LOCATION),
+				"http://it.wikipedia.org/wiki/Roma");
+		FullName roma1 = nameManager.createFullName("Roma", roma);
+		FullName roma2 = nameManager.createFullName("Rome", roma);
+
+		romano = entityManager.createEntity(
+				etypeManager.getEtype(EtypeName.LOCATION),
+				"http://www.comune.romano.vi.it");
+		FullName romano1 = nameManager.createFullName("Romano (VI)", romano);
+		FullName romano2 = nameManager.createFullName("Romano d'Ezzelino",
+				romano);
+
+		romaCalcio = entityManager.createEntity(
+				etypeManager.getEtype(EtypeName.ORGANIZATION),
+				"http://www.asroma.it/it/index.html");
+		FullName calcio1 = nameManager.createFullName("Roma", romaCalcio);
+		FullName calcio2 = nameManager.createFullName("AS Roma", romaCalcio);
+		FullName calcio3 = nameManager
+				.createFullName("Roma Calcio", romaCalcio);
+
+		statManager.updateSearchStatistic("roma", roma1);
+		statManager.updateSearchStatistic("roma", roma1);
+		statManager.updateSearchStatistic("roma", roma1);
+		statManager.updateSearchStatistic("roma", roma1);
+
+		statManager.updateSearchStatistic("roma", calcio1);
+
+		statManager.updateSearchStatistic("roman", roma1);
+		statManager.updateSearchStatistic("roman", roma1);
+
+		statManager.updateSearchStatistic("romano", romano1);
+		statManager.updateSearchStatistic("romano", romano1);
+
+		statManager.updateSearchStatistic("roman", romano1);
+
+		UsageStatistic u = new UsageStatistic();
+		u.setQuery("Rom");
+		u.setSelected(roma1);
+		u.setFrequency(100);
+		dao.save(u);
+
+		u = new UsageStatistic();
+		u.setQuery("Rom");
+		u.setSelected(roma2);
+		u.setFrequency(90);
+		dao.save(u);
+
+		u = new UsageStatistic();
+		u.setQuery("Rom");
+		u.setSelected(calcio1);
+		u.setFrequency(80);
+		dao.save(u);
+
+		u = new UsageStatistic();
+		u.setQuery("Rom");
+		u.setSelected(calcio2);
+		u.setFrequency(70);
+		dao.save(u);
+
+		u = new UsageStatistic();
+		u.setQuery("Rom");
+		u.setSelected(calcio3);
+		u.setFrequency(50);
+		dao.save(u);
+
+		u = new UsageStatistic();
+		u.setQuery("Rom");
+		u.setSelected(romano2);
+		u.setFrequency(30);
+		dao.save(u);
 	}
-	/*
-	 * SETUP
-	 *
-	 * stat: P.zza San Pietro, 1, 30 san pietro, 1, 10 san pietro, 3, 2
-	 */
 
 	@Override
 	@After
 	public void tearDown() throws Exception {
+		super.tearDown();
 	}
 
-	/*
-	 * TOP RANK .....
-	 */
-
+	/* test all the other test cases */
 	@Test
-	public void testSearchEquals1() {
-		assertEquals(null, searchEquals(null));
-	}
-
-	@Test
-	public void testSearchEquals2() {
-		assertEquals(null, searchEquals(""));
+	public void testSearch1() {
+		assertTrue(nameSearch.nameSearch(null).isEmpty());
 	}
 
 	@Test
-	public void testSearchEquals3() {
-		assertEquals(null, searchEquals("Firenze"));
+	public void testSearch2() {
+		assertTrue(nameSearch.nameSearch("test").isEmpty());
 	}
 
 	@Test
-	public void testSearchEquals4() {
-		Map<NamedEntity, Double> result = searchEquals("Giunchiglia");
+	public void testSearch3() {
+		List<Pair<String, Double>> result = nameSearch.nameSearch("roman");
 		assertNotNull(result);
-		assertTrue(result.size() == 1);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Roma", result));
+		assertTrue(contains("Roma Calcio", result));
+		assertTrue(contains("Romano d'Ezzelino", result));
+	}
 
-		for (NamedEntity e : result.keySet()) {
-			assertNotNull(e);
-			assertEquals(p1, e);
+	@Test
+	public void testSearch4() {
+		List<Pair<String, Double>> result = nameSearch.nameSearch("roma");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Rome", result));
+		assertTrue(contains("Roma Calcio", result));
+		assertTrue(contains("Romano d'Ezzelino", result));
+	}
+
+	@Test
+	public void testSearch5() {
+		List<Pair<String, Double>> result = nameSearch.nameSearch("rom");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Roma", result));
+		assertTrue(contains("Roma Calcio", result));
+	}
+
+	@Test
+	public void testSearch6() {
+		List<Pair<String, Double>> result = nameSearch.nameSearch("aroma");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Roma", result));
+		assertTrue(contains("Roma Calcio", result));
+	}
+
+	@Test
+	public void testSearch7() {
+		List<Pair<String, Double>> result =nameSearch.nameSearch("");
+		assertNotNull(result);
+		for (Pair<String,Double>p: result) {
+			System.out.println(p.key);
 		}
+		assertTrue(result.isEmpty());
+
 	}
 
 	@Test
-	public void testSearchEquals5() {
-		Map<NamedEntity, Double> result = searchEquals("Prof Giunchiglia");
+	public void testSearch8() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Giunchiglia");
 		assertNotNull(result);
-		assertTrue(result.size() == 1);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Prof Giunchiglia", result));
+		assertTrue(contains("Fausto Giunchiglia", result));
+	}
 
-		for (NamedEntity e : result.keySet()) {
-			assertNotNull(e);
-			assertEquals(p1, e);
-			assertEquals(1.0, result.get(e));
+	@Test
+	public void testSearch9() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Prof Giunchiglia");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Prof Giunchiglia", result));
+		assertTrue(contains("Fausto Giunchiglia", result));
+	}
+
+	@Test
+	public void testSearch10() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Giunchiglia Fausto");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Prof Giunchiglia", result));
+		assertTrue(contains("Fausto Giunchiglia", result));
+	}
+
+	@Test
+	public void testSearch11() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Roma As");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Roma Calcio", result));
+		assertTrue(contains("AS Roma", result));
+		assertTrue(contains("Roma", result));
+	}
+
+	@Test
+	public void testSearch12() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("San Pietro piazza");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Piazza San Pietro", result));
+		assertTrue(contains("Saint Peter Square", result));
+	}
+
+	@Test
+	public void testSearch13() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Fasuto Giunchiglia");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Prof Giunchiglia", result));
+		assertTrue(contains("Fausto Giunchiglia", result));
+	}
+
+	@Test
+	public void testSearch14() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Santo Pietro Piaza");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Piazza San Pietro", result));
+		assertTrue(contains("Saint Peter Square", result));
+	}
+
+	@Test
+	public void testSearch15() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Ramano d0eZelino");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Romano (VI)", result));
+		assertTrue(contains("Romano d'Ezzelino", result));
+	}
+
+	@Test
+	public void testSearch16() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Santo Pietro");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Piazza San Pietro", result));
+		assertTrue(contains("Saint Peter Square", result));
+		assertTrue(contains("San Pietro in Vincoli", result));
+	}
+
+
+	@Test
+	public void testSearch17() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Piazza");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Piazza San Pietro", result));
+		assertTrue(contains("Saint Peter Square", result));
+	}
+
+	@Test
+	public void testSearch18() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("Piaza");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Piazza San Pietro", result));
+		assertTrue(contains("Saint Peter Square", result));
+	}
+
+	@Test
+	public void testSearch19() {
+		List<Pair<String, Double>> result = nameSearch
+				.nameSearch("santo petro");
+		assertNotNull(result);
+		assertTrue(result.size() > 0);
+		assertTrue(contains("Piazza San Pietro", result));
+		assertTrue(contains("Saint Peter Square", result));
+		assertTrue(contains("San Pietro in Vincoli", result));
+	}
+
+	private boolean contains(String s, List<Pair<String, Double>> result) {
+		boolean found = false;
+		for (Pair<String, Double> p : result) {
+			if (p.key.equals(s)) {
+				found = true;
+			}
 		}
+		return found;
 	}
 
-	@Test
-	public void testSearchEquals6() {
-		Map<NamedEntity, Double> result = searchEquals("Giunchiglia Fausto");
-		assertNull(result);
-	}
-
-	/*
-	 * GENERATE TOKEN
-	 */
-
-	@Test
-	public void testSearchReordered1() {
-		assertEquals(null, searchReordered(null));
-	}
-	@Test
-	public void testSearchReordered2() {
-		String[] tokens = new String[0];
-		assertEquals(null, searchReordered(tokens));
-	}
-
-	@Test
-	public void testSearchReordered3() {
-		String[] tokens = {"Fausto", "Giunchiglia"};
-		Map<NamedEntity, Double> result = searchReordered(tokens);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		for (NamedEntity e : result.keySet()) {
-			assertEquals(p1, e);
-		}
-	}
-
-	@Test
-	public void testSearchReordered4() {
-		String[] tokens = {"Prof", "Giunchiglia"};
-		Map<NamedEntity, Double> result = searchReordered(tokens);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		for (NamedEntity e : result.keySet()) {
-			assertEquals(p1, e);
-		}
-	}
-	@Test
-	public void testSearchReordered5() {
-		String[] tokens = {"Giunchiglia", "Prof"};
-		Map<NamedEntity, Double> result = searchReordered(tokens);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		for (NamedEntity e : result.keySet()) {
-			assertEquals(p1, e);
-		}
-	}
-	@Test
-	public void testSearchReordered6() {
-		String[] tokens = {"Giunchiglia", "Fausto"};
-		Map<NamedEntity, Double> result = searchReordered(tokens);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		for (NamedEntity e : result.keySet()) {
-			assertEquals(p1, e);
-		}
-	}
-	@Test
-	public void testSearchReordered7() {
-		String[] tokens = {"Giunchiglia"};
-		Map<NamedEntity, Double> result = searchReordered(tokens);
-		assertNull(result);
-	}
-
-	@Test
-	public void testSearchMisspellings1() {
-		assertEquals(null, searchMisspellings(null));
-	}
-
-	@Test
-	public void testSearchMisspellings2() {
-		assertEquals(null, searchMisspellings(""));
-	}
-
-	@Test
-	public void testSearchMisspellings4() {
-		assertEquals(null, searchMisspellings("AA"));
-	}
-
-	@Test
-	public void testSearchMisspellings5() {
-		assertEquals(null, searchMisspellings("AAAAAAAAA"));
-	}
-
-	@Test
-	public void testSearchMisspellings6() {
-		Map<NamedEntity, Double> result = searchMisspellings("Fausto Giunchiglia");
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		for (NamedEntity e : result.keySet()) {
-			assertEquals(p1, e);
-		}
-	}
-
-	@Test
-	public void testSearchMisspellings7() {
-		assertEquals(null, searchMisspellings("Giunchiglia Fausto"));
-	}
-
-	@Test
-	public void testSearchMisspellings8() {
-		assertEquals(null, searchMisspellings("Fausto"));
-	}
-
-	@Test
-	public void testSearchMisspellings9() {
-		Map<NamedEntity, Double> result = searchMisspellings("Fasuto GIunichiglia");
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		for (NamedEntity e : result.keySet()) {
-			assertEquals(p1, e);
-		}
-	}
-
-	@Test
-	public void testSearchMisspellings10() {
-		assertEquals(null, searchMisspellings("Fausot Gianpaolo"));
-	}
-
-	@Test
-	public void testSearchMisspellings11() {
-		assertEquals(null, searchMisspellings("Fasuto Marangoni"));
-	}
-
-	@Test
-	public void testSearchToken1() {
-		assertEquals(null, searchToken(null));
-	}
-	@Test
-	public void testSearchToken2() {
-		String[] input = new String[0];
-		assertEquals(null, searchToken(input));
-	}
-	@Test
-	public void testSearchToken3() {
-		String[] input = {"AAAAAAAA"};
-		assertEquals(null, searchToken(input));
-	}
-	@Test
-	public void testSearchToken4() {
-		String[] input = {"san", "pietro"};
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		assertTrue(result.containsKey(e1));
-		assertTrue(result.containsKey(e2));
-		assertEquals(2, result.size());
-	}
-
-	@Test
-	public void testSearchToken5() {
-		String[] input = {"piazza"};
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		assertTrue(result.containsKey(e1));
-		assertFalse(result.containsKey(e2));
-		assertEquals(1, result.size());
-	}
-	@Test
-	public void testSearchToken6() {
-		String[] input = {"piazza", "san", "pietro"};
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		assertTrue(result.containsKey(e1));
-		assertTrue(result.containsKey(e2));
-		assertEquals(2, result.size());
-	}
-
-	@Test
-	public void testSearchToken7() {
-		String[] input = {"piaza"};
-
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		assertTrue(result.containsKey(e1));
-		assertFalse(result.containsKey(e2));
-		assertEquals(1, result.size());
-	}
-	@Test
-	public void testSearchToken8() {
-		String[] input = {"petro"};
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		assertTrue(result.containsKey(e1));
-		assertTrue(result.containsKey(e2));
-		assertEquals(2, result.size());
-	}
-	@Test
-	public void testSearchToken9() {
-		String[] input = {"santo", "petro"};
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() > 0);
-		assertTrue(result.containsKey(e1));
-		assertTrue(result.containsKey(e2));
-	}
-
-	@Test
-	public void testSearchToken10() {
-		String[] input = {"Professor"};
-		Map<NamedEntity, Double> result = searchToken(input);
-		assertNotNull(result);
-		assertTrue(result.size() == 1);
-		assertTrue(result.containsKey(p1));
-	}
-
-	private final Map<NamedEntity, Double> searchEquals(String input) {
-		return invokePrivateMethod(input, String.class, "searchEquals");
-	}
-
-	private final Map<NamedEntity, Double> searchReordered(String[] input) {
-		return invokePrivateMethod(input, String[].class, "searchReordered");
-	}
-
-	private final Map<NamedEntity, Double> searchMisspellings(String input) {
-		return invokePrivateMethod(input, String.class, "searchMisspellings");
-	}
-
-	private final Map<NamedEntity, Double> searchToken(String[] input) {
-		return invokePrivateMethod(input, String[].class, "searchToken");
-	}
-	private final Map<NamedEntity, Double> invokePrivateMethod(Object input,
-			Class inputType, String methodName) {
-		try {
-			Method method = NameSearchImpl.class.getDeclaredMethod(methodName,
-					inputType);
-			method.setAccessible(true);
-			return (Map<NamedEntity, Double>) method.invoke(nameSearch, input);
-
-		} catch (NoSuchMethodException | SecurityException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

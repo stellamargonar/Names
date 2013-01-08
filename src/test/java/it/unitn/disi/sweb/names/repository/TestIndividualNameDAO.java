@@ -130,8 +130,8 @@ public class TestIndividualNameDAO extends TestCase {
 
 	@Test
 	public final void testIsTranslation() {
-		assertTrue(dao.isTranslation(name, translation));
-		assertFalse(dao.isTranslation(name, translation + "x"));
+		assertTrue(dao.isTranslation(name.toLowerCase(), translation.toLowerCase()));
+		assertFalse(dao.isTranslation(name.toLowerCase(), translation.toLowerCase() + "x"));
 	}
 
 	@Test

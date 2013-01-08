@@ -90,7 +90,7 @@ public class TestEtypeDAO extends TestCase {
 
 	@Test
 	public final void testFindByName() {
-		EType found = dao.findByName(name);
+		EType found = dao.findByName(name.toLowerCase());
 
 		assertNotNull(found);
 		assertEquals(e.getEtype(), found.getEtype());

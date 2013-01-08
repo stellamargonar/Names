@@ -30,10 +30,10 @@ import javax.persistence.UniqueConstraint;
 		"elementname", "etype_id"})})
 @SequenceGenerator(name = "nameelement_seq", sequenceName = "nameelement_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "NameElement.byName", query = "from NameElement where elementName= :name"),
+		@NamedQuery(name = "NameElement.byName", query = "from NameElement where lower(elementName)= :name"),
 		@NamedQuery(name = "NameElement.all", query = "from NameElement"),
 		@NamedQuery(name = "NameElement.byEtype", query = "from NameElement where eType = :eType"),
-		@NamedQuery(name = "NameElement.byNameEtype", query = "from NameElement where eType = :eType and elementName=:name")})
+		@NamedQuery(name = "NameElement.byNameEtype", query = "from NameElement where eType = :eType and lower(elementName)=:name")})
 public class NameElement implements Serializable {
 
 	@Id
@@ -81,8 +81,7 @@ public class NameElement implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ (eType == null ? 0 : eType.hashCode());
+		result = prime * result + (eType == null ? 0 : eType.hashCode());
 		result = prime * result
 				+ (elementName == null ? 0 : elementName.hashCode());
 		result = prime * result + id;

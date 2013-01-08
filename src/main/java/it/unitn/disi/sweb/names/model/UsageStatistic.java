@@ -19,8 +19,8 @@ import javax.persistence.UniqueConstraint;
 		"query", "fullname_id"}))
 @SequenceGenerator(name = "stat_seq", sequenceName = "stat_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "UsageStatistic.byQuery", query = "from UsageStatistic where query=:query"),
-		@NamedQuery(name = "UsageStatistic.byQuerySelected", query = "from UsageStatistic where query=:query and selected=:selected")})
+		@NamedQuery(name = "UsageStatistic.byQuery", query = "from UsageStatistic where lower(query) = :query"),
+		@NamedQuery(name = "UsageStatistic.byQuerySelected", query = "from UsageStatistic where lower(query) = :query and selected=:selected")})
 public class UsageStatistic {
 
 	@Id
@@ -38,7 +38,7 @@ public class UsageStatistic {
 	private double frequency;
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -46,7 +46,7 @@ public class UsageStatistic {
 	}
 
 	public String getQuery() {
-		return this.query;
+		return query;
 	}
 
 	public void setQuery(String query) {
@@ -54,7 +54,7 @@ public class UsageStatistic {
 	}
 
 	public FullName getSelected() {
-		return this.selected;
+		return selected;
 	}
 
 	public void setSelected(FullName selected) {
@@ -62,7 +62,7 @@ public class UsageStatistic {
 	}
 
 	public double getFrequency() {
-		return this.frequency;
+		return frequency;
 	}
 
 	public void setFrequency(double frequency) {
@@ -74,9 +74,9 @@ public class UsageStatistic {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ (this.query == null ? 0 : this.query.hashCode());
+				+ (query == null ? 0 : query.hashCode());
 		result = prime * result
-				+ (this.selected == null ? 0 : this.selected.hashCode());
+				+ (selected == null ? 0 : selected.hashCode());
 		return result;
 	}
 	@Override
@@ -91,18 +91,18 @@ public class UsageStatistic {
 			return false;
 		}
 		UsageStatistic other = (UsageStatistic) obj;
-		if (this.query == null) {
+		if (query == null) {
 			if (other.query != null) {
 				return false;
 			}
-		} else if (!this.query.equals(other.query)) {
+		} else if (!query.equals(other.query)) {
 			return false;
 		}
-		if (this.selected == null) {
+		if (selected == null) {
 			if (other.selected != null) {
 				return false;
 			}
-		} else if (!this.selected.equals(other.selected)) {
+		} else if (!selected.equals(other.selected)) {
 			return false;
 		}
 		return true;

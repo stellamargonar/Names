@@ -28,9 +28,9 @@ import javax.persistence.Table;
 @Table(name = "namedentity")
 @SequenceGenerator(name = "entity_seq", sequenceName = "entity_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "NamedEntity.byName", query = "select fullname.entity from FullName as fullname where name= :name"),
-		@NamedQuery(name = "NamedEntity.byNameEtype", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where name= :name) and eType=:etype"),
-		@NamedQuery(name = "NamedEntity.byNameUrl", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where name= :name) and url=:url"),
+		@NamedQuery(name = "NamedEntity.byName", query = "select fullname.entity from FullName as fullname where lower(name) = :name"),
+		@NamedQuery(name = "NamedEntity.byNameEtype", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where lower(name)= :name) and eType=:etype"),
+		@NamedQuery(name = "NamedEntity.byNameUrl", query = "from NamedEntity where GUID in (select fullname.entity from FullName as fullname where lower(name)= :name) and url=:url"),
 		@NamedQuery(name = "NamedEntity.byUrl", query = "from NamedEntity where url=:url"),
 		@NamedQuery(name = "NamedEntity.byEType", query = "from NamedEntity where eType=:etype") })
 public class NamedEntity implements Serializable {
@@ -53,7 +53,7 @@ public class NamedEntity implements Serializable {
 	}
 
 	public int getGUID() {
-		return this.GUID;
+		return GUID;
 	}
 
 	public void setGUID(int GUID) {
@@ -61,7 +61,7 @@ public class NamedEntity implements Serializable {
 	}
 
 	public EType getEType() {
-		return this.eType;
+		return eType;
 	}
 
 	public void setEType(EType eType) {
@@ -69,7 +69,7 @@ public class NamedEntity implements Serializable {
 	}
 
 	public String getUrl() {
-		return this.url;
+		return url;
 	}
 
 	public void setUrl(String url) {
@@ -80,8 +80,8 @@ public class NamedEntity implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + this.GUID;
-		result = prime * result + (this.eType == null ? 0 : this.eType.hashCode());
+		result = prime * result + GUID;
+		result = prime * result + (eType == null ? 0 : eType.hashCode());
 		return result;
 	}
 
@@ -97,14 +97,14 @@ public class NamedEntity implements Serializable {
 			return false;
 		}
 		NamedEntity other = (NamedEntity) obj;
-		if (this.GUID != other.GUID) {
+		if (GUID != other.GUID) {
 			return false;
 		}
-		if (this.eType == null) {
+		if (eType == null) {
 			if (other.eType != null) {
 				return false;
 			}
-		} else if (!this.eType.equals(other.eType)) {
+		} else if (!eType.equals(other.eType)) {
 			return false;
 		}
 		return true;

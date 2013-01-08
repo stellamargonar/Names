@@ -93,7 +93,7 @@ public class TestUsageStatisticDAO extends TestCase {
 
 	@Test
 	public final void testFindByQuery() {
-		List<UsageStatistic> list = dao.findByQuery(query);
+		List<UsageStatistic> list = dao.findByQuery(query.toLowerCase());
 		assertNotNull(list);
 		assertTrue(list.size() > 0);
 		for (UsageStatistic s : list) {
@@ -104,7 +104,8 @@ public class TestUsageStatisticDAO extends TestCase {
 
 	@Test
 	public final void testFindByQuerySelected() {
-		checkEquals(stat, dao.findByQuerySelected(query, selected));
+		checkEquals(stat,
+				dao.findByQuerySelected(query.toLowerCase(), selected));
 		assertNull(dao.findByQuerySelected("", selected));
 	}
 

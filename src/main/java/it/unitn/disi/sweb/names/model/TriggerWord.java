@@ -36,10 +36,10 @@ import javax.persistence.UniqueConstraint;
 		"triggerWord", "type_id"}))
 @SequenceGenerator(name = "triggerword_seq", sequenceName = "triggerword_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "TriggerWord.byTW", query = "from TriggerWord where triggerWord = :tw"),
+		@NamedQuery(name = "TriggerWord.byTW", query = "from TriggerWord where lower(triggerWord) = :tw"),
 		@NamedQuery(name = "TriggerWord.variationsByTW", query = "from TriggerWord as trig where triggerWord = :tw and type=:type"),
-		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where triggerWord = :tw and trig.type.eType=:etype"),
-		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (o.triggerWord = :t1 and t.triggerWord=:t2) or (o.triggerWord=:t2 and t.triggerWord=:t1)"),
+		@NamedQuery(name = "TriggerWord.byTWEtype", query = "from TriggerWord as trig where lower(triggerWord) = :tw and trig.type.eType=:etype"),
+		@NamedQuery(name = "TriggerWord.isVariations", query = "select t from TriggerWord as t join t.variations o where (lower(o.triggerWord) = :t1 and lower(t.triggerWord) = :t2) or (lower(o.triggerWord) = :t2 and lower(t.triggerWord) = :t1)"),
 		@NamedQuery(name = "TriggerWord.byNgram", query = "from TriggerWord where ABS(nGramCode - :ngram) < :diff"),
 })
 public class TriggerWord implements Serializable {

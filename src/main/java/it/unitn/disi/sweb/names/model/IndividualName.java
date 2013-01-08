@@ -34,11 +34,11 @@ import javax.persistence.UniqueConstraint;
 		"name", "element_id"}))
 @SequenceGenerator(name = "individualname_seq", sequenceName = "individualname_id_seq")
 @NamedQueries({
-		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where name = :name"),
-		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where name = :name and nameElement.eType=:etype"),
-		@NamedQuery(name = "IndividualName.translation", query = "select i from IndividualName i join i.translations o where (o.name = :name1 and i.name=:name2) or (o.name=:name2 and i.name=:name1)"),
-		@NamedQuery(name = "IndividualName.alltranslation1", query = "select o from IndividualName i join i.translations o where i.name=:name"),
-		@NamedQuery(name = "IndividualName.alltranslation2", query = "select i from IndividualName i join i.translations o where o.name=:name"),
+		@NamedQuery(name = "IndividualName.byName", query = "from IndividualName where lower(name) = :name"),
+		@NamedQuery(name = "IndividualName.byNameEtype", query = "from IndividualName where lower(name) = :name and nameElement.eType=:etype"),
+		@NamedQuery(name = "IndividualName.translation", query = "select i from IndividualName i join i.translations o where (lower(o.name) = :name1 and lower(i.name) = :name2) or (lower(o.name) = :name2 and lower(i.name) = :name1)"),
+		@NamedQuery(name = "IndividualName.alltranslation1", query = "select o from IndividualName i join i.translations o where lower(i.name)=:name"),
+		@NamedQuery(name = "IndividualName.alltranslation2", query = "select i from IndividualName i join i.translations o where lower(o.name)=:name"),
 		@NamedQuery(name = "IndividualName.byNgram", query = "from IndividualName where ABS(nGramCode - :ngram) < :diff"),
 })
 public class IndividualName implements Serializable {

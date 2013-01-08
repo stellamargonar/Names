@@ -32,7 +32,7 @@ public class NameSearchImpl implements NameSearch {
 
 	private static final double WEIGHT_EQUALS = 1.0;
 	private static final double WEIGHT_REORDER = 0.8;
-	private static final int MAXRESULT = 10;
+	private static final int MAXRESULT = 5;
 
 	private NameManager nameManager;
 	private NameMatch nameMatch;
@@ -107,6 +107,10 @@ public class NameSearchImpl implements NameSearch {
 	 * @return list of top ranked results
 	 */
 	private Map<NamedEntity, Double> searchTopRank(String input) {
+		if (input == null || input.isEmpty()) {
+			return null;
+		}
+
 		// query the database for the most selected result for query "input"
 		Map<FullName, Double> names = statManager.retrieveTopResults(input,
 				MAXRESULT);
@@ -131,8 +135,12 @@ public class NameSearchImpl implements NameSearch {
 	 * @return array of strings representing the tokens
 	 */
 	private String[] generateTokens(String input) {
-		// TODO improve implementation
-		return input.split(" ");
+		if (input != null) {
+			// TODO improve implementation
+			return input.split(" ");
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -143,7 +151,7 @@ public class NameSearchImpl implements NameSearch {
 	 * @return list of entities
 	 */
 	private Map<NamedEntity, Double> searchEquals(String input) {
-		if (input == null) {
+		if (input == null || input.isEmpty()) {
 			return null;
 		}
 
@@ -230,7 +238,7 @@ public class NameSearchImpl implements NameSearch {
 	 * @return entities which names match the input query
 	 */
 	private Map<NamedEntity, Double> searchMisspellings(String input) {
-		if (input == null) {
+		if (input == null || input.isEmpty()) {
 			return null;
 		}
 
@@ -276,18 +284,20 @@ public class NameSearchImpl implements NameSearch {
 		// case)
 		int size = 0;
 		for (String t : tokens) {
-			List<NamedEntity> list = searchSingleToken(t);
-			list.addAll(searchTokenMisspellings(t));
-			list.addAll(searchTokenVariations(t));
+			if (!t.equals("")) {
+				List<NamedEntity> list = searchSingleToken(t);
+				list.addAll(searchTokenMisspellings(t));
+				list.addAll(searchTokenVariations(t));
 
-			if (list != null && !list.isEmpty()) {
-				size += list.size();
-				for (NamedEntity r : list) {
-					Double value = candidates.get(r);
-					if (value == null) {
-						value = 0.0;
+				if (list != null && !list.isEmpty()) {
+					size += list.size();
+					for (NamedEntity r : list) {
+						Double value = candidates.get(r);
+						if (value == null) {
+							value = 0.0;
+						}
+						candidates.put(r, value + 1);
 					}
-					candidates.put(r, value + 1);
 				}
 			}
 		}
@@ -360,9 +370,7 @@ public class NameSearchImpl implements NameSearch {
 				}
 			}
 		}
-		if (result == null) {
-			System.out.println(token);
-		}
+
 		return result;
 	}
 

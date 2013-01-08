@@ -4,7 +4,6 @@ import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.EntityDAO;
 import it.unitn.disi.sweb.names.service.EntityManager;
-import it.unitn.disi.sweb.names.service.EtypeManager;
 
 import java.util.List;
 
@@ -35,9 +34,9 @@ public class EntityManagerImpl implements EntityManager {
 	@Override
 	public List<NamedEntity> find(String url, String name) {
 		if (name != null && url != null) {
-			return entityDao.findByNameUrl(name, url);
+			return entityDao.findByNameUrl(name.toLowerCase(), url);
 		} else if (name != null) {
-			return entityDao.findByName(name);
+			return entityDao.findByName(name.toLowerCase());
 		} else {
 
 			return entityDao.findByUrl(url);
@@ -45,12 +44,12 @@ public class EntityManagerImpl implements EntityManager {
 	}
 	@Override
 	public List<NamedEntity> find(String name) {
-		return entityDao.findByName(name);
+		return entityDao.findByName(name.toLowerCase());
 	}
 
 	@Override
 	public List<NamedEntity> find(String name, EType etype) {
-		return entityDao.findByNameEtype(name, etype);
+		return entityDao.findByNameEtype(name.toLowerCase(), etype);
 	}
 
 	@Override
@@ -61,10 +60,6 @@ public class EntityManagerImpl implements EntityManager {
 	@Autowired
 	public void setEntityDao(EntityDAO entityDao) {
 		this.entityDao = entityDao;
-	}
-
-	@Autowired
-	public void setEtypeManager(EtypeManager etypeManager) {
 	}
 
 }

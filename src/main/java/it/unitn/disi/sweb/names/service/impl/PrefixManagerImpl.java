@@ -61,10 +61,10 @@ public class PrefixManagerImpl implements PrefixManager {
 		if (query == null || query.length() == 0) {
 			return null;
 		}
-
-		String[] prefixes = new String[query.length()];
-		for (int i = 0; i < query.length(); i++) {
-			prefixes[i] = query.substring(0, i);
+		String queryNormalized = StringCompareUtils.normalize(query);
+		String[] prefixes = new String[queryNormalized.length()];
+		for (int i = 0; i < queryNormalized.length(); i++) {
+			prefixes[i] = queryNormalized.substring(0, i);
 		}
 
 		return prefixes;

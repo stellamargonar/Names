@@ -159,8 +159,8 @@ public class NameMatchImpl implements NameMatch {
 		}
 
 		// cercare in traduzioni e varianti se c'e' un match
-		boolean nameTranslation = individualNameDao.isTranslation(key, value);
-		boolean triggerWordVariations = triggerWordDao.isVariation(key, value);
+		boolean nameTranslation = individualNameDao.isTranslation(key.toLowerCase(), value.toLowerCase());
+		boolean triggerWordVariations = triggerWordDao.isVariation(key.toLowerCase(), value.toLowerCase());
 		double sim = 0.0;
 
 		if (nameTranslation || triggerWordVariations) {
@@ -176,7 +176,7 @@ public class NameMatchImpl implements NameMatch {
 
 	private double tokenTranslationSimilarity(String key, String value, EType e) {
 		double sim = 0.0;
-		List<IndividualName> list = individualNameDao.findByNameEtype(key, e);
+		List<IndividualName> list = individualNameDao.findByNameEtype(key.toLowerCase(), e);
 
 		if (list != null) {
 			for (IndividualName n : list) {
@@ -197,7 +197,7 @@ public class NameMatchImpl implements NameMatch {
 	private double triggerwordVariantSimilarity(String key, String value,
 			EType e) {
 		double sim = 0.0;
-		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(key, e);
+		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(key.toLowerCase(), e);
 		if (tList != null) {
 			for (TriggerWord t : tList) {
 				List<TriggerWord> variations = triggerWordDao.findVariations(t);

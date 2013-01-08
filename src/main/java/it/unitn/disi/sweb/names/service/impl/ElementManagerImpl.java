@@ -73,12 +73,12 @@ public class ElementManagerImpl implements ElementManager {
 
 	@Override
 	public NameElement findNameElement(String element, EType etype) {
-		return nameDao.findByNameEType(element, etype);
+		return nameDao.findByNameEType(element.toLowerCase(), etype);
 	}
 
 	@Override
 	public TriggerWordType findTriggerWordType(String type, EType etype) {
-		return twDao.findByNameEType(type, etype);
+		return twDao.findByNameEType(type.toLowerCase(), etype);
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class ElementManagerImpl implements ElementManager {
 
 	@Override
 	public List<TriggerWord> findTriggerWord(String t) {
-		return tDao.findByTriggerWord(t);
+		return tDao.findByTriggerWord(t.toLowerCase());
 	}
 
 }

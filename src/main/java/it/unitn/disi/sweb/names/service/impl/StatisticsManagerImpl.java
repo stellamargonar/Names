@@ -21,11 +21,11 @@ public class StatisticsManagerImpl implements StatisticsManager {
 
 	@Override
 	public void updateSearchStatistic(String query, FullName selected) {
-		UsageStatistic old = statDao.findByQuerySelected(query, selected);
+		UsageStatistic old = statDao.findByQuerySelected(query.toLowerCase(), selected);
 		if (old == null) {
 			UsageStatistic u = new UsageStatistic();
 			u.setFrequency(1);
-			u.setQuery(query);
+			u.setQuery(query.toLowerCase());
 			u.setSelected(selected);
 			statDao.save(u);
 		} else {
@@ -45,7 +45,7 @@ public class StatisticsManagerImpl implements StatisticsManager {
 	@Override
 	public Map<FullName, Double> retrieveTopResults(String query,
 			int maxNrResults) {
-		List<UsageStatistic> list = statDao.findByQuery(query);
+		List<UsageStatistic> list = statDao.findByQuery(query.toLowerCase());
 		if (list == null || list.isEmpty()) {
 			return null;
 		}
@@ -57,7 +57,7 @@ public class StatisticsManagerImpl implements StatisticsManager {
 		Collections.sort(list, new Comparator<UsageStatistic>() {
 			@Override
 			public int compare(UsageStatistic o1, UsageStatistic o2) {
-				return Double.compare(o1.getFrequency(), o2.getFrequency());
+				return -1 * Double.compare(o1.getFrequency(), o2.getFrequency());
 			}
 		});
 
@@ -74,7 +74,7 @@ public class StatisticsManagerImpl implements StatisticsManager {
 
 	@Override
 	public double retrieveFrequency(String query, FullName selected) {
-		UsageStatistic u = statDao.findByQuerySelected(query, selected);
+		UsageStatistic u = statDao.findByQuerySelected(query.toLowerCase(), selected);
 		return u != null ? u.getFrequency() : 0;
 	}
 }

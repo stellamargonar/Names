@@ -61,7 +61,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	@Transactional
 	public List<TriggerWord> findVariations(TriggerWord triggerWord) {
-
+// TODO check query. does not make sense
 		Set<TriggerWord> result = em
 				.createNamedQuery("TriggerWord.variationsByTW",
 						TriggerWord.class)

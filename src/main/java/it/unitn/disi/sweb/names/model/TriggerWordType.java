@@ -37,9 +37,9 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "twtype_seq", sequenceName = "twtype_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "TWType.findAll", query = "from TriggerWordType"),
-		@NamedQuery(name = "TWType.findByName", query = "from TriggerWordType where type=:name"),
+		@NamedQuery(name = "TWType.findByName", query = "from TriggerWordType where lower(type)=:name"),
 		@NamedQuery(name = "TWType.findByEtype", query = "from TriggerWordType where eType=:etype"),
-		@NamedQuery(name = "TWType.findByNameEtype", query = "from TriggerWordType where type=:name and eType=:etype")})
+		@NamedQuery(name = "TWType.findByNameEtype", query = "from TriggerWordType where lower(type) = :name and eType=:etype")})
 public class TriggerWordType implements Serializable {
 
 	@Id

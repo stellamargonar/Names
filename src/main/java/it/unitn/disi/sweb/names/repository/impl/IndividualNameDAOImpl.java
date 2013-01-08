@@ -89,13 +89,13 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 		List<IndividualName> list1 = em
 				.createNamedQuery("IndividualName.alltranslation1",
 						IndividualName.class)
-				.setParameter("name", name.getName()).getResultList();
+				.setParameter("name", name.getName().toLowerCase()).getResultList();
 		result.addAll(list1);
 
 		List<IndividualName> list2 = em
 				.createNamedQuery("IndividualName.alltranslation2",
 						IndividualName.class)
-				.setParameter("name", name.getName()).getResultList();
+				.setParameter("name", name.getName().toLowerCase()).getResultList();
 		result.addAll(list2);
 
 		return new ArrayList<>(result);
