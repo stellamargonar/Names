@@ -1,9 +1,12 @@
 package it.unitn.disi.sweb.names.service.impl;
 
 import it.unitn.disi.sweb.names.model.EType;
+import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.repository.EntityDAO;
+import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.service.EntityManager;
+import it.unitn.disi.sweb.names.service.NameManager;
 
 import java.util.List;
 
@@ -14,6 +17,10 @@ import org.springframework.stereotype.Component;
 public class EntityManagerImpl implements EntityManager {
 
 	private EntityDAO entityDao;
+
+	private NameManager nameManager;
+	private FullNameDAO nameDao;
+
 	@Override
 	public NamedEntity createEntity(EType etype, String url) {
 		if (etype == null) {
@@ -57,9 +64,31 @@ public class EntityManagerImpl implements EntityManager {
 		return entityDao.findByEtype(etype);
 	}
 
+	@Override
+	public void deleteEntity(NamedEntity e) {
+		if (e != null) {
+			List<FullName> names = nameManager.find(e);
+			for (FullName f : names) {
+				nameDao.delete(f);
+			}
+		}
+		e = entityDao.update(e);
+		entityDao.delete(e);
+	}
+
 	@Autowired
 	public void setEntityDao(EntityDAO entityDao) {
 		this.entityDao = entityDao;
+	}
+
+	@Autowired
+	public void setNameManager(NameManager nameManager) {
+		this.nameManager = nameManager;
+	}
+
+	@Autowired
+	public void setNameDao(FullNameDAO nameDao) {
+		this.nameDao = nameDao;
 	}
 
 }

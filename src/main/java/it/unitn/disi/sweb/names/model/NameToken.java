@@ -44,7 +44,7 @@ public class NameToken implements Serializable {
 	@JoinColumn(name = "full_name_id", nullable = false)
 	private FullName fullName;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name = "name_id", nullable = false)
 	private IndividualName individualName;
 

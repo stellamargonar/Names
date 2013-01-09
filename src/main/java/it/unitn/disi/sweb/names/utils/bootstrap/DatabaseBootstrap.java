@@ -39,7 +39,7 @@ public class DatabaseBootstrap {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
 
-		TriggerWordType title = twtDao.findByNameEType("Title",
+		TriggerWordType title = twtDao.findByNameEType("Title".toLowerCase(),
 				etypeManager.getEtype(EtypeName.PERSON));
 
 		while ((line = reader.readLine()) != null) {
@@ -82,7 +82,7 @@ public class DatabaseBootstrap {
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");
 
-			EType e = etypeDao.findByName(token[1]);
+			EType e = etypeDao.findByName(token[1].toLowerCase());
 			NameElement ne = new NameElement();
 			ne.setElementName(token[0]);
 			ne.setEtype(e);
@@ -97,7 +97,7 @@ public class DatabaseBootstrap {
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");
-			EType e = etypeDao.findByName(token[1]);
+			EType e = etypeDao.findByName(token[1].toLowerCase());
 			TriggerWordType t = new TriggerWordType();
 			t.setType(token[0]);
 			t.seteType(e);
@@ -111,7 +111,7 @@ public class DatabaseBootstrap {
 	void storeToponymList(String fileName) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
-		TriggerWordType top = twtDao.findByNameEType("Toponym",
+		TriggerWordType top = twtDao.findByNameEType("Toponym".toLowerCase(),
 				etypeManager.getEtype(EtypeName.LOCATION));
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");

@@ -61,10 +61,6 @@ public class TestMatch extends TestCase {
 		nameManager.createFullName("New York State", nys);
 	}
 
-	private void setUpToken() {
-
-	}
-
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -86,22 +82,26 @@ public class TestMatch extends TestCase {
 
 		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
 		assertEquals(0.0, similarity);
+	}
+	@Test
+	public void testStringSimilarity2() {
+		String name1 = null;
+		String name2 = "a";
 
-		name1 = null;
-		name2 = "a";
-
-		similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
 		assertEquals(0.0, similarity);
+	}
+	@Test
+	public void testStringSimilarity3() {
+		String name1 = "a";
+		String name2 = null;
 
-		name1 = "a";
-		name2 = null;
-
-		similarity = nameMatch.stringSimilarity(name1, name2, etype);
+		double similarity = nameMatch.stringSimilarity(name1, name2, etype);
 		assertEquals(0.0, similarity);
 	}
 
 	@Test
-	public final void testStringSimilarity2() {
+	public final void testStringSimilarity4() {
 		String name1 = "";
 		String name2 = "";
 
@@ -110,7 +110,7 @@ public class TestMatch extends TestCase {
 	}
 
 	@Test
-	public final void testStringSimilarity3() {
+	public final void testStringSimilarity5() {
 		String name1 = "";
 		String name2 = "ABCDEFG";
 
@@ -119,7 +119,7 @@ public class TestMatch extends TestCase {
 	}
 
 	@Test
-	public final void testStringSimilarity4() {
+	public final void testStringSimilarity6() {
 		String name1 = "abc";
 		String name2 = "def";
 
@@ -128,7 +128,7 @@ public class TestMatch extends TestCase {
 	}
 
 	@Test
-	public final void testStringSimilarity5() {
+	public final void testStringSimilarity7() {
 		String name1 = "ab";
 		String name2 = "abc";
 
@@ -137,7 +137,7 @@ public class TestMatch extends TestCase {
 	}
 
 	@Test
-	public final void testStringSimilarity6() {
+	public final void testStringSimilarity8() {
 		String name1 = "abc def";
 		String name2 = "def abc";
 
@@ -149,7 +149,7 @@ public class TestMatch extends TestCase {
 	 * test string length difference
 	 */
 	@Test
-	public final void testStringSimilarity7() {
+	public final void testStringSimilarity9() {
 		String name1 = "annalisa";
 		String name2 = "anna";
 
@@ -157,7 +157,7 @@ public class TestMatch extends TestCase {
 		assertEquals(0.0, similarity);
 	}
 	@Test
-	public final void testStringSimilarity8() {
+	public final void testStringSimilarity10() {
 		String name1 = "guglielmo";
 		String name2 = "pierpaolo";
 
@@ -285,23 +285,6 @@ public class TestMatch extends TestCase {
 
 		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
 		assertEquals(0.0, similarity);
-	}
-
-	/**
-	 * Test method for
-	 * {@link it.unitn.disi.sweb.names.service.NameMatch#tokenAnalysis(java.lang.String, java.lang.String, it.unitn.disi.sweb.names.model.EType)}
-	 * .
-	 */
-	// @Test
-	public final void testTokenAnalysis() {
-		setUpToken();
-		EType etype = etypeManager.getEtype(EtypeName.LOCATION);
-
-		String name1 = "Lago di Garda";
-		String name2 = "Garda Loke";
-
-		double similarity = nameMatch.tokenAnalysis(name1, name2, etype);
-		assertTrue(similarity >= 0.5);
 	}
 
 

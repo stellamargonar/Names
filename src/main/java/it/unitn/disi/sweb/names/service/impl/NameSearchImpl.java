@@ -11,6 +11,7 @@ import it.unitn.disi.sweb.names.service.NameSearch;
 import it.unitn.disi.sweb.names.service.SearchType;
 import it.unitn.disi.sweb.names.service.StatisticsManager;
 import it.unitn.disi.sweb.names.utils.Pair;
+import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,7 +84,7 @@ public class NameSearchImpl implements NameSearch {
 		Map<NamedEntity, Double> listEquals = searchEquals(input);
 
 		// tokens used also by other functions
-		String[] tokens = generateTokens(input);
+		String[] tokens = StringCompareUtils.generateTokens(input);
 
 		// search for entities with name equals to the input with tokens in
 		// different order
@@ -126,22 +127,7 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
-	/**
-	 * generate the tokens for the input strings, based on predefined rules
-	 * (spacing, puntaction..)
-	 *
-	 * @param input
-	 *            string
-	 * @return array of strings representing the tokens
-	 */
-	private String[] generateTokens(String input) {
-		if (input != null) {
-			// TODO improve implementation
-			return input.split(" ");
-		} else {
-			return null;
-		}
-	}
+
 
 	/**
 	 * search for entities which have "input" as one of the possible names. The

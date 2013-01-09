@@ -50,7 +50,7 @@ public final class StringCompareUtils {
 	public static int computeMaxDifference(String name) {
 		double a = Math.log(name.length());
 		double b = NGRAM_DIFFERENCE;
-		return (int)(a * b);
+		return (int) (a * b);
 		// return (int) Math.log((double) name.length() * NGRAM_DIFFERENCE)
 		// * NGRAM_DIFFERENCE;
 		// return (name.length() / 3 + 1) * NGRAM_DIFFERENCE;
@@ -69,7 +69,7 @@ public final class StringCompareUtils {
 		if (name == null || name.length() == 0) {
 			return null;
 		}
-//		name = " " + name + " ";
+		// name = " " + name + " ";
 
 		// case of name shorter than gram size
 		if (name.length() <= size) {
@@ -82,5 +82,22 @@ public final class StringCompareUtils {
 			grams[i] = name.substring(i, i + size);
 		}
 		return grams;
+	}
+
+	/**
+	 * generate the tokens for the input strings, based on predefined rules
+	 * (spacing, puntaction..)
+	 *
+	 * @param input
+	 *            string
+	 * @return array of strings representing the tokens
+	 */
+	public static String[] generateTokens(String input) {
+		if (input != null) {
+			// TODO improve implementation
+			return input.split(" ");
+		} else {
+			return null;
+		}
 	}
 }

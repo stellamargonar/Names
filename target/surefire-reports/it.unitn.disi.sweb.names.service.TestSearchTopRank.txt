@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: it.unitn.disi.sweb.names.service.TestSearchTopRank
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.679 sec

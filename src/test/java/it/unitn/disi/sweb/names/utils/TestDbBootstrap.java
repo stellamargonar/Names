@@ -20,7 +20,7 @@ public class TestDbBootstrap {
 
 	}
 
-//	 @Test
+	 @Test
 	public void testBootstrap() {
 		try {
 			 db.bootstrapAll();

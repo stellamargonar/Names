@@ -27,4 +27,6 @@ public interface EntityManager {
 
 	List<NamedEntity> find(EType etype);
 
+	void deleteEntity(NamedEntity e);
+
 }

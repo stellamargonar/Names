@@ -16,13 +16,15 @@ import it.unitn.disi.sweb.names.service.ElementManager;
 import it.unitn.disi.sweb.names.service.EntityManager;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.NameMatch;
-import it.unitn.disi.sweb.names.utils.Pair;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -125,30 +127,58 @@ public class NameMatchImpl implements NameMatch {
 	@Override
 	public double tokenAnalysis(String name1, String name2, EType eType) {
 		etype = eType;
+		// temporary entities created in case name1 and/or name2 are not in the
+		// db
+		NamedEntity tmp1 = null;
+		NamedEntity tmp2 = null;
 
 		List<FullName> nameList1 = nameManager.find(name1, eType);
 		List<FullName> nameList2 = nameManager.find(name2, eType);
-		// TODO
-		// when a name is not present in the db, which means, namelist empty,
-		// parse it for creating the name tokens
+
+		// one or both names are not in the database. need to tokenize the
+		// string
+		if (nameList1 == null || nameList1.isEmpty()) {
+			// name1 not in the db
+			// 1. create fake entity
+			tmp1 = entityManager.createEntity(eType, "tmp1");
+			FullName f = nameManager.createFullName(name1, tmp1);
+			nameList1 = new ArrayList<>();
+			nameList1.add(f);
+		}
+		if (nameList2 == null || nameList2.isEmpty()) {
+			tmp2 = entityManager.createEntity(eType, "tmp2");
+			FullName f = nameManager.createFullName(name2, tmp2);
+			nameList2 = new ArrayList<>();
+			nameList2.add(f);
+		}
 
 		double similarity = 0;
-		List<List<Pair<String, String>>> listPairs = generateListPairs(
-				nameList1, nameList2);
 
-		for (List<Pair<String, String>> list : listPairs) {
+		List<Map<String, String>> listPairs = generateListPairs(nameList1,
+				nameList2);
+
+		for (Map<String, String> map : listPairs) {
 			double totalSimilarity = 0;
-			for (Pair<String, String> pair : list) {
-				double simToken = stringSimilarity(pair.key, pair.value, eType);
+			for (Entry<String, String> pair : map.entrySet()) {
+				double simToken = stringSimilarity(pair.getKey(),
+						pair.getValue(), eType);
 
 				// TODO aggiungere anche variation sulle variant
-				double simVariation = tokenVariant(pair.key, pair.value, etype);
+				double simVariation = tokenVariant(pair.getKey(),
+						pair.getValue(), etype);
 				totalSimilarity += Math.max(simToken, simVariation)
-						* ((double) pair.value.length() / name2.length());
+						* ((double) pair.getValue().length() / name2.length());
 			}
 			if (totalSimilarity > similarity) {
 				similarity = totalSimilarity;
 			}
+		}
+
+		if (tmp1 != null) {
+			entityManager.deleteEntity(tmp1);
+		}
+		if (tmp2 != null) {
+			entityManager.deleteEntity(tmp2);
 		}
 		return similarity;
 	}
@@ -159,8 +189,10 @@ public class NameMatchImpl implements NameMatch {
 		}
 
 		// cercare in traduzioni e varianti se c'e' un match
-		boolean nameTranslation = individualNameDao.isTranslation(key.toLowerCase(), value.toLowerCase());
-		boolean triggerWordVariations = triggerWordDao.isVariation(key.toLowerCase(), value.toLowerCase());
+		boolean nameTranslation = individualNameDao.isTranslation(
+				key.toLowerCase(), value.toLowerCase());
+		boolean triggerWordVariations = triggerWordDao.isVariation(
+				key.toLowerCase(), value.toLowerCase());
 		double sim = 0.0;
 
 		if (nameTranslation || triggerWordVariations) {
@@ -176,7 +208,8 @@ public class NameMatchImpl implements NameMatch {
 
 	private double tokenTranslationSimilarity(String key, String value, EType e) {
 		double sim = 0.0;
-		List<IndividualName> list = individualNameDao.findByNameEtype(key.toLowerCase(), e);
+		List<IndividualName> list = individualNameDao.findByNameEtype(
+				key.toLowerCase(), e);
 
 		if (list != null) {
 			for (IndividualName n : list) {
@@ -197,7 +230,8 @@ public class NameMatchImpl implements NameMatch {
 	private double triggerwordVariantSimilarity(String key, String value,
 			EType e) {
 		double sim = 0.0;
-		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(key.toLowerCase(), e);
+		List<TriggerWord> tList = triggerWordDao.findByTriggerWordEtype(
+				key.toLowerCase(), e);
 		if (tList != null) {
 			for (TriggerWord t : tList) {
 				List<TriggerWord> variations = triggerWordDao.findVariations(t);
@@ -222,9 +256,9 @@ public class NameMatchImpl implements NameMatch {
 	 *            list with FullName for name2
 	 * @return List of list of pairs of tokens
 	 */
-	private List<List<Pair<String, String>>> generateListPairs(
+	private List<Map<String, String>> generateListPairs(
 			List<FullName> nameList1, List<FullName> nameList2) {
-		List<List<Pair<String, String>>> result = new ArrayList<>();
+		List<Map<String, String>> result = new ArrayList<>();
 
 		for (FullName n1 : nameList1) {
 			for (FullName n2 : nameList2) {
@@ -242,37 +276,45 @@ public class NameMatchImpl implements NameMatch {
 	 * @param n2
 	 * @return
 	 */
-	private List<Pair<String, String>> generatePairs(FullName n1, FullName n2) {
-		List<Pair<String, String>> result = new ArrayList<Pair<String, String>>();
+	private Map<String, String> generatePairs(FullName n1, FullName n2) {
+		Map<String, String> result = new HashMap<>();
 
 		for (NameElement nameElement : elementManager.findNameElement(etype)) {
 
 			List<String> list1 = getTokenByElement(n1, nameElement);
 			List<String> list2 = getTokenByElement(n2, nameElement);
 
-			result.addAll(combinePairs(list1, list2));
+			result.putAll(combinePairs(list1, list2));
 		}
 
 		for (TriggerWordType twtype : elementManager.findTriggerWordType(etype)) {
 			if (twtype.isComparable()) {
-				List<String> list1 = getTokenByElement(n1, twtype);
-				List<String> list2 = getTokenByElement(n2, twtype);
-				result.addAll(combinePairs(list1, list2));
+				List<String> list1 = n1.getTriggerWordTokens() == null
+						? null
+						: getTokenByElement(n1, twtype);
+				List<String> list2 = n2.getTriggerWordTokens() == null
+						? null
+						: getTokenByElement(n2, twtype);
+				result.putAll(combinePairs(list1, list2));
 			}
 		}
 		return result;
 	}
 
-	private List<Pair<String, String>> combinePairs(List<String> list1,
+	private Map<String, String> combinePairs(List<String> list1,
 			List<String> list2) {
+		Map<String, String> result = new HashMap<>();
+		if (list1 == null || list2 == null) {
+			return result;
+		}
 
-		List<Pair<String, String>> result = new ArrayList<Pair<String, String>>();
 		if (list1.size() == list2.size() && list1.size() == 1) {
-			result.add(new Pair(list1.get(0), list2.get(0)));
+			result.put(list1.get(0), list2.get(0));
 		} else {
 			if (list1.size() != 0 && list2.size() != 0) {
-				result.addAll(pairByLexicalGraphicOrder(list1, list2));
+				result.putAll(pairByLexicalGraphicOrder(list1, list2));
 				// TODO if (list1.size() == 0) ???
+
 			}
 		}
 		return result;
@@ -287,16 +329,45 @@ public class NameMatchImpl implements NameMatch {
 	 * @param list2
 	 * @return list of token pairs
 	 */
-	private List<Pair<String, String>> pairByLexicalGraphicOrder(
-			List<String> list1, List<String> list2) {
-		List<Pair<String, String>> result = new ArrayList<>();
-		Collections.sort(list1);
-		Collections.sort(list2);
+	private Map<String, String> pairByLexicalGraphicOrder(List<String> list1,
+			List<String> list2) {
+		Map<String, String> result = new HashMap<>();
 
-		Iterator<String> i1 = list1.iterator();
-		Iterator<String> i2 = list2.iterator();
-		while (i1.hasNext() && i2.hasNext()) {
-			result.add(new Pair<String, String>(i1.next(), i2.next()));
+		// creates maps based on the first letter for the strings in the two lists
+		Map<Character, List<String>> alpha1 = new HashMap<>();
+		Map<Character, List<String>> alpha2 = new HashMap<>();
+		for (String s: list1) {
+			char c = Character.toLowerCase(s.charAt(0));
+			List<String> l = alpha1.get(c);
+			if (l == null || l.isEmpty()) {
+				l = new ArrayList<>();
+			}
+			l.add(s);
+			alpha1.put(c,l);
+		}
+		for (String s: list2) {
+			char c = Character.toLowerCase(s.charAt(0));
+			List<String> l = alpha2.get(c);
+			if (l == null || l.isEmpty()) {
+				l = new ArrayList<>();
+			}
+			l.add(s);
+			alpha2.put(c,l);
+		}
+
+		for (Character c: alpha1.keySet()) {
+			List<String> l1 = alpha1.get(c);
+			List<String> l2 = alpha2.get(c);
+			if (l2 != null && !l2.isEmpty()) {
+				Collections.sort(l1);
+				Collections.sort(l2);
+
+				Iterator<String> it1 = l1.iterator();
+				Iterator<String> it2 = l2.iterator();
+				while (it1.hasNext() && it2.hasNext()) {
+					result.put(it1.next(), it2.next());
+				}
+			}
 		}
 
 		return result;
