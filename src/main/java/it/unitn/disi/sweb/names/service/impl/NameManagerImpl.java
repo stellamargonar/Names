@@ -12,6 +12,7 @@ import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
+import it.unitn.disi.sweb.names.service.EtypeName;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.SearchType;
 import it.unitn.disi.sweb.names.service.TranslationManager;
@@ -304,14 +305,32 @@ public class NameManagerImpl implements NameManager {
 
 	@Override
 	public boolean translatable(FullName f) {
-		Set<TriggerWordToken> tokens = f.getTriggerWordTokens();
-		if (tokens == null) {
-			return false;
-		}
-		for (TriggerWordToken tok : tokens) {
-			if (tok.getTriggerWord().getType().isComparable()) {
+		EType e = f.getEntity().getEType();
+		EtypeName n = EtypeName.valueOf(e.getEtype());
+
+		switch (n) {
+			case PERSON :
+				Set<TriggerWordToken> tokens = f.getTriggerWordTokens();
+				if (tokens == null) {
+					return false;
+				}
+				for (TriggerWordToken tok : tokens) {
+					if (tok.getTriggerWord().getType().isComparable()) {
+						return true;
+					}
+				}
+				return false;
+
+			case LOCATION :
 				return true;
-			}
+
+			case ORGANIZATION :
+				// TODO
+				// in case designator not translate
+				// in case educational organization -> translate
+				return false;
+			default :
+				break;
 		}
 		return false;
 	}
