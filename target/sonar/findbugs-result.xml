@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<BugCollection version="2.0.1" sequence="0" timestamp="1357668084000" analysisTimestamp="1357668177819" release="">
+<BugCollection version="2.0.1" sequence="0" timestamp="1357751980000" analysisTimestamp="1357754026060" release="">
   <Project>
     <Jar>/Users/stella/Documents/Programming/workspace/names/target/classes</Jar>
     <AuxClasspathEntry>/Users/stella/.m2/repository/org/hibernate/hibernate-core/4.1.9.Final/hibernate-core-4.1.9.Final.jar</AuxClasspathEntry>
@@ -37,17 +37,50 @@
     <AuxClasspathEntry>/Users/stella/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar</AuxClasspathEntry>
     <AuxClasspathEntry>/Users/stella/.m2/repository/cglib/cglib/2.2/cglib-2.2.jar</AuxClasspathEntry>
     <AuxClasspathEntry>/Users/stella/.m2/repository/asm/asm/3.1/asm-3.1.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs4586450355853490277.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs5063180165515257925.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs3115820668147764869.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs8363542771291233832.jar</AuxClasspathEntry>
     <SrcDir>/Users/stella/Documents/Programming/workspace/names/src/main/java</SrcDir>
     <WrkDir>/Users/stella/Documents/Programming/workspace/names/target</WrkDir>
   </Project>
+  <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE" instanceHash="c0f6b0ea379ae4f0b321839e99e69cf1" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.service.impl.NameMatchImpl.pairByLexicalGraphicOrder(List, List) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="49" end="554" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 49-554]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="pairByLexicalGraphicOrder" signature="(Ljava/util/List;Ljava/util/List;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="342" end="382" startBytecode="0" endBytecode="1065" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.pairByLexicalGraphicOrder(List, List)</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="368" end="368" startBytecode="286" endBytecode="286" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 368]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="PERFORMANCE">
+    <Description>Performance</Description>
+  </BugCategory>
+  <BugPattern type="WMI_WRONG_MAP_ITERATOR" abbrev="WMI" category="PERFORMANCE">
+    <ShortDescription>Inefficient use of keySet iterator instead of entrySet iterator</ShortDescription>
+    <Details><![CDATA[
+
+<p> This method accesses the value of a Map entry, using a key that was retrieved from
+a keySet iterator. It is more efficient to use an iterator on the entrySet of the map, to avoid the
+Map.get(key) lookup.</p>
+
+        ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="WMI">
+    <Description>Inefficient Map Iterator</Description>
+  </BugCode>
   <Errors errors="0" missingClasses="0"></Errors>
-  <FindBugsSummary timestamp="Tue, 8 Jan 2013 19:01:24 +0100" total_classes="78" referenced_classes="168" total_bugs="0" total_size="2664" num_packages="8" vm_version="23.3-b01" cpu_seconds="25.89" clock_seconds="12.46" peak_mbytes="170.43" alloc_mbytes="1127.12" gc_seconds="0.44">
+  <FindBugsSummary timestamp="Wed, 9 Jan 2013 18:19:40 +0100" total_classes="80" referenced_classes="179" total_bugs="1" total_size="2809" num_packages="8" vm_version="23.3-b01" cpu_seconds="36.97" clock_seconds="14.02" peak_mbytes="209.80" alloc_mbytes="1118.25" gc_seconds="0.56" priority_2="1">
     <FileStats path="it/unitn/disi/sweb/names/MisspellingsComparator.java" bugCount="0" size="2"/>
     <FileStats path="it/unitn/disi/sweb/names/model/EType.java" bugCount="0" size="39"/>
     <FileStats path="it/unitn/disi/sweb/names/model/FullName.java" bugCount="0" size="117"/>
-    <FileStats path="it/unitn/disi/sweb/names/model/IndividualName.java" bugCount="0" size="73"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/IndividualName.java" bugCount="0" size="78"/>
     <FileStats path="it/unitn/disi/sweb/names/model/NameElement.java" bugCount="0" size="51"/>
     <FileStats path="it/unitn/disi/sweb/names/model/NameStatistics.java" bugCount="0" size="52"/>
     <FileStats path="it/unitn/disi/sweb/names/model/NameToken.java" bugCount="0" size="59"/>
@@ -59,11 +92,11 @@
     <FileStats path="it/unitn/disi/sweb/names/model/TriggerWordToken.java" bugCount="0" size="59"/>
     <FileStats path="it/unitn/disi/sweb/names/model/TriggerWordType.java" bugCount="0" size="59"/>
     <FileStats path="it/unitn/disi/sweb/names/model/UsageStatistic.java" bugCount="0" size="52"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/DictionaryDAO.java" bugCount="0" size="3"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/DictionaryDAO.java" bugCount="0" size="5"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/ETypeDAO.java" bugCount="0" size="8"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/EntityDAO.java" bugCount="0" size="10"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/FullNameDAO.java" bugCount="0" size="14"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/IndividualNameDAO.java" bugCount="0" size="10"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/IndividualNameDAO.java" bugCount="0" size="11"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/NameElementDAO.java" bugCount="0" size="10"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/NameStatisticDAO.java" bugCount="0" size="7"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/NameTokenDAO.java" bugCount="0" size="8"/>
@@ -73,11 +106,11 @@
     <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordTokenDAO.java" bugCount="0" size="9"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordTypeDAO.java" bugCount="0" size="10"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/UsageStatisticsDAO.java" bugCount="0" size="8"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/impl/DictionaryDAOImpl.java" bugCount="0" size="12"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/DictionaryDAOImpl.java" bugCount="0" size="19"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/EntityDAOImpl.java" bugCount="0" size="31"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/EtypeDAOImpl.java" bugCount="0" size="28"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/FullNameDAOImpl.java" bugCount="0" size="44"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/impl/IndividualNameDAOImpl.java" bugCount="0" size="35"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/IndividualNameDAOImpl.java" bugCount="0" size="40"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameElementDAOImpl.java" bugCount="0" size="32"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameStatisticDAOImpl.java" bugCount="0" size="23"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameTokenDAOImpl.java" bugCount="0" size="25"/>
@@ -92,35 +125,37 @@
     <FileStats path="it/unitn/disi/sweb/names/service/EtypeManager.java" bugCount="0" size="2"/>
     <FileStats path="it/unitn/disi/sweb/names/service/EtypeName.java" bugCount="0" size="11"/>
     <FileStats path="it/unitn/disi/sweb/names/service/NameAutocompletion.java" bugCount="0" size="3"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/NameManager.java" bugCount="0" size="9"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameManager.java" bugCount="0" size="8"/>
     <FileStats path="it/unitn/disi/sweb/names/service/NameMatch.java" bugCount="0" size="5"/>
     <FileStats path="it/unitn/disi/sweb/names/service/NameSearch.java" bugCount="0" size="3"/>
     <FileStats path="it/unitn/disi/sweb/names/service/PrefixManager.java" bugCount="0" size="5"/>
     <FileStats path="it/unitn/disi/sweb/names/service/SearchType.java" bugCount="0" size="12"/>
     <FileStats path="it/unitn/disi/sweb/names/service/StatisticsManager.java" bugCount="0" size="5"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/TranslationManager.java" bugCount="0" size="2"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" bugCount="0" size="60"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/EntityManagerImpl.java" bugCount="0" size="45"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/EtypeManagerImpl.java" bugCount="0" size="23"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/NameAutocompletionImpl.java" bugCount="0" size="11"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" bugCount="0" size="155"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" bugCount="0" size="215"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" bugCount="0" size="164"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" bugCount="1" size="245" bugHash="c79d67cb84d9aafba3820fe1bbcace64"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" bugCount="0" size="210"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" bugCount="0" size="73"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/StatisticsManagerImpl.java" bugCount="0" size="41"/>
-    <FileStats path="it/unitn/disi/sweb/names/utils/HtmlParser.java" bugCount="0" size="100"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/TranslationManagerImpl.java" bugCount="0" size="42"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/HtmlParser.java" bugCount="0" size="105"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/JaroWinkler.java" bugCount="0" size="67"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/LevenstheinDamearau.java" bugCount="0" size="25"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/Pair.java" bugCount="0" size="8"/>
-    <FileStats path="it/unitn/disi/sweb/names/utils/StringCompareUtils.java" bugCount="0" size="53"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/StringCompareUtils.java" bugCount="0" size="58"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/TokenPositionComparator.java" bugCount="0" size="9"/>
-    <FileStats path="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" bugCount="0" size="133"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" bugCount="0" size="166"/>
     <PackageStats package="it.unitn.disi.sweb.names" total_bugs="0" total_types="1" total_size="2">
       <ClassStats class="it.unitn.disi.sweb.names.MisspellingsComparator" sourceFile="MisspellingsComparator.java" interface="true" size="2" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.model" total_bugs="0" total_types="14" total_size="838">
+    <PackageStats package="it.unitn.disi.sweb.names.model" total_bugs="0" total_types="14" total_size="843">
       <ClassStats class="it.unitn.disi.sweb.names.model.EType" sourceFile="EType.java" interface="false" size="39" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.FullName" sourceFile="FullName.java" interface="false" size="117" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.model.IndividualName" sourceFile="IndividualName.java" interface="false" size="73" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.IndividualName" sourceFile="IndividualName.java" interface="false" size="78" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.NameElement" sourceFile="NameElement.java" interface="false" size="51" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.NameStatistics" sourceFile="NameStatistics.java" interface="false" size="52" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.NameToken" sourceFile="NameToken.java" interface="false" size="59" bugs="0"/>
@@ -133,12 +168,12 @@
       <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWordType" sourceFile="TriggerWordType.java" interface="false" size="59" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.UsageStatistic" sourceFile="UsageStatistic.java" interface="false" size="52" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.repository" total_bugs="0" total_types="14" total_size="122">
-      <ClassStats class="it.unitn.disi.sweb.names.repository.DictionaryDAO" sourceFile="DictionaryDAO.java" interface="true" size="3" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.repository" total_bugs="0" total_types="14" total_size="125">
+      <ClassStats class="it.unitn.disi.sweb.names.repository.DictionaryDAO" sourceFile="DictionaryDAO.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.ETypeDAO" sourceFile="ETypeDAO.java" interface="true" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.EntityDAO" sourceFile="EntityDAO.java" interface="true" size="10" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.FullNameDAO" sourceFile="FullNameDAO.java" interface="true" size="14" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.repository.IndividualNameDAO" sourceFile="IndividualNameDAO.java" interface="true" size="10" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.IndividualNameDAO" sourceFile="IndividualNameDAO.java" interface="true" size="11" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.NameElementDAO" sourceFile="NameElementDAO.java" interface="true" size="10" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.NameStatisticDAO" sourceFile="NameStatisticDAO.java" interface="true" size="7" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.NameTokenDAO" sourceFile="NameTokenDAO.java" interface="true" size="8" bugs="0"/>
@@ -149,12 +184,12 @@
       <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO" sourceFile="TriggerWordTypeDAO.java" interface="true" size="10" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.UsageStatisticsDAO" sourceFile="UsageStatisticsDAO.java" interface="true" size="8" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.repository.impl" total_bugs="0" total_types="14" total_size="402">
-      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.DictionaryDAOImpl" sourceFile="DictionaryDAOImpl.java" interface="false" size="12" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.repository.impl" total_bugs="0" total_types="14" total_size="414">
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.DictionaryDAOImpl" sourceFile="DictionaryDAOImpl.java" interface="false" size="19" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.EntityDAOImpl" sourceFile="EntityDAOImpl.java" interface="false" size="31" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.EtypeDAOImpl" sourceFile="EtypeDAOImpl.java" interface="false" size="28" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.FullNameDAOImpl" sourceFile="FullNameDAOImpl.java" interface="false" size="44" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.IndividualNameDAOImpl" sourceFile="IndividualNameDAOImpl.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.IndividualNameDAOImpl" sourceFile="IndividualNameDAOImpl.java" interface="false" size="40" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameElementDAOImpl" sourceFile="NameElementDAOImpl.java" interface="false" size="32" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameStatisticDAOImpl" sourceFile="NameStatisticDAOImpl.java" interface="false" size="23" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameTokenDAOImpl" sourceFile="NameTokenDAOImpl.java" interface="false" size="25" bugs="0"/>
@@ -165,28 +200,29 @@
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordTypeDAOImpl" sourceFile="TriggerWordTypeDAOImpl.java" interface="false" size="32" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.UsageStatisticsDAOImpl" sourceFile="UsageStatisticsDAOImpl.java" interface="false" size="28" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.service" total_bugs="0" total_types="11" total_size="72">
+    <PackageStats package="it.unitn.disi.sweb.names.service" total_bugs="0" total_types="12" total_size="73">
       <ClassStats class="it.unitn.disi.sweb.names.service.ElementManager" sourceFile="ElementManager.java" interface="true" size="9" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.EntityManager" sourceFile="EntityManager.java" interface="true" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.EtypeManager" sourceFile="EtypeManager.java" interface="true" size="2" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.EtypeName" sourceFile="EtypeName.java" interface="false" size="11" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.NameAutocompletion" sourceFile="NameAutocompletion.java" interface="true" size="3" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.NameManager" sourceFile="NameManager.java" interface="true" size="9" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameManager" sourceFile="NameManager.java" interface="true" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.NameMatch" sourceFile="NameMatch.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.NameSearch" sourceFile="NameSearch.java" interface="true" size="3" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.PrefixManager" sourceFile="PrefixManager.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.SearchType" sourceFile="SearchType.java" interface="false" size="12" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.StatisticsManager" sourceFile="StatisticsManager.java" interface="true" size="5" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.TranslationManager" sourceFile="TranslationManager.java" interface="true" size="2" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.service.impl" total_bugs="0" total_types="15" total_size="833">
+    <PackageStats package="it.unitn.disi.sweb.names.service.impl" total_bugs="1" total_types="16" total_size="914" priority_2="1">
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl" sourceFile="ElementManagerImpl.java" interface="false" size="60" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.EntityManagerImpl" sourceFile="EntityManagerImpl.java" interface="false" size="45" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.EtypeManagerImpl" sourceFile="EtypeManagerImpl.java" interface="false" size="19" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.EtypeManagerImpl$1" sourceFile="EtypeManagerImpl.java" interface="false" size="4" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameAutocompletionImpl" sourceFile="NameAutocompletionImpl.java" interface="false" size="11" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" sourceFile="NameManagerImpl.java" interface="false" size="151" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" sourceFile="NameManagerImpl.java" interface="false" size="160" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl$1" sourceFile="NameManagerImpl.java" interface="false" size="4" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourceFile="NameMatchImpl.java" interface="false" size="215" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourceFile="NameMatchImpl.java" interface="false" size="245" bugs="1" priority_2="1"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourceFile="NameSearchImpl.java" interface="false" size="203" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl$1" sourceFile="NameSearchImpl.java" interface="false" size="7" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" sourceFile="PrefixManagerImpl.java" interface="false" size="64" bugs="0"/>
@@ -194,45 +230,48 @@
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl$PrefixComparator" sourceFile="PrefixManagerImpl.java" interface="false" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.StatisticsManagerImpl" sourceFile="StatisticsManagerImpl.java" interface="false" size="34" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.StatisticsManagerImpl$1" sourceFile="StatisticsManagerImpl.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.TranslationManagerImpl" sourceFile="TranslationManagerImpl.java" interface="false" size="42" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.utils" total_bugs="0" total_types="8" total_size="262">
-      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser" sourceFile="HtmlParser.java" interface="false" size="64" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.utils" total_bugs="0" total_types="8" total_size="272">
+      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser" sourceFile="HtmlParser.java" interface="false" size="68" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser$1" sourceFile="HtmlParser.java" interface="false" size="1" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser$XMLHandler" sourceFile="HtmlParser.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser$XMLHandler" sourceFile="HtmlParser.java" interface="false" size="36" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.utils.JaroWinkler" sourceFile="JaroWinkler.java" interface="false" size="67" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.utils.LevenstheinDamearau" sourceFile="LevenstheinDamearau.java" interface="false" size="25" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.utils.Pair" sourceFile="Pair.java" interface="false" size="8" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.utils.StringCompareUtils" sourceFile="StringCompareUtils.java" interface="false" size="53" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.StringCompareUtils" sourceFile="StringCompareUtils.java" interface="false" size="58" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.utils.TokenPositionComparator" sourceFile="TokenPositionComparator.java" interface="false" size="9" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.utils.bootstrap" total_bugs="0" total_types="1" total_size="133">
-      <ClassStats class="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" sourceFile="DatabaseBootstrap.java" interface="false" size="133" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.utils.bootstrap" total_bugs="0" total_types="1" total_size="166">
+      <ClassStats class="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" sourceFile="DatabaseBootstrap.java" interface="false" size="166" bugs="0"/>
     </PackageStats>
     <FindBugsProfile>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="1595" invocations="596" avgMicrosecondsPerInvocation="2677" maxMicrosecondsPerInvocation="33811" standardDeviationMircosecondsPerInvocation="5497"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="604" invocations="593" avgMicrosecondsPerInvocation="1020" maxMicrosecondsPerInvocation="171997" standardDeviationMircosecondsPerInvocation="7154"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="452" invocations="502" avgMicrosecondsPerInvocation="902" maxMicrosecondsPerInvocation="23519" standardDeviationMircosecondsPerInvocation="1975"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref" totalMilliseconds="397" invocations="78" avgMicrosecondsPerInvocation="5097" maxMicrosecondsPerInvocation="365943" standardDeviationMircosecondsPerInvocation="41126"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="392" invocations="499" avgMicrosecondsPerInvocation="786" maxMicrosecondsPerInvocation="20355" standardDeviationMircosecondsPerInvocation="1433"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="364" invocations="502" avgMicrosecondsPerInvocation="726" maxMicrosecondsPerInvocation="20980" standardDeviationMircosecondsPerInvocation="1651"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="339" invocations="168" avgMicrosecondsPerInvocation="2020" maxMicrosecondsPerInvocation="39559" standardDeviationMircosecondsPerInvocation="5268"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="335" invocations="504" avgMicrosecondsPerInvocation="665" maxMicrosecondsPerInvocation="20771" standardDeviationMircosecondsPerInvocation="1769"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="332" invocations="502" avgMicrosecondsPerInvocation="663" maxMicrosecondsPerInvocation="45268" standardDeviationMircosecondsPerInvocation="2253"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="280" invocations="168" avgMicrosecondsPerInvocation="1668" maxMicrosecondsPerInvocation="28946" standardDeviationMircosecondsPerInvocation="4004"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="274" invocations="502" avgMicrosecondsPerInvocation="546" maxMicrosecondsPerInvocation="51559" standardDeviationMircosecondsPerInvocation="2341"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="223" invocations="325" avgMicrosecondsPerInvocation="686" maxMicrosecondsPerInvocation="7938" standardDeviationMircosecondsPerInvocation="1057"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="186" invocations="168" avgMicrosecondsPerInvocation="1110" maxMicrosecondsPerInvocation="21566" standardDeviationMircosecondsPerInvocation="2793"/>
-      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="162" invocations="727" avgMicrosecondsPerInvocation="223" maxMicrosecondsPerInvocation="5952" standardDeviationMircosecondsPerInvocation="444"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="131" invocations="646" avgMicrosecondsPerInvocation="203" maxMicrosecondsPerInvocation="62378" standardDeviationMircosecondsPerInvocation="2454"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="126" invocations="168" avgMicrosecondsPerInvocation="750" maxMicrosecondsPerInvocation="5583" standardDeviationMircosecondsPerInvocation="1022"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="120" invocations="502" avgMicrosecondsPerInvocation="239" maxMicrosecondsPerInvocation="6504" standardDeviationMircosecondsPerInvocation="587"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="116" invocations="168" avgMicrosecondsPerInvocation="695" maxMicrosecondsPerInvocation="38814" standardDeviationMircosecondsPerInvocation="3118"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="116" invocations="168" avgMicrosecondsPerInvocation="693" maxMicrosecondsPerInvocation="17888" standardDeviationMircosecondsPerInvocation="2304"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="112" invocations="201" avgMicrosecondsPerInvocation="559" maxMicrosecondsPerInvocation="41750" standardDeviationMircosecondsPerInvocation="3012"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="92" invocations="60" avgMicrosecondsPerInvocation="1544" maxMicrosecondsPerInvocation="69614" standardDeviationMircosecondsPerInvocation="8976"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="88" invocations="78" avgMicrosecondsPerInvocation="1136" maxMicrosecondsPerInvocation="24246" standardDeviationMircosecondsPerInvocation="3596"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.DumbMethods" totalMilliseconds="86" invocations="78" avgMicrosecondsPerInvocation="1115" maxMicrosecondsPerInvocation="29384" standardDeviationMircosecondsPerInvocation="3535"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="85" invocations="496" avgMicrosecondsPerInvocation="171" maxMicrosecondsPerInvocation="6505" standardDeviationMircosecondsPerInvocation="462"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="1127" invocations="516" avgMicrosecondsPerInvocation="2184" maxMicrosecondsPerInvocation="439997" standardDeviationMircosecondsPerInvocation="19526"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="747" invocations="516" avgMicrosecondsPerInvocation="1449" maxMicrosecondsPerInvocation="21943" standardDeviationMircosecondsPerInvocation="2500"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="747" invocations="513" avgMicrosecondsPerInvocation="1456" maxMicrosecondsPerInvocation="27548" standardDeviationMircosecondsPerInvocation="2705"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="632" invocations="666" avgMicrosecondsPerInvocation="949" maxMicrosecondsPerInvocation="43423" standardDeviationMircosecondsPerInvocation="2296"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="579" invocations="518" avgMicrosecondsPerInvocation="1118" maxMicrosecondsPerInvocation="26289" standardDeviationMircosecondsPerInvocation="2547"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="577" invocations="179" avgMicrosecondsPerInvocation="3226" maxMicrosecondsPerInvocation="54776" standardDeviationMircosecondsPerInvocation="7753"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="539" invocations="516" avgMicrosecondsPerInvocation="1046" maxMicrosecondsPerInvocation="26301" standardDeviationMircosecondsPerInvocation="2104"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="480" invocations="179" avgMicrosecondsPerInvocation="2682" maxMicrosecondsPerInvocation="47602" standardDeviationMircosecondsPerInvocation="6388"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="470" invocations="669" avgMicrosecondsPerInvocation="702" maxMicrosecondsPerInvocation="54520" standardDeviationMircosecondsPerInvocation="2996"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="425" invocations="338" avgMicrosecondsPerInvocation="1258" maxMicrosecondsPerInvocation="24478" standardDeviationMircosecondsPerInvocation="2322"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="344" invocations="516" avgMicrosecondsPerInvocation="667" maxMicrosecondsPerInvocation="20338" standardDeviationMircosecondsPerInvocation="1188"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="266" invocations="179" avgMicrosecondsPerInvocation="1491" maxMicrosecondsPerInvocation="33862" standardDeviationMircosecondsPerInvocation="3566"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="245" invocations="761" avgMicrosecondsPerInvocation="322" maxMicrosecondsPerInvocation="12576" standardDeviationMircosecondsPerInvocation="679"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="235" invocations="516" avgMicrosecondsPerInvocation="457" maxMicrosecondsPerInvocation="10359" standardDeviationMircosecondsPerInvocation="941"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="185" invocations="179" avgMicrosecondsPerInvocation="1037" maxMicrosecondsPerInvocation="9709" standardDeviationMircosecondsPerInvocation="1402"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="158" invocations="179" avgMicrosecondsPerInvocation="887" maxMicrosecondsPerInvocation="22912" standardDeviationMircosecondsPerInvocation="2585"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="155" invocations="238" avgMicrosecondsPerInvocation="651" maxMicrosecondsPerInvocation="55321" standardDeviationMircosecondsPerInvocation="3933"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="154" invocations="668" avgMicrosecondsPerInvocation="231" maxMicrosecondsPerInvocation="66210" standardDeviationMircosecondsPerInvocation="2560"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="145" invocations="510" avgMicrosecondsPerInvocation="284" maxMicrosecondsPerInvocation="10732" standardDeviationMircosecondsPerInvocation="755"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="141" invocations="179" avgMicrosecondsPerInvocation="791" maxMicrosecondsPerInvocation="23768" standardDeviationMircosecondsPerInvocation="2222"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="118" invocations="648" avgMicrosecondsPerInvocation="182" maxMicrosecondsPerInvocation="19010" standardDeviationMircosecondsPerInvocation="795"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="109" invocations="179" avgMicrosecondsPerInvocation="612" maxMicrosecondsPerInvocation="12642" standardDeviationMircosecondsPerInvocation="1524"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="102" invocations="7998" avgMicrosecondsPerInvocation="12" maxMicrosecondsPerInvocation="1591" standardDeviationMircosecondsPerInvocation="43"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="101" invocations="80" avgMicrosecondsPerInvocation="1272" maxMicrosecondsPerInvocation="20777" standardDeviationMircosecondsPerInvocation="2780"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="98" invocations="80" avgMicrosecondsPerInvocation="1229" maxMicrosecondsPerInvocation="6858" standardDeviationMircosecondsPerInvocation="1502"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref$CheckCallSitesAndReturnInstructions" totalMilliseconds="93" invocations="513" avgMicrosecondsPerInvocation="181" maxMicrosecondsPerInvocation="20676" standardDeviationMircosecondsPerInvocation="925"/>
     </FindBugsProfile>
   </FindBugsSummary>
   <ClassFeatures></ClassFeatures>

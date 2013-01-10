@@ -24,7 +24,9 @@ public class TestDbBootstrap {
 	public void testBootstrap() {
 		try {
 			 db.bootstrapAll();
-//			db.bootstrapEtype();
+//			db.bootstrapToponym();
+//			db.bootstrapTitles();
+//			db.bootstrapHistoricalTitles();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

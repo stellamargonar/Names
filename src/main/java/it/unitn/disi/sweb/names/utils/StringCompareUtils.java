@@ -94,10 +94,27 @@ public final class StringCompareUtils {
 	 */
 	public static String[] generateTokens(String input) {
 		if (input != null) {
-			// TODO improve implementation
-			return input.split(" ");
+			// change tokenization
+			// ora P.zza -> [P] [zza]
+			String token[] = input.split(" ");
+			for (int i=0; i<token.length; i++) {
+				String s = token[i];
+				if (s.endsWith(".")) {
+					token[i] = s.substring(0, s.length()-1);
+				}
+			}
+			return token;
+//
+//			StringTokenizer tokenizer = new StringTokenizer(input, " .");
+//			List<String> tokens = new ArrayList<>();
+//			while (tokenizer.hasMoreTokens()) {
+//				tokens.add(tokenizer.nextToken());
+//			}
+//			String[] result = new String[tokens.size()];
+//			return tokens.toArray(result);
 		} else {
 			return null;
 		}
 	}
+
 }

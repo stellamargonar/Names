@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="2.148" errors="0" skipped="0" tests="2" name="it.unitn.disi.sweb.names.service.TestAutocompletion">
+<testsuite failures="1" time="35.224" errors="0" skipped="0" tests="2" name="it.unitn.disi.sweb.names.service.TestAutocompletion">
   <properties>
     <property name="jboss.i18n.generate-proxies" value="true"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -21,7 +21,7 @@
     <property name="basedir" value="/Users/stella/Documents/Programming/workspace/names"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter1733308016231460510.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent1254161928489039236.jar"/>
+    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2213587329278705187.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent5254843925757692500.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter1733308016231460510.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire5237798132050975114tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire3950867479602119790tmp"/>
+    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2213587329278705187.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire1613681520727382391tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire2350725121012390723tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="it"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -63,8 +63,8 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="1.501" classname="it.unitn.disi.sweb.names.service.TestAutocompletion" name="testSearchNamePrefixString"/>
-  <testcase time="0.645" classname="it.unitn.disi.sweb.names.service.TestAutocompletion" name="testSearchNamePrefixStringEType">
+  <testcase time="17.661" classname="it.unitn.disi.sweb.names.service.TestAutocompletion" name="testSearchNamePrefixString"/>
+  <testcase time="17.559" classname="it.unitn.disi.sweb.names.service.TestAutocompletion" name="testSearchNamePrefixStringEType">
     <failure message="Not yet implemented" type="java.lang.AssertionError">java.lang.AssertionError: Not yet implemented
 	at org.junit.Assert.fail(Assert.java:91)
 	at it.unitn.disi.sweb.names.service.TestAutocompletion.testSearchNamePrefixStringEType(TestAutocompletion.java:174)
@@ -105,7 +105,7 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
 </failure>
-    <system-out>FullName [id=994, name=Gardolo, entity=it.unitn.disi.sweb.names.model.NamedEntity@3016e16f, nameTokens=[NameToken [individualName=IndividualName [name=Gardolo], position=0]], triggerWordTokens=null]
+    <system-out>FullName [id=4794, name=Gardolo, entity=it.unitn.disi.sweb.names.model.NamedEntity@30188f51, nameTokens=[NameToken [individualName=IndividualName [name=Gardolo], position=0]], triggerWordTokens=null]
 </system-out>
   </testcase>
 </testsuite>

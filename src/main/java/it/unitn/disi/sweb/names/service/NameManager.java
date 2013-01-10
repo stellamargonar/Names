@@ -2,7 +2,6 @@ package it.unitn.disi.sweb.names.service;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
-import it.unitn.disi.sweb.names.model.NameElement;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 
 import java.util.List;
@@ -23,8 +22,6 @@ public interface NameManager {
 	 */
 	FullName createFullName(String name, NamedEntity en);
 
-	void createIndividualName(String string, NameElement el);
-
 	List<FullName> retrieveVariants(String name, EType etype);
 
 	// FIND METHODS
@@ -38,5 +35,7 @@ public interface NameManager {
 	List<FullName> find(NamedEntity entity);
 
 	List<FullName> find(String name, SearchType type);
+
+	boolean translatable(FullName f);
 
 }

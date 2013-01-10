@@ -1,6 +1,7 @@
 package it.unitn.disi.sweb.names.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,7 +41,7 @@ import javax.persistence.UniqueConstraint;
 		@NamedQuery(name = "IndividualName.alltranslation1", query = "select o from IndividualName i join i.translations o where lower(i.name)=:name"),
 		@NamedQuery(name = "IndividualName.alltranslation2", query = "select i from IndividualName i join i.translations o where lower(o.name)=:name"),
 		@NamedQuery(name = "IndividualName.byNgram", query = "from IndividualName where ABS(nGramCode - :ngram) < :diff"),
-})
+		@NamedQuery(name = "IndividualName.byNameElement", query = "from IndividualName where (name = :name or lower(name)=:name) and nameElement=:element")})
 public class IndividualName implements Serializable {
 
 	@Id
@@ -115,6 +116,12 @@ public class IndividualName implements Serializable {
 			translations = new HashSet<>();
 		}
 		getTranslations().add(t);
+	}
+	public void addTranslations(Collection<IndividualName> t) {
+		if (getTranslations() == null) {
+			translations = new HashSet<>();
+		}
+		getTranslations().addAll(t);
 	}
 
 	public int getnGramCode() {

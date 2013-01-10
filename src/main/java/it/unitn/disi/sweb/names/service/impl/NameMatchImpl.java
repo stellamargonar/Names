@@ -45,6 +45,9 @@ public class NameMatchImpl implements NameMatch {
 
 	private MisspellingsComparator comparator;
 
+	private boolean translatable1 = false;
+	private boolean translatable2 = false;
+
 	private EType etype;
 	public NameMatchImpl() {
 	}
@@ -131,6 +134,8 @@ public class NameMatchImpl implements NameMatch {
 		// db
 		NamedEntity tmp1 = null;
 		NamedEntity tmp2 = null;
+		translatable1 = false;
+		translatable2 = false;
 
 		List<FullName> nameList1 = nameManager.find(name1, eType);
 		List<FullName> nameList2 = nameManager.find(name2, eType);
@@ -142,12 +147,14 @@ public class NameMatchImpl implements NameMatch {
 			// 1. create fake entity
 			tmp1 = entityManager.createEntity(eType, "tmp1");
 			FullName f = nameManager.createFullName(name1, tmp1);
+			System.out.println(f);
 			nameList1 = new ArrayList<>();
 			nameList1.add(f);
 		}
 		if (nameList2 == null || nameList2.isEmpty()) {
 			tmp2 = entityManager.createEntity(eType, "tmp2");
 			FullName f = nameManager.createFullName(name2, tmp2);
+			System.out.println(f);
 			nameList2 = new ArrayList<>();
 			nameList2.add(f);
 		}
@@ -157,8 +164,11 @@ public class NameMatchImpl implements NameMatch {
 		List<Map<String, String>> listPairs = generateListPairs(nameList1,
 				nameList2);
 
+		System.out.println(translatable1 + " " + translatable2);
+
 		for (Map<String, String> map : listPairs) {
 			double totalSimilarity = 0;
+			System.out.println(map);
 			for (Entry<String, String> pair : map.entrySet()) {
 				double simToken = stringSimilarity(pair.getKey(),
 						pair.getValue(), eType);
@@ -166,6 +176,9 @@ public class NameMatchImpl implements NameMatch {
 				// TODO aggiungere anche variation sulle variant
 				double simVariation = tokenVariant(pair.getKey(),
 						pair.getValue(), etype);
+				System.out.println("\t" + pair.getKey() + ", "
+						+ pair.getValue() + ": " + simToken + ", "
+						+ simVariation);
 				totalSimilarity += Math.max(simToken, simVariation)
 						* ((double) pair.getValue().length() / name2.length());
 			}
@@ -182,25 +195,27 @@ public class NameMatchImpl implements NameMatch {
 		}
 		return similarity;
 	}
-
 	private double tokenVariant(String key, String value, EType e) {
 		if (key.equals(value)) {
 			return 1.0;
 		}
 
 		// cercare in traduzioni e varianti se c'e' un match
-		boolean nameTranslation = individualNameDao.isTranslation(
-				key.toLowerCase(), value.toLowerCase());
+		boolean nameTranslation = translatable1 || translatable2
+				? individualNameDao.isTranslation(key.toLowerCase(),
+						value.toLowerCase())
+				: false;
 		boolean triggerWordVariations = triggerWordDao.isVariation(
 				key.toLowerCase(), value.toLowerCase());
 		double sim = 0.0;
-
 		if (nameTranslation || triggerWordVariations) {
 			sim = 1.0;
 		} else {
 			sim = triggerwordVariantSimilarity(key, value, e);
+			System.out.println(sim);
 			if (sim == 0.0) {
 				sim = tokenTranslationSimilarity(key, value, e);
+				System.out.println(sim);
 			}
 		}
 		return sim;
@@ -213,12 +228,14 @@ public class NameMatchImpl implements NameMatch {
 
 		if (list != null) {
 			for (IndividualName n : list) {
-				List<IndividualName> translations = individualNameDao
-						.findTranslations(n);
-				for (IndividualName t : translations) {
-					double tmp = stringMatching(n.getName(), t.getName());
-					if (tmp > sim) {
-						sim = tmp;
+				if (!n.getName().equals(key)) {
+					List<IndividualName> translations = individualNameDao
+							.findTranslations(n);
+					for (IndividualName t : translations) {
+						double tmp = stringMatching(n.getName(), t.getName());
+						if (tmp > sim) {
+							sim = tmp;
+						}
 					}
 				}
 			}
@@ -278,6 +295,8 @@ public class NameMatchImpl implements NameMatch {
 	 */
 	private Map<String, String> generatePairs(FullName n1, FullName n2) {
 		Map<String, String> result = new HashMap<>();
+		translatable1 = nameManager.translatable(n1);
+		translatable2 = nameManager.translatable(n2);
 
 		for (NameElement nameElement : elementManager.findNameElement(etype)) {
 
@@ -333,29 +352,30 @@ public class NameMatchImpl implements NameMatch {
 			List<String> list2) {
 		Map<String, String> result = new HashMap<>();
 
-		// creates maps based on the first letter for the strings in the two lists
+		// creates maps based on the first letter for the strings in the two
+		// lists
 		Map<Character, List<String>> alpha1 = new HashMap<>();
 		Map<Character, List<String>> alpha2 = new HashMap<>();
-		for (String s: list1) {
+		for (String s : list1) {
 			char c = Character.toLowerCase(s.charAt(0));
 			List<String> l = alpha1.get(c);
 			if (l == null || l.isEmpty()) {
 				l = new ArrayList<>();
 			}
 			l.add(s);
-			alpha1.put(c,l);
+			alpha1.put(c, l);
 		}
-		for (String s: list2) {
+		for (String s : list2) {
 			char c = Character.toLowerCase(s.charAt(0));
 			List<String> l = alpha2.get(c);
 			if (l == null || l.isEmpty()) {
 				l = new ArrayList<>();
 			}
 			l.add(s);
-			alpha2.put(c,l);
+			alpha2.put(c, l);
 		}
 
-		for (Character c: alpha1.keySet()) {
+		for (Character c : alpha1.keySet()) {
 			List<String> l1 = alpha1.get(c);
 			List<String> l2 = alpha2.get(c);
 			if (l2 != null && !l2.isEmpty()) {

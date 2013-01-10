@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="-3.154" errors="0" skipped="0" tests="5" name="it.unitn.disi.sweb.names.repository.TestPrefixDAO">
+<testsuite failures="0" time="5.901" errors="0" skipped="0" tests="5" name="it.unitn.disi.sweb.names.repository.TestPrefixDAO">
   <properties>
     <property name="jboss.i18n.generate-proxies" value="true"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -21,7 +21,7 @@
     <property name="basedir" value="/Users/stella/Documents/Programming/workspace/names"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter1733308016231460510.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent1254161928489039236.jar"/>
+    <property name="surefire.real.class.path" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2213587329278705187.jar:/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/jacocoagent5254843925757692500.jar"/>
     <property name="java.io.tmpdir" value="/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/"/>
     <property name="line.separator" value="
 "/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter1733308016231460510.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire5237798132050975114tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire3950867479602119790tmp"/>
+    <property name="sun.java.command" value="/Users/stella/Documents/Programming/workspace/names/target/surefire/surefirebooter2213587329278705187.jar /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire1613681520727382391tmp /Users/stella/Documents/Programming/workspace/names/target/surefire/surefire2350725121012390723tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="it"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -63,9 +63,9 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.038" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testSave"/>
-  <testcase time="0.029" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testUpdate"/>
-  <testcase time="0.022" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testFindById"/>
-  <testcase time="0.025" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testFindByPrefix"/>
-  <testcase time="-3.347" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testFindByPrefixSelected"/>
+  <testcase time="0.954" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testSave"/>
+  <testcase time="2.013" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testUpdate"/>
+  <testcase time="0.904" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testFindById"/>
+  <testcase time="0.912" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testFindByPrefix"/>
+  <testcase time="1.114" classname="it.unitn.disi.sweb.names.repository.TestPrefixDAO" name="testFindByPrefixSelected"/>
 </testsuite>

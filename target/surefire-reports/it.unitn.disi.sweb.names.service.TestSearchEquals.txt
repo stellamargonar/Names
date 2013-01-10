@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.service.TestSearchEquals
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.429 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.543 sec

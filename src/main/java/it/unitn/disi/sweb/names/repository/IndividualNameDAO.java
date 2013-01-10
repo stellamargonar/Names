@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.IndividualName;
+import it.unitn.disi.sweb.names.model.NameElement;
 
 import java.util.List;
 
@@ -24,5 +25,7 @@ public interface IndividualNameDAO {
 	List<IndividualName> findTranslations(IndividualName name);
 
 	List<IndividualName> findByNGram(int ngram, int diff);
+
+	IndividualName findByNameElement(String name, NameElement element);
 
 }

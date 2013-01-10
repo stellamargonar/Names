@@ -22,6 +22,8 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
@@ -127,8 +129,12 @@ public class HtmlParser {
 	}
 
 	public static void main(String[] args) {
-
-		new HtmlParser().extractTranslations();
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"META-INF/applicationContext.xml");
+		DictionaryDAO dao = context.getBean(DictionaryDAO.class);
+		HtmlParser h = new HtmlParser();
+		h.setDictionaryDAO(dao);
+		h.extractTranslations();
 	}
 
 	private class XMLHandler extends DefaultHandler {
@@ -154,7 +160,6 @@ public class HtmlParser {
 		@Override
 		public void endElement(String uri, String localName, String qName)
 				throws SAXException {
-
 			if (isPageTag(qName)) {
 				bfpage = false;
 				bflang = false;
@@ -163,7 +168,9 @@ public class HtmlParser {
 					String source = list.get(i);
 					for (int j = i + 1; j < list.size(); j++) {
 						if (!source.equals(list.get(j))) {
-							dao.create(new Translation(source, list.get(j)));
+							if (!dao.contains(source, list.get(j))) {
+								dao.create(new Translation(source, list.get(j)));
+							}
 						}
 					}
 				}

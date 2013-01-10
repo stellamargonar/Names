@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository.impl;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.IndividualName;
+import it.unitn.disi.sweb.names.model.NameElement;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 
 import java.util.ArrayList;
@@ -77,7 +78,6 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 				.createNamedQuery("IndividualName.translation",
 						IndividualName.class).setParameter("name1", name1)
 				.setParameter("name2", name2).getResultList();
-
 		return result != null && !result.isEmpty() ? true : false;
 	}
 
@@ -89,13 +89,15 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 		List<IndividualName> list1 = em
 				.createNamedQuery("IndividualName.alltranslation1",
 						IndividualName.class)
-				.setParameter("name", name.getName().toLowerCase()).getResultList();
+				.setParameter("name", name.getName().toLowerCase())
+				.getResultList();
 		result.addAll(list1);
 
 		List<IndividualName> list2 = em
 				.createNamedQuery("IndividualName.alltranslation2",
 						IndividualName.class)
-				.setParameter("name", name.getName().toLowerCase()).getResultList();
+				.setParameter("name", name.getName().toLowerCase())
+				.getResultList();
 		result.addAll(list2);
 
 		return new ArrayList<>(result);
@@ -107,6 +109,19 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 				.createNamedQuery("IndividualName.byNgram",
 						IndividualName.class).setParameter("ngram", ngram)
 				.setParameter("diff", diff).getResultList();
+	}
+
+	@Override
+	public IndividualName findByNameElement(String name, NameElement element) {
+		List<IndividualName> list = em
+				.createNamedQuery("IndividualName.byNameElement",
+						IndividualName.class).setParameter("name", name)
+				.setParameter("element", element).getResultList();
+		if (list != null && !list.isEmpty()) {
+			return list.get(0);
+		} else {
+			return null;
+		}
 	}
 
 }

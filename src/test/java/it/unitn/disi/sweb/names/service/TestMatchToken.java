@@ -19,7 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class TestMatchToken extends TestCase {
 
 	/*
-	 * TODO aggiungere la traduzione dei nomi
+	 * TODO migliorare la generazione delle coppie. quando un nome deve essere
+	 * tradotto
+	 *
+
 	 */
 	@Autowired
 	NameManager nameManager;
@@ -57,24 +60,27 @@ public class TestMatchToken extends TestCase {
 	 * .
 	 */
 
-	@Test
+//	@Test
 	public void testMatchToken1() {
 		double result = nameMatch.tokenAnalysis("test", "test", null);
 		System.out.println(result);
 		assertTrue(result != 0.0);
 	}
 
-	@Test
+//	@Test
 	public void testMatchToken2() {
+		System.out.println("New York" + ", " + "New York City");
 		double result = nameMatch.tokenAnalysis("New York", "New York City",
 				etype);
 		System.out.println(result);
 
-		assertTrue(result > 0.0);
+		assertTrue(result >= 0.5);
 	}
 
-	@Test
+//	@Test
 	public void testMatchToken3() {
+		System.out
+				.println("Piazza San Pietro" + ", " + "San Pietro in Vincoli");
 		double result = nameMatch.tokenAnalysis("Piazza San Pietro",
 				"San Pietro in Vincoli", etype);
 		System.out.println(result);
@@ -82,53 +88,58 @@ public class TestMatchToken extends TestCase {
 		assertTrue(result > 0.0);
 	}
 
-	@Test
+//	@Test
 	public void testMatchToken4() {
+		System.out
+				.println("San Pietro in Vincoli" + ", " + "Piazza San Pietro");
 		double result = nameMatch.tokenAnalysis("San Pietro in Vincoli",
 				"Piazza San Pietro", etype);
 		System.out.println(result);
 
-		assertTrue(result > 0.0);
+		assertTrue(result >= 0.5);
 	}
 
-	@Test
+//	@Test
 	public void testMatchToken5() {
+		System.out.println("Garda Lake" + ", " + "Piazza San Pietro");
 		double result = nameMatch.tokenAnalysis("Garda Lake",
 				"Piazza San Pietro", etype);
 		System.out.println(result);
 
 		assertEquals(0.0, result);
 	}
-	@Test
+//	@Test
 	public void testMatchToken6() {
+		System.out.println("P.zza S. Pietro" + ", " + "Piazza San Pietro");
 		double result = nameMatch.tokenAnalysis("P.zza S. Pietro",
 				"Piazza San Pietro", etype);
 		System.out.println(result);
 
-		assertTrue(result > 0.0);
+		assertTrue(result >= 0.5);
 	}
-
-	@Test
+//	@Test
 	public void testMatchToken7() {
+		System.out.println("Saint Peter Square" + ", " + "Piazza San Pietro");
 		double result = nameMatch.tokenAnalysis("Saint Peter Square",
 				"Piazza San Pietro", etype);
 		System.out.println(result);
 
-		assertTrue(result > 0.0);
+		assertTrue(result >= 0.5);
 	}
 
-	@Test
+//	@Test
 	public void testMatchToken8() {
+		System.out.println("S. Peter Sq." + ", " + "Piazza San Pietro");
 		double result = nameMatch.tokenAnalysis("S. Peter Sq.",
 				"Piazza San Pietro", etype);
 		System.out.println(result);
 
-		assertTrue(result > 0.0);
+		assertTrue(result >= 0.5);
 	}
 
-	@Test
-	public final void testTokenAnalysis() {
-
+//	@Test
+	public final void testTokenAnalysis9() {
+		System.out.println("Garda See" + ", " + "Garda Loke");
 		String name1 = "Garda See";
 		String name2 = "Garda Loke";
 
@@ -137,4 +148,31 @@ public class TestMatchToken extends TestCase {
 
 		assertTrue(similarity >= 0.5);
 	}
+
+	@Test
+	public final void testTokenAnalysis10() {
+		etype = etypeManager.getEtype(EtypeName.PERSON);
+		String name1 = "Papa Giovanni Paolo II";
+		String name2 = "Pope John Paul II";
+		System.out.println(name1 + ", " + name2);
+
+		double similarity = nameMatch.tokenAnalysis(name1, name2, etype);
+		System.out.println(similarity);
+
+		assertTrue(similarity >= 0.5);
+	}
+
+	@Test
+	public final void testTokenAnalysis11() {
+		etype = etypeManager.getEtype(EtypeName.PERSON);
+		String name1 = "Stefano I";
+		String name2 = "Teppo";
+		System.out.println(name1 + ", " + name2);
+
+		double similarity = nameMatch.tokenAnalysis(name1, name2, etype);
+		System.out.println(similarity);
+
+		assertTrue(similarity == 0.0);
+	}
+
 }

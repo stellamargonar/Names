@@ -11,16 +11,18 @@ import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
-import it.unitn.disi.sweb.names.repository.NameTokenDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.SearchType;
+import it.unitn.disi.sweb.names.service.TranslationManager;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,8 +35,7 @@ public class NameManagerImpl implements NameManager {
 	private IndividualNameDAO nameDao;
 	private TriggerWordDAO twDao;
 	private NameElementDAO nameElementDao;
-	private NameTokenDAO nameTokenDao;
-
+	private TranslationManager translationManager;
 
 	@Override
 	public FullName createFullName(String name, NamedEntity en) {
@@ -138,13 +139,13 @@ public class NameManagerImpl implements NameManager {
 	protected FullName parse(FullName fullname, EType eType) {
 		String name = fullname.getName();
 
-		String[] tokens = name.split(" ");
+		String[] tokens = StringCompareUtils.generateTokens(name);
 		int position = 0;
 		for (String s : tokens) {
 			if (!s.equals(" ")) {
 				// check if it is a known name
-				List<IndividualName> listName = nameDao.findByNameEtype(s.toLowerCase(),
-						eType);
+				List<IndividualName> listName = nameDao.findByNameEtype(
+						s.toLowerCase(), eType);
 				if (listName == null || listName.isEmpty()) {
 					listName = nameDao.findByName(s);
 				}
@@ -156,8 +157,8 @@ public class NameManagerImpl implements NameManager {
 					fullname.addNameToken(nt);
 				} else {
 					// check if it is a known triggerword
-					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(s.toLowerCase(),
-							eType);
+					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(
+							s.toLowerCase(), eType);
 					if (listTW != null && listTW.size() > 0) {
 						TriggerWordToken twt = new TriggerWordToken();
 						twt.setFullName(fullname);
@@ -183,49 +184,73 @@ public class NameManagerImpl implements NameManager {
 
 	private IndividualName addNewIndividualName(String s, EType eType,
 			int position) {
-		IndividualName name = new IndividualName();
-		name.setName(s);
-		name.setNameElement(getNewNameElement(eType, position));
-		name.setnGramCode(StringCompareUtils.computeNGram(s));
+		IndividualName name = createIndividualName(s,
+				getNewNameElement(eType, position));
+		addTranslations(name);
 		return name;
+	}
+
+	/**
+	 * check wheter the name in input has some known translations, and if this
+	 * is the case, adds them in the proper table
+	 *
+	 * @param name
+	 */
+	protected void addTranslations(IndividualName name) {
+		List<String> translationsString = translationManager
+				.findTranslation(name.getName());
+
+		NameElement el = name.getNameElement();
+
+		List<IndividualName> translations = new ArrayList<>();
+		for (String s : translationsString) {
+			translations.add(createIndividualName(s, el));
+		}
+		translations.add(name);
+
+		for (int i = 0; i < translations.size(); i++) {
+			IndividualName n = translations.get(i);
+			n.addTranslations(translations);
+			translations.set(i, nameDao.update(n));
+		}
+	}
+
+	private IndividualName createIndividualName(String name, NameElement el) {
+		IndividualName nameDb = nameDao.findByNameElement(name, el);
+		if (nameDb != null) {
+			return nameDb;
+		}
+
+		IndividualName i = new IndividualName();
+		i.setName(name);
+		i.setnGramCode(StringCompareUtils.computeNGram(name));
+		i.setNameElement(el);
+		return nameDao.save(i);
 	}
 
 	private NameElement getNewNameElement(EType eType, int position) {
 		switch (eType.getEtype()) {
 			case "Location" :
-				return nameElementDao.findByNameEType("ProperNoun".toLowerCase(), eType);
+				return nameElementDao.findByNameEType(
+						"ProperNoun".toLowerCase(), eType);
 			case "Organization" :
-				return nameElementDao.findByNameEType("ProperNoun".toLowerCase(), eType);
+				return nameElementDao.findByNameEType(
+						"ProperNoun".toLowerCase(), eType);
 			case "Person" :
 				switch (position) {
 					case 0 :
-						return nameElementDao.findByNameEType("GivenName".toLowerCase(),
-								eType);
+						return nameElementDao.findByNameEType(
+								"GivenName".toLowerCase(), eType);
 					case 2 :
-						return nameElementDao.findByNameEType("MiddleName".toLowerCase(),
-								eType);
+						return nameElementDao.findByNameEType(
+								"MiddleName".toLowerCase(), eType);
 					default :
-						return nameElementDao.findByNameEType("FamilyName".toLowerCase(),
-								eType);
+						return nameElementDao.findByNameEType(
+								"FamilyName".toLowerCase(), eType);
 				}
 			default :
 				return null;
 		}
-	}
-
-	@Override
-	public void createIndividualName(String string, NameElement el) {
-		IndividualName name = new IndividualName();
-		name.setName(string);
-		name.setNameElement(el);
-		nameDao.save(name);
-
-		NameToken nt = new NameToken();
-		nt.setFullName(fullnameDao.findById(1650));
-		nt.setIndividualName(name);
-		nt.setPosition(0);
-		nameTokenDao.save(nt);
-
 	}
 
 	@Override
@@ -268,7 +293,8 @@ public class NameManagerImpl implements NameManager {
 				return fullnameDao.findByToken(StringCompareUtils
 						.normalize(name));
 			case NGRAM :
-				return fullnameDao.findByNgram(StringCompareUtils.computeNGram(name),
+				return fullnameDao.findByNgram(
+						StringCompareUtils.computeNGram(name),
 						StringCompareUtils.computeMaxDifference(name));
 			default :
 				break;
@@ -276,7 +302,19 @@ public class NameManagerImpl implements NameManager {
 		return null;
 	}
 
-
+	@Override
+	public boolean translatable(FullName f) {
+		Set<TriggerWordToken> tokens = f.getTriggerWordTokens();
+		if (tokens == null) {
+			return false;
+		}
+		for (TriggerWordToken tok : tokens) {
+			if (tok.getTriggerWord().getType().isComparable()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Autowired
 	public void setFullnameDao(FullNameDAO fullnameDao) {
@@ -297,10 +335,9 @@ public class NameManagerImpl implements NameManager {
 	public void setNameElementDao(NameElementDAO nameElementDao) {
 		this.nameElementDao = nameElementDao;
 	}
-
 	@Autowired
-	public void setNameTokenDao(NameTokenDAO nameTokenDao) {
-		this.nameTokenDao = nameTokenDao;
+	public void setTranslationManager(TranslationManager translationManager) {
+		this.translationManager = translationManager;
 	}
 
 }

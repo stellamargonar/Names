@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.service.TestMatch
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.685 sec
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 65.503 sec

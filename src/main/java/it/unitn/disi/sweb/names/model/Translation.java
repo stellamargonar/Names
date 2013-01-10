@@ -23,10 +23,14 @@ import javax.persistence.UniqueConstraint;
  */
 
 @Table(name = "translation", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"namesource", "nametarget" }))
+		"namesource", "nametarget"}))
 @SequenceGenerator(name = "trans_seq", sequenceName = "trans_id_seq")
 @Entity
-@NamedQueries({ @NamedQuery(name = "Translation.byName", query = "from Translation where nameSource = :name or nameTarget=:name") })
+@NamedQueries({
+		@NamedQuery(name = "Translation.byName", query = "from Translation where nameSource = :name or nameTarget=:name"),
+		@NamedQuery(name = "Translation.find1", query = "select nameTarget as name from Translation where nameSource = :name"),
+		@NamedQuery(name = "Translation.find2", query = "select nameSource as name from Translation where nameTarget=:name"),
+		@NamedQuery(name = "Translation.exists", query = "from Translation where (nameSource = :name1 and  nameTarget=:name2) or (nameSource=:name2 and nameTarget=:name1)")})
 public class Translation implements Serializable {
 
 	@Id
@@ -44,12 +48,12 @@ public class Translation implements Serializable {
 	}
 
 	public Translation(String source, String target) {
-		this.nameSource = source;
-		this.nameTarget = target;
+		nameSource = source;
+		nameTarget = target;
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -57,7 +61,7 @@ public class Translation implements Serializable {
 	}
 
 	public String getNameSource() {
-		return this.nameSource;
+		return nameSource;
 	}
 
 	public void setNameSource(String nameSource) {
@@ -65,7 +69,7 @@ public class Translation implements Serializable {
 	}
 
 	public String getNameTarget() {
-		return this.nameTarget;
+		return nameTarget;
 	}
 
 	public void setNameTarget(String nameTarget) {

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: it.unitn.disi.sweb.names.service.TestAutocompletion
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.148 sec <<< FAILURE!
-testSearchNamePrefixStringEType(it.unitn.disi.sweb.names.service.TestAutocompletion)  Time elapsed: 0.645 sec  <<< FAILURE!
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 35.258 sec <<< FAILURE!
+testSearchNamePrefixStringEType(it.unitn.disi.sweb.names.service.TestAutocompletion)  Time elapsed: 17.559 sec  <<< FAILURE!
 java.lang.AssertionError: Not yet implemented
 	at org.junit.Assert.fail(Assert.java:91)
 	at it.unitn.disi.sweb.names.service.TestAutocompletion.testSearchNamePrefixStringEType(TestAutocompletion.java:174)

@@ -66,6 +66,69 @@ public class DatabaseBootstrap {
 		reader.close();
 	}
 
+	void storeLocationQualifiers(String fileName) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		String line = null;
+
+		TriggerWordType qualifier = twtDao.findByNameEType("Qualifier".toLowerCase(),
+				etypeManager.getEtype(EtypeName.LOCATION));
+
+		while ((line = reader.readLine()) != null) {
+			String[] token = line.split("\t");
+			List<TriggerWord> tws = new ArrayList<>();
+			for (String s : token) {
+				TriggerWord t = new TriggerWord(s, qualifier);
+				t.setnGramCode(StringCompareUtils.computeNGram(s));
+				t = twDao.save(t);
+				tws.add(t);
+			}
+
+			if (tws.size() > 1) {
+				for (int i = 0; i < tws.size(); i++) {
+					for (int j = 0; j < tws.size(); j++) {
+						if (i != j) {
+							tws.get(i).addVariation(tws.get(j));
+						}
+						tws.set(i, twDao.update(tws.get(i)));
+					}
+				}
+			}
+		}
+		reader.close();
+	}
+
+
+	void storeHistoricalTitles(String fileName) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		String line = null;
+
+		TriggerWordType title = twtDao.findByNameEType("HistoricalTitle".toLowerCase(),
+				etypeManager.getEtype(EtypeName.PERSON));
+
+		while ((line = reader.readLine()) != null) {
+			String[] token = line.split("\t");
+			List<TriggerWord> tws = new ArrayList<>();
+			for (String s : token) {
+				TriggerWord t = new TriggerWord(s, title);
+				t.setnGramCode(StringCompareUtils.computeNGram(s));
+				t = twDao.save(t);
+				tws.add(t);
+			}
+
+			if (tws.size() > 1) {
+				for (int i = 0; i < tws.size(); i++) {
+					for (int j = 0; j < tws.size(); j++) {
+						if (i != j) {
+							tws.get(i).addVariation(tws.get(j));
+						}
+						tws.set(i, twDao.update(tws.get(i)));
+					}
+				}
+			}
+		}
+		reader.close();
+	}
+
 	void storeEtypeList(String fileName) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
@@ -144,6 +207,9 @@ public class DatabaseBootstrap {
 		storeToponymList("src/main/resources/INIT-DATA/ToponymList");
 
 		storePersonTitles("src/main/resources/INIT-DATA/PersonTitles");
+
+		storeHistoricalTitles("src/main/resources/INIT-DATA/HistoricalTitles");
+		storeLocationQualifiers("src/main/resources/INIT-DATA/LocationQualifier");
 	}
 
 	public void bootstrapEtype() {
@@ -153,6 +219,31 @@ public class DatabaseBootstrap {
 			e.printStackTrace();
 		}
 	}
+
+	public void bootstrapLocationQualifier() {
+		try {
+			storeEtypeList("src/main/resources/INIT-DATA/LocationQualifier");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void bootstrapTitles() {
+		try {
+			storePersonTitles("src/main/resources/INIT-DATA/PersonTitles");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void bootstrapHistoricalTitles() {
+		try {
+			storePersonTitles("src/main/resources/INIT-DATA/HistoricalTitles");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void bootstrapNameElement() {
 		try {
 			storeNameFieldList("src/main/resources/INIT-DATA/NameElementList");
