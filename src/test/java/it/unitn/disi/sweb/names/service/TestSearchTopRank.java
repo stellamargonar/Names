@@ -12,6 +12,8 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,6 +47,8 @@ public class TestSearchTopRank extends TestCase {
 	@Override
 	@Before
 	public void setUp() throws Exception {
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.OFF);
+
 		roma = entityManager.createEntity(
 				etypeManager.getEtype(EtypeName.LOCATION),
 				"http://it.wikipedia.org/wiki/Roma");
@@ -116,6 +120,7 @@ public class TestSearchTopRank extends TestCase {
 		u.setSelected(romano2);
 		u.setFrequency(30);
 		dao.save(u);
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.DEBUG);
 	}
 
 	@Test

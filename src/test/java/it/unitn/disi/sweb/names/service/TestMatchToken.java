@@ -127,7 +127,7 @@ public class TestMatchToken extends TestCase {
 		assertTrue(result >= 0.5);
 	}
 
-//	@Test
+	@Test
 	public void testMatchToken8() {
 		System.out.println("S. Peter Sq." + ", " + "Piazza San Pietro");
 		double result = nameMatch.tokenAnalysis("S. Peter Sq.",

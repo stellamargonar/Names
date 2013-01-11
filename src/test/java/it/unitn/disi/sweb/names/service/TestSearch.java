@@ -10,6 +10,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,6 +50,8 @@ public class TestSearch extends TestCase {
 	@Override
 	@Before
 	public void setUp() throws Exception {
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.OFF);
+
 		p1 = entityManager.createEntity(
 				etypeManager.getEtype(EtypeName.PERSON),
 				"http://disi.unitn.it/~fausto/");
@@ -141,6 +145,9 @@ public class TestSearch extends TestCase {
 		u.setSelected(romano2);
 		u.setFrequency(30);
 		dao.save(u);
+
+
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.DEBUG);
 	}
 
 	@Override

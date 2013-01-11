@@ -187,7 +187,7 @@ public class NameManagerImpl implements NameManager {
 			int position) {
 		IndividualName name = createIndividualName(s,
 				getNewNameElement(eType, position));
-		addTranslations(name);
+		//addTranslations(name);
 		return name;
 	}
 
@@ -306,7 +306,7 @@ public class NameManagerImpl implements NameManager {
 	@Override
 	public boolean translatable(FullName f) {
 		EType e = f.getEntity().getEType();
-		EtypeName n = EtypeName.valueOf(e.getEtype());
+		EtypeName n = EtypeName.valueOf(e.getEtype().toUpperCase());
 
 		switch (n) {
 			case PERSON :

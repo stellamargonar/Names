@@ -140,12 +140,8 @@ public class FullName implements Serializable {
 		this.nameToCompare = nameToCompare;
 	}
 
-	public NamedEntity getGUID() {
-		return entity;
-	}
-
-	public void setGUID(NamedEntity GUID) {
-		entity = GUID;
+	public int getGUID() {
+		return entity.getGUID();
 	}
 
 	public Integer getNGramCode() {

@@ -7,6 +7,8 @@ import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import junit.framework.TestCase;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,11 +48,17 @@ public class TestMatch extends TestCase {
 	@Override
 	@Before
 	public void setUp() throws Exception {
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.OFF);
+
 		etype = etypeManager.getEtype(EtypeName.LOCATION);
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.DEBUG);
+
 	}
 
 	private void setUpDictionaryLookup() {
 		// create entity nyc
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.OFF);
+
 		NamedEntity nyc = entityManager.createEntity(etype,
 				"http://en.wikipedia.org/wiki/New_York_City");
 		nameManager.createFullName("New York", nyc);
@@ -59,6 +67,8 @@ public class TestMatch extends TestCase {
 		NamedEntity nys = entityManager.createEntity(etype,
 				"http://en.wikipedia.org/wiki/New_York");
 		nameManager.createFullName("New York State", nys);
+		Logger.getLogger("org.hibernate.SQL").setLevel(Level.DEBUG);
+
 	}
 
 	/**
@@ -286,7 +296,5 @@ public class TestMatch extends TestCase {
 		double similarity = nameMatch.dictionaryLookup(name1, name2, etype);
 		assertEquals(0.0, similarity);
 	}
-
-
 
 }
