@@ -44,13 +44,11 @@ public class EntityDAOImpl implements EntityDAO {
 	}
 
 	@Override
-	@Transactional
 	public NamedEntity findById(int id) {
 		return em.find(NamedEntity.class, id);
 	}
 
 	@Override
-	@Transactional
 	public List<NamedEntity> findByName(String name) {
 		List<NamedEntity> resultList = em
 				.createNamedQuery("NamedEntity.byName", NamedEntity.class)
@@ -59,7 +57,6 @@ public class EntityDAOImpl implements EntityDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<NamedEntity> findByNameEtype(String name, EType etype) {
 		List<NamedEntity> resultList = em
 				.createNamedQuery("NamedEntity.byNameEtype", NamedEntity.class)
@@ -70,31 +67,21 @@ public class EntityDAOImpl implements EntityDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<NamedEntity> findByUrl(String url) {
-		return em
-				.createNamedQuery("NamedEntity.byUrl",
-						NamedEntity.class)
+		return em.createNamedQuery("NamedEntity.byUrl", NamedEntity.class)
 				.setParameter("url", url).getResultList();
 	}
 
 	@Override
-	@Transactional
-	public List<NamedEntity> findByNameUrl(String name,
-			String url) {
-		return em
-				.createNamedQuery("NamedEntity.byNameUrl",
-						NamedEntity.class)
-				.setParameter("url", url)
-				.setParameter("name", name).getResultList();
+	public List<NamedEntity> findByNameUrl(String name, String url) {
+		return em.createNamedQuery("NamedEntity.byNameUrl", NamedEntity.class)
+				.setParameter("url", url).setParameter("name", name)
+				.getResultList();
 	}
 
 	@Override
-	@Transactional
 	public List<NamedEntity> findByEtype(EType etype) {
-		return em
-				.createNamedQuery("NamedEntity.byEType",
-						NamedEntity.class)
+		return em.createNamedQuery("NamedEntity.byEType", NamedEntity.class)
 				.setParameter("etype", etype).getResultList();
 	}
 

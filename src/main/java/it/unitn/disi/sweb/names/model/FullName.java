@@ -45,14 +45,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 		@NamedQuery(name = "FullName.byName", query = "from FullName where lower(name) = :name"),
 		@NamedQuery(name = "FullName.byNameNormalized", query = "from FullName where lower(nameNormalized) = :nameNormalized"),
 		@NamedQuery(name = "FullName.byNameToCompare", query = "from FullName where lower(nameToCompare) = :nameToCompare"),
-		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where lower(name) = :name and fn.entity.eType = :etype"),
+		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where lower(name) = :name and fn.etype = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
 		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where lower(name) = :name and fn.entity=:entity"),
-		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where lower(name) = :name and fn1.entity.eType=:etype) and lower(fn1.name) != :name))"),
+		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.GUID in (select fullname.GUID from FullName as fullname where lower(fullname.name) = :name and fullname.etype=:etype) and lower(fn1.name) != :name))"),
 		@NamedQuery(name = "FullName.byToken", query = "from FullName where lower(name) like CONCAT('%', :name, '%')"),
 		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff"),
-		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.entity in (select fullname.entity from FullName as fullname where lower(name) =:name) and lower(fn1.name) != :name))"),
-		})
+		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.GUID in (select fullname.GUID from FullName as fullname where lower(fullname.name) = :name) and lower(fn1.name) != :name))"),})
 public class FullName implements Serializable {
 
 	@Id
@@ -69,7 +68,7 @@ public class FullName implements Serializable {
 	private String nameToCompare;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "GUID", nullable = false)
+	@JoinColumn(name = "entity", nullable = false)
 	private NamedEntity entity;
 
 	@Column(name = "ngramcode")
@@ -84,7 +83,21 @@ public class FullName implements Serializable {
 	@Transient
 	private Comparator<Object> tokenPositionComparator;
 
+	@Column(name = "etype")
+	private EType etype;
+
+	@Column(name = "GUID")
+	private int GUID;
+
 	private static final long serialVersionUID = 1L;
+
+	public void setEtype(EType etype) {
+		this.etype = etype;
+	}
+
+	public EType getEtype() {
+		return etype;
+	}
 
 	public FullName() {
 		super();
@@ -158,6 +171,7 @@ public class FullName implements Serializable {
 
 	public void setEntity(NamedEntity entity) {
 		this.entity = entity;
+		etype = entity.getEType();
 	}
 
 	public Integer getnGramCode() {
@@ -224,11 +238,9 @@ public class FullName implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ (entity == null ? 0 : entity.hashCode());
+		result = prime * result + (entity == null ? 0 : entity.hashCode());
 		result = prime * result + id;
-		result = prime * result
-				+ (name == null ? 0 : name.hashCode());
+		result = prime * result + (name == null ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -266,9 +278,10 @@ public class FullName implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FullName [id=" + id + ", name=" + name + ", entity="
-				+ entity + ", nameTokens=" + nameTokens
-				+ ", triggerWordTokens=" + triggerWordTokens + "]";
+		return name;
+//		return "FullName [id=" + id + ", name=" + name + ", entity=" + entity
+//				+ ", nameTokens=" + nameTokens + ", triggerWordTokens="
+//				+ triggerWordTokens + "]";
 	}
 
 }

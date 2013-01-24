@@ -48,14 +48,12 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public IndividualName findById(int id) {
 		return em.find(IndividualName.class, id);
 
 	}
 
 	@Override
-	@Transactional
 	public List<IndividualName> findByName(String name) {
 		return em
 				.createNamedQuery("IndividualName.byName", IndividualName.class)
@@ -63,7 +61,6 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<IndividualName> findByNameEtype(String name, EType etype) {
 		return em
 				.createNamedQuery("IndividualName.byNameEtype",
@@ -72,7 +69,6 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public boolean isTranslation(String name1, String name2) {
 		List<IndividualName> result = em
 				.createNamedQuery("IndividualName.translation",
@@ -82,7 +78,6 @@ public class IndividualNameDAOImpl implements IndividualNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<IndividualName> findTranslations(IndividualName name) {
 		Set<IndividualName> result = new HashSet<>();
 

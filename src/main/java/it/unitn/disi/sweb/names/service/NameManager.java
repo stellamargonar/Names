@@ -5,6 +5,7 @@ import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 public interface NameManager {
 	/**
@@ -21,6 +22,10 @@ public interface NameManager {
 	 * @return full name object representing the stirng
 	 */
 	FullName createFullName(String name, NamedEntity en);
+	FullName createFullName(String name, List<Entry<String, Object>> tokens,
+			NamedEntity en);
+
+	List<Entry<String, Object>> parseFullName(String name, EType en);
 
 	List<FullName> retrieveVariants(String name, EType etype);
 

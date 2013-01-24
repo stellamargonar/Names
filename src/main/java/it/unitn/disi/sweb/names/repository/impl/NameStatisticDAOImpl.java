@@ -44,13 +44,13 @@ public class NameStatisticDAOImpl implements NameStatisticDAO {
 	}
 
 	@Override
-	@Transactional
+
 	public NameStatistics findById(int id) {
 		return em.find(NameStatistics.class, id);
 	}
 
 	@Override
-	@Transactional
+
 	public NameStatistics findByNameElement(IndividualName name,
 			NameElement element) {
 		return em
@@ -60,7 +60,7 @@ public class NameStatisticDAOImpl implements NameStatisticDAO {
 	}
 
 	@Override
-	@Transactional
+
 	public List<NameStatistics> findByName(IndividualName name) {
 		return em
 				.createNamedQuery("NameStatistic.byName", NameStatistics.class)

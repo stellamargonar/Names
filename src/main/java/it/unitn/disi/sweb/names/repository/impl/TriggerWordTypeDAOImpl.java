@@ -44,13 +44,11 @@ public class TriggerWordTypeDAOImpl implements TriggerWordTypeDAO {
 	}
 
 	@Override
-	@Transactional
 	public TriggerWordType findById(int id) {
 		return em.find(TriggerWordType.class, id);
 	}
 
 	@Override
-	@Transactional
 	public List<TriggerWordType> findAll() {
 		return em.createNamedQuery("TWType.findAll", TriggerWordType.class)
 				.getResultList();
@@ -65,7 +63,6 @@ public class TriggerWordTypeDAOImpl implements TriggerWordTypeDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<TriggerWordType> findByName(String name) {
 		return em.createNamedQuery("TWType.findByName", TriggerWordType.class)
 				.setParameter("name", name).getResultList();

@@ -4,6 +4,7 @@
 package it.unitn.disi.sweb.names.service;
 
 import it.unitn.disi.sweb.names.model.EType;
+import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import junit.framework.TestCase;
 
@@ -61,14 +62,13 @@ public class TestMatch extends TestCase {
 
 		NamedEntity nyc = entityManager.createEntity(etype,
 				"http://en.wikipedia.org/wiki/New_York_City");
-		nameManager.createFullName("New York", nyc);
-		nameManager.createFullName("The Big Apple", nyc);
+		FullName city = nameManager.createFullName("New York", nyc);
+		FullName apple = nameManager.createFullName("The Big Apple", nyc);
 
 		NamedEntity nys = entityManager.createEntity(etype,
 				"http://en.wikipedia.org/wiki/New_York");
-		nameManager.createFullName("New York State", nys);
+		FullName state = nameManager.createFullName("New York State", nys);
 		Logger.getLogger("org.hibernate.SQL").setLevel(Level.DEBUG);
-
 	}
 
 	/**

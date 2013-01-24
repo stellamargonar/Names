@@ -6,6 +6,16 @@ import it.unitn.disi.sweb.names.model.FullName;
 public interface NameMatch {
 
 	/**
+	 * combines all the listed matching functions
+	 * @param name1
+	 * @param name2
+	 * @param etype
+	 * @return
+	 */
+	double match(String name1, String name2, EType etype);
+
+
+	/**
 	 * computes the similarity of the names based on their string
 	 * representation. Addresses misspellings variations using edit distance
 	 * based algorithm (Jaro Winkler, Levensthein)

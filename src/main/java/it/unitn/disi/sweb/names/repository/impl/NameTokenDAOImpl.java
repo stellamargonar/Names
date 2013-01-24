@@ -45,13 +45,11 @@ public class NameTokenDAOImpl implements NameTokenDAO {
 	}
 
 	@Override
-	@Transactional
 	public NameToken findById(int id) {
 		return em.find(NameToken.class, id);
 	}
 
 	@Override
-	@Transactional
 	public NameToken findByFullNameIndividualName(FullName fullName,
 			IndividualName name) {
 		return em
@@ -61,15 +59,12 @@ public class NameTokenDAOImpl implements NameTokenDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<NameToken> findByFullName(FullName fullName) {
-		return em
-				.createNamedQuery("NameToken.byFullName", NameToken.class)
+		return em.createNamedQuery("NameToken.byFullName", NameToken.class)
 				.setParameter("fullName", fullName).getResultList();
 	}
 
 	@Override
-	@Transactional
 	public List<NameToken> findByIndividualName(IndividualName name) {
 		return em
 				.createNamedQuery("NameToken.byIndividualName", NameToken.class)

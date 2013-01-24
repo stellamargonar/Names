@@ -130,4 +130,14 @@ public class ElementManagerImpl implements ElementManager {
 		return tDao.findByTriggerWord(t.toLowerCase());
 	}
 
+	@Override
+	public TriggerWord createTriggerWord(String triggerWord,
+			TriggerWordType type) {
+		TriggerWord t = new TriggerWord();
+		t.setTriggerWord(triggerWord);
+		t.setType(type);
+		t.setnGramCode(StringCompareUtils.computeNGram(triggerWord));
+		return tDao.save(t);
+	}
+
 }

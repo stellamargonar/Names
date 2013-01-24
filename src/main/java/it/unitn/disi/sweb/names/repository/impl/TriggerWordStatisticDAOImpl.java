@@ -45,13 +45,11 @@ public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 	}
 
 	@Override
-	@Transactional
 	public TriggerWordStatistic findById(int id) {
 		return em.find(TriggerWordStatistic.class, id);
 	}
 
 	@Override
-	@Transactional
 	public TriggerWordStatistic findByTriggerWordEtype(TriggerWord triggerWord,
 			EType eType) {
 		return em
@@ -62,7 +60,6 @@ public class TriggerWordStatisticDAOImpl implements TriggerWordStatisticDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<TriggerWordStatistic> findByTriggerWord(TriggerWord triggerWord) {
 		return em
 				.createNamedQuery("TWStatistic.byTriggerWord",

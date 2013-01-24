@@ -3,6 +3,7 @@ package it.unitn.disi.sweb.names.utils;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public final class StringCompareUtils {
 	private static final int NGRAM_DIFFERENCE = 366;
@@ -96,22 +97,22 @@ public final class StringCompareUtils {
 		if (input != null) {
 			// change tokenization
 			// ora P.zza -> [P] [zza]
-			String token[] = input.split(" ");
-			for (int i=0; i<token.length; i++) {
-				String s = token[i];
-				if (s.endsWith(".")) {
-					token[i] = s.substring(0, s.length()-1);
-				}
-			}
-			return token;
-//
-//			StringTokenizer tokenizer = new StringTokenizer(input, " .");
-//			List<String> tokens = new ArrayList<>();
-//			while (tokenizer.hasMoreTokens()) {
-//				tokens.add(tokenizer.nextToken());
+//			String token[] = input.split(" ");
+//			for (int i=0; i<token.length; i++) {
+//				String s = token[i];
+//				if (s.endsWith(".")) {
+//					token[i] = s.substring(0, s.length()-1);
+//				}
 //			}
-//			String[] result = new String[tokens.size()];
-//			return tokens.toArray(result);
+//			return token;
+//
+			StringTokenizer tokenizer = new StringTokenizer(input, " .");
+			List<String> tokens = new ArrayList<>();
+			while (tokenizer.hasMoreTokens()) {
+				tokens.add(tokenizer.nextToken());
+			}
+			String[] result = new String[tokens.size()];
+			return tokens.toArray(result);
 		} else {
 			return null;
 		}

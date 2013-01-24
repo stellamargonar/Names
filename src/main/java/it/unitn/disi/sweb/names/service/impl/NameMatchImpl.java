@@ -20,11 +20,14 @@ import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +50,7 @@ public class NameMatchImpl implements NameMatch {
 
 	private boolean translatable1 = false;
 	private boolean translatable2 = false;
+	private boolean tryAllCombination = false;
 
 	private EType etype;
 	public NameMatchImpl() {
@@ -138,7 +142,9 @@ public class NameMatchImpl implements NameMatch {
 		translatable2 = false;
 
 		List<FullName> nameList1 = nameManager.find(name1, eType);
+		nameList1 = addVariants(nameList1);
 		List<FullName> nameList2 = nameManager.find(name2, eType);
+		nameList2 = addVariants(nameList2);
 
 		// one or both names are not in the database. need to tokenize the
 		// string
@@ -147,14 +153,12 @@ public class NameMatchImpl implements NameMatch {
 			// 1. create fake entity
 			tmp1 = entityManager.createEntity(eType, "tmp1");
 			FullName f = nameManager.createFullName(name1, tmp1);
-			System.out.println(f);
 			nameList1 = new ArrayList<>();
 			nameList1.add(f);
 		}
 		if (nameList2 == null || nameList2.isEmpty()) {
 			tmp2 = entityManager.createEntity(eType, "tmp2");
 			FullName f = nameManager.createFullName(name2, tmp2);
-			System.out.println(f);
 			nameList2 = new ArrayList<>();
 			nameList2.add(f);
 		}
@@ -164,27 +168,24 @@ public class NameMatchImpl implements NameMatch {
 		List<Map<String, String>> listPairs = generateListPairs(nameList1,
 				nameList2);
 
-		System.out.println(translatable1 + " " + translatable2);
-
 		for (Map<String, String> map : listPairs) {
-			double totalSimilarity = 0;
-			System.out.println(map);
-			for (Entry<String, String> pair : map.entrySet()) {
-				double simToken = stringSimilarity(pair.getKey(),
-						pair.getValue(), eType);
+			double tmp = tokenSimilarity(map, name2);
+			if (tmp > similarity) {
+				similarity = tmp;
+			}
+		}
 
-				// TODO aggiungere anche variation sulle variant
-				double simVariation = tokenVariant(pair.getKey(),
-						pair.getValue(), etype);
-				System.out.println("\t" + pair.getKey() + ", "
-						+ pair.getValue() + ": " + simToken + ", "
-						+ simVariation);
-				totalSimilarity += Math.max(simToken, simVariation)
-						* ((double) pair.getValue().length() / name2.length());
+		if (similarity < THRESHOLD_MISSPELLINGS) {
+			tryAllCombination = true;
+			listPairs = generateListPairs(nameList1, nameList2);
+
+			for (Map<String, String> map : listPairs) {
+				double tmp = tokenSimilarity(map, name2);
+				if (tmp > similarity) {
+					similarity = tmp;
+				}
 			}
-			if (totalSimilarity > similarity) {
-				similarity = totalSimilarity;
-			}
+			tryAllCombination = false;
 		}
 
 		if (tmp1 != null) {
@@ -195,6 +196,31 @@ public class NameMatchImpl implements NameMatch {
 		}
 		return similarity;
 	}
+
+	private double tokenSimilarity(Map<String, String> map, String name2) {
+		double similarity = 0;
+		for (Entry<String, String> pair : map.entrySet()) {
+			double simToken = stringSimilarity(pair.getKey(), pair.getValue(),
+					etype);
+
+			// TODO aggiungere anche variation sulle variant
+			double simVariation = tokenVariant(pair.getKey(), pair.getValue(),
+					etype);
+
+			similarity += Math.max(simToken, simVariation)
+					* ((double) pair.getValue().length() / name2.length());
+		}
+		return similarity;
+	}
+
+	private List<FullName> addVariants(List<FullName> nameList) {
+		Set<FullName> names = new HashSet<>();
+		for (FullName n : nameList) {
+			names.addAll(nameManager.find(n.getEntity()));
+		}
+		return new ArrayList<>(names);
+	}
+
 	private double tokenVariant(String key, String value, EType e) {
 		if (key.equals(value)) {
 			return 1.0;
@@ -212,10 +238,10 @@ public class NameMatchImpl implements NameMatch {
 			sim = 1.0;
 		} else {
 			sim = triggerwordVariantSimilarity(key, value, e);
-			System.out.println(sim);
+			// System.out.println(sim);
 			if (sim == 0.0) {
 				sim = tokenTranslationSimilarity(key, value, e);
-				System.out.println(sim);
+				// System.out.println(sim);
 			}
 		}
 		return sim;
@@ -331,12 +357,61 @@ public class NameMatchImpl implements NameMatch {
 			result.put(list1.get(0), list2.get(0));
 		} else {
 			if (list1.size() != 0 && list2.size() != 0) {
-				result.putAll(pairByLexicalGraphicOrder(list1, list2));
-				// TODO if (list1.size() == 0) ???
-
+				if (tryAllCombination) {
+					result.putAll(pairByBestCombination(list1, list2));
+				} else {
+					result.putAll(pairByLexicalGraphicOrder(list1, list2));
+				}
+			} else {
+				if (list1.size() == 0) {
+					for (String s : list2) {
+						result.put("", s);
+					}
+				} else {
+					for (String s : list1) {
+						result.put(s, "");
+					}
+				}
 			}
 		}
 		return result;
+	}
+
+	private Map<String, String> pairByBestCombination(List<String> list1,
+			List<String> list2) {
+		double[][] matrix = new double[list1.size()][list2.size()];
+
+		for (int i = 0; i < list1.size(); i++) {
+			for (int j = 0; j < list2.size(); j++) {
+				matrix[i][j] = stringSimilarity(list1.get(i), list2.get(j),
+						etype);
+			}
+		}
+		List<List<Integer>> combinations = getAllCombinations(matrix);
+
+		return null;
+	}
+
+	private List<List<Integer>> getAllCombinations(double[][] matrix) {
+		List<Integer> indexes = new ArrayList<>();
+		for (int i = 0; i < matrix.length; i++) {
+			indexes.add(i);
+		}
+		List<List<Integer>> combinations = combination(indexes, 0, new ArrayList<Integer>(),
+				new ArrayList<List<Integer>>());
+		return combinations;
+	}
+
+	private List<List<Integer>> combination(List<Integer> list, int index,
+			List<Integer> combination, List<List<Integer>> results) {
+		for (int i : list) {
+			combination.set(index, i);
+			List<Integer> sublist = new ArrayList<>();
+			sublist.remove(i);
+			results.addAll(combination(sublist, index + 1, combination, results));
+			// TODO change and test the recursive function
+		}
+		return results;
 	}
 
 	/**
@@ -379,20 +454,60 @@ public class NameMatchImpl implements NameMatch {
 			List<String> l1 = alpha1.get(c);
 			List<String> l2 = alpha2.get(c);
 			if (l2 != null && !l2.isEmpty()) {
-				Collections.sort(l1);
-				Collections.sort(l2);
-
-				Iterator<String> it1 = l1.iterator();
-				Iterator<String> it2 = l2.iterator();
-				while (it1.hasNext() && it2.hasNext()) {
-					result.put(it1.next(), it2.next());
-				}
+				result.putAll(pairSameLetter(l1, l2));
 			}
 		}
 
 		return result;
 	}
 
+	/**
+	 * @param result
+	 * @param l1
+	 * @param l2
+	 */
+	private Map<String, String> pairSameLetter(List<String> l1, List<String> l2) {
+		Map<String, String> result = new HashMap<>();
+		Collections.sort(l1, new PairComparator());
+		Collections.sort(l2, new PairComparator());
+
+		Iterator<String> it1 = l1.iterator();
+		Iterator<String> it2 = l2.iterator();
+		// OLD VERSION, ONLY WITH LEXICALGRAPHIC ORDER
+		while (it1.hasNext() && it2.hasNext()) {
+			result.put(it1.next(), it2.next());
+		}
+		return result;
+
+		// string lenght version
+		// String s = null;
+		// String t = null;
+		// boolean next1 = true;
+		// boolean next2 = true;
+		// do {
+		// if (next1) {
+		// s = it1.next();
+		// }
+		// if (next2) {
+		// t = it2.next();
+		// }
+		// if (Math.abs(s.length() - t.length()) < MAX_LENGTH_DIFFERENCE) {
+		// result.put(s, t);
+		// next1 = true;
+		// next2 = true;
+		// } else {
+		// if (s.length() < t.length()) {
+		// next1 = true;
+		// next2 = false;
+		// } else {
+		// next1 = false;
+		// next2 = true;
+		// }
+		// }
+		// } while (it1.hasNext() && it2.hasNext());
+
+		// return result;
+	}
 	private List<String> getTokenByElement(FullName name,
 			NameElement nameElement) {
 		List<String> list = new ArrayList<String>();
@@ -425,10 +540,14 @@ public class NameMatchImpl implements NameMatch {
 
 		// check exact tuple (name1,name2,eType)
 		if (dictionaryExactLookup(name1, name2, eType)) {
+			// System.out.println("exact lookup " + name1 + " " + name2);
 			return 1.0;
 		} else {
 			// check variations on alternative names
 			similarity = nameVariantSimilarity(name1, name2, eType);
+			// System.out.println("variant similarity " + name1 + " " + name2
+			// + ": " + similarity);
+
 		}
 		return similarity > THRESHOLD_DICTIONARY ? similarity : 0;
 	}
@@ -464,7 +583,7 @@ public class NameMatchImpl implements NameMatch {
 				similarity = stringSimilarity(name.getName(), name2, etype);
 				// TODO define a correct threshold for misspellings and
 				// dictionary
-				if (similarity > THRESHOLD_MISSPELLINGS) {
+				if (similarity > THRESHOLD_MISSPELLINGS * THRESHOLD_DICTIONARY) {
 					return similarity;
 				}
 			}
@@ -562,5 +681,27 @@ public class NameMatchImpl implements NameMatch {
 	@Autowired
 	public void setTriggerWordDao(TriggerWordDAO triggerWordDao) {
 		this.triggerWordDao = triggerWordDao;
+	}
+
+	@Override
+	public double match(String name1, String name2, EType etype) {
+		double sim1 = stringSimilarity(name1, name2, etype);
+		double sim2 = dictionaryLookup(name1, name2, etype);
+		double sim3 = tokenAnalysis(name1, name2, etype);
+		return Math.max(Math.max(sim1, sim2), sim3);
+	}
+
+	private class PairComparator implements Comparator<String> {
+
+		@Override
+		public int compare(String s1, String s2) {
+			int n1 = StringCompareUtils.computeNGram(s1);
+			int n2 = StringCompareUtils.computeNGram(s2);
+			return Integer.compare(n1, n2);
+
+			// int compareSize = Integer.compare(s1.length(), s2.length());
+			// return compareSize == 0 ? s1.compareTo(s2) : compareSize;
+		}
+
 	}
 }

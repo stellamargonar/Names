@@ -2,6 +2,7 @@ package it.unitn.disi.sweb.names.repository.impl;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.TriggerWord;
+import it.unitn.disi.sweb.names.model.TriggerWordType;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 
 import java.util.ArrayList;
@@ -46,22 +47,19 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	}
 
 	@Override
-	@Transactional
 	public TriggerWord findById(int id) {
 		return em.find(TriggerWord.class, id);
 	}
 
 	@Override
-	@Transactional
 	public List<TriggerWord> findByTriggerWord(String triggerWord) {
 		return em.createNamedQuery("TriggerWord.byTW", TriggerWord.class)
 				.setParameter("tw", triggerWord).getResultList();
 	}
 
 	@Override
-	@Transactional
 	public List<TriggerWord> findVariations(TriggerWord triggerWord) {
-// TODO check query. does not make sense
+		// TODO check query. does not make sense
 		Set<TriggerWord> result = em
 				.createNamedQuery("TriggerWord.variationsByTW",
 						TriggerWord.class)
@@ -81,7 +79,6 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<TriggerWord> findByTriggerWordEtype(String triggerWord,
 			EType etype) {
 		return em.createNamedQuery("TriggerWord.byTWEtype", TriggerWord.class)
@@ -90,7 +87,6 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	}
 
 	@Override
-	@Transactional
 	public boolean isVariation(String t1, String t2) {
 		List<TriggerWord> result = em
 				.createNamedQuery("TriggerWord.isVariations", TriggerWord.class)
@@ -100,9 +96,16 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 
 	@Override
 	public List<TriggerWord> findByNGram(int ngram, int diff) {
-		return em
-				.createNamedQuery("TriggerWord.byNgram",
-						TriggerWord.class).setParameter("ngram", ngram)
-				.setParameter("diff", diff).getResultList();
+		return em.createNamedQuery("TriggerWord.byNgram", TriggerWord.class)
+				.setParameter("ngram", ngram).setParameter("diff", diff)
+				.getResultList();
+	}
+
+	@Override
+	public TriggerWord findByTriggerWordType(String triggerWord,
+			TriggerWordType type) {
+		return em.createNamedQuery("TriggerWord.byTWTtype", TriggerWord.class)
+				.setParameter("tw", triggerWord).setParameter("type", type)
+				.getSingleResult();
 	}
 }

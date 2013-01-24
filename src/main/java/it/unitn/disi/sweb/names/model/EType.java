@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Entity implementation class for Entity: EType
@@ -21,13 +23,14 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "etype", uniqueConstraints=@UniqueConstraint(columnNames="etype"))
+@Table(name = "etype", uniqueConstraints = @UniqueConstraint(columnNames = "etype"))
 @SequenceGenerator(name = "etype_seq", sequenceName = "etype_id_seq")
 @NamedQueries({
 		@NamedQuery(name = "EType.findAll", query = "from EType "),
 		@NamedQuery(name = "EType.findByName", query = "from EType where lower(etype) =:name")
 
 })
+@XmlRootElement(name = "etype")
 public class EType implements Serializable {
 
 	@Id
@@ -43,6 +46,7 @@ public class EType implements Serializable {
 		super();
 	}
 
+	@XmlAttribute(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -51,6 +55,7 @@ public class EType implements Serializable {
 		this.id = id;
 	}
 
+	@XmlAttribute(name = "name", required = true)
 	public String getEtype() {
 		return etype;
 	}
@@ -63,8 +68,7 @@ public class EType implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ (etype == null ? 0 : etype.hashCode());
+		result = prime * result + (etype == null ? 0 : etype.hashCode());
 		result = prime * result + id;
 		return result;
 	}

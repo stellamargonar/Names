@@ -44,13 +44,11 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 	}
 
 	@Override
-	@Transactional
 	public UsageStatistic findById(int id) {
 		return em.find(UsageStatistic.class, id);
 	}
 
 	@Override
-	@Transactional
 	public List<UsageStatistic> findByQuery(String query) {
 		return em
 				.createNamedQuery("UsageStatistic.byQuery",
@@ -59,7 +57,6 @@ public class UsageStatisticsDAOImpl implements UsageStatisticsDAO {
 	}
 
 	@Override
-	@Transactional
 	public UsageStatistic findByQuerySelected(String query, FullName selected) {
 		List<UsageStatistic> result = em
 				.createNamedQuery("UsageStatistic.byQuerySelected",

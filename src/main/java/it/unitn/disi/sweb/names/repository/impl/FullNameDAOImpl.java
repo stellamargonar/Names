@@ -44,34 +44,29 @@ public class FullNameDAOImpl implements FullNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public FullName findById(int id) {
 		return em.find(FullName.class, id);
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> findByName(String name) {
 		return em.createNamedQuery("FullName.byName", FullName.class)
 				.setParameter("name", name).getResultList();
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> findByNameNormalized(String name) {
 		return em.createNamedQuery("FullName.byNameNormalized", FullName.class)
 				.setParameter("nameNormalized", name).getResultList();
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> findByNameToCompare(String name) {
 		return em.createNamedQuery("FullName.byNameToCompare", FullName.class)
 				.setParameter("nameToCompare", name).getResultList();
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> findByNameEtype(String name, EType etype) {
 		return em.createNamedQuery("FullName.byNameEtype", FullName.class)
 				.setParameter("name", name).setParameter("etype", etype)
@@ -79,14 +74,12 @@ public class FullNameDAOImpl implements FullNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> findByEntity(NamedEntity entity) {
 		return em.createNamedQuery("FullName.byEntity", FullName.class)
 				.setParameter("entity", entity).getResultList();
 	}
 
 	@Override
-	@Transactional
 	public FullName findByEntityName(String name, NamedEntity entity) {
 		List<FullName> result = em
 				.createNamedQuery("FullName.byEntityName", FullName.class)
@@ -103,8 +96,8 @@ public class FullNameDAOImpl implements FullNameDAO {
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> findVariant(String name, EType etype) {
+
 		if (etype != null) {
 			return em
 					.createNamedQuery("FullName.variantForName", FullName.class)
@@ -118,7 +111,6 @@ public class FullNameDAOImpl implements FullNameDAO {
 		}
 	}
 	@Override
-	@Transactional
 	public List<FullName> findByToken(String token) {
 		return em.createNamedQuery("FullName.byToken", FullName.class)
 				.setParameter("name", token).getResultList();

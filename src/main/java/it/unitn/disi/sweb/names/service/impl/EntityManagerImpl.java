@@ -8,6 +8,7 @@ import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.service.EntityManager;
 import it.unitn.disi.sweb.names.service.NameManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,12 +52,23 @@ public class EntityManagerImpl implements EntityManager {
 	}
 	@Override
 	public List<NamedEntity> find(String name) {
-		return entityDao.findByName(name.toLowerCase());
+		List<FullName> names = nameDao.findByName(name.toLowerCase());
+		List<NamedEntity> entities = new ArrayList<>();
+		for (FullName n : names) {
+			entities.add(entityDao.findById(n.getGUID()));
+		}
+		return entities;
 	}
 
 	@Override
 	public List<NamedEntity> find(String name, EType etype) {
-		return entityDao.findByNameEtype(name.toLowerCase(), etype);
+		List<FullName> names = nameDao.findByNameEtype(name.toLowerCase(),
+				etype);
+		List<NamedEntity> entities = new ArrayList<>();
+		for (FullName n : names) {
+			entities.add(entityDao.findById(n.getGUID()));
+		}
+		return entities;
 	}
 
 	@Override

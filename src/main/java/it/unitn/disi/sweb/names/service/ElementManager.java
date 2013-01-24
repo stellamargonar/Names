@@ -11,6 +11,14 @@ import java.util.List;
 
 public interface ElementManager {
 
+	/**
+	 * creates a new trigger word with name and type given in input
+	 * @param triggerWord
+	 * @param type
+	 * @return
+	 */
+	TriggerWord createTriggerWord(String triggerWord, TriggerWordType type);
+
 	List<NameElement> findNameElement(EType etype);
 	NameElement findNameElement(String element, EType etype);
 

@@ -8,24 +8,31 @@ import it.unitn.disi.sweb.names.model.NameToken;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.model.TriggerWord;
 import it.unitn.disi.sweb.names.model.TriggerWordToken;
+import it.unitn.disi.sweb.names.model.TriggerWordType;
 import it.unitn.disi.sweb.names.repository.FullNameDAO;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
 import it.unitn.disi.sweb.names.repository.NameElementDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
+import it.unitn.disi.sweb.names.service.ElementManager;
+import it.unitn.disi.sweb.names.service.EntityManager;
 import it.unitn.disi.sweb.names.service.EtypeName;
 import it.unitn.disi.sweb.names.service.NameManager;
 import it.unitn.disi.sweb.names.service.SearchType;
 import it.unitn.disi.sweb.names.service.TranslationManager;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,30 +45,145 @@ public class NameManagerImpl implements NameManager {
 	private NameElementDAO nameElementDao;
 	private TranslationManager translationManager;
 
+	@Autowired
+	EntityManager entityManager;
+	@Autowired
+	ElementManager elementManager;
+
 	@Override
-	public FullName createFullName(String name, NamedEntity en) {
-		if (en == null || name == null || name.equals("")) {
+	public FullName createFullName(String name,
+			List<Entry<String, Object>> tokens, NamedEntity en) {
+		if (en == null || tokens == null || name == null || name.isEmpty()
+				|| tokens.isEmpty()) {
 			return null;
 		}
 
 		List<FullName> foundList = find(name, SearchType.TOCOMPARE);
 
+		// if the name is already saved in the database, return the stored
+		// instance
 		for (FullName f : foundList) {
 			if (en.equals(f.getEntity())) {
 				return f;
 			}
 		}
+
 		FullName fullname = new FullName();
 		fullname.setName(name);
 		fullname.setEntity(en);
 
-		fullname = parse(fullname, en.getEType());
+		fullname = buildFullName(fullname, tokens);
+
 		fullname.setNameToCompare(getNameToCompare(fullname));
 		fullname.setNameNormalized(getNameNormalized(fullname));
 		fullname.setnGramCode(StringCompareUtils.computeNGram(name));
 		FullName returned = fullnameDao.update(fullname);
 
 		return returned;
+	}
+
+	@Override
+	public FullName createFullName(String name, NamedEntity en) {
+		// TODO edit with new methods
+		// call parseFullName
+		// and then create fullname(list tokens)
+
+		if (en == null || name == null || name.equals("")) {
+			return null;
+		}
+
+		List<Entry<String,Object>>tokens = parseFullName(name, en.getEType());
+		return createFullName(name, tokens, en);
+//
+//		List<FullName> foundList = find(name, SearchType.TOCOMPARE);
+//
+//		for (FullName f : foundList) {
+//			if (en.equals(f.getEntity())) {
+//				return f;
+//			}
+//		}
+//		FullName fullname = new FullName();
+//		fullname.setName(name);
+//		fullname.setEntity(en);
+//
+//		fullname = parse(fullname, en.getEType());
+//
+//		fullname.setNameToCompare(getNameToCompare(fullname));
+//		fullname.setNameNormalized(getNameNormalized(fullname));
+//		fullname.setnGramCode(StringCompareUtils.computeNGram(name));
+//		FullName returned = fullnameDao.update(fullname);
+//
+//		return returned;
+	}
+
+	@Override
+	public List<Entry<String, Object>> parseFullName(String name, EType e) {
+		List<Entry<String, Object>> result = new ArrayList<>();
+
+		// Tokenize
+		String[] tokens = StringCompareUtils.generateTokens(name);
+
+		// for each token
+		for (String tok : tokens) {
+			Entry<String, Object> token = new AbstractMap.SimpleEntry(tok, null);
+
+			// is Individual Name?
+			Entry<NameElement, Double> nameElement = chooseNameElement(tok, e);
+
+			// is trigger word?
+			Entry<TriggerWordType, Double> triggerElement = chooseTriggerWordElement(
+					tok, e);
+
+			// choose one with highest probability
+			if (nameElement.getValue() >= triggerElement.getValue()) {
+				token.setValue(nameElement.getKey());
+			} else {
+				token.setValue(triggerElement.getKey());
+			}
+
+			// add token to list
+			result.add(token);
+		}
+		return result;
+	}
+
+	/**
+	 * based on heuristics, finds the most probable triggerwork element that
+	 * corresponds to the given string and return it with a measure of
+	 * confidence
+	 *
+	 * @param tok
+	 * @param e
+	 * @return
+	 */
+	private Entry<TriggerWordType, Double> chooseTriggerWordElement(String tok,
+			EType etype) {
+		// TODO Auto-generated method stub
+		// TODO add heristics and statistics
+		List<TriggerWord> listTW = twDao.findByTriggerWordEtype(tok, etype);
+		if (listTW != null && listTW.size() > 0) {
+			return new AbstractMap.SimpleEntry(listTW.get(0), 1.0);
+		}
+		elementManager.findTriggerWordType(etype).get(0);
+		// return new AbstractMap.SimpleEntry( ,1.0);
+		return new AbstractMap.SimpleEntry(elementManager.findTriggerWordType(
+				etype).get(0), 1.0);
+	}
+
+	/**
+	 * based on heuristics, finds the most probable name element that
+	 * corresponds to the given string and return it with a measure of
+	 * confidence
+	 *
+	 * @param tok
+	 * @param etype
+	 * @return
+	 */
+	private Entry<NameElement, Double> chooseNameElement(String tok, EType etype) {
+		// TODO Auto-generated method stub
+		// TODO implement heuristic strategies with statistics from behind the
+		// name and census
+		return new AbstractMap.SimpleEntry(getNewNameElement(etype, 0), 1.0);
 	}
 
 	/**
@@ -137,6 +259,58 @@ public class NameManagerImpl implements NameManager {
 		return name;
 	}
 
+	/**
+	 * given a list of pairs of strings and element type, this methods creates
+	 * the tokens for the fullName in input. THe list must be ordered since the
+	 * position of each token in the name is the position in the list.
+	 *
+	 * If the object passed in the pair is not an instance of NameElement of
+	 * TriggerWordType the token is not considered
+	 *
+	 * @param name
+	 * @param tokens
+	 * @return FullName enriched with the input tokens
+	 */
+	private FullName buildFullName(FullName name,
+			List<Entry<String, Object>> tokens) {
+		for (int i = 0; i < tokens.size(); i++) {
+			Entry<String, Object> token = tokens.get(i);
+
+			// token is a name token
+			if (token.getValue() instanceof NameElement) {
+				NameToken nt = new NameToken();
+				nt.setFullName(name);
+
+				// search for the individual name in the database
+				IndividualName indName = nameDao.findByNameElement(
+						token.getKey(), (NameElement) token.getValue());
+				// if new individual name, create a new one, otherwise add the
+				// retrieved from db
+				nt.setIndividualName(indName != null
+						? indName
+						: createIndividualName(token.getKey(),
+								(NameElement) token.getValue()));
+				nt.setPosition(i);
+				name.addNameToken(nt);
+
+				// token is a trigger word token
+			} else if (token.getValue() instanceof TriggerWordType) {
+				TriggerWordToken tk = new TriggerWordToken();
+				tk.setFullName(name);
+				tk.setPosition(i);
+
+				TriggerWord t = twDao.findByTriggerWordType(token.getKey(),
+						(TriggerWordType) token.getValue());
+				tk.setTriggerWord(t != null ? t : elementManager
+						.createTriggerWord(token.getKey(),
+								(TriggerWordType) token.getValue()));
+				name.addTriggerWordToken(tk);
+			}
+		}
+		return name;
+	}
+
+	// specificare tokenizzazione euristica (con behind the name, census)
 	protected FullName parse(FullName fullname, EType eType) {
 		String name = fullname.getName();
 
@@ -187,7 +361,7 @@ public class NameManagerImpl implements NameManager {
 			int position) {
 		IndividualName name = createIndividualName(s,
 				getNewNameElement(eType, position));
-		//addTranslations(name);
+		// addTranslations(name);
 		return name;
 	}
 
@@ -238,17 +412,19 @@ public class NameManagerImpl implements NameManager {
 				return nameElementDao.findByNameEType(
 						"ProperNoun".toLowerCase(), eType);
 			case "Person" :
-				switch (position) {
-					case 0 :
-						return nameElementDao.findByNameEType(
-								"GivenName".toLowerCase(), eType);
-					case 2 :
-						return nameElementDao.findByNameEType(
-								"MiddleName".toLowerCase(), eType);
-					default :
-						return nameElementDao.findByNameEType(
-								"FamilyName".toLowerCase(), eType);
-				}
+				return nameElementDao.findByNameEType(
+						"GivenName".toLowerCase(), eType);
+				// switch (position) {
+				// case 0 :
+				// return nameElementDao.findByNameEType(
+				// "GivenName".toLowerCase(), eType);
+				// case 2 :
+				// return nameElementDao.findByNameEType(
+				// "MiddleName".toLowerCase(), eType);
+				// default :
+				// return nameElementDao.findByNameEType(
+				// "FamilyName".toLowerCase(), eType);
+				// }
 			default :
 				return null;
 		}
@@ -257,7 +433,17 @@ public class NameManagerImpl implements NameManager {
 	@Override
 	@Transactional
 	public List<FullName> retrieveVariants(String name, EType etype) {
+
+		// List<NamedEntity> entities = etype != null ? entityManager.find(
+		// name.toLowerCase(), etype) : entityManager.find(name
+		// .toLowerCase());
+		// List<FullName> result = new ArrayList<>();
+		// for (NamedEntity en : entities) {
+		// result.addAll(fullnameDao.findByEntity(en));
+		// }
+
 		return fullnameDao.findVariant(name.toLowerCase(), etype);
+		// return result;
 	}
 
 	@Override
@@ -269,7 +455,11 @@ public class NameManagerImpl implements NameManager {
 	@Override
 	@Transactional
 	public List<FullName> find(String name, EType etype) {
-		return fullnameDao.findByNameEtype(name.toLowerCase(), etype);
+		if (etype != null) {
+			return fullnameDao.findByNameEtype(name.toLowerCase(), etype);
+		} else {
+			return find(name);
+		}
 	}
 
 	@Override
@@ -305,6 +495,10 @@ public class NameManagerImpl implements NameManager {
 
 	@Override
 	public boolean translatable(FullName f) {
+		if (f == null || f.getEntity() == null
+				|| f.getEntity().getEType() == null) {
+			return false;
+		}
 		EType e = f.getEntity().getEType();
 		EtypeName n = EtypeName.valueOf(e.getEtype().toUpperCase());
 
@@ -357,6 +551,13 @@ public class NameManagerImpl implements NameManager {
 	@Autowired
 	public void setTranslationManager(TranslationManager translationManager) {
 		this.translationManager = translationManager;
+	}
+
+	public static List<Entry<String, Object>> parse(String name, EType etype) {
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"META-INF/applicationContext.xml");
+		NameManager manager = context.getBean(NameManager.class);
+		return manager.parseFullName(name, etype);
 	}
 
 }
