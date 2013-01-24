@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Dataset {
 	private List<Entry> entries;
 	private List<MatchEntry> matchEntries;
+	private List<Result> results;
 
 	void addEntry(Entry e) {
 		if (getEntries() == null) {
@@ -38,6 +39,12 @@ public class Dataset {
 			matchEntries.addAll(list);
 		}
 	}
+	void addResult(Result r) {
+		if (results == null) {
+			results = new ArrayList<>();
+		}
+		results.add(r);
+	}
 
 	@XmlElement(name = "entry")
 	public List<Entry> getEntries() {
@@ -55,5 +62,15 @@ public class Dataset {
 
 	public void setMatchEntries(List<MatchEntry> matchEntries) {
 		this.matchEntries = matchEntries;
+	}
+
+	@XmlElementWrapper(name = "results")
+	@XmlElement(name = "result")
+	public List<Result> getResults() {
+		return results;
+	}
+
+	public void setResults(List<Result> results) {
+		this.results = results;
 	}
 }

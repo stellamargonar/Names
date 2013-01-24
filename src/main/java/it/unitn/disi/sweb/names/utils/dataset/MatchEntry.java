@@ -1,5 +1,7 @@
 package it.unitn.disi.sweb.names.utils.dataset;
 
+import it.unitn.disi.sweb.names.model.EType;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -9,14 +11,24 @@ public class MatchEntry {
 	private Name name1;
 	private Name name2;
 	private boolean match;
+	private EType etype;
 
 	public MatchEntry() {
 	}
 
-	public MatchEntry(Name name1, Name name2, boolean match) {
+	public MatchEntry(Name name1, Name name2, boolean match, EType etype) {
 		this.name1 = name1;
 		this.name2 = name2;
 		this.match = match;
+		this.etype = etype;
+	}
+
+	@XmlElement(name = "etype")
+	public EType getEtype() {
+		return etype;
+	}
+	public void setEtype(EType etype) {
+		this.etype = etype;
 	}
 
 	@XmlElement(name = "correct")

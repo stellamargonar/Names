@@ -58,17 +58,20 @@ public class MatchCombinator {
 		for (Map.Entry<Integer, Integer> e : randomPairs.entrySet()) {
 			Entry e1 = dataset.getEntries().get(e.getKey());
 			Entry e2 = dataset.getEntries().get(e.getValue());
+			if (e1.getEtype().equals(e2.getEtype())) {
 
-			List<Name> list1 = e1.getNames();
-			list1.addAll(e1.getVariations());
+				List<Name> list1 = e1.getNames();
+				list1.addAll(e1.getVariations());
 
-			List<Name> list2 = e2.getNames();
-			list2.addAll(e2.getVariations());
+				List<Name> list2 = e2.getNames();
+				list2.addAll(e2.getVariations());
 
-			int r1 = r.nextInt(list1.size());
-			int r2 = r.nextInt(list2.size());
-			MatchEntry me = new MatchEntry(list1.get(r1), list2.get(r2), false);
-			result.add(me);
+				int r1 = r.nextInt(list1.size());
+				int r2 = r.nextInt(list2.size());
+				MatchEntry me = new MatchEntry(list1.get(r1), list2.get(r2),
+						false, e1.getEtype());
+				result.add(me);
+			}
 		}
 
 		return result;
@@ -107,13 +110,13 @@ public class MatchCombinator {
 
 		// adds match with name and variation (misspellings)
 		for (Name v : e.getVariations()) {
-			result.add(new MatchEntry(name, v, true));
+			result.add(new MatchEntry(name, v, true, e.getEtype()));
 		}
 
 		// add match with alternative names and translations
 		for (Name n : e.getNames()) {
 			if (!n.equals(name)) {
-				result.add(new MatchEntry(name, n, true));
+				result.add(new MatchEntry(name, n, true, e.getEtype()));
 			}
 		}
 		return result;
