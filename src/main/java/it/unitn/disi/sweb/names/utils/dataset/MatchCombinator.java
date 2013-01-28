@@ -20,7 +20,7 @@ import javax.xml.bind.Unmarshaller;
 public class MatchCombinator {
 
 	private Dataset dataset;
-	private final double RANDOMPERCENTAGE = 0.4;
+	private final double RANDOMPERCENTAGE = 0.2;
 
 	private final String inputFile = "src/test/resources/dataset.xml";
 	private final String outputFile = "src/test/resources/datasetMatch.xml";
@@ -42,9 +42,9 @@ public class MatchCombinator {
 	public List<MatchEntry> generateCorrectMatch() {
 		List<MatchEntry> result = new ArrayList<>();
 		for (Entry e : dataset.getEntries()) {
-			for (Name name : e.getNames()) {
-				result.addAll(generateVariationsMatch(name, e));
-			}
+//			for (Name name : e.getNames()) {
+				result.addAll(generateVariationsMatch(e.getNames().get(0), e));
+//			}
 		}
 		return result;
 	}
@@ -109,16 +109,21 @@ public class MatchCombinator {
 		List<MatchEntry> result = new ArrayList<>();
 
 		// adds match with name and variation (misspellings)
-		for (Name v : e.getVariations()) {
-			result.add(new MatchEntry(name, v, true, e.getEtype()));
-		}
+		// for (Name v : e.getVariations()) {
+		// result.add(new MatchEntry(name, v, true, e.getEtype()));
+		// }
 
+		result.add(new MatchEntry(name, e.getVariations().get(0), true, e
+				.getEtype()));
 		// add match with alternative names and translations
-		for (Name n : e.getNames()) {
-			if (!n.equals(name)) {
-				result.add(new MatchEntry(name, n, true, e.getEtype()));
-			}
-		}
+		// for (Name n : e.getNames()) {
+		// if (!n.equals(name)) {
+		// result.add(new MatchEntry(name, n, true, e.getEtype()));
+		// }
+		// }
+		int i = e.getNames().size() > 1 ? 1 : 0;
+		result.add(new MatchEntry(name, e.getNames().get(i), true, e.getEtype()));
+
 		return result;
 	}
 

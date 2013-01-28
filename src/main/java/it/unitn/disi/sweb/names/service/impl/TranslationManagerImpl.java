@@ -9,7 +9,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -18,9 +17,7 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -30,6 +27,8 @@ import org.w3c.tidy.Tidy;
 public class TranslationManagerImpl implements TranslationManager {
 
 	private DictionaryDAO dao;
+	private String url;
+	private String xPathExpression;
 
 	@Override
 	public List<String> findTranslation(String name) {
@@ -43,12 +42,8 @@ public class TranslationManagerImpl implements TranslationManager {
 	private List<String> findWeb(String name) {
 		List<String> result = null;
 		try {
-			Resource resource = new ClassPathResource(
-					"behindthename.properties");
-			Properties props = PropertiesLoaderUtils.loadProperties(resource);
-			String url = props.getProperty("url")
-					+ props.getProperty("paramName") + "=" + name.toLowerCase();
-			result = extractHTMLElement(url, props.getProperty("xpathExpr"));
+			String url = this.url + "=" + name.toLowerCase();
+			result = extractHTMLElement(url, xPathExpression);
 		} catch (Exception ex) {
 			result = new ArrayList<>();
 		}
@@ -59,7 +54,7 @@ public class TranslationManagerImpl implements TranslationManager {
 		return dao.findTranslations(name);
 	}
 
-	private List<String> extractHTMLElement(String url, String path)
+	public static List<String> extractHTMLElement(String url, String path)
 			throws XPathExpressionException, IOException {
 		URL oracle = new URL(url);
 		URLConnection yc = oracle.openConnection();
@@ -89,4 +84,12 @@ public class TranslationManagerImpl implements TranslationManager {
 		this.dao = dao;
 	}
 
+	@Value("${behindthename.url}")
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	@Value("${behindthename.xpathExpr}")
+	public void setxPathExpression(String xPathExpression) {
+		this.xPathExpression = xPathExpression;
+	}
 }

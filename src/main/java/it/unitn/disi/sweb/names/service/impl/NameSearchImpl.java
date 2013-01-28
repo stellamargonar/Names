@@ -26,14 +26,15 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service("nameSearch")
 public class NameSearchImpl implements NameSearch {
 
-	private static final double WEIGHT_EQUALS = 1.0;
-	private static final double WEIGHT_REORDER = 0.8;
-	private static final int MAXRESULT = 5;
+	private static double WEIGHTEQUALS;
+	private static double WEIGHTREORDER;
+	private static int MAXRESULT;
 
 	private NameManager nameManager;
 	private NameMatch nameMatch;
@@ -127,8 +128,6 @@ public class NameSearchImpl implements NameSearch {
 		return result;
 	}
 
-
-
 	/**
 	 * search for entities which have "input" as one of the possible names. The
 	 * weight is equal 1.
@@ -160,7 +159,7 @@ public class NameSearchImpl implements NameSearch {
 		// add names to the result list with max weight
 		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : found) {
-			result.put(n.getEntity(), WEIGHT_EQUALS);
+			result.put(n.getEntity(), WEIGHTEQUALS);
 		}
 
 		return result;
@@ -205,7 +204,7 @@ public class NameSearchImpl implements NameSearch {
 
 		Map<NamedEntity, Double> result = new HashMap<>();
 		for (FullName n : found) {
-			result.put(n.getEntity(), WEIGHT_REORDER);
+			result.put(n.getEntity(), WEIGHTREORDER);
 		}
 
 		// TODO implement order search based on fields
@@ -443,4 +442,19 @@ public class NameSearchImpl implements NameSearch {
 	public void setElementManager(ElementManager elementManager) {
 		this.elementManager = elementManager;
 	}
+	@Value("${search.nrresult.top}")
+	public void setMaxResult(int m) {
+		MAXRESULT = m;
+	}
+
+	@Value("${search.weight.equals}")
+	public void setWeightEquals(double w) {
+		WEIGHTEQUALS = w;
+	}
+
+	@Value("${search.weight.reorder}")
+	public void setWeightReorder(double w) {
+		WEIGHTREORDER = w;
+	}
+
 }

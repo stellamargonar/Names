@@ -92,28 +92,28 @@ public class NameManagerImpl implements NameManager {
 			return null;
 		}
 
-		List<Entry<String,Object>>tokens = parseFullName(name, en.getEType());
+		List<Entry<String, Object>> tokens = parseFullName(name, en.getEType());
 		return createFullName(name, tokens, en);
-//
-//		List<FullName> foundList = find(name, SearchType.TOCOMPARE);
-//
-//		for (FullName f : foundList) {
-//			if (en.equals(f.getEntity())) {
-//				return f;
-//			}
-//		}
-//		FullName fullname = new FullName();
-//		fullname.setName(name);
-//		fullname.setEntity(en);
-//
-//		fullname = parse(fullname, en.getEType());
-//
-//		fullname.setNameToCompare(getNameToCompare(fullname));
-//		fullname.setNameNormalized(getNameNormalized(fullname));
-//		fullname.setnGramCode(StringCompareUtils.computeNGram(name));
-//		FullName returned = fullnameDao.update(fullname);
-//
-//		return returned;
+		//
+		// List<FullName> foundList = find(name, SearchType.TOCOMPARE);
+		//
+		// for (FullName f : foundList) {
+		// if (en.equals(f.getEntity())) {
+		// return f;
+		// }
+		// }
+		// FullName fullname = new FullName();
+		// fullname.setName(name);
+		// fullname.setEntity(en);
+		//
+		// fullname = parse(fullname, en.getEType());
+		//
+		// fullname.setNameToCompare(getNameToCompare(fullname));
+		// fullname.setNameNormalized(getNameNormalized(fullname));
+		// fullname.setnGramCode(StringCompareUtils.computeNGram(name));
+		// FullName returned = fullnameDao.update(fullname);
+		//
+		// return returned;
 	}
 
 	@Override
@@ -180,10 +180,27 @@ public class NameManagerImpl implements NameManager {
 	 * @return
 	 */
 	private Entry<NameElement, Double> chooseNameElement(String tok, EType etype) {
-		// TODO Auto-generated method stub
-		// TODO implement heuristic strategies with statistics from behind the
-		// name and census
-		return new AbstractMap.SimpleEntry(getNewNameElement(etype, 0), 1.0);
+		Entry<NameElement, Double> result = null;
+		int max = 0;
+		// for each namelement in etype
+		for (NameElement el : elementManager.findNameElement(etype)) {
+			int freq = elementManager.frequency(tok, el);
+			if (freq > max) {
+				max = freq;
+				result = new AbstractMap.SimpleEntry<NameElement, Double>(el,
+						new Double(freq));
+			}
+		}
+		if (max == 0) {
+			// improve search with misspellings
+			// TODO
+
+			if (max == 0) {
+				result = new AbstractMap.SimpleEntry<NameElement, Double>(
+						getNewNameElement(etype, 0), 1.0);
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -390,7 +407,16 @@ public class NameManagerImpl implements NameManager {
 		}
 	}
 
-	private IndividualName createIndividualName(String name, NameElement el) {
+	@Override
+	public IndividualName createIndividualName(String name, int frequency,
+			NameElement el) {
+		IndividualName i = createIndividualName(name, el);
+		i.setFrequency(frequency);
+		nameDao.update(i);
+		return i;
+	}
+
+	public IndividualName createIndividualName(String name, NameElement el) {
 		IndividualName nameDb = nameDao.findByNameElement(name, el);
 		if (nameDb != null) {
 			return nameDb;

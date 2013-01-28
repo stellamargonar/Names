@@ -110,4 +110,9 @@ public class NamedEntity implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return Integer.toString(GUID);
+	}
+
 }

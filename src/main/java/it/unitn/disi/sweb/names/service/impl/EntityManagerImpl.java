@@ -55,7 +55,7 @@ public class EntityManagerImpl implements EntityManager {
 		List<FullName> names = nameDao.findByName(name.toLowerCase());
 		List<NamedEntity> entities = new ArrayList<>();
 		for (FullName n : names) {
-			entities.add(entityDao.findById(n.getGUID()));
+			entities.add(n.getEntity());
 		}
 		return entities;
 	}
@@ -66,7 +66,7 @@ public class EntityManagerImpl implements EntityManager {
 				etype);
 		List<NamedEntity> entities = new ArrayList<>();
 		for (FullName n : names) {
-			entities.add(entityDao.findById(n.getGUID()));
+			entities.add(n.getEntity());
 		}
 		return entities;
 	}

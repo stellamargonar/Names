@@ -16,6 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("prefixManager")
@@ -24,7 +25,7 @@ public class PrefixManagerImpl implements PrefixManager {
 	private PrefixDAO prefixDao;
 	private UsageStatisticsDAO statDao;
 
-	private static final boolean NORMALIZE = true;
+	private static boolean NORMALIZE;
 
 	@Override
 	public void updatePrefixes() {
@@ -114,6 +115,11 @@ public class PrefixManagerImpl implements PrefixManager {
 	@Autowired
 	public void setStatDao(UsageStatisticsDAO statDao) {
 		this.statDao = statDao;
+	}
+
+	@Value("${prefix.normalize}")
+	public void setNormalize(boolean n) {
+		NORMALIZE = n;
 	}
 
 	private class PrefixComparator implements Comparator<Prefix> {

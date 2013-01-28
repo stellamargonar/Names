@@ -1,0 +1,147 @@
+15:49:33,192 DEBUG DataSetEvaluator:93 - Start evaluation
+15:49:33,207 DEBUG NameMatchImpl:702 - 	String sim: 		5.4E-5
+15:49:33,228 DEBUG NameMatchImpl:707 - 	Dictionary lookup: t0.020472
+15:49:42,151 DEBUG NameMatchImpl:712 - 	Token analisys: t8.923567
+15:49:42,152 DEBUG DataSetEvaluator:115 - test 1 of 44 passed. Time 8.95737. King Henry VII King Henry xviii
+15:49:42,152 DEBUG NameMatchImpl:702 - 	String sim: 		2.3E-5
+15:49:42,171 DEBUG NameMatchImpl:707 - 	Dictionary lookup: t0.019131
+15:49:59,289 DEBUG NameMatchImpl:712 - 	Token analisys: t17.117832
+15:49:59,289 DEBUG DataSetEvaluator:115 - test 2 of 44 passed. Time 17.13759. King Henry VII Re Enrico VIII
+15:49:59,290 DEBUG NameMatchImpl:702 - 	String sim: 		1.6E-5
+15:49:59,312 DEBUG NameMatchImpl:707 - 	Dictionary lookup: t0.022582
+------------------------------------
+15:53:17,747 DEBUG DataSetEvaluator:93 - Start evaluation
+15:53:17,750 DEBUG NameMatchImpl:704 - 	String sim: 		7.8E-5
+15:53:17,751 DEBUG DataSetEvaluator:115 - test 1 of 44 passed. Time 0.001184. King Henry VII King Henry xviii
+15:53:17,751 DEBUG NameMatchImpl:704 - 	String sim: 		2.4E-5
+15:53:17,767 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.016146
+15:53:17,767 DEBUG DataSetEvaluator:115 - test 2 of 44 passed. Time 0.016475. King Henry VII Re Enrico VIII
+15:53:17,768 DEBUG NameMatchImpl:704 - 	String sim: 		1.5E-5
+15:53:17,768 DEBUG DataSetEvaluator:115 - test 3 of 44 passed. Time 1.33E-4. Dronning Margrethe II Dronning Margrethe ii
+15:53:17,768 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,783 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015617
+15:53:17,784 DEBUG DataSetEvaluator:115 - test 4 of 44 passed. Time 0.015921. Dronning Margrethe II Queen Margrethe II
+15:53:17,784 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,802 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.017669
+15:53:17,802 DEBUG DataSetEvaluator:115 - test 5 of 44 passed. Time 0.017972. John Paul II papa giovanni paolo ii
+15:53:17,802 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,818 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.016173
+15:53:17,819 DEBUG DataSetEvaluator:115 - test 6 of 44 passed. Time 0.017388. John Paul II Giovanni Paolo II
+15:53:17,819 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,835 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015152
+15:53:17,835 DEBUG DataSetEvaluator:115 - test 7 of 44 passed. Time 0.015445. Antonio da Padova St. Anthony of Padua
+15:53:17,835 DEBUG NameMatchImpl:704 - 	String sim: 		1.6E-5
+15:53:17,850 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015001
+15:53:17,850 DEBUG DataSetEvaluator:115 - test 8 of 44 passed. Time 0.015307. Antonio da Padova Anthony of Padua
+15:53:17,850 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,865 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.014715
+15:53:17,865 DEBUG DataSetEvaluator:115 - test 9 of 44 passed. Time 0.015008. Saint Henry Saint Henry ii
+15:53:17,866 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,881 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.014922
+15:53:17,881 DEBUG DataSetEvaluator:115 - test 10 of 44 passed. Time 0.015206. Saint Henry Sant?????????Enrico
+15:53:17,881 DEBUG NameMatchImpl:704 - 	String sim: 		1.5E-5
+15:53:17,896 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.014837
+15:53:17,896 DEBUG DataSetEvaluator:115 - test 11 of 44 passed. Time 0.015136. Julius Caesar giulio cesare
+15:53:17,896 DEBUG NameMatchImpl:704 - 	String sim: 		1.5E-5
+15:53:17,914 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.017888
+15:53:17,914 DEBUG DataSetEvaluator:115 - test 12 of 44 passed. Time 0.018231. Julius Caesar Giulio Cesare
+15:53:17,915 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,932 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.017547
+15:53:17,932 DEBUG DataSetEvaluator:115 - test 13 of 44 passed. Time 0.017834. Napol??????on napoleon
+15:53:17,933 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,948 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015397
+15:53:17,948 DEBUG DataSetEvaluator:115 - test 14 of 44 passed. Time 0.015698. Napol??????on Napoleon
+15:53:17,948 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:17,963 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.014922
+15:53:17,964 DEBUG DataSetEvaluator:115 - test 15 of 44 passed. Time 0.015222. Aristot??????les aristotle
+15:53:17,964 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:17,978 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.014357
+15:53:17,978 DEBUG DataSetEvaluator:115 - test 16 of 44 passed. Time 0.01465. Aristot??????les Aristotle
+15:53:17,979 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:17,997 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.018304
+15:53:17,997 DEBUG DataSetEvaluator:115 - test 17 of 44 passed. Time 0.018595. Alex Catania Zampieri AC Zampieri
+15:53:17,997 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:18,017 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.019595
+15:53:18,017 DEBUG DataSetEvaluator:115 - test 18 of 44 passed. Time 0.019969. Alex Catania Zampieri Alex Catania
+15:53:18,017 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:18,033 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015645
+15:53:18,033 DEBUG DataSetEvaluator:115 - test 19 of 44 passed. Time 0.015977. Enrico Bignotti EB
+15:53:18,033 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:18,065 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.03165
+15:53:18,065 DEBUG DataSetEvaluator:115 - test 20 of 44 passed. Time 0.031923. Enrico Bignotti Sig. Enrico Bignotti
+15:53:18,065 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:18,099 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.033192
+15:53:18,099 DEBUG DataSetEvaluator:115 - test 21 of 44 passed. Time 0.03347. Fausto Giunchiglia prof fausto giunchiglia
+15:53:18,099 DEBUG NameMatchImpl:704 - 	String sim: 		1.0E-6
+15:53:18,114 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015358
+15:53:18,115 DEBUG DataSetEvaluator:115 - test 22 of 44 passed. Time 0.015647. Fausto Giunchiglia Prof. Fausto Giunchiglia
+15:53:18,115 DEBUG NameMatchImpl:704 - 	String sim: 		1.7E-5
+15:53:18,115 DEBUG DataSetEvaluator:115 - test 23 of 44 passed. Time 1.58E-4. Freddie Mercury freddie mercury
+15:53:18,115 DEBUG NameMatchImpl:704 - 	String sim: 		1.7E-5
+15:53:18,130 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.01504
+15:53:18,130 DEBUG DataSetEvaluator:115 - test 24 of 44 passed. Time 0.015334. Freddie Mercury Farookh Bulsara
+15:53:18,130 DEBUG NameMatchImpl:704 - 	String sim: 		1.1E-5
+15:53:18,131 DEBUG DataSetEvaluator:115 - test 25 of 44 passed. Time 1.27E-4. Mark Twain mark twain
+15:53:18,131 DEBUG NameMatchImpl:704 - 	String sim: 		1.0E-6
+15:53:18,146 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015698
+15:53:18,147 DEBUG DataSetEvaluator:115 - test 26 of 44 passed. Time 0.016013. Mark Twain Samuel Clemens
+15:53:18,147 DEBUG NameMatchImpl:704 - 	String sim: 		8.0E-6
+15:53:18,195 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.047873
+15:53:18,987 DEBUG NameMatchImpl:720 - 	Token analisys: 	0.791528
+15:53:19,034 DEBUG DataSetEvaluator:115 - test 27 of 44 passed. Time 0.887446. Slash saul
+15:53:19,035 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:19,064 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.029552
+15:53:19,064 DEBUG DataSetEvaluator:115 - test 28 of 44 passed. Time 0.02992. Slash Saul Hudson
+15:53:19,065 DEBUG NameMatchImpl:704 - 	String sim: 		1.3E-5
+15:53:19,065 DEBUG DataSetEvaluator:115 - test 29 of 44 passed. Time 1.77E-4. Franco franco
+15:53:19,065 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:19,089 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.024357
+15:53:19,090 DEBUG DataSetEvaluator:115 - test 30 of 44 passed. Time 0.024707. Franco Francisco Franco y Bahamonde
+15:53:19,090 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:19,110 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.020296
+15:53:19,110 DEBUG DataSetEvaluator:115 - test 31 of 44 passed. Time 0.020579. Jos?????? Chilavert jos??????
+15:53:19,110 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:19,126 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015067
+15:53:19,126 DEBUG DataSetEvaluator:115 - test 32 of 44 passed. Time 0.015338. Jos?????? Chilavert Jos?????? Felix Chilavert Gonzalez
+15:53:19,134 DEBUG NameMatchImpl:704 - 	String sim: 		7.0E-6
+15:53:19,153 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.018934
+15:53:19,153 DEBUG DataSetEvaluator:115 - test 33 of 44 passed. Time 0.019532. Juan Pane juan
+15:53:19,154 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:19,169 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015172
+15:53:19,169 DEBUG DataSetEvaluator:115 - test 34 of 44 passed. Time 0.01545. Juan Pane Juan Ignacio Pane Fern??????ndez
+15:53:19,169 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:19,184 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015002
+15:53:19,184 DEBUG DataSetEvaluator:115 - test 35 of 44 passed. Time 0.01528. Alberto Asor Rosa asor alberto
+15:53:19,185 DEBUG NameMatchImpl:704 - 	String sim: 		1.0E-6
+15:53:19,185 DEBUG DataSetEvaluator:115 - test 36 of 44 passed. Time 1.15E-4. Alberto Asor Rosa Alberto Asor Rosa
+15:53:19,185 DEBUG NameMatchImpl:704 - 	String sim: 		1.1E-5
+15:53:19,185 DEBUG DataSetEvaluator:115 - test 37 of 44 passed. Time 1.13E-4. Philip Dick Philip K Dick
+15:53:19,185 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:19,200 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.015169
+15:53:19,200 DEBUG DataSetEvaluator:115 - test 38 of 44 passed. Time 0.01549. Philip Dick Philip K. Dick
+15:53:19,201 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:19,258 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.057191
+15:53:19,258 DEBUG DataSetEvaluator:115 - test 39 of 44 passed. Time 0.057577. William Carlos Williams William C Williams
+15:53:19,258 DEBUG NameMatchImpl:704 - 	String sim: 		3.0E-6
+15:53:19,283 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.023887
+15:53:19,283 DEBUG DataSetEvaluator:115 - test 40 of 44 passed. Time 0.024348. William Carlos Williams William C. Williams
+15:53:19,283 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:19,315 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.031775
+15:53:31,043 DEBUG NameMatchImpl:720 - 	Token analisys: 	11.727648
+15:53:31,043 DEBUG DataSetEvaluator:115 - test 41 of 44 passed. Time 11.76004. Alberto Assor Jos?????? Chilavert
+15:53:31,043 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:53:31,110 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.066501
+15:54:04,016 DEBUG NameMatchImpl:720 - 	Token analisys: 	32.906353
+15:54:04,017 DEBUG DataSetEvaluator:115 - test 42 of 44 passed. Time 32.973509. SIgn Bignotti Enrico Philip  Dick
+15:54:04,017 DEBUG NameMatchImpl:704 - 	String sim: 		2.4E-5
+15:54:04,042 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.025087
+15:54:59,623 DEBUG NameMatchImpl:720 - 	Token analisys: 	55.581349
+15:54:59,624 DEBUG DataSetEvaluator:115 - test 43 of 44 passed. Time 55.606983. Fausto  Giunchiglia st anthony of padua
+15:54:59,624 DEBUG NameMatchImpl:704 - 	String sim: 		2.0E-6
+15:54:59,660 DEBUG NameMatchImpl:712 - 	Dictionary lookup: 	0.03617
+15:55:44,658 DEBUG NameMatchImpl:720 - 	Token analisys: 	44.9979
+15:55:44,658 DEBUG DataSetEvaluator:115 - test 44 of 44 passed. Time 45.034652. S. Enrico Queen Margrete
+15:55:45,444 DEBUG DataSetEvaluator:96 - Passed 44 tests on 44. Total time: -147697.0 ms
+16:13:50,479 DEBUG NameMatchImpl:729 - 	String sim: 		4.15E-4
+16:20:05,203 DEBUG NameMatchImpl:732 - 	String sim: 		4.13E-4
+16:20:36,930 DEBUG NameMatchImpl:732 - 	String sim: 		5.83E-4

@@ -140,4 +140,14 @@ public class ElementManagerImpl implements ElementManager {
 		return tDao.save(t);
 	}
 
+	@Override
+	public int frequency(String token, NameElement el) {
+		IndividualName i = nDao.findByNameElement(token.toLowerCase(), el);
+		if (i != null) {
+			return i.getFrequency();
+		} else {
+			return 0;
+		}
+	}
+
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 
-@Service("misspellingsComparator")
+@Service("JaroWinkler")
 public final class JaroWinkler implements MisspellingsComparator {
 
 	private final double mWeightThreshold;

@@ -2,6 +2,8 @@ package it.unitn.disi.sweb.names.service;
 
 import it.unitn.disi.sweb.names.model.EType;
 import it.unitn.disi.sweb.names.model.FullName;
+import it.unitn.disi.sweb.names.model.IndividualName;
+import it.unitn.disi.sweb.names.model.NameElement;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 
 import java.util.List;
@@ -42,5 +44,7 @@ public interface NameManager {
 	List<FullName> find(String name, SearchType type);
 
 	boolean translatable(FullName f);
+	IndividualName createIndividualName(String name, int frequency,
+			NameElement el);
 
 }

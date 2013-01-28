@@ -49,4 +49,6 @@ public interface ElementManager {
 	List<FullName> find(TriggerWord triggerWord);
 
 	List<TriggerWord> findTriggerWord(String t);
+
+	int frequency(String token, NameElement el);
 }

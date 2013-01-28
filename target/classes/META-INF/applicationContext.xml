@@ -2,24 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-	<!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
-		<property name="jpaVendorAdapter"> <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> 
-		<property name="showSql" value="true" /> <property name="generateDdl" value="true" 
-		/> <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" 
-		/> </bean> </property> </bean> -->
+
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="namesUnit" />
 	</bean>
-
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -30,16 +27,33 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" />
-
 	<tx:annotation-driven />
 
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
+	<!-- Properties files -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:project.properties</value>
+				<value>classpath:log4j.properties</value>
+				<value>classpath:behindthename.properties</value>
+				
+			</list>
+		</property>
+	</bean>
+
+	<!-- Logger definition -->
+	<bean id="evaluateLog"
+		class="org.springframework.beans.factory.config.CommonsLogFactoryBean">
+		<property name="logName" value="evaluate" />
+	</bean>
+	
+
+
 	<context:component-scan base-package="it.unitn.disi.sweb.names" />
 	<context:annotation-config />
 
-
-	<!-- <bean id="dictionaryDAO" class="it.unitn.disi.sweb.names.repository.DictionaryDAO" 
-		/> -->
 </beans>

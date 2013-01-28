@@ -99,10 +99,11 @@ public class FullNameDAOImpl implements FullNameDAO {
 	public List<FullName> findVariant(String name, EType etype) {
 
 		if (etype != null) {
-			return em
+			List<FullName> res= em
 					.createNamedQuery("FullName.variantForName", FullName.class)
 					.setParameter("name", name).setParameter("etype", etype)
 					.getResultList();
+			return res;
 		} else {
 			return em
 					.createNamedQuery("FullName.variantForNameNoEtype",

@@ -48,10 +48,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 		@NamedQuery(name = "FullName.byNameEtype", query = "from FullName as fn where lower(name) = :name and fn.etype = :etype"),
 		@NamedQuery(name = "FullName.byEntity", query = "from FullName as fn where fn.entity=:entity"),
 		@NamedQuery(name = "FullName.byEntityName", query = "from FullName as fn where lower(name) = :name and fn.entity=:entity"),
-		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.GUID in (select fullname.GUID from FullName as fullname where lower(fullname.name) = :name and fullname.etype=:etype) and lower(fn1.name) != :name))"),
+		@NamedQuery(name = "FullName.variantForName", query = "from FullName as fn1 where fn1.entity.GUID in (select fullname.entity.GUID from FullName as fullname where lower(fullname.name) = :name and fullname.etype=:etype) and lower(fn1.name) != :name))"),
 		@NamedQuery(name = "FullName.byToken", query = "from FullName where lower(name) like CONCAT('%', :name, '%')"),
 		@NamedQuery(name = "FullName.byNgram", query = "from FullName where ABS(nGramCode - :code) < :diff"),
-		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.GUID in (select fullname.GUID from FullName as fullname where lower(fullname.name) = :name) and lower(fn1.name) != :name))"),})
+		@NamedQuery(name = "FullName.variantForNameNoEtype", query = "from FullName as fn1 where fn1.entity.GUID in (select fullname.entity.GUID from FullName as fullname where lower(fullname.name) = :name) and lower(fn1.name) != :name))"),})
 public class FullName implements Serializable {
 
 	@Id
@@ -68,7 +68,7 @@ public class FullName implements Serializable {
 	private String nameToCompare;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "entity", nullable = false)
+	@JoinColumn(name = "entity_id", nullable = false)
 	private NamedEntity entity;
 
 	@Column(name = "ngramcode")
@@ -86,8 +86,6 @@ public class FullName implements Serializable {
 	@Column(name = "etype")
 	private EType etype;
 
-	@Column(name = "GUID")
-	private int GUID;
 
 	private static final long serialVersionUID = 1L;
 
@@ -153,10 +151,6 @@ public class FullName implements Serializable {
 		this.nameToCompare = nameToCompare;
 	}
 
-	public int getGUID() {
-		return entity.getGUID();
-	}
-
 	public Integer getNGramCode() {
 		return nGramCode;
 	}
@@ -172,6 +166,10 @@ public class FullName implements Serializable {
 	public void setEntity(NamedEntity entity) {
 		this.entity = entity;
 		etype = entity.getEType();
+	}
+
+	public int getGUID() {
+		return entity.getGUID();
 	}
 
 	public Integer getnGramCode() {

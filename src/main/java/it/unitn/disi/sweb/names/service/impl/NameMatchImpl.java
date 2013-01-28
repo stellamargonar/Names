@@ -29,15 +29,21 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service("nameMatcher")
 public class NameMatchImpl implements NameMatch {
 
-	private static final int MAX_LENGTH_DIFFERENCE = 3;
-	private static final double THRESHOLD_MISSPELLINGS = 0.75;
-	private static final double THRESHOLD_DICTIONARY = THRESHOLD_MISSPELLINGS;
+	private MisspellingsComparator comparator;
+
+	private static int MAXLENGTHDIFFERENCE;
+	private static double THRESHOLDMISSPELLINGS;
+	private static double THRESHOLDDICTIONARY;
 
 	private IndividualNameDAO individualNameDao;
 	private TriggerWordDAO triggerWordDao;
@@ -46,11 +52,11 @@ public class NameMatchImpl implements NameMatch {
 	private NameManager nameManager;
 	private ElementManager elementManager;
 
-	private MisspellingsComparator comparator;
-
 	private boolean translatable1 = false;
 	private boolean translatable2 = false;
 	private boolean tryAllCombination = false;
+
+	private Log logger;
 
 	private EType etype;
 	public NameMatchImpl() {
@@ -114,13 +120,13 @@ public class NameMatchImpl implements NameMatch {
 
 		// applies string comparator function only if they strings have
 		// approximately the same length
-		if (StringCompareUtils.lengthDifference(name1, name2) < MAX_LENGTH_DIFFERENCE) {
+		if (StringCompareUtils.lengthDifference(name1, name2) < MAXLENGTHDIFFERENCE) {
 			sim = misspellingsSimilarity(name1, name2);
 		}
 
 		// similarity is returned only when it is acceptable
 		// which means higher than a threshold
-		if (sim > THRESHOLD_MISSPELLINGS) {
+		if (sim > THRESHOLDMISSPELLINGS) {
 			return sim;
 		} else {
 			return 0;
@@ -175,8 +181,9 @@ public class NameMatchImpl implements NameMatch {
 			}
 		}
 
-		if (similarity < THRESHOLD_MISSPELLINGS) {
-			tryAllCombination = true;
+		if (similarity < THRESHOLDMISSPELLINGS) {
+			tryAllCombination = false; // TODO change to TRUE and improve
+										// pairbyallocombination function
 			listPairs = generateListPairs(nameList1, nameList2);
 
 			for (Map<String, String> map : listPairs) {
@@ -397,8 +404,8 @@ public class NameMatchImpl implements NameMatch {
 		for (int i = 0; i < matrix.length; i++) {
 			indexes.add(i);
 		}
-		List<List<Integer>> combinations = combination(indexes, 0, new ArrayList<Integer>(),
-				new ArrayList<List<Integer>>());
+		List<List<Integer>> combinations = combination(indexes, 0,
+				new ArrayList<Integer>(), new ArrayList<List<Integer>>());
 		return combinations;
 	}
 
@@ -549,7 +556,7 @@ public class NameMatchImpl implements NameMatch {
 			// + ": " + similarity);
 
 		}
-		return similarity > THRESHOLD_DICTIONARY ? similarity : 0;
+		return similarity > THRESHOLDDICTIONARY ? similarity : 0;
 	}
 
 	/**
@@ -583,7 +590,7 @@ public class NameMatchImpl implements NameMatch {
 				similarity = stringSimilarity(name.getName(), name2, etype);
 				// TODO define a correct threshold for misspellings and
 				// dictionary
-				if (similarity > THRESHOLD_MISSPELLINGS * THRESHOLD_DICTIONARY) {
+				if (similarity > THRESHOLDMISSPELLINGS * THRESHOLDDICTIONARY) {
 					return similarity;
 				}
 			}
@@ -663,7 +670,7 @@ public class NameMatchImpl implements NameMatch {
 		this.nameManager = nameManager;
 	}
 
-	@Autowired
+	@Resource(name = "${misspellings.comparator}")
 	public void setComparator(MisspellingsComparator comparator) {
 		this.comparator = comparator;
 	}
@@ -683,11 +690,52 @@ public class NameMatchImpl implements NameMatch {
 		this.triggerWordDao = triggerWordDao;
 	}
 
+	@Value("${threshold.lenght}")
+	public void setMaxLengthDifference(int m) {
+		MAXLENGTHDIFFERENCE = m;
+	}
+
+	@Value("${threshold.misspellings}")
+	public void setThresholdMisspellings(double t) {
+		THRESHOLDMISSPELLINGS = t;
+	}
+	@Value("${threshold.dictionary}")
+	public void setThresholdDictionary(double t) {
+		THRESHOLDDICTIONARY = t;
+	}
+
+	@Autowired
+	public void setLogger(Log logger) {
+		this.logger = logger;
+	}
+
 	@Override
 	public double match(String name1, String name2, EType etype) {
-		double sim1 = stringSimilarity(name1, name2, etype);
-		double sim2 = dictionaryLookup(name1, name2, etype);
-		double sim3 = tokenAnalysis(name1, name2, etype);
+		long start = System.nanoTime();
+		long time = 0;
+		double sim1, sim2, sim3;
+
+		sim1 = stringSimilarity(name1, name2, etype);
+		time = System.nanoTime() - start;
+		logger.debug("\tString sim: \t\t" + time / Math.pow(10, 9));
+
+		if (sim1 >= THRESHOLDMISSPELLINGS) {
+			return sim1;
+		} else {
+			start = System.nanoTime();
+			sim2 = dictionaryLookup(name1, name2, etype);
+			time = System.nanoTime() - start;
+			logger.debug("\tDictionary lookup: \t" + time / Math.pow(10, 9));
+
+			if (sim2 >= THRESHOLDDICTIONARY) {
+				return sim2;
+			} else {
+				start = System.nanoTime();
+				sim3 = tokenAnalysis(name1, name2, etype);
+				time = System.nanoTime() - start;
+				logger.debug("\tToken analisys: \t" + time / Math.pow(10, 9));
+			}
+		}
 		return Math.max(Math.max(sim1, sim2), sim3);
 	}
 
