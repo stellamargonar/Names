@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class MapAdapter
+public class ListAdapter
 		extends
 			XmlAdapter<PairList, List<Entry<String, String>>> {
 	@Override
@@ -26,7 +26,8 @@ public class MapAdapter
 			throws Exception {
 		List<Entry<String, String>> r = new ArrayList<>();
 		for (Pair mapelement : arg0.getList()) {
-			r.add(new AbstractMap.SimpleEntry(mapelement.key, mapelement.value));
+			r.add(new AbstractMap.SimpleEntry<String, String>(mapelement.key,
+					mapelement.value));
 		}
 		return r;
 	}

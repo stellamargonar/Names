@@ -104,7 +104,7 @@ public class TriggerWordDAOImpl implements TriggerWordDAO {
 	@Override
 	public TriggerWord findByTriggerWordType(String triggerWord,
 			TriggerWordType type) {
-		return em.createNamedQuery("TriggerWord.byTWTtype", TriggerWord.class)
+		return em.createNamedQuery("TriggerWord.byTWType", TriggerWord.class)
 				.setParameter("tw", triggerWord).setParameter("type", type)
 				.getSingleResult();
 	}

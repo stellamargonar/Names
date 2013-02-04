@@ -99,7 +99,7 @@ public class FullNameDAOImpl implements FullNameDAO {
 	public List<FullName> findVariant(String name, EType etype) {
 
 		if (etype != null) {
-			List<FullName> res= em
+			List<FullName> res = em
 					.createNamedQuery("FullName.variantForName", FullName.class)
 					.setParameter("name", name).setParameter("etype", etype)
 					.getResultList();
@@ -123,4 +123,5 @@ public class FullNameDAOImpl implements FullNameDAO {
 				.setParameter("code", ngram).setParameter("diff", diff)
 				.getResultList();
 	}
+
 }

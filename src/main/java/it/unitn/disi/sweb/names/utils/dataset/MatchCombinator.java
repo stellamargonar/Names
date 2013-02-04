@@ -3,28 +3,36 @@ package it.unitn.disi.sweb.names.utils.dataset;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
+@Component("matchGenerator")
 public class MatchCombinator {
 
 	private Dataset dataset;
-	private final double RANDOMPERCENTAGE = 0.2;
 
-	private final String inputFile = "src/test/resources/dataset.xml";
-	private final String outputFile = "src/test/resources/datasetMatch.xml";
+	private double RANDOMPERCENTAGE;
+	private String inputFile;
+	private String outputFile;
 
+	private String inputExternalFile;
+	private String outputExternalFile;
+	private boolean useExternalDataset;
 	public MatchCombinator(Dataset dataset) {
 		this.dataset = dataset;
 	}
@@ -32,39 +40,88 @@ public class MatchCombinator {
 
 	}
 
+	/**
+	 * generates and saves a list of pair (matches) from the entries stored in
+	 * the dataset. Generates both pair of names that are expected to match (
+	 * {@link #generateCorrectMatch() generateCorrectMatch} and that should not
+	 * match {@link #generateIncorrectMatch() generateIncorrectMatch}
+	 */
 	public void generateMatches() {
+		System.out.println(useExternalDataset);
+		System.out.println(getInputFile());
+		System.out.println(getOutputFile());
+		// initialize the dataset with the one read from inputfile
 		setDataset(readDataset());
+
+		// add correct matches (names and variations from the same entity)
 		dataset.addAllMatch(generateCorrectMatch());
+
+		// generate incorrect matches (names or variations from different
+		// entities)
 		dataset.addAllMatch(generateIncorrectMatch());
+
+		System.out.println(dataset.getMatchEntries().size());
+
+		// saves entries and dataset in the outputFile
 		saveDataset();
 	}
 
+	/**
+	 * generates a list of pair of names which are expected to match. Those
+	 * pairs are formed by names of the same entity
+	 *
+	 * @return list of correct match
+	 */
 	public List<MatchEntry> generateCorrectMatch() {
 		List<MatchEntry> result = new ArrayList<>();
+
+		// for each entity in the dataset
 		for (Entry e : dataset.getEntries()) {
-//			for (Name name : e.getNames()) {
-				result.addAll(generateVariationsMatch(e.getNames().get(0), e));
-//			}
+			for (Name name : e.getNames()) {
+				// generate match with name and variations
+				result.addAll(generateVariationsMatch(name, e));
+			}
 		}
+		System.out.println("generated " + result.size() + " correct matches");
+
 		return result;
 	}
 
+	/**
+	 * generate a list of pair of names from different entries that should not
+	 * match.
+	 *
+	 * The number of pairs is proportional to the size of the entry list and
+	 * determined by {@literal #RANDOMPERCENTAGE} property setted in
+	 * project.properties file.
+	 *
+	 * The pair are randomly generated.
+	 *
+	 * @return list of incorrect match
+	 */
 	public List<MatchEntry> generateIncorrectMatch() {
-		// generate random match between names in the dataset
 		int size = dataset.getEntries().size();
 		List<MatchEntry> result = new ArrayList<>();
-		Map<Integer, Integer> randomPairs = generateRandomPairs(size);
+
+		// generate a number of random pairs of entries
+		List<Map.Entry<Integer, Integer>> randomPairs = generateRandomPairs(size);
+
 		Random r = new Random();
-		for (Map.Entry<Integer, Integer> e : randomPairs.entrySet()) {
+
+		for (Map.Entry<Integer, Integer> e : randomPairs) {
 			Entry e1 = dataset.getEntries().get(e.getKey());
 			Entry e2 = dataset.getEntries().get(e.getValue());
+
 			if (e1.getEtype().equals(e2.getEtype())) {
+				List<Name> list1 = new ArrayList<>(e1.getNames());
+				if (e1.getVariations() != null) {
+					list1.addAll(e1.getVariations());
+				}
 
-				List<Name> list1 = e1.getNames();
-				list1.addAll(e1.getVariations());
-
-				List<Name> list2 = e2.getNames();
-				list2.addAll(e2.getVariations());
+				List<Name> list2 = new ArrayList<>(e2.getNames());
+				if (e2.getVariations() != null) {
+					list2.addAll(e2.getVariations());
+				}
 
 				int r1 = r.nextInt(list1.size());
 				int r2 = r.nextInt(list2.size());
@@ -73,57 +130,79 @@ public class MatchCombinator {
 				result.add(me);
 			}
 		}
-
 		return result;
 	}
+	/**
+	 * generate a number of pairs of integer, where those integer stand for the
+	 * index of entries in the dataset entries list.
+	 *
+	 * Generates a
+	 *
+	 * @param size
+	 * @return
+	 */
+	private List<Map.Entry<Integer, Integer>> generateRandomPairs(int size) {
+		// number of entries that will be generated
+		int allPossibleCombination = size * size - size;
+		int randomEntries = (int) (RANDOMPERCENTAGE * allPossibleCombination);
 
-	private Map<Integer, Integer> generateRandomPairs(int size) {
-		int randomEntries = (int) (RANDOMPERCENTAGE * size);
-		HashMap<Integer, Integer> map = new HashMap<>(randomEntries);
-		Random r = new Random(System.currentTimeMillis());
-		for (int i = 0; i < randomEntries; i++) {
-			Integer k;
-			do {
-				k = r.nextInt(size);
-			} while (map.containsKey(k));
-			map.put(k, null);
+		// shuffle list of entries (represented by their indexes)
+		List<Integer> indexes = new ArrayList<>(size);
+		for (int i = 0; i < size; i++) {
+			indexes.add(i);
 		}
 
-		Set<Integer> old = new HashSet<>(map.keySet());
-		for (Integer k : map.keySet()) {
-			Integer v;
-			do {
-				v = r.nextInt(size);
-			} while (old.contains(v));
-			map.put(k, v);
-			old.add(v);
+		List<Map.Entry<Integer, Integer>> map = new ArrayList<>(randomEntries);
+		Random r = new Random(System.currentTimeMillis());
+
+		for (int i = 0; i < randomEntries; i++) {
+			int k = 0, v = 0;
+			while (k == v) {
+				k = r.nextInt(size);
+				Collections.shuffle(indexes);
+				v = indexes.get(k);
+			}
+			map.add(new AbstractMap.SimpleEntry<Integer, Integer>(k, v));
 		}
 		return map;
 	}
 
 	public static void main(String[] args) {
-		new MatchCombinator().generateMatches();
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"META-INF/applicationContext.xml");
+		MatchCombinator comb = context.getBean(MatchCombinator.class);
+		comb.generateMatches();
 	}
 
+	/**
+	 * creates a list of pairs formed by the original name and each possible
+	 * name or variation in its original Entry.
+	 *
+	 * Those matches are expected to be correct
+	 *
+	 * @param name
+	 *            original name
+	 * @param e
+	 *            dataset entry
+	 * @return list of match
+	 */
 	private Collection<MatchEntry> generateVariationsMatch(Name name, Entry e) {
 		List<MatchEntry> result = new ArrayList<>();
 
 		// adds match with name and variation (misspellings)
-		// for (Name v : e.getVariations()) {
-		// result.add(new MatchEntry(name, v, true, e.getEtype()));
-		// }
-
-		result.add(new MatchEntry(name, e.getVariations().get(0), true, e
-				.getEtype()));
+		if (e.getVariations() != null) {
+			for (Name v : e.getVariations()) {
+				result.add(new MatchEntry(v, name, true, e.getEtype()));
+			}
+		}
 		// add match with alternative names and translations
-		// for (Name n : e.getNames()) {
-		// if (!n.equals(name)) {
-		// result.add(new MatchEntry(name, n, true, e.getEtype()));
-		// }
-		// }
-		int i = e.getNames().size() > 1 ? 1 : 0;
-		result.add(new MatchEntry(name, e.getNames().get(i), true, e.getEtype()));
-
+		for (Name n : e.getNames()) {
+			if (!n.equals(name)) {
+				System.out
+						.println(" add " + name.getName() + " " + n.getName());
+				result.add(new MatchEntry(n, name, true, e.getEtype()));
+			}
+		}
 		return result;
 	}
 
@@ -133,7 +212,7 @@ public class MatchCombinator {
 			context = JAXBContext.newInstance(Dataset.class);
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.marshal(dataset, new File(outputFile));
+			m.marshal(dataset, new File(getOutputFile()));
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,7 +225,7 @@ public class MatchCombinator {
 			context = JAXBContext.newInstance(Dataset.class);
 			Unmarshaller um = context.createUnmarshaller();
 			System.out.println(um);
-			FileReader fr = new FileReader(inputFile);
+			FileReader fr = new FileReader(getInputFile());
 			System.out.println(fr);
 			Dataset d = (Dataset) um.unmarshal(fr);
 			return d;
@@ -160,10 +239,53 @@ public class MatchCombinator {
 		return null;
 	}
 
+	public String getInputFile() {
+		if (useExternalDataset) {
+			return inputExternalFile;
+		} else {
+			return inputFile;
+		}
+	}
+
+	public String getOutputFile() {
+		if (useExternalDataset) {
+			return outputExternalFile;
+		} else {
+			return outputFile;
+		}
+
+	}
+
 	public Dataset getDataset() {
 		return dataset;
 	}
 	public void setDataset(Dataset dataset) {
 		this.dataset = dataset;
 	}
+	@Value("${dataset.original.xml}")
+	public void setInputFile(String inputFile) {
+		this.inputFile = inputFile;
+	}
+	@Value("${dataset.matched.xml}")
+	public void setOutputFile(String outputFile) {
+		this.outputFile = outputFile;
+	}
+	@Value("${dataset.matched.randompercentage}")
+	public void setRandomPercentage(double r) {
+		RANDOMPERCENTAGE = r;
+	}
+
+	@Value("${dataset.external.xml}")
+	public void setInputExternalFile(String inputExternalFile) {
+		this.inputExternalFile = inputExternalFile;
+	}
+	@Value("${dataset.external.matched.xml}")
+	public void setOutputExternalFile(String outputExternalFile) {
+		this.outputExternalFile = outputExternalFile;
+	}
+	@Value("${dataset.external.use}")
+	public void setUseExternalDataset(boolean useExternalDataset) {
+		this.useExternalDataset = useExternalDataset;
+	}
+
 }

@@ -1,0 +1,2512 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:dataset xmlns:ns2="it.unitn.disi.sweb.names">
+    <searchResults>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="CLEARANCE LESKO" element="0.9061050061050061"/>
+                <token string="LAWRENCE CHAMBARS" element="0.1111111111111111"/>
+                <token string="BEN LESKO" element="0.1111111111111111"/>
+                <token string="LEANNE GASBARRO" element="0.1111111111111111"/>
+                <token string="CHANCE E YETES" element="0.1111111111111111"/>
+                <token string="JOSEPH E LETO" element="0.1111111111111111"/>
+                <token string="LAWRENCE C BELTRAN" element="0.1111111111111111"/>
+                <token string="LESKO" element="0.1111111111111111"/>
+            </list>
+            <name>CLEARANCE LESKO</name>
+            <passed>true</passed>
+            <query>CLARENCE LESCO</query>
+            <time>3086</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="BEN LESKO" element="0.8518518518518517"/>
+                <token string="BANK" element="0.06060606060606061"/>
+                <token string=" A BANK" element="0.06060606060606061"/>
+                <token string=" D BANK" element="0.06060606060606061"/>
+                <token string=" P BANK" element="0.06060606060606061"/>
+                <token string=" P BANK" element="0.06060606060606061"/>
+                <token string="DOMINIQUE B MOHRING" element="0.030303030303030304"/>
+                <token string="CLEARANCE LESKO" element="0.030303030303030304"/>
+                <token string="INGER B SMALLS" element="0.030303030303030304"/>
+                <token string="MARIANNA B AHREWS" element="0.030303030303030304"/>
+                <token string="BEN W WILKES" element="0.030303030303030304"/>
+                <token string="LESKO" element="0.030303030303030304"/>
+                <token string="DEWIGHT B MALDONADO" element="0.030303030303030304"/>
+                <token string="ANTHONY B HULLEY" element="0.030303030303030304"/>
+                <token string=" B REAVES" element="0.030303030303030304"/>
+                <token string="DAVON B SKANOS" element="0.030303030303030304"/>
+                <token string="QUAYN B STAPPY" element="0.030303030303030304"/>
+                <token string="ETHNY B FREY" element="0.030303030303030304"/>
+                <token string="JOSEPH E LETO" element="0.030303030303030304"/>
+                <token string="JEAN B CARTER" element="0.030303030303030304"/>
+                <token string=" B BARNES" element="0.030303030303030304"/>
+                <token string="ZACHARY B HOERRLING" element="0.030303030303030304"/>
+                <token string="ALICIA B CENTURY" element="0.030303030303030304"/>
+                <token string="ANTONIO B KLEIMAN" element="0.030303030303030304"/>
+                <token string="ROSEY B HOPPER" element="0.030303030303030304"/>
+                <token string=" B SWAGOI" element="0.030303030303030304"/>
+                <token string="DARRYL B CARR" element="0.030303030303030304"/>
+            </list>
+            <name>BEN LESKO</name>
+            <passed>true</passed>
+            <query>BAN LESCO</query>
+            <time>2542</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="SARAH N DAVIES" element="0.9523809523809524"/>
+                <token string="CLARA J AQUENDO" element="0.0058309037900874635"/>
+                <token string="TRYONE M DAVID" element="0.0058309037900874635"/>
+                <token string="MICHELE N DAVIES" element="0.0058309037900874635"/>
+                <token string="HOANG DAVID" element="0.0058309037900874635"/>
+                <token string="ISAAE ENGELSKIRCH" element="0.0058309037900874635"/>
+                <token string="RENEE M DAVIES" element="0.0058309037900874635"/>
+                <token string="WELLS PAINE" element="0.0029154518950437317"/>
+                <token string="MARYANN FOSTER" element="0.0029154518950437317"/>
+                <token string="DIANE M GORDON" element="0.0029154518950437317"/>
+                <token string="DANEILLE S LAKATOS" element="0.0029154518950437317"/>
+                <token string="JEFFREY J PENSETH" element="0.0029154518950437317"/>
+                <token string="INGER B SMALLS" element="0.0029154518950437317"/>
+                <token string="TAMIKA R RICHARDSON" element="0.0029154518950437317"/>
+                <token string="RAYMOND G HILL" element="0.0029154518950437317"/>
+                <token string="PHYLLIS L HENRIKSON" element="0.0029154518950437317"/>
+                <token string="LYNNETTE C RUSSALL" element="0.0029154518950437317"/>
+                <token string="JEANETTE M MCALLISTER" element="0.0029154518950437317"/>
+                <token string="JOANNIE FLEEK" element="0.0029154518950437317"/>
+                <token string="SOUTA M BELTRAN" element="0.0029154518950437317"/>
+                <token string="TANYA O MOSQUERA" element="0.0029154518950437317"/>
+                <token string="GHOLOM W GIERINGER" element="0.0029154518950437317"/>
+                <token string="HUTCHINSON" element="0.0029154518950437317"/>
+                <token string="ALLEN J BRAWD" element="0.0029154518950437317"/>
+                <token string="MARINELA E CAMPBELL" element="0.0029154518950437317"/>
+                <token string="BANK" element="0.0029154518950437317"/>
+                <token string="SHAWN P POLLACK" element="0.0029154518950437317"/>
+                <token string=" T OWENS" element="0.0029154518950437317"/>
+                <token string="YUNAISY L BARRETT" element="0.0029154518950437317"/>
+                <token string="GLORIANNE M BELL" element="0.0029154518950437317"/>
+                <token string=" L HENNEGGEY" element="0.0029154518950437317"/>
+                <token string="DIXION J HELLER" element="0.0029154518950437317"/>
+                <token string=" N DORMAN" element="0.0029154518950437317"/>
+                <token string="ELFRIEDA C ROWEN" element="0.0029154518950437317"/>
+                <token string="JACQUELINE HUDSON" element="0.0029154518950437317"/>
+                <token string="RONNIE COBEZA" element="0.0029154518950437317"/>
+                <token string="BRANDEN R VARGAS" element="0.0029154518950437317"/>
+                <token string="ANNTIONETTE FLEEK" element="0.0029154518950437317"/>
+                <token string="MAIRE T GIERINGER" element="0.0029154518950437317"/>
+                <token string="CHRISTOPHER J ROWEN" element="0.0029154518950437317"/>
+                <token string="LENWOOD M HAMMONDS" element="0.0029154518950437317"/>
+                <token string="ENZELEE E GALIDEZ" element="0.0029154518950437317"/>
+                <token string="KATHERINE M SYKS" element="0.0029154518950437317"/>
+                <token string=" P BANK" element="0.0029154518950437317"/>
+                <token string="DIMON T HOLLEY" element="0.0029154518950437317"/>
+                <token string="JEMES V PARVA" element="0.0029154518950437317"/>
+                <token string="RROBERT T GERING" element="0.0029154518950437317"/>
+                <token string="WELLS PAINE" element="0.0029154518950437317"/>
+                <token string="DOMINIQUE B MOHRING" element="0.0029154518950437317"/>
+                <token string="ROB J MANGUM" element="0.0029154518950437317"/>
+                <token string="CHANTEL A STEWARD" element="0.0029154518950437317"/>
+                <token string="JEFFERY W GIERINGER" element="0.0029154518950437317"/>
+                <token string="BEN W WILKES" element="0.0029154518950437317"/>
+                <token string="ALEXANDER R VARGAS" element="0.0029154518950437317"/>
+                <token string="STANLY J FLOWERS" element="0.0029154518950437317"/>
+                <token string="THRESA A PENSETH" element="0.0029154518950437317"/>
+                <token string="JAMES C HAMMONDS" element="0.0029154518950437317"/>
+                <token string="HERMEN M MOSQUERA" element="0.0029154518950437317"/>
+                <token string="JOHN F SCCHWARTZ" element="0.0029154518950437317"/>
+                <token string="JEAN A ARCHER" element="0.0029154518950437317"/>
+                <token string="SHAWNETT R GARRETT" element="0.0029154518950437317"/>
+                <token string="PRINCETTA D MOSQUERA" element="0.0029154518950437317"/>
+                <token string="JANICE M MOHRING" element="0.0029154518950437317"/>
+                <token string=" A BANK" element="0.0029154518950437317"/>
+                <token string="ERIN K GASBARRO" element="0.0029154518950437317"/>
+                <token string="LASHIWN Y COBY" element="0.0029154518950437317"/>
+                <token string="RUNEE GECKLE" element="0.0029154518950437317"/>
+                <token string=" L HENNEGGEY" element="0.0029154518950437317"/>
+                <token string="MELISSA A RUEHLING" element="0.0029154518950437317"/>
+                <token string="JOHONNY U RIBERA" element="0.0029154518950437317"/>
+                <token string="ANNE A PENSETH" element="0.0029154518950437317"/>
+                <token string=" V WIESMAN" element="0.0029154518950437317"/>
+                <token string="BAKIA E MANGUM" element="0.0029154518950437317"/>
+                <token string="TONYA M LAKATOS" element="0.0029154518950437317"/>
+                <token string="ZACHARY B HOERRLING" element="0.0029154518950437317"/>
+                <token string="JOCELYN V KLEIMAN" element="0.0029154518950437317"/>
+                <token string="TRACEY R HAMMONDS" element="0.0029154518950437317"/>
+                <token string="JEFFERY W GIERINGER" element="0.0029154518950437317"/>
+                <token string=" G PARVA" element="0.0029154518950437317"/>
+                <token string="ANDREA G MOSQUERA" element="0.0029154518950437317"/>
+                <token string=" A HUGGINCHES" element="0.0029154518950437317"/>
+                <token string="ROBERT R GRANER" element="0.0029154518950437317"/>
+                <token string=" P BANK" element="0.0029154518950437317"/>
+                <token string="ANN0 D BRAWD" element="0.0029154518950437317"/>
+                <token string=" R DORMAN" element="0.0029154518950437317"/>
+                <token string="JOANN N RHODES" element="0.0029154518950437317"/>
+                <token string="DELORES R BENITEZ" element="0.0029154518950437317"/>
+                <token string="AMAURY P WASHINGTON" element="0.0029154518950437317"/>
+                <token string="SAMIAR I HENRIKSON" element="0.0029154518950437317"/>
+                <token string="LEIVA DANIEL" element="0.0029154518950437317"/>
+                <token string="QUENTIN R RODRIGUEZ" element="0.0029154518950437317"/>
+                <token string="CHRISTOPHER D HOERRLING" element="0.0029154518950437317"/>
+                <token string="SUSAN L KEICHENBERG" element="0.0029154518950437317"/>
+                <token string="CHANCE E YETES" element="0.0029154518950437317"/>
+                <token string="MARQUISE MALDONADO" element="0.0029154518950437317"/>
+                <token string="CONNIE E CONYERE" element="0.0029154518950437317"/>
+                <token string="IRVIN V JIMENCZ" element="0.0029154518950437317"/>
+                <token string="NILSA D EASLEY" element="0.0029154518950437317"/>
+                <token string=" M HUGGINCHES" element="0.0029154518950437317"/>
+                <token string="ETHNY B FREY" element="0.0029154518950437317"/>
+                <token string="GEORGE L SANTIAGO" element="0.0029154518950437317"/>
+                <token string="ZUNZELL M HACKER" element="0.0029154518950437317"/>
+                <token string=" M LEVEN" element="0.0029154518950437317"/>
+                <token string="STEPHEN D CAVAJEL" element="0.0029154518950437317"/>
+                <token string="STEPHENS I WASHINGTON" element="0.0029154518950437317"/>
+                <token string=" C BARNES" element="0.0029154518950437317"/>
+                <token string="MAXICINE H WCIGNT" element="0.0029154518950437317"/>
+                <token string="STG MARTINEZ" element="0.0029154518950437317"/>
+                <token string="NICOLAS G SAUNDERS" element="0.0029154518950437317"/>
+                <token string="BERNADINA 1RUMOR" element="0.0029154518950437317"/>
+                <token string="JANNIE M RHODES" element="0.0029154518950437317"/>
+                <token string="SAMANTHA H HENRIKSON" element="0.0029154518950437317"/>
+                <token string="LEIVA DANIEL" element="0.0029154518950437317"/>
+                <token string="LUIS A SQUILLANTE" element="0.0029154518950437317"/>
+                <token string="SONJA K RAMAS" element="0.0029154518950437317"/>
+                <token string="REFUS D HOERRLING" element="0.0029154518950437317"/>
+                <token string="AUNDERE V JIMENCZ" element="0.0029154518950437317"/>
+                <token string=" S OWENS" element="0.0029154518950437317"/>
+                <token string="SHAWN E COBEZA" element="0.0029154518950437317"/>
+                <token string=" C COTTEN" element="0.0029154518950437317"/>
+                <token string="DARON S POLLACK" element="0.0029154518950437317"/>
+                <token string="ANDERSON" element="0.0029154518950437317"/>
+                <token string="ALMA C MASLIN" element="0.0029154518950437317"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.0029154518950437317"/>
+                <token string="HUTCHINSON" element="0.0029154518950437317"/>
+                <token string="PELHAM SANTIAGO" element="0.0029154518950437317"/>
+                <token string="CATHERINE L SAUNDERS" element="0.0029154518950437317"/>
+                <token string="STG MARTINEZ" element="0.0029154518950437317"/>
+                <token string="ALLAN R DEGRAENED" element="0.0029154518950437317"/>
+                <token string="LEARONAD A BENITEZ" element="0.0029154518950437317"/>
+                <token string=" W DORMAN" element="0.0029154518950437317"/>
+                <token string="DONNA HENRIKSON" element="0.0029154518950437317"/>
+                <token string="HENRIETTE RHODES" element="0.0029154518950437317"/>
+                <token string="STG MARTINEZ" element="0.0029154518950437317"/>
+                <token string="TRACIE D RUEHLING" element="0.0029154518950437317"/>
+                <token string="JUDY A KEICHENBERG" element="0.0029154518950437317"/>
+                <token string=" L MATKIN" element="0.0029154518950437317"/>
+                <token string="EARNEST A ROWEN" element="0.0029154518950437317"/>
+                <token string="ANTHONY B HULLEY" element="0.0029154518950437317"/>
+                <token string=" L OWENS" element="0.0029154518950437317"/>
+                <token string="ROSEMARIE GORDON" element="0.0029154518950437317"/>
+                <token string="DAVON B SKANOS" element="0.0029154518950437317"/>
+                <token string="DOMINIC A RUDASILL" element="0.0029154518950437317"/>
+                <token string=" R HUGGINCHES" element="0.0029154518950437317"/>
+                <token string="MARJORIE A GRANER" element="0.0029154518950437317"/>
+                <token string="DEREK ROUNSEVELLE" element="0.0029154518950437317"/>
+                <token string="HUTCHINSON" element="0.0029154518950437317"/>
+                <token string="JEAN B CARTER" element="0.0029154518950437317"/>
+                <token string=" E ERVINE" element="0.0029154518950437317"/>
+                <token string=" D GOWANS" element="0.0029154518950437317"/>
+                <token string="SAMUEL R BENITEZ" element="0.0029154518950437317"/>
+                <token string="STEPHANIE R RODRIGUEZ" element="0.0029154518950437317"/>
+                <token string="DOROTHEA T HENRIKSON" element="0.0029154518950437317"/>
+                <token string="KRISTY L GORDON" element="0.0029154518950437317"/>
+                <token string=" V HEAVENER" element="0.0029154518950437317"/>
+                <token string=" A COTTEN" element="0.0029154518950437317"/>
+                <token string=" W DAVIES" element="0.0029154518950437317"/>
+                <token string="MARY DICKERSON" element="0.0029154518950437317"/>
+                <token string="WELLS PAINE" element="0.0029154518950437317"/>
+                <token string=" N OWENS" element="0.0029154518950437317"/>
+                <token string="JEANELLE ENGELSKIRCH" element="0.0029154518950437317"/>
+                <token string="DANIEL GRANER" element="0.0029154518950437317"/>
+                <token string="CORNLIUS M HACKER" element="0.0029154518950437317"/>
+                <token string=" R HUGGINCHES" element="0.0029154518950437317"/>
+                <token string="KEN E GALIDEZ" element="0.0029154518950437317"/>
+                <token string="BRIAN WCIGNT" element="0.0029154518950437317"/>
+                <token string="JESSEE T SANTIAGO" element="0.0029154518950437317"/>
+                <token string="HUTCHINSON" element="0.0029154518950437317"/>
+                <token string="WILSREVO HEAVAENER" element="0.0029154518950437317"/>
+                <token string="ROSETA A GREENE" element="0.0029154518950437317"/>
+                <token string="MCCLAIN" element="0.0029154518950437317"/>
+                <token string="SANDERA Y JIMEMEZ" element="0.0029154518950437317"/>
+                <token string="MARIANNA B AHREWS" element="0.0029154518950437317"/>
+                <token string="ANDERSON" element="0.0029154518950437317"/>
+                <token string="WELLS PAINE" element="0.0029154518950437317"/>
+                <token string="FRANCISCO D HOLMES" element="0.0029154518950437317"/>
+                <token string="ALE ERVINE" element="0.0029154518950437317"/>
+                <token string=" L GOINS" element="0.0029154518950437317"/>
+                <token string="MATKIN" element="0.0029154518950437317"/>
+                <token string=" M KEARNS" element="0.0029154518950437317"/>
+                <token string="IVAN R CENTURY" element="0.0029154518950437317"/>
+                <token string=" R HEAVENER" element="0.0029154518950437317"/>
+                <token string="DONETTA M MITCHELLL" element="0.0029154518950437317"/>
+                <token string="ANGELA E SANTIAGO" element="0.0029154518950437317"/>
+                <token string="DONYA L CHEESMAN" element="0.0029154518950437317"/>
+                <token string="BRIANCE G DECANAY" element="0.0029154518950437317"/>
+                <token string=" T TREZEVANT" element="0.0029154518950437317"/>
+                <token string="SHERMISE J KEARNEY" element="0.0029154518950437317"/>
+                <token string="ANNE G SOLLIVAN" element="0.0029154518950437317"/>
+                <token string="ANN A GREENE" element="0.0029154518950437317"/>
+                <token string="ERNEST R DRENMON" element="0.0029154518950437317"/>
+                <token string="LUC M JONES" element="0.0029154518950437317"/>
+                <token string="DOMINIQUE S CONYERE" element="0.0029154518950437317"/>
+                <token string="NWAMAKA M REEVES" element="0.0029154518950437317"/>
+                <token string="HARRIETT J TONSTALL" element="0.0029154518950437317"/>
+                <token string="AGELEON M HELLER" element="0.0029154518950437317"/>
+                <token string="MADGE R BODNER" element="0.0029154518950437317"/>
+                <token string="JORGE L KILLION" element="0.0029154518950437317"/>
+                <token string="ALICIA B CENTURY" element="0.0029154518950437317"/>
+                <token string="ROSALIND N BODNER" element="0.0029154518950437317"/>
+                <token string="RAMON L CENTURY" element="0.0029154518950437317"/>
+                <token string=" A KEARNS" element="0.0029154518950437317"/>
+                <token string="MATKIN" element="0.0029154518950437317"/>
+                <token string="GIANNI E HILLEGAS" element="0.0029154518950437317"/>
+                <token string=" R HEAVENER" element="0.0029154518950437317"/>
+                <token string="DIANE HUBRIC" element="0.0029154518950437317"/>
+                <token string="HUSSEINKHEL" element="0.0029154518950437317"/>
+                <token string="CORRINE KUMOR" element="0.0029154518950437317"/>
+                <token string="KEYAN D JEANS" element="0.0029154518950437317"/>
+                <token string="COVNELIA M FLOWERS" element="0.0029154518950437317"/>
+                <token string="BARBARA M JIMENEZ" element="0.0029154518950437317"/>
+                <token string=" G OWENS" element="0.0029154518950437317"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.0029154518950437317"/>
+                <token string="ALEXANDER J WICZALKOWSKI" element="0.0029154518950437317"/>
+                <token string="ANDERSON" element="0.0029154518950437317"/>
+                <token string="MICHELE M GREENE" element="0.0029154518950437317"/>
+                <token string="LATISHA D CONRON" element="0.0029154518950437317"/>
+                <token string="ANA M TREZEVANT" element="0.0029154518950437317"/>
+                <token string="CLEARANCE LESKO" element="0.0029154518950437317"/>
+                <token string="ADMAN L CAVAJEL" element="0.0029154518950437317"/>
+                <token string="LENORA S SKANOS" element="0.0029154518950437317"/>
+                <token string="DANYAE KENNY" element="0.0029154518950437317"/>
+                <token string="DEWIGHT B MALDONADO" element="0.0029154518950437317"/>
+                <token string="BIANCA A GEHRING" element="0.0029154518950437317"/>
+                <token string=" M GOWANS" element="0.0029154518950437317"/>
+                <token string="QUAYN B STAPPY" element="0.0029154518950437317"/>
+                <token string="LEO E ALSTIN" element="0.0029154518950437317"/>
+                <token string="ANA C HOERRLING" element="0.0029154518950437317"/>
+                <token string="JAMEL C BODNER" element="0.0029154518950437317"/>
+                <token string="GERARDO D DEGRAENED" element="0.0029154518950437317"/>
+                <token string="RANDOLPH E TORRES" element="0.0029154518950437317"/>
+                <token string="AJASIA M DECANAY" element="0.0029154518950437317"/>
+                <token string="TERRAN L 1RUMOR" element="0.0029154518950437317"/>
+                <token string="ROSELINE D CARR" element="0.0029154518950437317"/>
+                <token string="DANNY A WEBSTER" element="0.0029154518950437317"/>
+                <token string="EDUARDSO A GREENE" element="0.0029154518950437317"/>
+                <token string="BEN LESKO" element="0.0029154518950437317"/>
+                <token string=" B BARNES" element="0.0029154518950437317"/>
+                <token string="ZIONARA T ERVINE" element="0.0029154518950437317"/>
+                <token string="MARY C TONSTALL" element="0.0029154518950437317"/>
+                <token string="LEANNE GASBARRO" element="0.0029154518950437317"/>
+                <token string="MABLE MALDONADO" element="0.0029154518950437317"/>
+                <token string="KENNETH A REEVER" element="0.0029154518950437317"/>
+                <token string="ANDERSON" element="0.0029154518950437317"/>
+                <token string="WESTLEY M FISCHGRUND" element="0.0029154518950437317"/>
+                <token string=" L MATKIN" element="0.0029154518950437317"/>
+                <token string="JOANNIE CARTER" element="0.0029154518950437317"/>
+                <token string="ROSETTA L BODNER" element="0.0029154518950437317"/>
+                <token string="JANICE HILLEGAS" element="0.0029154518950437317"/>
+                <token string="ROSETTA THOMPSON" element="0.0029154518950437317"/>
+                <token string=" E KEARNS" element="0.0029154518950437317"/>
+                <token string="FREEMAN R TORRES" element="0.0029154518950437317"/>
+                <token string=" L GREEN" element="0.0029154518950437317"/>
+                <token string="DENARIO E HACHETT" element="0.0029154518950437317"/>
+                <token string=" R COTTEN" element="0.0029154518950437317"/>
+                <token string="WILEY A BELTRAN" element="0.0029154518950437317"/>
+                <token string=" M DUNNOCK" element="0.0029154518950437317"/>
+                <token string="SONDRA C GREENE" element="0.0029154518950437317"/>
+                <token string="XANTHE N PAIGIE" element="0.0029154518950437317"/>
+                <token string="GLURIA JOHNS" element="0.0029154518950437317"/>
+                <token string="STEPHEN JOHNS" element="0.0029154518950437317"/>
+                <token string="STEPHENE HANKINS" element="0.0029154518950437317"/>
+                <token string="ARCHIE HUSSEINKHEL" element="0.0029154518950437317"/>
+                <token string="EDWIN M CAGER" element="0.0029154518950437317"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.0029154518950437317"/>
+                <token string="THERESA A DRENMON" element="0.0029154518950437317"/>
+                <token string="ENDA L DORSEY" element="0.0029154518950437317"/>
+                <token string="WAYNE H VALDES" element="0.0029154518950437317"/>
+                <token string="GEARLDINE RODRIGUEZ" element="0.0029154518950437317"/>
+                <token string="KENDALL BARRETT" element="0.0029154518950437317"/>
+                <token string=" R GOINS" element="0.0029154518950437317"/>
+                <token string="KEVEIN MORGAN" element="0.0029154518950437317"/>
+                <token string="ROY SPRINGGS" element="0.0029154518950437317"/>
+                <token string="DANYCE L FISCHGRUND" element="0.0029154518950437317"/>
+                <token string="MALENDES" element="0.0029154518950437317"/>
+                <token string="TEMPESTT Z GREEN" element="0.0029154518950437317"/>
+                <token string="TRAINA A HOERRLING" element="0.0029154518950437317"/>
+                <token string="SHEILA SINEFIELD" element="0.0029154518950437317"/>
+                <token string="XIOMARA E WASHINGTON" element="0.0029154518950437317"/>
+                <token string="SILYIA M SPINWATO" element="0.0029154518950437317"/>
+                <token string="PAYMM T HANKINS" element="0.0029154518950437317"/>
+                <token string="ANTONINO E CAMPBELL" element="0.0029154518950437317"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.0029154518950437317"/>
+                <token string="RUTH BELTRAN" element="0.0029154518950437317"/>
+                <token string="SHANIKA E KEARNEY" element="0.0029154518950437317"/>
+                <token string="CASSANDRA C GENE" element="0.0029154518950437317"/>
+                <token string="LAWRENCE CHAMBARS" element="0.0029154518950437317"/>
+                <token string=" E OWENS" element="0.0029154518950437317"/>
+                <token string=" D BANK" element="0.0029154518950437317"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.0029154518950437317"/>
+                <token string="ANDREW E POLLACK" element="0.0029154518950437317"/>
+                <token string="NICHOLE L TONSTALL" element="0.0029154518950437317"/>
+                <token string="MICHEAL A DECANAY" element="0.0029154518950437317"/>
+                <token string="ROSE ALSTIN" element="0.0029154518950437317"/>
+                <token string="TOWANDA S RODRIGUEZ" element="0.0029154518950437317"/>
+                <token string="DOREN J HELLER" element="0.0029154518950437317"/>
+                <token string=" A MALENDES" element="0.0029154518950437317"/>
+                <token string="GISELA M BELTRAN" element="0.0029154518950437317"/>
+                <token string="JUAN E ERVINE" element="0.0029154518950437317"/>
+                <token string="KATHERINE A HOLLEY" element="0.0029154518950437317"/>
+                <token string="FRANKLIN E STAPPY" element="0.0029154518950437317"/>
+                <token string="NAOMI K JONES" element="0.0029154518950437317"/>
+                <token string="JEFF J BELTRAN" element="0.0029154518950437317"/>
+                <token string="ROMINE O MOSQUERA" element="0.0029154518950437317"/>
+                <token string="DOUGLAS D GIERINGER" element="0.0029154518950437317"/>
+                <token string="DIANE M HULLEY" element="0.0029154518950437317"/>
+                <token string="SHAVON M DOMINGUEZ" element="0.0029154518950437317"/>
+                <token string="JOHNNY HETTERICH" element="0.0029154518950437317"/>
+                <token string="KENNETH R COBEZA" element="0.0029154518950437317"/>
+                <token string="FLAINE A ELLIOTT" element="0.0029154518950437317"/>
+                <token string="EUGENE F CHAMBARS" element="0.0029154518950437317"/>
+                <token string="MICHAEL C GENE" element="0.0029154518950437317"/>
+                <token string="GOINS" element="0.0029154518950437317"/>
+                <token string="ANNA N FAUST" element="0.0029154518950437317"/>
+                <token string="CAROLYN L BODNER" element="0.0029154518950437317"/>
+                <token string="KEARNS" element="0.0029154518950437317"/>
+                <token string="SARAH L CAVAJEL" element="0.0029154518950437317"/>
+                <token string="ELMER A BELTRAN" element="0.0029154518950437317"/>
+                <token string="WELLS PAINE" element="0.0029154518950437317"/>
+                <token string="NADESDIA A FISCHGRUND" element="0.0029154518950437317"/>
+                <token string="PRESPEU J JONES" element="0.0029154518950437317"/>
+                <token string="GERAR SQUILLANTE" element="0.0029154518950437317"/>
+                <token string="LAWRENCE C BELTRAN" element="0.0029154518950437317"/>
+                <token string=" J WASHINGTON" element="0.0029154518950437317"/>
+                <token string="CATHY ROWEN" element="0.0029154518950437317"/>
+                <token string="ANTONIO B KLEIMAN" element="0.0029154518950437317"/>
+                <token string="ISSAC F DRENMON" element="0.0029154518950437317"/>
+                <token string="ASHELY E KEARNEY" element="0.0029154518950437317"/>
+                <token string="NATHANIAL N GLICK" element="0.0029154518950437317"/>
+                <token string="DONTE CHEESMAN" element="0.0029154518950437317"/>
+                <token string="DARYL A MORGAN" element="0.0029154518950437317"/>
+                <token string="MICHEAL ALSTIN" element="0.0029154518950437317"/>
+                <token string=" T GOINS" element="0.0029154518950437317"/>
+                <token string="REYAN RAGLIN" element="0.0029154518950437317"/>
+                <token string="EMMETTE E RICHARDSON" element="0.0029154518950437317"/>
+            </list>
+            <name>SARAH N DAVIES</name>
+            <passed>true</passed>
+            <query>SARA N DAVIS</query>
+            <time>16316</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="RENEE M DAVIES" element="0.9267399267399267"/>
+                <token string="MICHELE N DAVIES" element="0.8142482517482518"/>
+                <token string="TRYONE M DAVID" element="0.7945054945054945"/>
+                <token string="TEMPESTT Z GREEN" element="0.01020408163265306"/>
+                <token string="MICHAEL C GENE" element="0.01020408163265306"/>
+                <token string="MARKO COUPE" element="0.00510204081632653"/>
+                <token string="SEPTIMIA E RUDASILL" element="0.00510204081632653"/>
+                <token string="MARYANN FOSTER" element="0.00510204081632653"/>
+                <token string="DIANE M GORDON" element="0.00510204081632653"/>
+                <token string="MCCLAIN" element="0.00510204081632653"/>
+                <token string="INGER B SMALLS" element="0.00510204081632653"/>
+                <token string="TAMIKA R RICHARDSON" element="0.00510204081632653"/>
+                <token string="SANDERA Y JIMEMEZ" element="0.00510204081632653"/>
+                <token string="MARIANNA B AHREWS" element="0.00510204081632653"/>
+                <token string="RAYMOND G HILL" element="0.00510204081632653"/>
+                <token string="FRANCISCO D HOLMES" element="0.00510204081632653"/>
+                <token string="JEANETTE M MCALLISTER" element="0.00510204081632653"/>
+                <token string="THUYKIM VARGAS" element="0.00510204081632653"/>
+                <token string="MATKIN" element="0.00510204081632653"/>
+                <token string="SOUTA M BELTRAN" element="0.00510204081632653"/>
+                <token string=" M KEARNS" element="0.00510204081632653"/>
+                <token string="TANYA O MOSQUERA" element="0.00510204081632653"/>
+                <token string=" M WHITAKER" element="0.00510204081632653"/>
+                <token string="GHOLOM W GIERINGER" element="0.00510204081632653"/>
+                <token string="MICHELLE M GALIDEZ" element="0.00510204081632653"/>
+                <token string="DONETTA M MITCHELLL" element="0.00510204081632653"/>
+                <token string="DONYA L CHEESMAN" element="0.00510204081632653"/>
+                <token string=" A 1RUMOR" element="0.00510204081632653"/>
+                <token string="MARINELA E CAMPBELL" element="0.00510204081632653"/>
+                <token string="MICLELLE C DUCOTY" element="0.00510204081632653"/>
+                <token string="SHERMISE J KEARNEY" element="0.00510204081632653"/>
+                <token string="ANNE G SOLLIVAN" element="0.00510204081632653"/>
+                <token string="SHERRI V WILLIAMS" element="0.00510204081632653"/>
+                <token string="ALISA M RUDASILL" element="0.00510204081632653"/>
+                <token string="GLORIANNE M BELL" element="0.00510204081632653"/>
+                <token string=" N DORMAN" element="0.00510204081632653"/>
+                <token string="ERNEST R DRENMON" element="0.00510204081632653"/>
+                <token string="ERICK D HOLMES" element="0.00510204081632653"/>
+                <token string="RONNIE COBEZA" element="0.00510204081632653"/>
+                <token string="LUC M JONES" element="0.00510204081632653"/>
+                <token string="DOMINIQUE S CONYERE" element="0.00510204081632653"/>
+                <token string="NWAMAKA M REEVES" element="0.00510204081632653"/>
+                <token string="GEOFFREY M MCALLISTER" element="0.00510204081632653"/>
+                <token string="MADGE R BODNER" element="0.00510204081632653"/>
+                <token string="SARAH N DAVIES" element="0.00510204081632653"/>
+                <token string="AGELEON M HELLER" element="0.00510204081632653"/>
+                <token string="RAMON L CENTURY" element="0.00510204081632653"/>
+                <token string="JESUS A EHM" element="0.00510204081632653"/>
+                <token string="MATKIN" element="0.00510204081632653"/>
+                <token string="MAIRE T GIERINGER" element="0.00510204081632653"/>
+                <token string="LENWOOD M HAMMONDS" element="0.00510204081632653"/>
+                <token string="KATHERINE M SYKS" element="0.00510204081632653"/>
+                <token string="CORRINE KUMOR" element="0.00510204081632653"/>
+                <token string="DIMON T HOLLEY" element="0.00510204081632653"/>
+                <token string="COVNELIA M FLOWERS" element="0.00510204081632653"/>
+                <token string="MELISSA J DORSEY" element="0.00510204081632653"/>
+                <token string="BARBARA M JIMENEZ" element="0.00510204081632653"/>
+                <token string="JEROME J MITCHELLL" element="0.00510204081632653"/>
+                <token string="JEMES V PARVA" element="0.00510204081632653"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.00510204081632653"/>
+                <token string="HOANG DAVID" element="0.00510204081632653"/>
+                <token string="EARLE M CAGER" element="0.00510204081632653"/>
+                <token string="MICHELE M GREENE" element="0.00510204081632653"/>
+                <token string="DOMINIQUE B MOHRING" element="0.00510204081632653"/>
+                <token string="ANA M TREZEVANT" element="0.00510204081632653"/>
+                <token string="ADMAN L CAVAJEL" element="0.00510204081632653"/>
+                <token string="ROB J MANGUM" element="0.00510204081632653"/>
+                <token string="DEWIGHT B MALDONADO" element="0.00510204081632653"/>
+                <token string=" M GOWANS" element="0.00510204081632653"/>
+                <token string="JAMES C HAMMONDS" element="0.00510204081632653"/>
+                <token string="CHATERAH M GALIDEZ" element="0.00510204081632653"/>
+                <token string="HERMEN M MOSQUERA" element="0.00510204081632653"/>
+                <token string="JAMAR F POLLACK" element="0.00510204081632653"/>
+                <token string="JAMEL C BODNER" element="0.00510204081632653"/>
+                <token string=" A CHISOLM" element="0.00510204081632653"/>
+                <token string="PRINCETTA D MOSQUERA" element="0.00510204081632653"/>
+                <token string=" M EHM" element="0.00510204081632653"/>
+                <token string="JANICE M MOHRING" element="0.00510204081632653"/>
+                <token string="AJASIA M DECANAY" element="0.00510204081632653"/>
+                <token string="TERRAN L 1RUMOR" element="0.00510204081632653"/>
+                <token string=" A SMALLS" element="0.00510204081632653"/>
+                <token string="ZAKIYA A 1RUMOR" element="0.00510204081632653"/>
+                <token string="JEFFREY P SMALLS" element="0.00510204081632653"/>
+                <token string=" D CAMPBELL" element="0.00510204081632653"/>
+                <token string="MELISSA A RUEHLING" element="0.00510204081632653"/>
+                <token string="MARY C TONSTALL" element="0.00510204081632653"/>
+                <token string="LEANNE GASBARRO" element="0.00510204081632653"/>
+                <token string="ANNE A PENSETH" element="0.00510204081632653"/>
+                <token string=" V WIESMAN" element="0.00510204081632653"/>
+                <token string="MABLE MALDONADO" element="0.00510204081632653"/>
+                <token string="BAKIA E MANGUM" element="0.00510204081632653"/>
+                <token string="TONYA M LAKATOS" element="0.00510204081632653"/>
+                <token string="SHIRLEG MOSES" element="0.00510204081632653"/>
+                <token string="JOCELYN V KLEIMAN" element="0.00510204081632653"/>
+                <token string="TRACEY R HAMMONDS" element="0.00510204081632653"/>
+                <token string="WESTLEY M FISCHGRUND" element="0.00510204081632653"/>
+                <token string=" L MATKIN" element="0.00510204081632653"/>
+                <token string="ROSETTA THOMPSON" element="0.00510204081632653"/>
+                <token string="MARC C ARCHER" element="0.00510204081632653"/>
+                <token string=" L GREEN" element="0.00510204081632653"/>
+                <token string="FREEMAN R TORRES" element="0.00510204081632653"/>
+                <token string="ANDREA G MOSQUERA" element="0.00510204081632653"/>
+                <token string=" J SMALLS" element="0.00510204081632653"/>
+                <token string=" R DORMAN" element="0.00510204081632653"/>
+                <token string="MICHEAL T HOLLEY" element="0.00510204081632653"/>
+                <token string=" M DUNNOCK" element="0.00510204081632653"/>
+                <token string="AMAURY P WASHINGTON" element="0.00510204081632653"/>
+                <token string=" J CHISOLM" element="0.00510204081632653"/>
+                <token string="SAMIAR I HENRIKSON" element="0.00510204081632653"/>
+                <token string="HOLMES" element="0.00510204081632653"/>
+                <token string="MARQUISE MALDONADO" element="0.00510204081632653"/>
+                <token string="AISHA C MOSQUERA" element="0.00510204081632653"/>
+                <token string="OLIVIA E MACCIO" element="0.00510204081632653"/>
+                <token string="EDWIN M CAGER" element="0.00510204081632653"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.00510204081632653"/>
+                <token string="MARCO M CRIDER" element="0.00510204081632653"/>
+                <token string=" M HUGGINCHES" element="0.00510204081632653"/>
+                <token string="IRVIN V JIMENCZ" element="0.00510204081632653"/>
+                <token string="THERESA A DRENMON" element="0.00510204081632653"/>
+                <token string="ZUNZELL M HACKER" element="0.00510204081632653"/>
+                <token string=" M LEVEN" element="0.00510204081632653"/>
+                <token string="MARY SWAGOI" element="0.00510204081632653"/>
+                <token string="KEVEIN MORGAN" element="0.00510204081632653"/>
+                <token string="MAXICINE H WCIGNT" element="0.00510204081632653"/>
+                <token string="STG MARTINEZ" element="0.00510204081632653"/>
+                <token string="BERNADINA 1RUMOR" element="0.00510204081632653"/>
+                <token string="JANNIE M RHODES" element="0.00510204081632653"/>
+                <token string="MALISSA L CAVAJEL" element="0.00510204081632653"/>
+                <token string="SAMANTHA H HENRIKSON" element="0.00510204081632653"/>
+                <token string="MILEORD J DIVERS" element="0.00510204081632653"/>
+                <token string="MALENDES" element="0.00510204081632653"/>
+                <token string="SONJA K RAMAS" element="0.00510204081632653"/>
+                <token string="AUNDERE V JIMENCZ" element="0.00510204081632653"/>
+                <token string="XIOMARA E WASHINGTON" element="0.00510204081632653"/>
+                <token string="SILYIA M SPINWATO" element="0.00510204081632653"/>
+                <token string="PAYMM T HANKINS" element="0.00510204081632653"/>
+                <token string="ANTONINO E CAMPBELL" element="0.00510204081632653"/>
+                <token string="DIWALDO A 1RUMOR" element="0.00510204081632653"/>
+                <token string="ORESTE S MACCIO" element="0.00510204081632653"/>
+                <token string="CASSANDRA C GENE" element="0.00510204081632653"/>
+                <token string="LAWRENCE CHAMBARS" element="0.00510204081632653"/>
+                <token string="THE MITCHELL" element="0.00510204081632653"/>
+                <token string="ALMA C MASLIN" element="0.00510204081632653"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.00510204081632653"/>
+                <token string="LAKESHIA O MOSQUERA" element="0.00510204081632653"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.00510204081632653"/>
+                <token string="PELHAM SANTIAGO" element="0.00510204081632653"/>
+                <token string="MATTHEW EASLEY" element="0.00510204081632653"/>
+                <token string="MICHEAL A DECANAY" element="0.00510204081632653"/>
+                <token string="STG MARTINEZ" element="0.00510204081632653"/>
+                <token string=" W DORMAN" element="0.00510204081632653"/>
+                <token string=" A MALENDES" element="0.00510204081632653"/>
+                <token string="LUCILLE W HOLMES" element="0.00510204081632653"/>
+                <token string="GISELA M BELTRAN" element="0.00510204081632653"/>
+                <token string="MYRIAM S RUSSALL" element="0.00510204081632653"/>
+                <token string="STG MARTINEZ" element="0.00510204081632653"/>
+                <token string="NAOMI K JONES" element="0.00510204081632653"/>
+                <token string=" L MATKIN" element="0.00510204081632653"/>
+                <token string="ROMINE O MOSQUERA" element="0.00510204081632653"/>
+                <token string="MARIEA A HALLORAW" element="0.00510204081632653"/>
+                <token string="ROSEMARIE GORDON" element="0.00510204081632653"/>
+                <token string="DIANE M HULLEY" element="0.00510204081632653"/>
+                <token string="DOMINIC A RUDASILL" element="0.00510204081632653"/>
+                <token string="DEBBIE M DORSEY" element="0.00510204081632653"/>
+                <token string="SHAVON M DOMINGUEZ" element="0.00510204081632653"/>
+                <token string="EUGENE F CHAMBARS" element="0.00510204081632653"/>
+                <token string="MARJORIE A GRANER" element="0.00510204081632653"/>
+                <token string="JESSICA A CAMPBELL" element="0.00510204081632653"/>
+                <token string="ETHEL J EHM" element="0.00510204081632653"/>
+                <token string="ISRAEL M SWAGOI" element="0.00510204081632653"/>
+                <token string="SAMUEL R BENITEZ" element="0.00510204081632653"/>
+                <token string="ELMER A BELTRAN" element="0.00510204081632653"/>
+                <token string="GERALDO S HOLMES" element="0.00510204081632653"/>
+                <token string="MIRIAM J POLLACK" element="0.00510204081632653"/>
+                <token string="STEVE M WILKES" element="0.00510204081632653"/>
+                <token string="CHARLIE A WILLIAMS" element="0.00510204081632653"/>
+                <token string=" W DAVIES" element="0.00510204081632653"/>
+                <token string="MARY DICKERSON" element="0.00510204081632653"/>
+                <token string="ANTONIO B KLEIMAN" element="0.00510204081632653"/>
+                <token string="GUILLERMO E CRIDER" element="0.00510204081632653"/>
+                <token string=" A RUMOR" element="0.00510204081632653"/>
+                <token string="CORNLIUS M HACKER" element="0.00510204081632653"/>
+                <token string="JAMIE E HILLEGAS" element="0.00510204081632653"/>
+                <token string="ISSAC F DRENMON" element="0.00510204081632653"/>
+                <token string="KIMBERLY L RUDASILL" element="0.00510204081632653"/>
+                <token string="DONTE CHEESMAN" element="0.00510204081632653"/>
+                <token string=" M COBEZA" element="0.00510204081632653"/>
+                <token string="DARYL A MORGAN" element="0.00510204081632653"/>
+                <token string="MICHEAL ALSTIN" element="0.00510204081632653"/>
+                <token string="EMMETTE E RICHARDSON" element="0.00510204081632653"/>
+            </list>
+            <name>RENEE M DAVIES</name>
+            <passed>true</passed>
+            <query>RENNE M DAVIS</query>
+            <time>11544</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="JEFFREY P SMALLS" element="0.9569444444444445"/>
+                <token string="INGER B SMALLS" element="0.025"/>
+                <token string="JEFFERY W GIERINGER" element="0.025"/>
+                <token string=" A SMALLS" element="0.025"/>
+                <token string="JEFFERY W GIERINGER" element="0.025"/>
+                <token string=" J SMALLS" element="0.025"/>
+                <token string="WELLS PAINE" element="0.0125"/>
+                <token string="MARKO COUPE" element="0.0125"/>
+                <token string="SEPTIMIA E RUDASILL" element="0.0125"/>
+                <token string="AMAURY P WASHINGTON" element="0.0125"/>
+                <token string="JEFFREY J PENSETH" element="0.0125"/>
+                <token string="CHRISTOPHER D HOERRLING" element="0.0125"/>
+                <token string="ARLIE A STAPPY" element="0.0125"/>
+                <token string="WELLS PAINE" element="0.0125"/>
+                <token string="PHYLLIS L HENRIKSON" element="0.0125"/>
+                <token string="XANTHE N PAIGIE" element="0.0125"/>
+                <token string="STEPHEN JOHNS" element="0.0125"/>
+                <token string="STEPHENE HANKINS" element="0.0125"/>
+                <token string="ARISTIDES C HOPPER" element="0.0125"/>
+                <token string="STEPHEN D CAVAJEL" element="0.0125"/>
+                <token string="STEPHENS I WASHINGTON" element="0.0125"/>
+                <token string="MARINELA E CAMPBELL" element="0.0125"/>
+                <token string="SHAWN P POLLACK" element="0.0125"/>
+                <token string="ROY SPRINGGS" element="0.0125"/>
+                <token string="TEMPESTT Z GREEN" element="0.0125"/>
+                <token string="SHALLY WEBSTER" element="0.0125"/>
+                <token string="PABLOS U GASBARRO" element="0.0125"/>
+                <token string="PAYMM T HANKINS" element="0.0125"/>
+                <token string="SILYIA M SPINWATO" element="0.0125"/>
+                <token string=" C PEARL" element="0.0125"/>
+                <token string="GEOFFREY M MCALLISTER" element="0.0125"/>
+                <token string="ANTONINO E CAMPBELL" element="0.0125"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.0125"/>
+                <token string="PHILLIP ROTHSHILD" element="0.0125"/>
+                <token string="DARON S POLLACK" element="0.0125"/>
+                <token string="CHRISTOPHER J ROWEN" element="0.0125"/>
+                <token string="DELORES PARK" element="0.0125"/>
+                <token string="ROSEY B HOPPER" element="0.0125"/>
+                <token string="JEFF F STAPPY" element="0.0125"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.0125"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.0125"/>
+                <token string=" P BANK" element="0.0125"/>
+                <token string="ANDREW E POLLACK" element="0.0125"/>
+                <token string="RALPAL T GECKLE" element="0.0125"/>
+                <token string="PELHAM SANTIAGO" element="0.0125"/>
+                <token string="JEMES V PARVA" element="0.0125"/>
+                <token string="PEARL" element="0.0125"/>
+                <token string="PAIGE" element="0.0125"/>
+                <token string="WELLS PAINE" element="0.0125"/>
+                <token string="FRANKLIN E STAPPY" element="0.0125"/>
+                <token string="THRESA A PENSETH" element="0.0125"/>
+                <token string="ELLA STAPPY" element="0.0125"/>
+                <token string="QUAYN B STAPPY" element="0.0125"/>
+                <token string="FLORIPE D EASLEY" element="0.0125"/>
+                <token string="JAMAR F POLLACK" element="0.0125"/>
+                <token string="RANDOLPH E TORRES" element="0.0125"/>
+                <token string="PRINCETTA D MOSQUERA" element="0.0125"/>
+                <token string="CARLOS C HOPPER" element="0.0125"/>
+                <token string="JESSICA A CAMPBELL" element="0.0125"/>
+                <token string="JOSEPH E LETO" element="0.0125"/>
+                <token string=" D CAMPBELL" element="0.0125"/>
+                <token string="STEPHANIE R RODRIGUEZ" element="0.0125"/>
+                <token string="CHARLES P HUBRIC" element="0.0125"/>
+                <token string="WELLS PAINE" element="0.0125"/>
+                <token string=" P COUPE" element="0.0125"/>
+                <token string="MIRIAM J POLLACK" element="0.0125"/>
+                <token string="PRESPEU J JONES" element="0.0125"/>
+                <token string="ANNE A PENSETH" element="0.0125"/>
+                <token string="WELLS PAINE" element="0.0125"/>
+                <token string="ROSETTA THOMPSON" element="0.0125"/>
+                <token string=" G PARVA" element="0.0125"/>
+                <token string="LEAH A POLLACK" element="0.0125"/>
+                <token string=" P BANK" element="0.0125"/>
+            </list>
+            <name>JEFFREY P SMALLS</name>
+            <passed>true</passed>
+            <query>JEFFERY P SMALL</query>
+            <time>5200</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="INGER B SMALLS" element="0.8989621489621489"/>
+                <token string="SHALLY WEBSTER" element="0.01834862385321101"/>
+                <token string=" A SMALLS" element="0.01834862385321101"/>
+                <token string="JEFFREY P SMALLS" element="0.01834862385321101"/>
+                <token string=" J SMALLS" element="0.01834862385321101"/>
+                <token string="BERRY J CARR" element="0.009174311926605505"/>
+                <token string="ELIZABETH L VARGAS" element="0.009174311926605505"/>
+                <token string="MARIANNA B AHREWS" element="0.009174311926605505"/>
+                <token string="SOUTA M BELTRAN" element="0.009174311926605505"/>
+                <token string="ALLEN J BRAWD" element="0.009174311926605505"/>
+                <token string="BURRISS" element="0.009174311926605505"/>
+                <token string="BANK" element="0.009174311926605505"/>
+                <token string="MARINELA E CAMPBELL" element="0.009174311926605505"/>
+                <token string="BRIANCE G DECANAY" element="0.009174311926605505"/>
+                <token string="YUNAISY L BARRETT" element="0.009174311926605505"/>
+                <token string=" G OBROCK" element="0.009174311926605505"/>
+                <token string="GLORIANNE M BELL" element="0.009174311926605505"/>
+                <token string="PABLOS U GASBARRO" element="0.009174311926605505"/>
+                <token string="RONNIE COBEZA" element="0.009174311926605505"/>
+                <token string="BRANDEN R VARGAS" element="0.009174311926605505"/>
+                <token string="MADGE R BODNER" element="0.009174311926605505"/>
+                <token string="ALICIA B CENTURY" element="0.009174311926605505"/>
+                <token string="ROSALIND N BODNER" element="0.009174311926605505"/>
+                <token string="ROSEY B HOPPER" element="0.009174311926605505"/>
+                <token string="DIANE HUBRIC" element="0.009174311926605505"/>
+                <token string=" P BANK" element="0.009174311926605505"/>
+                <token string="BURRISS" element="0.009174311926605505"/>
+                <token string="BARBARA M JIMENEZ" element="0.009174311926605505"/>
+                <token string="RROBERT T GERING" element="0.009174311926605505"/>
+                <token string=" L BURGERSS" element="0.009174311926605505"/>
+                <token string="DOMINIQUE B MOHRING" element="0.009174311926605505"/>
+                <token string="ROB J MANGUM" element="0.009174311926605505"/>
+                <token string="STUART K RIBERA" element="0.009174311926605505"/>
+                <token string="BEN W WILKES" element="0.009174311926605505"/>
+                <token string="DEWIGHT B MALDONADO" element="0.009174311926605505"/>
+                <token string="BIANCA A GEHRING" element="0.009174311926605505"/>
+                <token string="QUAYN B STAPPY" element="0.009174311926605505"/>
+                <token string="JAMEL C BODNER" element="0.009174311926605505"/>
+                <token string=" A BANK" element="0.009174311926605505"/>
+                <token string="ERIN K GASBARRO" element="0.009174311926605505"/>
+                <token string="LASHIWN Y COBY" element="0.009174311926605505"/>
+                <token string="DANNY A WEBSTER" element="0.009174311926605505"/>
+                <token string=" D CAMPBELL" element="0.009174311926605505"/>
+                <token string="CHARLES P HUBRIC" element="0.009174311926605505"/>
+                <token string="BEN LESKO" element="0.009174311926605505"/>
+                <token string=" B BARNES" element="0.009174311926605505"/>
+                <token string="JOHONNY U RIBERA" element="0.009174311926605505"/>
+                <token string="LEANNE GASBARRO" element="0.009174311926605505"/>
+                <token string="MABLE MALDONADO" element="0.009174311926605505"/>
+                <token string="BAKIA E MANGUM" element="0.009174311926605505"/>
+                <token string="ZACHARY B HOERRLING" element="0.009174311926605505"/>
+                <token string=" E BURGESS" element="0.009174311926605505"/>
+                <token string="BUTLER" element="0.009174311926605505"/>
+                <token string="ROSETTA L BODNER" element="0.009174311926605505"/>
+                <token string="ROBERT R GRANER" element="0.009174311926605505"/>
+                <token string=" A BURRISS" element="0.009174311926605505"/>
+                <token string=" P BANK" element="0.009174311926605505"/>
+                <token string="ANN0 D BRAWD" element="0.009174311926605505"/>
+                <token string=" L BURGESS" element="0.009174311926605505"/>
+                <token string="WILEY A BELTRAN" element="0.009174311926605505"/>
+                <token string="DELORES R BENITEZ" element="0.009174311926605505"/>
+                <token string=" L BURGERSS" element="0.009174311926605505"/>
+                <token string="SUSAN L KEICHENBERG" element="0.009174311926605505"/>
+                <token string=" B REAVES" element="0.009174311926605505"/>
+                <token string=" A GASBARRO" element="0.009174311926605505"/>
+                <token string="ETHNY B FREY" element="0.009174311926605505"/>
+                <token string="KENDALL BARRETT" element="0.009174311926605505"/>
+                <token string=" C BARNES" element="0.009174311926605505"/>
+                <token string=" D BURGESS" element="0.009174311926605505"/>
+                <token string="BERNADINA 1RUMOR" element="0.009174311926605505"/>
+                <token string="SHAWN E COBEZA" element="0.009174311926605505"/>
+                <token string="ANTONINO E CAMPBELL" element="0.009174311926605505"/>
+                <token string="RUTH BELTRAN" element="0.009174311926605505"/>
+                <token string="CASSANDRA C GENE" element="0.009174311926605505"/>
+                <token string="LAWRENCE CHAMBARS" element="0.009174311926605505"/>
+                <token string=" D BANK" element="0.009174311926605505"/>
+                <token string=" B SWAGOI" element="0.009174311926605505"/>
+                <token string="LEARONAD A BENITEZ" element="0.009174311926605505"/>
+                <token string="GISELA M BELTRAN" element="0.009174311926605505"/>
+                <token string=" C BURGESS" element="0.009174311926605505"/>
+                <token string="JUDY A KEICHENBERG" element="0.009174311926605505"/>
+                <token string="JEFF J BELTRAN" element="0.009174311926605505"/>
+                <token string="JO GASBARRO" element="0.009174311926605505"/>
+                <token string=" J COLBY" element="0.009174311926605505"/>
+                <token string="ANTHONY B HULLEY" element="0.009174311926605505"/>
+                <token string="DAVON B SKANOS" element="0.009174311926605505"/>
+                <token string=" D BURGERSS" element="0.009174311926605505"/>
+                <token string="DEBBIE M DORSEY" element="0.009174311926605505"/>
+                <token string="EUGENE F CHAMBARS" element="0.009174311926605505"/>
+                <token string="KENNETH R COBEZA" element="0.009174311926605505"/>
+                <token string="MICHAEL C GENE" element="0.009174311926605505"/>
+                <token string="CAROLYN L BODNER" element="0.009174311926605505"/>
+                <token string="JESSICA A CAMPBELL" element="0.009174311926605505"/>
+                <token string="JEAN B CARTER" element="0.009174311926605505"/>
+                <token string="SAMUEL R BENITEZ" element="0.009174311926605505"/>
+                <token string="ELMER A BELTRAN" element="0.009174311926605505"/>
+                <token string="LAWRENCE C BELTRAN" element="0.009174311926605505"/>
+                <token string="ANTONIO B KLEIMAN" element="0.009174311926605505"/>
+                <token string="KIMBERLY L RUDASILL" element="0.009174311926605505"/>
+                <token string=" M COBEZA" element="0.009174311926605505"/>
+                <token string="BRIAN WCIGNT" element="0.009174311926605505"/>
+                <token string="DARRYL B CARR" element="0.009174311926605505"/>
+            </list>
+            <name>INGER B SMALLS</name>
+            <passed>true</passed>
+            <query>ENGER B SMALL</query>
+            <time>7139</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="MICHELE N DAVIES" element="0.9583333333333334"/>
+                <token string="MICHELLE M GALIDEZ" element="0.8192663817663819"/>
+                <token string="MICHEAL ALSTIN" element="0.8134920634920636"/>
+                <token string="RENEE M DAVIES" element="0.7941017316017316"/>
+                <token string="DIXION J HELLER" element="0.0056657223796034"/>
+                <token string="TRYONE M DAVID" element="0.0056657223796034"/>
+                <token string="HOANG DAVID" element="0.0056657223796034"/>
+                <token string="DONETTA M MITCHELLL" element="0.0056657223796034"/>
+                <token string="AGELEON M HELLER" element="0.0056657223796034"/>
+                <token string="SARAH N DAVIES" element="0.0056657223796034"/>
+                <token string="MICHELE M GREENE" element="0.0056657223796034"/>
+                <token string="MICHEAL A DECANAY" element="0.0056657223796034"/>
+                <token string="DOREN J HELLER" element="0.0056657223796034"/>
+                <token string="WELLS PAINE" element="0.0028328611898017"/>
+                <token string="MARYANN FOSTER" element="0.0028328611898017"/>
+                <token string="CLARA J AQUENDO" element="0.0028328611898017"/>
+                <token string="DIANE M GORDON" element="0.0028328611898017"/>
+                <token string="DANEILLE S LAKATOS" element="0.0028328611898017"/>
+                <token string="JEFFREY J PENSETH" element="0.0028328611898017"/>
+                <token string="INGER B SMALLS" element="0.0028328611898017"/>
+                <token string="TAMIKA R RICHARDSON" element="0.0028328611898017"/>
+                <token string="RAYMOND G HILL" element="0.0028328611898017"/>
+                <token string="LYNNETTE C RUSSALL" element="0.0028328611898017"/>
+                <token string="PHYLLIS L HENRIKSON" element="0.0028328611898017"/>
+                <token string="JEANETTE M MCALLISTER" element="0.0028328611898017"/>
+                <token string="JOANNIE FLEEK" element="0.0028328611898017"/>
+                <token string="SOUTA M BELTRAN" element="0.0028328611898017"/>
+                <token string="TANYA O MOSQUERA" element="0.0028328611898017"/>
+                <token string="GHOLOM W GIERINGER" element="0.0028328611898017"/>
+                <token string="HUTCHINSON" element="0.0028328611898017"/>
+                <token string="ALLEN J BRAWD" element="0.0028328611898017"/>
+                <token string="MARINELA E CAMPBELL" element="0.0028328611898017"/>
+                <token string="BANK" element="0.0028328611898017"/>
+                <token string="SHAWN P POLLACK" element="0.0028328611898017"/>
+                <token string=" T OWENS" element="0.0028328611898017"/>
+                <token string="YUNAISY L BARRETT" element="0.0028328611898017"/>
+                <token string="GLORIANNE M BELL" element="0.0028328611898017"/>
+                <token string=" L HENNEGGEY" element="0.0028328611898017"/>
+                <token string=" N DORMAN" element="0.0028328611898017"/>
+                <token string="ELFRIEDA C ROWEN" element="0.0028328611898017"/>
+                <token string="JACQUELINE HUDSON" element="0.0028328611898017"/>
+                <token string="RONNIE COBEZA" element="0.0028328611898017"/>
+                <token string="BRANDEN R VARGAS" element="0.0028328611898017"/>
+                <token string="ANNTIONETTE FLEEK" element="0.0028328611898017"/>
+                <token string="MAIRE T GIERINGER" element="0.0028328611898017"/>
+                <token string="CHRISTOPHER J ROWEN" element="0.0028328611898017"/>
+                <token string="LENWOOD M HAMMONDS" element="0.0028328611898017"/>
+                <token string="ENZELEE E GALIDEZ" element="0.0028328611898017"/>
+                <token string="KATHERINE M SYKS" element="0.0028328611898017"/>
+                <token string=" P BANK" element="0.0028328611898017"/>
+                <token string="DIMON T HOLLEY" element="0.0028328611898017"/>
+                <token string="JEROME J MITCHELLL" element="0.0028328611898017"/>
+                <token string="RROBERT T GERING" element="0.0028328611898017"/>
+                <token string="WELLS PAINE" element="0.0028328611898017"/>
+                <token string="DOMINIQUE B MOHRING" element="0.0028328611898017"/>
+                <token string="ROB J MANGUM" element="0.0028328611898017"/>
+                <token string="CHANTEL A STEWARD" element="0.0028328611898017"/>
+                <token string="JEFFERY W GIERINGER" element="0.0028328611898017"/>
+                <token string="BEN W WILKES" element="0.0028328611898017"/>
+                <token string="ALEXANDER R VARGAS" element="0.0028328611898017"/>
+                <token string="STANLY J FLOWERS" element="0.0028328611898017"/>
+                <token string="THRESA A PENSETH" element="0.0028328611898017"/>
+                <token string="JAMES C HAMMONDS" element="0.0028328611898017"/>
+                <token string="HERMEN M MOSQUERA" element="0.0028328611898017"/>
+                <token string="JOHN F SCCHWARTZ" element="0.0028328611898017"/>
+                <token string="JEAN A ARCHER" element="0.0028328611898017"/>
+                <token string="SHAWNETT R GARRETT" element="0.0028328611898017"/>
+                <token string="PRINCETTA D MOSQUERA" element="0.0028328611898017"/>
+                <token string="JANICE M MOHRING" element="0.0028328611898017"/>
+                <token string=" A BANK" element="0.0028328611898017"/>
+                <token string="ERIN K GASBARRO" element="0.0028328611898017"/>
+                <token string="LASHIWN Y COBY" element="0.0028328611898017"/>
+                <token string="RUNEE GECKLE" element="0.0028328611898017"/>
+                <token string=" L HENNEGGEY" element="0.0028328611898017"/>
+                <token string="MELISSA A RUEHLING" element="0.0028328611898017"/>
+                <token string="JOHONNY U RIBERA" element="0.0028328611898017"/>
+                <token string="ANNE A PENSETH" element="0.0028328611898017"/>
+                <token string=" V WIESMAN" element="0.0028328611898017"/>
+                <token string="BAKIA E MANGUM" element="0.0028328611898017"/>
+                <token string="TONYA M LAKATOS" element="0.0028328611898017"/>
+                <token string="ZACHARY B HOERRLING" element="0.0028328611898017"/>
+                <token string="JOCELYN V KLEIMAN" element="0.0028328611898017"/>
+                <token string="TRACEY R HAMMONDS" element="0.0028328611898017"/>
+                <token string="JEFFERY W GIERINGER" element="0.0028328611898017"/>
+                <token string="ANDREA G MOSQUERA" element="0.0028328611898017"/>
+                <token string=" A HUGGINCHES" element="0.0028328611898017"/>
+                <token string="ROBERT R GRANER" element="0.0028328611898017"/>
+                <token string=" P BANK" element="0.0028328611898017"/>
+                <token string="ANN0 D BRAWD" element="0.0028328611898017"/>
+                <token string=" R DORMAN" element="0.0028328611898017"/>
+                <token string="DELORES R BENITEZ" element="0.0028328611898017"/>
+                <token string="JOANN N RHODES" element="0.0028328611898017"/>
+                <token string="AMAURY P WASHINGTON" element="0.0028328611898017"/>
+                <token string="SAMIAR I HENRIKSON" element="0.0028328611898017"/>
+                <token string="LEIVA DANIEL" element="0.0028328611898017"/>
+                <token string="QUENTIN R RODRIGUEZ" element="0.0028328611898017"/>
+                <token string="CHRISTOPHER D HOERRLING" element="0.0028328611898017"/>
+                <token string="SUSAN L KEICHENBERG" element="0.0028328611898017"/>
+                <token string="CHANCE E YETES" element="0.0028328611898017"/>
+                <token string="MARQUISE MALDONADO" element="0.0028328611898017"/>
+                <token string="CONNIE E CONYERE" element="0.0028328611898017"/>
+                <token string="NILSA D EASLEY" element="0.0028328611898017"/>
+                <token string="IRVIN V JIMENCZ" element="0.0028328611898017"/>
+                <token string=" M HUGGINCHES" element="0.0028328611898017"/>
+                <token string="ETHNY B FREY" element="0.0028328611898017"/>
+                <token string="GEORGE L SANTIAGO" element="0.0028328611898017"/>
+                <token string="ISAAE ENGELSKIRCH" element="0.0028328611898017"/>
+                <token string="ZUNZELL M HACKER" element="0.0028328611898017"/>
+                <token string=" M LEVEN" element="0.0028328611898017"/>
+                <token string="STEPHEN D CAVAJEL" element="0.0028328611898017"/>
+                <token string="STEPHENS I WASHINGTON" element="0.0028328611898017"/>
+                <token string=" C BARNES" element="0.0028328611898017"/>
+                <token string="MAXICINE H WCIGNT" element="0.0028328611898017"/>
+                <token string="STG MARTINEZ" element="0.0028328611898017"/>
+                <token string="NICOLAS G SAUNDERS" element="0.0028328611898017"/>
+                <token string="BERNADINA 1RUMOR" element="0.0028328611898017"/>
+                <token string="JANNIE M RHODES" element="0.0028328611898017"/>
+                <token string="SAMANTHA H HENRIKSON" element="0.0028328611898017"/>
+                <token string="LEIVA DANIEL" element="0.0028328611898017"/>
+                <token string="SONJA K RAMAS" element="0.0028328611898017"/>
+                <token string="LUIS A SQUILLANTE" element="0.0028328611898017"/>
+                <token string="REFUS D HOERRLING" element="0.0028328611898017"/>
+                <token string="AUNDERE V JIMENCZ" element="0.0028328611898017"/>
+                <token string=" S OWENS" element="0.0028328611898017"/>
+                <token string="SHAWN E COBEZA" element="0.0028328611898017"/>
+                <token string=" C COTTEN" element="0.0028328611898017"/>
+                <token string="DARON S POLLACK" element="0.0028328611898017"/>
+                <token string="ANDERSON" element="0.0028328611898017"/>
+                <token string="THE MITCHELL" element="0.0028328611898017"/>
+                <token string="ALMA C MASLIN" element="0.0028328611898017"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.0028328611898017"/>
+                <token string="HUTCHINSON" element="0.0028328611898017"/>
+                <token string="PELHAM SANTIAGO" element="0.0028328611898017"/>
+                <token string="CATHERINE L SAUNDERS" element="0.0028328611898017"/>
+                <token string="STG MARTINEZ" element="0.0028328611898017"/>
+                <token string="ALLAN R DEGRAENED" element="0.0028328611898017"/>
+                <token string="LEARONAD A BENITEZ" element="0.0028328611898017"/>
+                <token string=" W DORMAN" element="0.0028328611898017"/>
+                <token string="DONNA HENRIKSON" element="0.0028328611898017"/>
+                <token string="HENRIETTE RHODES" element="0.0028328611898017"/>
+                <token string="STG MARTINEZ" element="0.0028328611898017"/>
+                <token string="TRACIE D RUEHLING" element="0.0028328611898017"/>
+                <token string="JUDY A KEICHENBERG" element="0.0028328611898017"/>
+                <token string=" L MATKIN" element="0.0028328611898017"/>
+                <token string="EARNEST A ROWEN" element="0.0028328611898017"/>
+                <token string="ANTHONY B HULLEY" element="0.0028328611898017"/>
+                <token string=" L OWENS" element="0.0028328611898017"/>
+                <token string="ROSEMARIE GORDON" element="0.0028328611898017"/>
+                <token string="DAVON B SKANOS" element="0.0028328611898017"/>
+                <token string="DOMINIC A RUDASILL" element="0.0028328611898017"/>
+                <token string=" R HUGGINCHES" element="0.0028328611898017"/>
+                <token string="MARJORIE A GRANER" element="0.0028328611898017"/>
+                <token string="DEREK ROUNSEVELLE" element="0.0028328611898017"/>
+                <token string="HUTCHINSON" element="0.0028328611898017"/>
+                <token string="JEAN B CARTER" element="0.0028328611898017"/>
+                <token string=" E ERVINE" element="0.0028328611898017"/>
+                <token string=" D GOWANS" element="0.0028328611898017"/>
+                <token string="SAMUEL R BENITEZ" element="0.0028328611898017"/>
+                <token string="STEPHANIE R RODRIGUEZ" element="0.0028328611898017"/>
+                <token string="DOROTHEA T HENRIKSON" element="0.0028328611898017"/>
+                <token string="KRISTY L GORDON" element="0.0028328611898017"/>
+                <token string=" V HEAVENER" element="0.0028328611898017"/>
+                <token string=" A COTTEN" element="0.0028328611898017"/>
+                <token string=" W DAVIES" element="0.0028328611898017"/>
+                <token string="MARY DICKERSON" element="0.0028328611898017"/>
+                <token string="WELLS PAINE" element="0.0028328611898017"/>
+                <token string=" N OWENS" element="0.0028328611898017"/>
+                <token string="JEANELLE ENGELSKIRCH" element="0.0028328611898017"/>
+                <token string="DANIEL GRANER" element="0.0028328611898017"/>
+                <token string="CORNLIUS M HACKER" element="0.0028328611898017"/>
+                <token string=" R HUGGINCHES" element="0.0028328611898017"/>
+                <token string="KEN E GALIDEZ" element="0.0028328611898017"/>
+                <token string="BRIAN WCIGNT" element="0.0028328611898017"/>
+                <token string="JESSEE T SANTIAGO" element="0.0028328611898017"/>
+                <token string="HUTCHINSON" element="0.0028328611898017"/>
+                <token string="WILSREVO HEAVAENER" element="0.0028328611898017"/>
+                <token string="ROSETA A GREENE" element="0.0028328611898017"/>
+                <token string="MCCLAIN" element="0.0028328611898017"/>
+                <token string="SANDERA Y JIMEMEZ" element="0.0028328611898017"/>
+                <token string="MARIANNA B AHREWS" element="0.0028328611898017"/>
+                <token string="ANDERSON" element="0.0028328611898017"/>
+                <token string="WELLS PAINE" element="0.0028328611898017"/>
+                <token string="FRANCISCO D HOLMES" element="0.0028328611898017"/>
+                <token string=" J HELLER" element="0.0028328611898017"/>
+                <token string="ALE ERVINE" element="0.0028328611898017"/>
+                <token string=" L GOINS" element="0.0028328611898017"/>
+                <token string="MATKIN" element="0.0028328611898017"/>
+                <token string=" M KEARNS" element="0.0028328611898017"/>
+                <token string="IVAN R CENTURY" element="0.0028328611898017"/>
+                <token string=" R HEAVENER" element="0.0028328611898017"/>
+                <token string="ANGELA E SANTIAGO" element="0.0028328611898017"/>
+                <token string="MICLELLE C DUCOTY" element="0.0028328611898017"/>
+                <token string="DONYA L CHEESMAN" element="0.0028328611898017"/>
+                <token string="BRIANCE G DECANAY" element="0.0028328611898017"/>
+                <token string=" T TREZEVANT" element="0.0028328611898017"/>
+                <token string="SHERMISE J KEARNEY" element="0.0028328611898017"/>
+                <token string="ANNE G SOLLIVAN" element="0.0028328611898017"/>
+                <token string="ANN A GREENE" element="0.0028328611898017"/>
+                <token string="ERNEST R DRENMON" element="0.0028328611898017"/>
+                <token string="LUC M JONES" element="0.0028328611898017"/>
+                <token string="DOMINIQUE S CONYERE" element="0.0028328611898017"/>
+                <token string="NWAMAKA M REEVES" element="0.0028328611898017"/>
+                <token string="HARRIETT J TONSTALL" element="0.0028328611898017"/>
+                <token string="MADGE R BODNER" element="0.0028328611898017"/>
+                <token string="JORGE L KILLION" element="0.0028328611898017"/>
+                <token string="ALICIA B CENTURY" element="0.0028328611898017"/>
+                <token string="ROSALIND N BODNER" element="0.0028328611898017"/>
+                <token string="RAMON L CENTURY" element="0.0028328611898017"/>
+                <token string=" A KEARNS" element="0.0028328611898017"/>
+                <token string="MATKIN" element="0.0028328611898017"/>
+                <token string="GIANNI E HILLEGAS" element="0.0028328611898017"/>
+                <token string=" R HEAVENER" element="0.0028328611898017"/>
+                <token string="DIANE HUBRIC" element="0.0028328611898017"/>
+                <token string="HUSSEINKHEL" element="0.0028328611898017"/>
+                <token string="CORRINE KUMOR" element="0.0028328611898017"/>
+                <token string="KEYAN D JEANS" element="0.0028328611898017"/>
+                <token string="COVNELIA M FLOWERS" element="0.0028328611898017"/>
+                <token string="BARBARA M JIMENEZ" element="0.0028328611898017"/>
+                <token string=" G OWENS" element="0.0028328611898017"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.0028328611898017"/>
+                <token string="ALEXANDER J WICZALKOWSKI" element="0.0028328611898017"/>
+                <token string="ANDERSON" element="0.0028328611898017"/>
+                <token string="LATISHA D CONRON" element="0.0028328611898017"/>
+                <token string="ANA M TREZEVANT" element="0.0028328611898017"/>
+                <token string="CLEARANCE LESKO" element="0.0028328611898017"/>
+                <token string="ADMAN L CAVAJEL" element="0.0028328611898017"/>
+                <token string="LENORA S SKANOS" element="0.0028328611898017"/>
+                <token string="DANYAE KENNY" element="0.0028328611898017"/>
+                <token string="DEWIGHT B MALDONADO" element="0.0028328611898017"/>
+                <token string="BIANCA A GEHRING" element="0.0028328611898017"/>
+                <token string=" M GOWANS" element="0.0028328611898017"/>
+                <token string="QUAYN B STAPPY" element="0.0028328611898017"/>
+                <token string="LEO E ALSTIN" element="0.0028328611898017"/>
+                <token string="ANA C HOERRLING" element="0.0028328611898017"/>
+                <token string="JAMEL C BODNER" element="0.0028328611898017"/>
+                <token string="GERARDO D DEGRAENED" element="0.0028328611898017"/>
+                <token string="RANDOLPH E TORRES" element="0.0028328611898017"/>
+                <token string="AJASIA M DECANAY" element="0.0028328611898017"/>
+                <token string="TERRAN L 1RUMOR" element="0.0028328611898017"/>
+                <token string="ROSELINE D CARR" element="0.0028328611898017"/>
+                <token string="DANNY A WEBSTER" element="0.0028328611898017"/>
+                <token string="EDUARDSO A GREENE" element="0.0028328611898017"/>
+                <token string="BEN LESKO" element="0.0028328611898017"/>
+                <token string=" B BARNES" element="0.0028328611898017"/>
+                <token string="ZIONARA T ERVINE" element="0.0028328611898017"/>
+                <token string="MARY C TONSTALL" element="0.0028328611898017"/>
+                <token string="LEANNE GASBARRO" element="0.0028328611898017"/>
+                <token string="MABLE MALDONADO" element="0.0028328611898017"/>
+                <token string="KENNETH A REEVER" element="0.0028328611898017"/>
+                <token string="ANDERSON" element="0.0028328611898017"/>
+                <token string="WESTLEY M FISCHGRUND" element="0.0028328611898017"/>
+                <token string=" L MATKIN" element="0.0028328611898017"/>
+                <token string="JOANNIE CARTER" element="0.0028328611898017"/>
+                <token string="ROSETTA L BODNER" element="0.0028328611898017"/>
+                <token string="JANICE HILLEGAS" element="0.0028328611898017"/>
+                <token string="ROSETTA THOMPSON" element="0.0028328611898017"/>
+                <token string=" E KEARNS" element="0.0028328611898017"/>
+                <token string="FREEMAN R TORRES" element="0.0028328611898017"/>
+                <token string=" L GREEN" element="0.0028328611898017"/>
+                <token string="DENARIO E HACHETT" element="0.0028328611898017"/>
+                <token string="MICHEAL T HOLLEY" element="0.0028328611898017"/>
+                <token string=" R COTTEN" element="0.0028328611898017"/>
+                <token string="WILEY A BELTRAN" element="0.0028328611898017"/>
+                <token string=" M DUNNOCK" element="0.0028328611898017"/>
+                <token string="SONDRA C GREENE" element="0.0028328611898017"/>
+                <token string="XANTHE N PAIGIE" element="0.0028328611898017"/>
+                <token string="GLURIA JOHNS" element="0.0028328611898017"/>
+                <token string="STEPHEN JOHNS" element="0.0028328611898017"/>
+                <token string="STEPHENE HANKINS" element="0.0028328611898017"/>
+                <token string="ARCHIE HUSSEINKHEL" element="0.0028328611898017"/>
+                <token string="EDWIN M CAGER" element="0.0028328611898017"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.0028328611898017"/>
+                <token string="THERESA A DRENMON" element="0.0028328611898017"/>
+                <token string="ENDA L DORSEY" element="0.0028328611898017"/>
+                <token string="WAYNE H VALDES" element="0.0028328611898017"/>
+                <token string="GEARLDINE RODRIGUEZ" element="0.0028328611898017"/>
+                <token string="KENDALL BARRETT" element="0.0028328611898017"/>
+                <token string=" R GOINS" element="0.0028328611898017"/>
+                <token string="KEVEIN MORGAN" element="0.0028328611898017"/>
+                <token string="ROY SPRINGGS" element="0.0028328611898017"/>
+                <token string="DANYCE L FISCHGRUND" element="0.0028328611898017"/>
+                <token string="MALENDES" element="0.0028328611898017"/>
+                <token string="TEMPESTT Z GREEN" element="0.0028328611898017"/>
+                <token string="TRAINA A HOERRLING" element="0.0028328611898017"/>
+                <token string="SHEILA SINEFIELD" element="0.0028328611898017"/>
+                <token string="XIOMARA E WASHINGTON" element="0.0028328611898017"/>
+                <token string=" A HELLER" element="0.0028328611898017"/>
+                <token string="SILYIA M SPINWATO" element="0.0028328611898017"/>
+                <token string="PAYMM T HANKINS" element="0.0028328611898017"/>
+                <token string="ANTONINO E CAMPBELL" element="0.0028328611898017"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.0028328611898017"/>
+                <token string="RUTH BELTRAN" element="0.0028328611898017"/>
+                <token string="SHANIKA E KEARNEY" element="0.0028328611898017"/>
+                <token string="CASSANDRA C GENE" element="0.0028328611898017"/>
+                <token string="LAWRENCE CHAMBARS" element="0.0028328611898017"/>
+                <token string=" E OWENS" element="0.0028328611898017"/>
+                <token string=" D BANK" element="0.0028328611898017"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.0028328611898017"/>
+                <token string="ANDREW E POLLACK" element="0.0028328611898017"/>
+                <token string="NICHOLE L TONSTALL" element="0.0028328611898017"/>
+                <token string="ROSE ALSTIN" element="0.0028328611898017"/>
+                <token string="TOWANDA S RODRIGUEZ" element="0.0028328611898017"/>
+                <token string=" A MALENDES" element="0.0028328611898017"/>
+                <token string="GISELA M BELTRAN" element="0.0028328611898017"/>
+                <token string="JUAN E ERVINE" element="0.0028328611898017"/>
+                <token string="KATHERINE A HOLLEY" element="0.0028328611898017"/>
+                <token string="FRANKLIN E STAPPY" element="0.0028328611898017"/>
+                <token string="NAOMI K JONES" element="0.0028328611898017"/>
+                <token string="JEFF J BELTRAN" element="0.0028328611898017"/>
+                <token string="ROMINE O MOSQUERA" element="0.0028328611898017"/>
+                <token string="DOUGLAS D GIERINGER" element="0.0028328611898017"/>
+                <token string="DIANE M HULLEY" element="0.0028328611898017"/>
+                <token string="SHAVON M DOMINGUEZ" element="0.0028328611898017"/>
+                <token string="JOHNNY HETTERICH" element="0.0028328611898017"/>
+                <token string="KENNETH R COBEZA" element="0.0028328611898017"/>
+                <token string="FLAINE A ELLIOTT" element="0.0028328611898017"/>
+                <token string="EUGENE F CHAMBARS" element="0.0028328611898017"/>
+                <token string="MICHAEL C GENE" element="0.0028328611898017"/>
+                <token string="GOINS" element="0.0028328611898017"/>
+                <token string="ANNA N FAUST" element="0.0028328611898017"/>
+                <token string="CAROLYN L BODNER" element="0.0028328611898017"/>
+                <token string="KEARNS" element="0.0028328611898017"/>
+                <token string="TEGIRA J HELLER" element="0.0028328611898017"/>
+                <token string="ELMER A BELTRAN" element="0.0028328611898017"/>
+                <token string="WELLS PAINE" element="0.0028328611898017"/>
+                <token string="NADESDIA A FISCHGRUND" element="0.0028328611898017"/>
+                <token string="PRESPEU J JONES" element="0.0028328611898017"/>
+                <token string="GERAR SQUILLANTE" element="0.0028328611898017"/>
+                <token string="LAWRENCE C BELTRAN" element="0.0028328611898017"/>
+                <token string=" J WASHINGTON" element="0.0028328611898017"/>
+                <token string="CATHY ROWEN" element="0.0028328611898017"/>
+                <token string="ANTONIO B KLEIMAN" element="0.0028328611898017"/>
+                <token string="ISSAC F DRENMON" element="0.0028328611898017"/>
+                <token string="ASHELY E KEARNEY" element="0.0028328611898017"/>
+                <token string="NATHANIAL N GLICK" element="0.0028328611898017"/>
+                <token string="DONTE CHEESMAN" element="0.0028328611898017"/>
+                <token string="DARYL A MORGAN" element="0.0028328611898017"/>
+                <token string=" T GOINS" element="0.0028328611898017"/>
+                <token string="REYAN RAGLIN" element="0.0028328611898017"/>
+                <token string="EMMETTE E RICHARDSON" element="0.0028328611898017"/>
+            </list>
+            <name>MICHELE N DAVIES</name>
+            <passed>true</passed>
+            <query>MICHELLE N DAVIS</query>
+            <time>18186</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="JUDY A KEICHENBERG" element="0.8269980506822612"/>
+                <token string="SUSAN L KEICHENBERG" element="0.8007518796992481"/>
+                <token string="TRACIE D RUEHLING" element="0.7794977640178878"/>
+                <token string="RUGY E RADRIGZ" element="0.005050505050505051"/>
+                <token string="WELLS PAINE" element="0.0025252525252525255"/>
+                <token string="MARYANN FOSTER" element="0.0025252525252525255"/>
+                <token string="DANEILLE S LAKATOS" element="0.0025252525252525255"/>
+                <token string="DIANE M GORDON" element="0.0025252525252525255"/>
+                <token string="TAMIKA R RICHARDSON" element="0.0025252525252525255"/>
+                <token string="ELIZABETH L VARGAS" element="0.0025252525252525255"/>
+                <token string=" L COSGRAVE" element="0.0025252525252525255"/>
+                <token string="LYNNETTE C RUSSALL" element="0.0025252525252525255"/>
+                <token string="JOANNIE FLEEK" element="0.0025252525252525255"/>
+                <token string=" A DIGGS" element="0.0025252525252525255"/>
+                <token string="MICHELLE M GALIDEZ" element="0.0025252525252525255"/>
+                <token string="BANK" element="0.0025252525252525255"/>
+                <token string="MARINELA E CAMPBELL" element="0.0025252525252525255"/>
+                <token string="YUNAISY L BARRETT" element="0.0025252525252525255"/>
+                <token string="GLORIANNE M BELL" element="0.0025252525252525255"/>
+                <token string="ROSETTA J CAGER" element="0.0025252525252525255"/>
+                <token string=" N DORMAN" element="0.0025252525252525255"/>
+                <token string="ELFRIEDA C ROWEN" element="0.0025252525252525255"/>
+                <token string="JACQUELINE HUDSON" element="0.0025252525252525255"/>
+                <token string="BRANDEN R VARGAS" element="0.0025252525252525255"/>
+                <token string="THERSA G COSGRAVE" element="0.0025252525252525255"/>
+                <token string="ANNTIONETTE FLEEK" element="0.0025252525252525255"/>
+                <token string="EYVETTE D HACHETT" element="0.0025252525252525255"/>
+                <token string="ENZELEE E GALIDEZ" element="0.0025252525252525255"/>
+                <token string=" P BANK" element="0.0025252525252525255"/>
+                <token string=" J LASSITER" element="0.0025252525252525255"/>
+                <token string="GREG S DOWOKAKOKO" element="0.0025252525252525255"/>
+                <token string="WELLS PAINE" element="0.0025252525252525255"/>
+                <token string="EARLE M CAGER" element="0.0025252525252525255"/>
+                <token string="ROB J MANGUM" element="0.0025252525252525255"/>
+                <token string="CHANTEL A STEWARD" element="0.0025252525252525255"/>
+                <token string="STUART K RIBERA" element="0.0025252525252525255"/>
+                <token string="ALEXANDER R VARGAS" element="0.0025252525252525255"/>
+                <token string="STANLY J FLOWERS" element="0.0025252525252525255"/>
+                <token string="THRESA A PENSETH" element="0.0025252525252525255"/>
+                <token string="CHATERAH M GALIDEZ" element="0.0025252525252525255"/>
+                <token string="HERMEN M MOSQUERA" element="0.0025252525252525255"/>
+                <token string="SHAWNETT R GARRETT" element="0.0025252525252525255"/>
+                <token string=" A BANK" element="0.0025252525252525255"/>
+                <token string=" A DOWOKAKOKO" element="0.0025252525252525255"/>
+                <token string="FREDERICK A STEWARD" element="0.0025252525252525255"/>
+                <token string="JOHONNY U RIBERA" element="0.0025252525252525255"/>
+                <token string=" V WIESMAN" element="0.0025252525252525255"/>
+                <token string="ANNE A PENSETH" element="0.0025252525252525255"/>
+                <token string="BAKIA E MANGUM" element="0.0025252525252525255"/>
+                <token string="TONYA M LAKATOS" element="0.0025252525252525255"/>
+                <token string="ZACHARY B HOERRLING" element="0.0025252525252525255"/>
+                <token string="JOCELYN V KLEIMAN" element="0.0025252525252525255"/>
+                <token string=" A DIGGS" element="0.0025252525252525255"/>
+                <token string="HARRIET R GARRETT" element="0.0025252525252525255"/>
+                <token string="ROBERT R GRANER" element="0.0025252525252525255"/>
+                <token string=" P BANK" element="0.0025252525252525255"/>
+                <token string=" R DORMAN" element="0.0025252525252525255"/>
+                <token string="JOANN N RHODES" element="0.0025252525252525255"/>
+                <token string="LEIVA DANIEL" element="0.0025252525252525255"/>
+                <token string="MARQUISE MALDONADO" element="0.0025252525252525255"/>
+                <token string=" G DARCOURT" element="0.0025252525252525255"/>
+                <token string="GEORGE L SANTIAGO" element="0.0025252525252525255"/>
+                <token string="ZUNZELL M HACKER" element="0.0025252525252525255"/>
+                <token string="ISAAE ENGELSKIRCH" element="0.0025252525252525255"/>
+                <token string="STEPHEN D CAVAJEL" element="0.0025252525252525255"/>
+                <token string="STG MARTINEZ" element="0.0025252525252525255"/>
+                <token string="JANNIE M RHODES" element="0.0025252525252525255"/>
+                <token string="LEIVA DANIEL" element="0.0025252525252525255"/>
+                <token string="SONJA K RAMAS" element="0.0025252525252525255"/>
+                <token string="AUNDERE V JIMENCZ" element="0.0025252525252525255"/>
+                <token string="DOUGASS S DUCOTY" element="0.0025252525252525255"/>
+                <token string="ANDERSON" element="0.0025252525252525255"/>
+                <token string="COATES" element="0.0025252525252525255"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.0025252525252525255"/>
+                <token string="ALMA C MASLIN" element="0.0025252525252525255"/>
+                <token string="PELHAM SANTIAGO" element="0.0025252525252525255"/>
+                <token string="STG MARTINEZ" element="0.0025252525252525255"/>
+                <token string="LEARONAD A BENITEZ" element="0.0025252525252525255"/>
+                <token string=" W DORMAN" element="0.0025252525252525255"/>
+                <token string="STG MARTINEZ" element="0.0025252525252525255"/>
+                <token string="EARNEST A ROWEN" element="0.0025252525252525255"/>
+                <token string="ANTHONY B HULLEY" element="0.0025252525252525255"/>
+                <token string="DAVON B SKANOS" element="0.0025252525252525255"/>
+                <token string="ROSEMARIE GORDON" element="0.0025252525252525255"/>
+                <token string="DOMINIC A RUDASILL" element="0.0025252525252525255"/>
+                <token string="ALISA Y HACHETT" element="0.0025252525252525255"/>
+                <token string="MARJORIE A GRANER" element="0.0025252525252525255"/>
+                <token string="JESSICA A CAMPBELL" element="0.0025252525252525255"/>
+                <token string="JEAN B CARTER" element="0.0025252525252525255"/>
+                <token string="SAMUEL R BENITEZ" element="0.0025252525252525255"/>
+                <token string=" D GOWANS" element="0.0025252525252525255"/>
+                <token string=" A COTTEN" element="0.0025252525252525255"/>
+                <token string="WELLS PAINE" element="0.0025252525252525255"/>
+                <token string="MARY DICKERSON" element="0.0025252525252525255"/>
+                <token string="JEANELLE ENGELSKIRCH" element="0.0025252525252525255"/>
+                <token string="DANIEL GRANER" element="0.0025252525252525255"/>
+                <token string="CORNLIUS M HACKER" element="0.0025252525252525255"/>
+                <token string="KIMBERLY L RUDASILL" element="0.0025252525252525255"/>
+                <token string="TIERRA COSGRAVE" element="0.0025252525252525255"/>
+                <token string="KEN E GALIDEZ" element="0.0025252525252525255"/>
+                <token string="JESSEE T SANTIAGO" element="0.0025252525252525255"/>
+                <token string="DARRYL B CARR" element="0.0025252525252525255"/>
+                <token string="MARKO COUPE" element="0.0025252525252525255"/>
+                <token string="SEPTIMIA E RUDASILL" element="0.0025252525252525255"/>
+                <token string="ROSETA A GREENE" element="0.0025252525252525255"/>
+                <token string="MCCLAIN" element="0.0025252525252525255"/>
+                <token string="BERRY J CARR" element="0.0025252525252525255"/>
+                <token string="MARIANNA B AHREWS" element="0.0025252525252525255"/>
+                <token string="SANDERA Y JIMEMEZ" element="0.0025252525252525255"/>
+                <token string="WELLS PAINE" element="0.0025252525252525255"/>
+                <token string="THUYKIM VARGAS" element="0.0025252525252525255"/>
+                <token string="ALE ERVINE" element="0.0025252525252525255"/>
+                <token string=" M KEARNS" element="0.0025252525252525255"/>
+                <token string="BRIANCE G DECANAY" element="0.0025252525252525255"/>
+                <token string="SHERMISE J KEARNEY" element="0.0025252525252525255"/>
+                <token string=" T TREZEVANT" element="0.0025252525252525255"/>
+                <token string="ALISA M RUDASILL" element="0.0025252525252525255"/>
+                <token string="ANN A GREENE" element="0.0025252525252525255"/>
+                <token string="SHALLY WEBSTER" element="0.0025252525252525255"/>
+                <token string="PABLOS U GASBARRO" element="0.0025252525252525255"/>
+                <token string="NWAMAKA M REEVES" element="0.0025252525252525255"/>
+                <token string="AGELEON M HELLER" element="0.0025252525252525255"/>
+                <token string="MADGE R BODNER" element="0.0025252525252525255"/>
+                <token string="HARRIETT J TONSTALL" element="0.0025252525252525255"/>
+                <token string="ROSALIND N BODNER" element="0.0025252525252525255"/>
+                <token string=" A KEARNS" element="0.0025252525252525255"/>
+                <token string="DELORES PARK" element="0.0025252525252525255"/>
+                <token string="COVNELIA M FLOWERS" element="0.0025252525252525255"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.0025252525252525255"/>
+                <token string="ALEXANDER J WICZALKOWSKI" element="0.0025252525252525255"/>
+                <token string=" A DORSIE" element="0.0025252525252525255"/>
+                <token string="ANA M TREZEVANT" element="0.0025252525252525255"/>
+                <token string="DOROTHEA K LASSITER" element="0.0025252525252525255"/>
+                <token string="LENORA S SKANOS" element="0.0025252525252525255"/>
+                <token string="ADMAN L CAVAJEL" element="0.0025252525252525255"/>
+                <token string="DANYAE KENNY" element="0.0025252525252525255"/>
+                <token string="DEWIGHT B MALDONADO" element="0.0025252525252525255"/>
+                <token string="BIANCA A GEHRING" element="0.0025252525252525255"/>
+                <token string="ELLA STAPPY" element="0.0025252525252525255"/>
+                <token string="RODRICK CARTER" element="0.0025252525252525255"/>
+                <token string="JAMEL C BODNER" element="0.0025252525252525255"/>
+                <token string="GERARDO D DEGRAENED" element="0.0025252525252525255"/>
+                <token string="AJASIA M DECANAY" element="0.0025252525252525255"/>
+                <token string="ROSELINE D CARR" element="0.0025252525252525255"/>
+                <token string="DANNY A WEBSTER" element="0.0025252525252525255"/>
+                <token string="EDUARDSO A GREENE" element="0.0025252525252525255"/>
+                <token string=" S RUDASILL" element="0.0025252525252525255"/>
+                <token string="ZIONARA T ERVINE" element="0.0025252525252525255"/>
+                <token string=" B BARNES" element="0.0025252525252525255"/>
+                <token string="MARY C TONSTALL" element="0.0025252525252525255"/>
+                <token string="LEANNE GASBARRO" element="0.0025252525252525255"/>
+                <token string="MABLE MALDONADO" element="0.0025252525252525255"/>
+                <token string="LOUIS W FAIRIE" element="0.0025252525252525255"/>
+                <token string="KENNETH A REEVER" element="0.0025252525252525255"/>
+                <token string="ROSETTA L BODNER" element="0.0025252525252525255"/>
+                <token string="JOANNIE CARTER" element="0.0025252525252525255"/>
+                <token string=" E KEARNS" element="0.0025252525252525255"/>
+                <token string="WILEY A BELTRAN" element="0.0025252525252525255"/>
+                <token string="XANTHE N PAIGIE" element="0.0025252525252525255"/>
+                <token string="SONDRA C GREENE" element="0.0025252525252525255"/>
+                <token string="GLURIA JOHNS" element="0.0025252525252525255"/>
+                <token string="JORGE L RUSSALL" element="0.0025252525252525255"/>
+                <token string="OLIVIA E MACCIO" element="0.0025252525252525255"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.0025252525252525255"/>
+                <token string="EDWIN M CAGER" element="0.0025252525252525255"/>
+                <token string="THERESA A DRENMON" element="0.0025252525252525255"/>
+                <token string="WAYNE H VALDES" element="0.0025252525252525255"/>
+                <token string="GEARLDINE RODRIGUEZ" element="0.0025252525252525255"/>
+                <token string="KEVEIN MORGAN" element="0.0025252525252525255"/>
+                <token string="MALISSA L CAVAJEL" element="0.0025252525252525255"/>
+                <token string="XIOMARA E WASHINGTON" element="0.0025252525252525255"/>
+                <token string=" A HELLER" element="0.0025252525252525255"/>
+                <token string="KAY" element="0.0025252525252525255"/>
+                <token string="SILYIA M SPINWATO" element="0.0025252525252525255"/>
+                <token string="RUTH BELTRAN" element="0.0025252525252525255"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.0025252525252525255"/>
+                <token string="SHANIKA E KEARNEY" element="0.0025252525252525255"/>
+                <token string="ORESTE S MACCIO" element="0.0025252525252525255"/>
+                <token string="CASSANDRA C GENE" element="0.0025252525252525255"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.0025252525252525255"/>
+                <token string="NICHOLE L TONSTALL" element="0.0025252525252525255"/>
+                <token string="MICHEAL A DECANAY" element="0.0025252525252525255"/>
+                <token string="TOWANDA S RODRIGUEZ" element="0.0025252525252525255"/>
+                <token string="GISELA M BELTRAN" element="0.0025252525252525255"/>
+                <token string="MYRIAM S RUSSALL" element="0.0025252525252525255"/>
+                <token string="JUAN E ERVINE" element="0.0025252525252525255"/>
+                <token string="NAOMI K JONES" element="0.0025252525252525255"/>
+                <token string="SHAVON M DOMINGUEZ" element="0.0025252525252525255"/>
+                <token string="FLAINE A ELLIOTT" element="0.0025252525252525255"/>
+                <token string="KENNETH R COBEZA" element="0.0025252525252525255"/>
+                <token string="MICHAEL C GENE" element="0.0025252525252525255"/>
+                <token string="CAROLYN L BODNER" element="0.0025252525252525255"/>
+                <token string=" A DOWOKAKOKO" element="0.0025252525252525255"/>
+                <token string="KEARNS" element="0.0025252525252525255"/>
+                <token string="SARAH L CAVAJEL" element="0.0025252525252525255"/>
+                <token string="TEGIRA J HELLER" element="0.0025252525252525255"/>
+                <token string="ELMER A BELTRAN" element="0.0025252525252525255"/>
+                <token string="WELLS PAINE" element="0.0025252525252525255"/>
+                <token string="LELIA LASSITER" element="0.0025252525252525255"/>
+                <token string=" J WASHINGTON" element="0.0025252525252525255"/>
+                <token string="ANTONIO B KLEIMAN" element="0.0025252525252525255"/>
+                <token string="ASHELY E KEARNEY" element="0.0025252525252525255"/>
+                <token string="ISSAC F DRENMON" element="0.0025252525252525255"/>
+                <token string=" M COBEZA" element="0.0025252525252525255"/>
+                <token string="DARYL A MORGAN" element="0.0025252525252525255"/>
+                <token string="REYAN RAGLIN" element="0.0025252525252525255"/>
+                <token string="EMMETTE E RICHARDSON" element="0.0025252525252525255"/>
+                <token string="CLARA J AQUENDO" element="0.0025252525252525255"/>
+                <token string="INGER B SMALLS" element="0.0025252525252525255"/>
+                <token string="RAYMOND G HILL" element="0.0025252525252525255"/>
+                <token string="JEANETTE M MCALLISTER" element="0.0025252525252525255"/>
+                <token string="ARISTIDES C HOPPER" element="0.0025252525252525255"/>
+                <token string="TANYA O MOSQUERA" element="0.0025252525252525255"/>
+                <token string="SOUTA M BELTRAN" element="0.0025252525252525255"/>
+                <token string=" M WHITAKER" element="0.0025252525252525255"/>
+                <token string="ALLEN J BRAWD" element="0.0025252525252525255"/>
+                <token string="SHAWN P POLLACK" element="0.0025252525252525255"/>
+                <token string="SHERRI V WILLIAMS" element="0.0025252525252525255"/>
+                <token string="MICHELE N DAVIES" element="0.0025252525252525255"/>
+                <token string="TRYONE M DAVID" element="0.0025252525252525255"/>
+                <token string="RONNIE COBEZA" element="0.0025252525252525255"/>
+                <token string="GEOFFREY M MCALLISTER" element="0.0025252525252525255"/>
+                <token string="JESUS A EHM" element="0.0025252525252525255"/>
+                <token string="MAIRE T GIERINGER" element="0.0025252525252525255"/>
+                <token string="LENWOOD M HAMMONDS" element="0.0025252525252525255"/>
+                <token string="KATHERINE M SYKS" element="0.0025252525252525255"/>
+                <token string="JEMES V PARVA" element="0.0025252525252525255"/>
+                <token string="HOANG DAVID" element="0.0025252525252525255"/>
+                <token string="SCOT C HOLLOWAY" element="0.0025252525252525255"/>
+                <token string="JAMES C HAMMONDS" element="0.0025252525252525255"/>
+                <token string="JEAN A ARCHER" element="0.0025252525252525255"/>
+                <token string="JOHN F SCCHWARTZ" element="0.0025252525252525255"/>
+                <token string=" A CHISOLM" element="0.0025252525252525255"/>
+                <token string="ALFREDRICK S YETES" element="0.0025252525252525255"/>
+                <token string="PRINCETTA D MOSQUERA" element="0.0025252525252525255"/>
+                <token string="JANICE M MOHRING" element="0.0025252525252525255"/>
+                <token string=" A SMALLS" element="0.0025252525252525255"/>
+                <token string="ZAKIYA A 1RUMOR" element="0.0025252525252525255"/>
+                <token string="ERIN K GASBARRO" element="0.0025252525252525255"/>
+                <token string="JEFFREY P SMALLS" element="0.0025252525252525255"/>
+                <token string="LASHIWN Y COBY" element="0.0025252525252525255"/>
+                <token string="MELISSA A RUEHLING" element="0.0025252525252525255"/>
+                <token string="TRACEY R HAMMONDS" element="0.0025252525252525255"/>
+                <token string="MARC C ARCHER" element="0.0025252525252525255"/>
+                <token string=" G PARVA" element="0.0025252525252525255"/>
+                <token string=" F WHITAKER" element="0.0025252525252525255"/>
+                <token string="ANDREA G MOSQUERA" element="0.0025252525252525255"/>
+                <token string="CHARLOTTE E HOLLEY" element="0.0025252525252525255"/>
+                <token string=" A HUGGINCHES" element="0.0025252525252525255"/>
+                <token string="LEAH A POLLACK" element="0.0025252525252525255"/>
+                <token string=" J SMALLS" element="0.0025252525252525255"/>
+                <token string="ANN0 D BRAWD" element="0.0025252525252525255"/>
+                <token string="AMAURY P WASHINGTON" element="0.0025252525252525255"/>
+                <token string="SAMIAR I HENRIKSON" element="0.0025252525252525255"/>
+                <token string="CHANCE E YETES" element="0.0025252525252525255"/>
+                <token string=" B REAVES" element="0.0025252525252525255"/>
+                <token string="HARRIETTE L WILKES" element="0.0025252525252525255"/>
+                <token string=" A GASBARRO" element="0.0025252525252525255"/>
+                <token string="NILSA D EASLEY" element="0.0025252525252525255"/>
+                <token string="STEPHENS I WASHINGTON" element="0.0025252525252525255"/>
+                <token string=" C BARNES" element="0.0025252525252525255"/>
+                <token string="MAXICINE H WCIGNT" element="0.0025252525252525255"/>
+                <token string="NICOLAS G SAUNDERS" element="0.0025252525252525255"/>
+                <token string="BERNADINA 1RUMOR" element="0.0025252525252525255"/>
+                <token string="SAMANTHA H HENRIKSON" element="0.0025252525252525255"/>
+                <token string="LUIS A SQUILLANTE" element="0.0025252525252525255"/>
+                <token string="SHAWN E COBEZA" element="0.0025252525252525255"/>
+                <token string=" D REAVES" element="0.0025252525252525255"/>
+                <token string="DIWALDO A 1RUMOR" element="0.0025252525252525255"/>
+                <token string="DARON S POLLACK" element="0.0025252525252525255"/>
+                <token string="TRICIA E SCCHWARTZ" element="0.0025252525252525255"/>
+                <token string="LAKESHIA O MOSQUERA" element="0.0025252525252525255"/>
+                <token string="CATHERINE L SAUNDERS" element="0.0025252525252525255"/>
+                <token string="ALLAN R DEGRAENED" element="0.0025252525252525255"/>
+                <token string="DOLORES A WICZALKOWSKI" element="0.0025252525252525255"/>
+                <token string="DONNA HENRIKSON" element="0.0025252525252525255"/>
+                <token string=" L MATKIN" element="0.0025252525252525255"/>
+                <token string="JO GASBARRO" element="0.0025252525252525255"/>
+                <token string="FLORIPE D EASLEY" element="0.0025252525252525255"/>
+                <token string="CARLOS C HOPPER" element="0.0025252525252525255"/>
+                <token string="STEPHANIE R RODRIGUEZ" element="0.0025252525252525255"/>
+                <token string="DOROTHEA T HENRIKSON" element="0.0025252525252525255"/>
+                <token string="MIRIAM J POLLACK" element="0.0025252525252525255"/>
+                <token string=" V HEAVENER" element="0.0025252525252525255"/>
+                <token string="CHARLIE A WILLIAMS" element="0.0025252525252525255"/>
+                <token string=" W DAVIES" element="0.0025252525252525255"/>
+                <token string="KERI D EASLEY" element="0.0025252525252525255"/>
+                <token string="BRIAN WCIGNT" element="0.0025252525252525255"/>
+                <token string="JOSH D RADRIGZ" element="0.0025252525252525255"/>
+                <token string=" C WHITAKER" element="0.0025252525252525255"/>
+                <token string="WILSREVO HEAVAENER" element="0.0025252525252525255"/>
+                <token string=" C COSGRAVE" element="0.0025252525252525255"/>
+                <token string="ANDERSON" element="0.0025252525252525255"/>
+                <token string="ARLIE A STAPPY" element="0.0025252525252525255"/>
+                <token string="FRANCISCO D HOLMES" element="0.0025252525252525255"/>
+                <token string="MATKIN" element="0.0025252525252525255"/>
+                <token string="IVAN R CENTURY" element="0.0025252525252525255"/>
+                <token string="DONETTA M MITCHELLL" element="0.0025252525252525255"/>
+                <token string=" R HEAVENER" element="0.0025252525252525255"/>
+                <token string="DONYA L CHEESMAN" element="0.0025252525252525255"/>
+                <token string=" A 1RUMOR" element="0.0025252525252525255"/>
+                <token string="ANGELA E SANTIAGO" element="0.0025252525252525255"/>
+                <token string="ANNE G SOLLIVAN" element="0.0025252525252525255"/>
+                <token string="SARAH N DAVIES" element="0.0025252525252525255"/>
+                <token string="ALICIA B CENTURY" element="0.0025252525252525255"/>
+                <token string="RAMON L CENTURY" element="0.0025252525252525255"/>
+                <token string="MATKIN" element="0.0025252525252525255"/>
+                <token string="JEFF F STAPPY" element="0.0025252525252525255"/>
+                <token string="GIANNI E HILLEGAS" element="0.0025252525252525255"/>
+                <token string=" R HEAVENER" element="0.0025252525252525255"/>
+                <token string="DIANE HUBRIC" element="0.0025252525252525255"/>
+                <token string="KEYAN D JEANS" element="0.0025252525252525255"/>
+                <token string="BARBARA M JIMENEZ" element="0.0025252525252525255"/>
+                <token string="MELISSA J DORSEY" element="0.0025252525252525255"/>
+                <token string="PEARL" element="0.0025252525252525255"/>
+                <token string="ANDERSON" element="0.0025252525252525255"/>
+                <token string="LATISHA D CONRON" element="0.0025252525252525255"/>
+                <token string="CLEARANCE LESKO" element="0.0025252525252525255"/>
+                <token string=" C SWAGOI" element="0.0025252525252525255"/>
+                <token string=" M GOWANS" element="0.0025252525252525255"/>
+                <token string="QUAYN B STAPPY" element="0.0025252525252525255"/>
+                <token string="JAMAR F POLLACK" element="0.0025252525252525255"/>
+                <token string="LEO E ALSTIN" element="0.0025252525252525255"/>
+                <token string="ANA C HOERRLING" element="0.0025252525252525255"/>
+                <token string="RANDOLPH E TORRES" element="0.0025252525252525255"/>
+                <token string="CORTE D HACHETT" element="0.0025252525252525255"/>
+                <token string="TERRAN L 1RUMOR" element="0.0025252525252525255"/>
+                <token string="LASSITER" element="0.0025252525252525255"/>
+                <token string=" J REAVES" element="0.0025252525252525255"/>
+                <token string="SEKOV L COSGRAVE" element="0.0025252525252525255"/>
+                <token string=" D CAMPBELL" element="0.0025252525252525255"/>
+                <token string="CHARLES P HUBRIC" element="0.0025252525252525255"/>
+                <token string="ANDERSON" element="0.0025252525252525255"/>
+                <token string="CHARLES A SWAGOI" element="0.0025252525252525255"/>
+                <token string=" L MATKIN" element="0.0025252525252525255"/>
+                <token string="JANICE HILLEGAS" element="0.0025252525252525255"/>
+                <token string="ROSETTA THOMPSON" element="0.0025252525252525255"/>
+                <token string="FREEMAN R TORRES" element="0.0025252525252525255"/>
+                <token string="DENARIO E HACHETT" element="0.0025252525252525255"/>
+                <token string="ARY S DORSEY" element="0.0025252525252525255"/>
+                <token string=" A BURRISS" element="0.0025252525252525255"/>
+                <token string="MICHEAL T HOLLEY" element="0.0025252525252525255"/>
+                <token string="HILLIARD E ROTHSHILD" element="0.0025252525252525255"/>
+                <token string="STEPHENE HANKINS" element="0.0025252525252525255"/>
+                <token string="AISHA C MOSQUERA" element="0.0025252525252525255"/>
+                <token string="ARCHIE HUSSEINKHEL" element="0.0025252525252525255"/>
+                <token string="MARCO M CRIDER" element="0.0025252525252525255"/>
+                <token string="ENDA L DORSEY" element="0.0025252525252525255"/>
+                <token string="KENDALL BARRETT" element="0.0025252525252525255"/>
+                <token string="HAILLE E HILLEGAS" element="0.0025252525252525255"/>
+                <token string="MARY SWAGOI" element="0.0025252525252525255"/>
+                <token string="DANYCE L FISCHGRUND" element="0.0025252525252525255"/>
+                <token string="MALENDES" element="0.0025252525252525255"/>
+                <token string=" T WHITAKER" element="0.0025252525252525255"/>
+                <token string="TRAINA A HOERRLING" element="0.0025252525252525255"/>
+                <token string="SHEILA SINEFIELD" element="0.0025252525252525255"/>
+                <token string="PAYMM T HANKINS" element="0.0025252525252525255"/>
+                <token string=" C PEARL" element="0.0025252525252525255"/>
+                <token string="ANTONINO E CAMPBELL" element="0.0025252525252525255"/>
+                <token string="LAWRENCE CHAMBARS" element="0.0025252525252525255"/>
+                <token string=" D BANK" element="0.0025252525252525255"/>
+                <token string="ANDREW E POLLACK" element="0.0025252525252525255"/>
+                <token string="RALPAL T GECKLE" element="0.0025252525252525255"/>
+                <token string=" B SWAGOI" element="0.0025252525252525255"/>
+                <token string="MATTHEW EASLEY" element="0.0025252525252525255"/>
+                <token string="ROSE ALSTIN" element="0.0025252525252525255"/>
+                <token string=" A MALENDES" element="0.0025252525252525255"/>
+                <token string="PAIGE" element="0.0025252525252525255"/>
+                <token string="FRANKLIN E STAPPY" element="0.0025252525252525255"/>
+                <token string="KATHERINE A HOLLEY" element="0.0025252525252525255"/>
+                <token string="JEFF J BELTRAN" element="0.0025252525252525255"/>
+                <token string="ROMINE O MOSQUERA" element="0.0025252525252525255"/>
+                <token string="DOUGLAS D GIERINGER" element="0.0025252525252525255"/>
+                <token string="MARIEA A HALLORAW" element="0.0025252525252525255"/>
+                <token string="DIANE M HULLEY" element="0.0025252525252525255"/>
+                <token string="ROSA C HILLEGAS" element="0.0025252525252525255"/>
+                <token string="EUGENE F CHAMBARS" element="0.0025252525252525255"/>
+                <token string="ANNA N FAUST" element="0.0025252525252525255"/>
+                <token string="RENEE M DAVIES" element="0.0025252525252525255"/>
+                <token string="ISRAEL M SWAGOI" element="0.0025252525252525255"/>
+                <token string="THRESA VALDES" element="0.0025252525252525255"/>
+                <token string="NADESDIA A FISCHGRUND" element="0.0025252525252525255"/>
+                <token string="GERALDO S HOLMES" element="0.0025252525252525255"/>
+                <token string="GERAR SQUILLANTE" element="0.0025252525252525255"/>
+                <token string="LAWRENCE C BELTRAN" element="0.0025252525252525255"/>
+                <token string="CATHY ROWEN" element="0.0025252525252525255"/>
+                <token string="KATHY DORSER" element="0.0025252525252525255"/>
+                <token string=" A RUMOR" element="0.0025252525252525255"/>
+                <token string="JAMIE E HILLEGAS" element="0.0025252525252525255"/>
+                <token string="NATHANIAL N GLICK" element="0.0025252525252525255"/>
+                <token string="DONTE CHEESMAN" element="0.0025252525252525255"/>
+                <token string="MICHEAL ALSTIN" element="0.0025252525252525255"/>
+            </list>
+            <name>JUDY A KEICHENBERG</name>
+            <passed>true</passed>
+            <query>TRUDY A REICHENBERG</query>
+            <time>18569</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="MICHELE N DAVIES" element="0.004784688995215311"/>
+                <token string="TRYONE M DAVID" element="0.004784688995215311"/>
+                <token string=" W DAVIES" element="0.004784688995215311"/>
+                <token string="SARAH N DAVIES" element="0.004784688995215311"/>
+                <token string="RENEE M DAVIES" element="0.004784688995215311"/>
+                <token string="TYLER DUFFY" element="0.0023923444976076554"/>
+                <token string="WELLS PAINE" element="0.0023923444976076554"/>
+                <token string="MARYANN FOSTER" element="0.0023923444976076554"/>
+                <token string="DANEILLE S LAKATOS" element="0.0023923444976076554"/>
+                <token string="DIANE M GORDON" element="0.0023923444976076554"/>
+                <token string="JEFFREY J PENSETH" element="0.0023923444976076554"/>
+                <token string="ELIZABETH L VARGAS" element="0.0023923444976076554"/>
+                <token string=" L COSGRAVE" element="0.0023923444976076554"/>
+                <token string="LYNNETTE C RUSSALL" element="0.0023923444976076554"/>
+                <token string="JOANNIE FLEEK" element="0.0023923444976076554"/>
+                <token string="MICHELLE M GALIDEZ" element="0.0023923444976076554"/>
+                <token string="MARINELA E CAMPBELL" element="0.0023923444976076554"/>
+                <token string="YUNAISY L BARRETT" element="0.0023923444976076554"/>
+                <token string="GLORIANNE M BELL" element="0.0023923444976076554"/>
+                <token string="DIXION J HELLER" element="0.0023923444976076554"/>
+                <token string=" L HENNEGGEY" element="0.0023923444976076554"/>
+                <token string="ROSETTA J CAGER" element="0.0023923444976076554"/>
+                <token string="ELFRIEDA C ROWEN" element="0.0023923444976076554"/>
+                <token string="JACQUELINE HUDSON" element="0.0023923444976076554"/>
+                <token string="BRANDEN R VARGAS" element="0.0023923444976076554"/>
+                <token string="THERSA G COSGRAVE" element="0.0023923444976076554"/>
+                <token string="ANNTIONETTE FLEEK" element="0.0023923444976076554"/>
+                <token string="EYVETTE D HACHETT" element="0.0023923444976076554"/>
+                <token string="ENZELEE E GALIDEZ" element="0.0023923444976076554"/>
+                <token string=" J LASSITER" element="0.0023923444976076554"/>
+                <token string="RROBERT T GERING" element="0.0023923444976076554"/>
+                <token string="GREG S DOWOKAKOKO" element="0.0023923444976076554"/>
+                <token string="WELLS PAINE" element="0.0023923444976076554"/>
+                <token string="EARLE M CAGER" element="0.0023923444976076554"/>
+                <token string="TYLER DUFFY" element="0.0023923444976076554"/>
+                <token string="CHANTEL A STEWARD" element="0.0023923444976076554"/>
+                <token string="STUART K RIBERA" element="0.0023923444976076554"/>
+                <token string="ALEXANDER R VARGAS" element="0.0023923444976076554"/>
+                <token string="STANLY J FLOWERS" element="0.0023923444976076554"/>
+                <token string="THRESA A PENSETH" element="0.0023923444976076554"/>
+                <token string="CHATERAH M GALIDEZ" element="0.0023923444976076554"/>
+                <token string="HERMEN M MOSQUERA" element="0.0023923444976076554"/>
+                <token string="SHAWNETT R GARRETT" element="0.0023923444976076554"/>
+                <token string="RUNEE GECKLE" element="0.0023923444976076554"/>
+                <token string=" L HENNEGGEY" element="0.0023923444976076554"/>
+                <token string="TYLER L DUFFY" element="0.0023923444976076554"/>
+                <token string="FREDERICK A STEWARD" element="0.0023923444976076554"/>
+                <token string="JOHONNY U RIBERA" element="0.0023923444976076554"/>
+                <token string=" V WIESMAN" element="0.0023923444976076554"/>
+                <token string="ANNE A PENSETH" element="0.0023923444976076554"/>
+                <token string="BAKIA E MANGUM" element="0.0023923444976076554"/>
+                <token string="ZACHARY B HOERRLING" element="0.0023923444976076554"/>
+                <token string="JOCELYN V KLEIMAN" element="0.0023923444976076554"/>
+                <token string="HARRIET R GARRETT" element="0.0023923444976076554"/>
+                <token string="ROBERT R GRANER" element="0.0023923444976076554"/>
+                <token string="JOANN N RHODES" element="0.0023923444976076554"/>
+                <token string="DELORES R BENITEZ" element="0.0023923444976076554"/>
+                <token string="LEIVA DANIEL" element="0.0023923444976076554"/>
+                <token string="SYKES" element="0.0023923444976076554"/>
+                <token string="CHRISTOPHER D HOERRLING" element="0.0023923444976076554"/>
+                <token string="MARQUISE MALDONADO" element="0.0023923444976076554"/>
+                <token string="CONNIE E CONYERE" element="0.0023923444976076554"/>
+                <token string="IRVIN V JIMENCZ" element="0.0023923444976076554"/>
+                <token string="GEORGE L SANTIAGO" element="0.0023923444976076554"/>
+                <token string="ISAAE ENGELSKIRCH" element="0.0023923444976076554"/>
+                <token string="ZUNZELL M HACKER" element="0.0023923444976076554"/>
+                <token string=" M LEVEN" element="0.0023923444976076554"/>
+                <token string="STEPHEN D CAVAJEL" element="0.0023923444976076554"/>
+                <token string="STG MARTINEZ" element="0.0023923444976076554"/>
+                <token string="JANNIE M RHODES" element="0.0023923444976076554"/>
+                <token string="MILEORD J DIVERS" element="0.0023923444976076554"/>
+                <token string="LEIVA DANIEL" element="0.0023923444976076554"/>
+                <token string="AUNDERE V JIMENCZ" element="0.0023923444976076554"/>
+                <token string="REFUS D HOERRLING" element="0.0023923444976076554"/>
+                <token string=" C COTTEN" element="0.0023923444976076554"/>
+                <token string="ANDERSON" element="0.0023923444976076554"/>
+                <token string="THE MITCHELL" element="0.0023923444976076554"/>
+                <token string="COATES" element="0.0023923444976076554"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.0023923444976076554"/>
+                <token string=" D GUIDETI" element="0.0023923444976076554"/>
+                <token string="PELHAM SANTIAGO" element="0.0023923444976076554"/>
+                <token string="STG MARTINEZ" element="0.0023923444976076554"/>
+                <token string="LEARONAD A BENITEZ" element="0.0023923444976076554"/>
+                <token string="HENRIETTE RHODES" element="0.0023923444976076554"/>
+                <token string="STG MARTINEZ" element="0.0023923444976076554"/>
+                <token string="EARNEST A ROWEN" element="0.0023923444976076554"/>
+                <token string="ANTHONY B HULLEY" element="0.0023923444976076554"/>
+                <token string="ROSEMARIE GORDON" element="0.0023923444976076554"/>
+                <token string="ALISA Y HACHETT" element="0.0023923444976076554"/>
+                <token string="MARJORIE A GRANER" element="0.0023923444976076554"/>
+                <token string="DEREK ROUNSEVELLE" element="0.0023923444976076554"/>
+                <token string="JESSICA A CAMPBELL" element="0.0023923444976076554"/>
+                <token string="JEAN B CARTER" element="0.0023923444976076554"/>
+                <token string=" E ERVINE" element="0.0023923444976076554"/>
+                <token string="SAMUEL R BENITEZ" element="0.0023923444976076554"/>
+                <token string="JEFF L RHODES" element="0.0023923444976076554"/>
+                <token string="SYKES" element="0.0023923444976076554"/>
+                <token string=" A COTTEN" element="0.0023923444976076554"/>
+                <token string="MARY DICKERSON" element="0.0023923444976076554"/>
+                <token string="WELLS PAINE" element="0.0023923444976076554"/>
+                <token string="JEANELLE ENGELSKIRCH" element="0.0023923444976076554"/>
+                <token string="DANIEL GRANER" element="0.0023923444976076554"/>
+                <token string="CORNLIUS M HACKER" element="0.0023923444976076554"/>
+                <token string="KIMBERLY L RUDASILL" element="0.0023923444976076554"/>
+                <token string="TIERRA COSGRAVE" element="0.0023923444976076554"/>
+                <token string="KEN E GALIDEZ" element="0.0023923444976076554"/>
+                <token string="JESSEE T SANTIAGO" element="0.0023923444976076554"/>
+                <token string="MARKO COUPE" element="0.0023923444976076554"/>
+                <token string="SEPTIMIA E RUDASILL" element="0.0023923444976076554"/>
+                <token string="ROSETA A GREENE" element="0.0023923444976076554"/>
+                <token string="BERRY J CARR" element="0.0023923444976076554"/>
+                <token string="SANDERA Y JIMEMEZ" element="0.0023923444976076554"/>
+                <token string="MARIANNA B AHREWS" element="0.0023923444976076554"/>
+                <token string="WELLS PAINE" element="0.0023923444976076554"/>
+                <token string=" J HELLER" element="0.0023923444976076554"/>
+                <token string="ALE ERVINE" element="0.0023923444976076554"/>
+                <token string=" M KEARNS" element="0.0023923444976076554"/>
+                <token string="BRIANCE G DECANAY" element="0.0023923444976076554"/>
+                <token string="SHERMISE J KEARNEY" element="0.0023923444976076554"/>
+                <token string=" T TREZEVANT" element="0.0023923444976076554"/>
+                <token string="ANN A GREENE" element="0.0023923444976076554"/>
+                <token string="SHALLY WEBSTER" element="0.0023923444976076554"/>
+                <token string="LUC M JONES" element="0.0023923444976076554"/>
+                <token string="NWAMAKA M REEVES" element="0.0023923444976076554"/>
+                <token string="AGELEON M HELLER" element="0.0023923444976076554"/>
+                <token string="MADGE R BODNER" element="0.0023923444976076554"/>
+                <token string="HARRIETT J TONSTALL" element="0.0023923444976076554"/>
+                <token string="JORGE L KILLION" element="0.0023923444976076554"/>
+                <token string="ROSALIND N BODNER" element="0.0023923444976076554"/>
+                <token string=" A KEARNS" element="0.0023923444976076554"/>
+                <token string="DELORES PARK" element="0.0023923444976076554"/>
+                <token string="COVNELIA M FLOWERS" element="0.0023923444976076554"/>
+                <token string=" G OWENS" element="0.0023923444976076554"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.0023923444976076554"/>
+                <token string="ALEXANDER J WICZALKOWSKI" element="0.0023923444976076554"/>
+                <token string=" L BURGERSS" element="0.0023923444976076554"/>
+                <token string="MICHELE M GREENE" element="0.0023923444976076554"/>
+                <token string=" A DORSIE" element="0.0023923444976076554"/>
+                <token string="ANA M TREZEVANT" element="0.0023923444976076554"/>
+                <token string="DOROTHEA K LASSITER" element="0.0023923444976076554"/>
+                <token string="LENORA S SKANOS" element="0.0023923444976076554"/>
+                <token string="ADMAN L CAVAJEL" element="0.0023923444976076554"/>
+                <token string="DANYAE KENNY" element="0.0023923444976076554"/>
+                <token string="DEWIGHT B MALDONADO" element="0.0023923444976076554"/>
+                <token string="BIANCA A GEHRING" element="0.0023923444976076554"/>
+                <token string="ELLA STAPPY" element="0.0023923444976076554"/>
+                <token string="RODRICK CARTER" element="0.0023923444976076554"/>
+                <token string="JAMEL C BODNER" element="0.0023923444976076554"/>
+                <token string="GERARDO D DEGRAENED" element="0.0023923444976076554"/>
+                <token string="AJASIA M DECANAY" element="0.0023923444976076554"/>
+                <token string="ROSELINE D CARR" element="0.0023923444976076554"/>
+                <token string="DANNY A WEBSTER" element="0.0023923444976076554"/>
+                <token string="EDUARDSO A GREENE" element="0.0023923444976076554"/>
+                <token string="ZIONARA T ERVINE" element="0.0023923444976076554"/>
+                <token string=" B BARNES" element="0.0023923444976076554"/>
+                <token string=" P COUPE" element="0.0023923444976076554"/>
+                <token string="LEANNE GASBARRO" element="0.0023923444976076554"/>
+                <token string="MABLE MALDONADO" element="0.0023923444976076554"/>
+                <token string="LOUIS W FAIRIE" element="0.0023923444976076554"/>
+                <token string="KENNETH A REEVER" element="0.0023923444976076554"/>
+                <token string="ROSETTA L BODNER" element="0.0023923444976076554"/>
+                <token string="JOANNIE CARTER" element="0.0023923444976076554"/>
+                <token string=" E KEARNS" element="0.0023923444976076554"/>
+                <token string=" L GREEN" element="0.0023923444976076554"/>
+                <token string="WILEY A BELTRAN" element="0.0023923444976076554"/>
+                <token string="TYLER DUFFY" element="0.0023923444976076554"/>
+                <token string=" L BURGERSS" element="0.0023923444976076554"/>
+                <token string="XANTHE N PAIGIE" element="0.0023923444976076554"/>
+                <token string="SONDRA C GREENE" element="0.0023923444976076554"/>
+                <token string="JORGE L RUSSALL" element="0.0023923444976076554"/>
+                <token string="OLIVIA E MACCIO" element="0.0023923444976076554"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.0023923444976076554"/>
+                <token string="EDWIN M CAGER" element="0.0023923444976076554"/>
+                <token string="THERESA A DRENMON" element="0.0023923444976076554"/>
+                <token string="WAYNE H VALDES" element="0.0023923444976076554"/>
+                <token string="GEARLDINE RODRIGUEZ" element="0.0023923444976076554"/>
+                <token string="KEVEIN MORGAN" element="0.0023923444976076554"/>
+                <token string="MALISSA L CAVAJEL" element="0.0023923444976076554"/>
+                <token string="XIOMARA E WASHINGTON" element="0.0023923444976076554"/>
+                <token string=" A HELLER" element="0.0023923444976076554"/>
+                <token string="RUTH BELTRAN" element="0.0023923444976076554"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.0023923444976076554"/>
+                <token string="SHANIKA E KEARNEY" element="0.0023923444976076554"/>
+                <token string="ORESTE S MACCIO" element="0.0023923444976076554"/>
+                <token string="CASSANDRA C GENE" element="0.0023923444976076554"/>
+                <token string=" E OWENS" element="0.0023923444976076554"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.0023923444976076554"/>
+                <token string="NICHOLE L TONSTALL" element="0.0023923444976076554"/>
+                <token string="MICHEAL A DECANAY" element="0.0023923444976076554"/>
+                <token string="TOWANDA S RODRIGUEZ" element="0.0023923444976076554"/>
+                <token string="DOREN J HELLER" element="0.0023923444976076554"/>
+                <token string="GISELA M BELTRAN" element="0.0023923444976076554"/>
+                <token string="JUAN E ERVINE" element="0.0023923444976076554"/>
+                <token string="NAOMI K JONES" element="0.0023923444976076554"/>
+                <token string="CHERYL ELLIOTT" element="0.0023923444976076554"/>
+                <token string=" D BURGERSS" element="0.0023923444976076554"/>
+                <token string="SHAVON M DOMINGUEZ" element="0.0023923444976076554"/>
+                <token string="FLAINE A ELLIOTT" element="0.0023923444976076554"/>
+                <token string="KENNETH R COBEZA" element="0.0023923444976076554"/>
+                <token string="MICHAEL C GENE" element="0.0023923444976076554"/>
+                <token string="CAROLYN L BODNER" element="0.0023923444976076554"/>
+                <token string="FREDRICK W KELLEY" element="0.0023923444976076554"/>
+                <token string="KEARNS" element="0.0023923444976076554"/>
+                <token string="SARAH L CAVAJEL" element="0.0023923444976076554"/>
+                <token string="TEGIRA J HELLER" element="0.0023923444976076554"/>
+                <token string="ELMER A BELTRAN" element="0.0023923444976076554"/>
+                <token string="WELLS PAINE" element="0.0023923444976076554"/>
+                <token string="LELIA LASSITER" element="0.0023923444976076554"/>
+                <token string="PRESPEU J JONES" element="0.0023923444976076554"/>
+                <token string="ANTONIO B KLEIMAN" element="0.0023923444976076554"/>
+                <token string="ISSAC F DRENMON" element="0.0023923444976076554"/>
+                <token string="ASHELY E KEARNEY" element="0.0023923444976076554"/>
+                <token string=" M COBEZA" element="0.0023923444976076554"/>
+                <token string="REYAN RAGLIN" element="0.0023923444976076554"/>
+                <token string="EMMETTE E RICHARDSON" element="0.0023923444976076554"/>
+                <token string="CLARA J AQUENDO" element="0.0023923444976076554"/>
+                <token string="INGER B SMALLS" element="0.0023923444976076554"/>
+                <token string="PHYLLIS L HENRIKSON" element="0.0023923444976076554"/>
+                <token string="JEANETTE M MCALLISTER" element="0.0023923444976076554"/>
+                <token string="ARISTIDES C HOPPER" element="0.0023923444976076554"/>
+                <token string="TANYA O MOSQUERA" element="0.0023923444976076554"/>
+                <token string="SOUTA M BELTRAN" element="0.0023923444976076554"/>
+                <token string=" M WHITAKER" element="0.0023923444976076554"/>
+                <token string="GHOLOM W GIERINGER" element="0.0023923444976076554"/>
+                <token string="RUGY E RADRIGZ" element="0.0023923444976076554"/>
+                <token string="ALLEN J BRAWD" element="0.0023923444976076554"/>
+                <token string=" T OWENS" element="0.0023923444976076554"/>
+                <token string="SHERRI V WILLIAMS" element="0.0023923444976076554"/>
+                <token string="RONNIE COBEZA" element="0.0023923444976076554"/>
+                <token string="GEOFFREY M MCALLISTER" element="0.0023923444976076554"/>
+                <token string="JESUS A EHM" element="0.0023923444976076554"/>
+                <token string="MAIRE T GIERINGER" element="0.0023923444976076554"/>
+                <token string="CHRISTOPHER J ROWEN" element="0.0023923444976076554"/>
+                <token string="LENWOOD M HAMMONDS" element="0.0023923444976076554"/>
+                <token string="KATHERINE M SYKS" element="0.0023923444976076554"/>
+                <token string="ROSEY B HOPPER" element="0.0023923444976076554"/>
+                <token string="DIMON T HOLLEY" element="0.0023923444976076554"/>
+                <token string="JEMES V PARVA" element="0.0023923444976076554"/>
+                <token string="JEROME J MITCHELLL" element="0.0023923444976076554"/>
+                <token string="HOANG DAVID" element="0.0023923444976076554"/>
+                <token string="DOMINIQUE B MOHRING" element="0.0023923444976076554"/>
+                <token string="JEFFERY W GIERINGER" element="0.0023923444976076554"/>
+                <token string="BEN W WILKES" element="0.0023923444976076554"/>
+                <token string="JAMES C HAMMONDS" element="0.0023923444976076554"/>
+                <token string="JEAN A ARCHER" element="0.0023923444976076554"/>
+                <token string="ALFREDRICK S YETES" element="0.0023923444976076554"/>
+                <token string="PRINCETTA D MOSQUERA" element="0.0023923444976076554"/>
+                <token string="JANICE M MOHRING" element="0.0023923444976076554"/>
+                <token string=" M EHM" element="0.0023923444976076554"/>
+                <token string="ERIN K GASBARRO" element="0.0023923444976076554"/>
+                <token string="JEFFREY P SMALLS" element="0.0023923444976076554"/>
+                <token string="MELISSA A RUEHLING" element="0.0023923444976076554"/>
+                <token string=" E BURGESS" element="0.0023923444976076554"/>
+                <token string="SHIRLEG MOSES" element="0.0023923444976076554"/>
+                <token string="TRACEY R HAMMONDS" element="0.0023923444976076554"/>
+                <token string="JEFFERY W GIERINGER" element="0.0023923444976076554"/>
+                <token string="MARC C ARCHER" element="0.0023923444976076554"/>
+                <token string=" F WHITAKER" element="0.0023923444976076554"/>
+                <token string="ANDREA G MOSQUERA" element="0.0023923444976076554"/>
+                <token string="CHARLOTTE E HOLLEY" element="0.0023923444976076554"/>
+                <token string=" A HUGGINCHES" element="0.0023923444976076554"/>
+                <token string="LEAH A POLLACK" element="0.0023923444976076554"/>
+                <token string=" L BURGESS" element="0.0023923444976076554"/>
+                <token string="SAMIAR I HENRIKSON" element="0.0023923444976076554"/>
+                <token string="QUENTIN R RODRIGUEZ" element="0.0023923444976076554"/>
+                <token string="SUSAN L KEICHENBERG" element="0.0023923444976076554"/>
+                <token string="CHANCE E YETES" element="0.0023923444976076554"/>
+                <token string=" B REAVES" element="0.0023923444976076554"/>
+                <token string="HARRIETTE L WILKES" element="0.0023923444976076554"/>
+                <token string="NILSA D EASLEY" element="0.0023923444976076554"/>
+                <token string="ETHNY B FREY" element="0.0023923444976076554"/>
+                <token string=" M HUGGINCHES" element="0.0023923444976076554"/>
+                <token string="STEPHENS I WASHINGTON" element="0.0023923444976076554"/>
+                <token string=" C BARNES" element="0.0023923444976076554"/>
+                <token string="MAXICINE H WCIGNT" element="0.0023923444976076554"/>
+                <token string="NICOLAS G SAUNDERS" element="0.0023923444976076554"/>
+                <token string=" D BURGESS" element="0.0023923444976076554"/>
+                <token string="BERNADINA 1RUMOR" element="0.0023923444976076554"/>
+                <token string="SAMANTHA H HENRIKSON" element="0.0023923444976076554"/>
+                <token string="LUIS A SQUILLANTE" element="0.0023923444976076554"/>
+                <token string=" S OWENS" element="0.0023923444976076554"/>
+                <token string="TYLER DUFFY" element="0.0023923444976076554"/>
+                <token string="SHAWN E COBEZA" element="0.0023923444976076554"/>
+                <token string=" D REAVES" element="0.0023923444976076554"/>
+                <token string="TRICIA E SCCHWARTZ" element="0.0023923444976076554"/>
+                <token string="LAKESHIA O MOSQUERA" element="0.0023923444976076554"/>
+                <token string="CATHERINE L SAUNDERS" element="0.0023923444976076554"/>
+                <token string="ALLAN R DEGRAENED" element="0.0023923444976076554"/>
+                <token string="DOLORES A WICZALKOWSKI" element="0.0023923444976076554"/>
+                <token string="DONNA HENRIKSON" element="0.0023923444976076554"/>
+                <token string=" C BURGESS" element="0.0023923444976076554"/>
+                <token string="JUDY A KEICHENBERG" element="0.0023923444976076554"/>
+                <token string="TRACIE D RUEHLING" element="0.0023923444976076554"/>
+                <token string=" L OWENS" element="0.0023923444976076554"/>
+                <token string="FLORIPE D EASLEY" element="0.0023923444976076554"/>
+                <token string=" R HUGGINCHES" element="0.0023923444976076554"/>
+                <token string="SYKES" element="0.0023923444976076554"/>
+                <token string="CARLOS C HOPPER" element="0.0023923444976076554"/>
+                <token string="JOSEPH E LETO" element="0.0023923444976076554"/>
+                <token string="ETHEL J EHM" element="0.0023923444976076554"/>
+                <token string="STEPHANIE R RODRIGUEZ" element="0.0023923444976076554"/>
+                <token string="DOROTHEA T HENRIKSON" element="0.0023923444976076554"/>
+                <token string=" V HEAVENER" element="0.0023923444976076554"/>
+                <token string="STEVE M WILKES" element="0.0023923444976076554"/>
+                <token string="CHARLIE A WILLIAMS" element="0.0023923444976076554"/>
+                <token string=" N OWENS" element="0.0023923444976076554"/>
+                <token string="KERI D EASLEY" element="0.0023923444976076554"/>
+                <token string="SYKES" element="0.0023923444976076554"/>
+                <token string=" R HUGGINCHES" element="0.0023923444976076554"/>
+                <token string=" C WHITAKER" element="0.0023923444976076554"/>
+                <token string="WILSREVO HEAVAENER" element="0.0023923444976076554"/>
+                <token string=" C COSGRAVE" element="0.0023923444976076554"/>
+                <token string="ANDERSON" element="0.0023923444976076554"/>
+                <token string="ARLIE A STAPPY" element="0.0023923444976076554"/>
+                <token string="FRANCISCO D HOLMES" element="0.0023923444976076554"/>
+                <token string="LESKO" element="0.0023923444976076554"/>
+                <token string="IVAN R CENTURY" element="0.0023923444976076554"/>
+                <token string="DONETTA M MITCHELLL" element="0.0023923444976076554"/>
+                <token string=" R HEAVENER" element="0.0023923444976076554"/>
+                <token string="DONYA L CHEESMAN" element="0.0023923444976076554"/>
+                <token string="MICLELLE C DUCOTY" element="0.0023923444976076554"/>
+                <token string="ANGELA E SANTIAGO" element="0.0023923444976076554"/>
+                <token string="ANNE G SOLLIVAN" element="0.0023923444976076554"/>
+                <token string="ERNEST R DRENMON" element="0.0023923444976076554"/>
+                <token string="ERICK D HOLMES" element="0.0023923444976076554"/>
+                <token string="DOMINIQUE S CONYERE" element="0.0023923444976076554"/>
+                <token string="ALICIA B CENTURY" element="0.0023923444976076554"/>
+                <token string="RAMON L CENTURY" element="0.0023923444976076554"/>
+                <token string="JEFF F STAPPY" element="0.0023923444976076554"/>
+                <token string="GIANNI E HILLEGAS" element="0.0023923444976076554"/>
+                <token string=" R HEAVENER" element="0.0023923444976076554"/>
+                <token string="DIANE HUBRIC" element="0.0023923444976076554"/>
+                <token string="HUSSEINKHEL" element="0.0023923444976076554"/>
+                <token string="CORRINE KUMOR" element="0.0023923444976076554"/>
+                <token string="KEYAN D JEANS" element="0.0023923444976076554"/>
+                <token string="BARBARA M JIMENEZ" element="0.0023923444976076554"/>
+                <token string="MELISSA J DORSEY" element="0.0023923444976076554"/>
+                <token string="PEARL" element="0.0023923444976076554"/>
+                <token string="ANDERSON" element="0.0023923444976076554"/>
+                <token string="CLEARANCE LESKO" element="0.0023923444976076554"/>
+                <token string="LEO E ALSTIN" element="0.0023923444976076554"/>
+                <token string="ANA C HOERRLING" element="0.0023923444976076554"/>
+                <token string="RANDOLPH E TORRES" element="0.0023923444976076554"/>
+                <token string="CORTE D HACHETT" element="0.0023923444976076554"/>
+                <token string="TERRAN L 1RUMOR" element="0.0023923444976076554"/>
+                <token string="LASSITER" element="0.0023923444976076554"/>
+                <token string=" J REAVES" element="0.0023923444976076554"/>
+                <token string="SEKOV L COSGRAVE" element="0.0023923444976076554"/>
+                <token string=" D CAMPBELL" element="0.0023923444976076554"/>
+                <token string="CHARLES P HUBRIC" element="0.0023923444976076554"/>
+                <token string="BEN LESKO" element="0.0023923444976076554"/>
+                <token string="ANDERSON" element="0.0023923444976076554"/>
+                <token string="WESTLEY M FISCHGRUND" element="0.0023923444976076554"/>
+                <token string="BUTLER" element="0.0023923444976076554"/>
+                <token string="CHARLES A SWAGOI" element="0.0023923444976076554"/>
+                <token string="JANICE HILLEGAS" element="0.0023923444976076554"/>
+                <token string="ROSETTA THOMPSON" element="0.0023923444976076554"/>
+                <token string="FREEMAN R TORRES" element="0.0023923444976076554"/>
+                <token string="DENARIO E HACHETT" element="0.0023923444976076554"/>
+                <token string="ARY S DORSEY" element="0.0023923444976076554"/>
+                <token string="MICHEAL T HOLLEY" element="0.0023923444976076554"/>
+                <token string=" R COTTEN" element="0.0023923444976076554"/>
+                <token string="HILLIARD E ROTHSHILD" element="0.0023923444976076554"/>
+                <token string="HOLMES" element="0.0023923444976076554"/>
+                <token string="STEPHEN JOHNS" element="0.0023923444976076554"/>
+                <token string="STEPHENE HANKINS" element="0.0023923444976076554"/>
+                <token string="AISHA C MOSQUERA" element="0.0023923444976076554"/>
+                <token string="ARCHIE HUSSEINKHEL" element="0.0023923444976076554"/>
+                <token string="MARCO M CRIDER" element="0.0023923444976076554"/>
+                <token string="ENDA L DORSEY" element="0.0023923444976076554"/>
+                <token string="KENDALL BARRETT" element="0.0023923444976076554"/>
+                <token string="HAILLE E HILLEGAS" element="0.0023923444976076554"/>
+                <token string="TYLER D DUFFY" element="0.0023923444976076554"/>
+                <token string="DANYCE L FISCHGRUND" element="0.0023923444976076554"/>
+                <token string="TEMPESTT Z GREEN" element="0.0023923444976076554"/>
+                <token string="MALENDES" element="0.0023923444976076554"/>
+                <token string=" T WHITAKER" element="0.0023923444976076554"/>
+                <token string="TRAINA A HOERRLING" element="0.0023923444976076554"/>
+                <token string="SHEILA SINEFIELD" element="0.0023923444976076554"/>
+                <token string=" C PEARL" element="0.0023923444976076554"/>
+                <token string="ANTONINO E CAMPBELL" element="0.0023923444976076554"/>
+                <token string="LAWRENCE CHAMBARS" element="0.0023923444976076554"/>
+                <token string="ANDREW E POLLACK" element="0.0023923444976076554"/>
+                <token string="RALPAL T GECKLE" element="0.0023923444976076554"/>
+                <token string="MATTHEW EASLEY" element="0.0023923444976076554"/>
+                <token string="ROSE ALSTIN" element="0.0023923444976076554"/>
+                <token string=" A MALENDES" element="0.0023923444976076554"/>
+                <token string="PAIGE" element="0.0023923444976076554"/>
+                <token string="LUCILLE W HOLMES" element="0.0023923444976076554"/>
+                <token string="FRANKLIN E STAPPY" element="0.0023923444976076554"/>
+                <token string="KATHERINE A HOLLEY" element="0.0023923444976076554"/>
+                <token string="JEFF J BELTRAN" element="0.0023923444976076554"/>
+                <token string="ROMINE O MOSQUERA" element="0.0023923444976076554"/>
+                <token string="MARIEA A HALLORAW" element="0.0023923444976076554"/>
+                <token string="DOUGLAS D GIERINGER" element="0.0023923444976076554"/>
+                <token string="DIANE M HULLEY" element="0.0023923444976076554"/>
+                <token string="DEBBIE M DORSEY" element="0.0023923444976076554"/>
+                <token string="ROSA C HILLEGAS" element="0.0023923444976076554"/>
+                <token string="JOHNNY HETTERICH" element="0.0023923444976076554"/>
+                <token string="EUGENE F CHAMBARS" element="0.0023923444976076554"/>
+                <token string="KELLY" element="0.0023923444976076554"/>
+                <token string="ISRAEL M SWAGOI" element="0.0023923444976076554"/>
+                <token string="THRESA VALDES" element="0.0023923444976076554"/>
+                <token string="NADESDIA A FISCHGRUND" element="0.0023923444976076554"/>
+                <token string="GERALDO S HOLMES" element="0.0023923444976076554"/>
+                <token string="GERAR SQUILLANTE" element="0.0023923444976076554"/>
+                <token string="LAWRENCE C BELTRAN" element="0.0023923444976076554"/>
+                <token string="KATHY DORSER" element="0.0023923444976076554"/>
+                <token string="CATHY ROWEN" element="0.0023923444976076554"/>
+                <token string="GUILLERMO E CRIDER" element="0.0023923444976076554"/>
+                <token string="JAMIE E HILLEGAS" element="0.0023923444976076554"/>
+                <token string="DONTE CHEESMAN" element="0.0023923444976076554"/>
+                <token string="MICHEAL ALSTIN" element="0.0023923444976076554"/>
+            </list>
+            <name> W DAVIES</name>
+            <passed>false</passed>
+            <query>WINDY E DAVIS</query>
+            <time>18905</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="SUSAN L KEICHENBERG" element="0.8683866529067767"/>
+                <token string="DANEILLE S LAKATOS" element="0.0072992700729927005"/>
+                <token string="ALFREDRICK S YETES" element="0.0072992700729927005"/>
+                <token string="DARON S POLLACK" element="0.0072992700729927005"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.0072992700729927005"/>
+                <token string="LENORA S SKANOS" element="0.0072992700729927005"/>
+                <token string=" S RUDASILL" element="0.0072992700729927005"/>
+                <token string="MYRIAM S RUSSALL" element="0.0072992700729927005"/>
+                <token string="GERALDO S HOLMES" element="0.0072992700729927005"/>
+                <token string="WELLS PAINE" element="0.0036496350364963502"/>
+                <token string="TYLER DUFFY" element="0.0036496350364963502"/>
+                <token string="CLARA J AQUENDO" element="0.0036496350364963502"/>
+                <token string="INGER B SMALLS" element="0.0036496350364963502"/>
+                <token string="ELIZABETH L VARGAS" element="0.0036496350364963502"/>
+                <token string="RAYMOND G HILL" element="0.0036496350364963502"/>
+                <token string=" L COSGRAVE" element="0.0036496350364963502"/>
+                <token string="PHYLLIS L HENRIKSON" element="0.0036496350364963502"/>
+                <token string="LYNNETTE C RUSSALL" element="0.0036496350364963502"/>
+                <token string="JEANETTE M MCALLISTER" element="0.0036496350364963502"/>
+                <token string="JOANNIE FLEEK" element="0.0036496350364963502"/>
+                <token string="SOUTA M BELTRAN" element="0.0036496350364963502"/>
+                <token string="GHOLOM W GIERINGER" element="0.0036496350364963502"/>
+                <token string="MICHELLE M GALIDEZ" element="0.0036496350364963502"/>
+                <token string="ALLEN J BRAWD" element="0.0036496350364963502"/>
+                <token string="MARINELA E CAMPBELL" element="0.0036496350364963502"/>
+                <token string="SHAWN P POLLACK" element="0.0036496350364963502"/>
+                <token string="SHERRI V WILLIAMS" element="0.0036496350364963502"/>
+                <token string="YUNAISY L BARRETT" element="0.0036496350364963502"/>
+                <token string="GLORIANNE M BELL" element="0.0036496350364963502"/>
+                <token string=" L HENNEGGEY" element="0.0036496350364963502"/>
+                <token string="DIXION J HELLER" element="0.0036496350364963502"/>
+                <token string="MICHELE N DAVIES" element="0.0036496350364963502"/>
+                <token string="ELFRIEDA C ROWEN" element="0.0036496350364963502"/>
+                <token string="JACQUELINE HUDSON" element="0.0036496350364963502"/>
+                <token string="ANNTIONETTE FLEEK" element="0.0036496350364963502"/>
+                <token string="GEOFFREY M MCALLISTER" element="0.0036496350364963502"/>
+                <token string="PHILLIP ROTHSHILD" element="0.0036496350364963502"/>
+                <token string="LENWOOD M HAMMONDS" element="0.0036496350364963502"/>
+                <token string="ENZELEE E GALIDEZ" element="0.0036496350364963502"/>
+                <token string="DIMON T HOLLEY" element="0.0036496350364963502"/>
+                <token string=" J LASSITER" element="0.0036496350364963502"/>
+                <token string="JEROME J MITCHELLL" element="0.0036496350364963502"/>
+                <token string="GREG S DOWOKAKOKO" element="0.0036496350364963502"/>
+                <token string="WELLS PAINE" element="0.0036496350364963502"/>
+                <token string="EARLE M CAGER" element="0.0036496350364963502"/>
+                <token string="TYLER DUFFY" element="0.0036496350364963502"/>
+                <token string="CHANTEL A STEWARD" element="0.0036496350364963502"/>
+                <token string="SCOT C HOLLOWAY" element="0.0036496350364963502"/>
+                <token string="BEN W WILKES" element="0.0036496350364963502"/>
+                <token string="ALEXANDER R VARGAS" element="0.0036496350364963502"/>
+                <token string="STANLY J FLOWERS" element="0.0036496350364963502"/>
+                <token string="CHATERAH M GALIDEZ" element="0.0036496350364963502"/>
+                <token string=" A CHISOLM" element="0.0036496350364963502"/>
+                <token string=" A SMALLS" element="0.0036496350364963502"/>
+                <token string="LASHIWN Y COBY" element="0.0036496350364963502"/>
+                <token string="JEFFREY P SMALLS" element="0.0036496350364963502"/>
+                <token string="RUNEE GECKLE" element="0.0036496350364963502"/>
+                <token string=" L HENNEGGEY" element="0.0036496350364963502"/>
+                <token string="MELISSA A RUEHLING" element="0.0036496350364963502"/>
+                <token string="TYLER L DUFFY" element="0.0036496350364963502"/>
+                <token string="TONYA M LAKATOS" element="0.0036496350364963502"/>
+                <token string="ZACHARY B HOERRLING" element="0.0036496350364963502"/>
+                <token string="SHIRLEG MOSES" element="0.0036496350364963502"/>
+                <token string="JOCELYN V KLEIMAN" element="0.0036496350364963502"/>
+                <token string="CHARLOTTE E HOLLEY" element="0.0036496350364963502"/>
+                <token string="LEAH A POLLACK" element="0.0036496350364963502"/>
+                <token string=" J SMALLS" element="0.0036496350364963502"/>
+                <token string=" L BURGESS" element="0.0036496350364963502"/>
+                <token string="DELORES R BENITEZ" element="0.0036496350364963502"/>
+                <token string="LEIVA DANIEL" element="0.0036496350364963502"/>
+                <token string="CHRISTOPHER D HOERRLING" element="0.0036496350364963502"/>
+                <token string="MARQUISE MALDONADO" element="0.0036496350364963502"/>
+                <token string="HARRIETTE L WILKES" element="0.0036496350364963502"/>
+                <token string="NILSA D EASLEY" element="0.0036496350364963502"/>
+                <token string="GEORGE L SANTIAGO" element="0.0036496350364963502"/>
+                <token string="ISAAE ENGELSKIRCH" element="0.0036496350364963502"/>
+                <token string="ZUNZELL M HACKER" element="0.0036496350364963502"/>
+                <token string=" M LEVEN" element="0.0036496350364963502"/>
+                <token string="STEPHEN D CAVAJEL" element="0.0036496350364963502"/>
+                <token string="NICOLAS G SAUNDERS" element="0.0036496350364963502"/>
+                <token string="MILEORD J DIVERS" element="0.0036496350364963502"/>
+                <token string="LEIVA DANIEL" element="0.0036496350364963502"/>
+                <token string="LUIS A SQUILLANTE" element="0.0036496350364963502"/>
+                <token string=" S OWENS" element="0.0036496350364963502"/>
+                <token string="REFUS D HOERRLING" element="0.0036496350364963502"/>
+                <token string="DOUGASS S DUCOTY" element="0.0036496350364963502"/>
+                <token string="TYLER DUFFY" element="0.0036496350364963502"/>
+                <token string="DIWALDO A 1RUMOR" element="0.0036496350364963502"/>
+                <token string="THE MITCHELL" element="0.0036496350364963502"/>
+                <token string="ALMA C MASLIN" element="0.0036496350364963502"/>
+                <token string="LAKESHIA O MOSQUERA" element="0.0036496350364963502"/>
+                <token string="PELHAM SANTIAGO" element="0.0036496350364963502"/>
+                <token string="CATHERINE L SAUNDERS" element="0.0036496350364963502"/>
+                <token string="ALLAN R DEGRAENED" element="0.0036496350364963502"/>
+                <token string="LEARONAD A BENITEZ" element="0.0036496350364963502"/>
+                <token string="DOLORES A WICZALKOWSKI" element="0.0036496350364963502"/>
+                <token string="JUDY A KEICHENBERG" element="0.0036496350364963502"/>
+                <token string="TRACIE D RUEHLING" element="0.0036496350364963502"/>
+                <token string=" L MATKIN" element="0.0036496350364963502"/>
+                <token string=" J COLBY" element="0.0036496350364963502"/>
+                <token string="ANTHONY B HULLEY" element="0.0036496350364963502"/>
+                <token string=" L OWENS" element="0.0036496350364963502"/>
+                <token string="DOMINIC A RUDASILL" element="0.0036496350364963502"/>
+                <token string="ALISA Y HACHETT" element="0.0036496350364963502"/>
+                <token string="FLORIPE D EASLEY" element="0.0036496350364963502"/>
+                <token string="CARLOS C HOPPER" element="0.0036496350364963502"/>
+                <token string="DEREK ROUNSEVELLE" element="0.0036496350364963502"/>
+                <token string="JESSICA A CAMPBELL" element="0.0036496350364963502"/>
+                <token string="JOSEPH E LETO" element="0.0036496350364963502"/>
+                <token string="ETHEL J EHM" element="0.0036496350364963502"/>
+                <token string="SAMUEL R BENITEZ" element="0.0036496350364963502"/>
+                <token string="JEFF L RHODES" element="0.0036496350364963502"/>
+                <token string="MIRIAM J POLLACK" element="0.0036496350364963502"/>
+                <token string="STEVE M WILKES" element="0.0036496350364963502"/>
+                <token string="KRISTY L GORDON" element="0.0036496350364963502"/>
+                <token string="CHARLIE A WILLIAMS" element="0.0036496350364963502"/>
+                <token string="WELLS PAINE" element="0.0036496350364963502"/>
+                <token string="JEANELLE ENGELSKIRCH" element="0.0036496350364963502"/>
+                <token string="DANIEL GRANER" element="0.0036496350364963502"/>
+                <token string="CORNLIUS M HACKER" element="0.0036496350364963502"/>
+                <token string="KERI D EASLEY" element="0.0036496350364963502"/>
+                <token string="KIMBERLY L RUDASILL" element="0.0036496350364963502"/>
+                <token string="KEN E GALIDEZ" element="0.0036496350364963502"/>
+                <token string="DARRYL B CARR" element="0.0036496350364963502"/>
+                <token string="WILSREVO HEAVAENER" element="0.0036496350364963502"/>
+                <token string="SEPTIMIA E RUDASILL" element="0.0036496350364963502"/>
+                <token string="MCCLAIN" element="0.0036496350364963502"/>
+                <token string="ARLIE A STAPPY" element="0.0036496350364963502"/>
+                <token string="WELLS PAINE" element="0.0036496350364963502"/>
+                <token string="FRANCISCO D HOLMES" element="0.0036496350364963502"/>
+                <token string=" J HELLER" element="0.0036496350364963502"/>
+                <token string="LESKO" element="0.0036496350364963502"/>
+                <token string="ALE ERVINE" element="0.0036496350364963502"/>
+                <token string=" L GOINS" element="0.0036496350364963502"/>
+                <token string="DONETTA M MITCHELLL" element="0.0036496350364963502"/>
+                <token string="ANGELA E SANTIAGO" element="0.0036496350364963502"/>
+                <token string="DONYA L CHEESMAN" element="0.0036496350364963502"/>
+                <token string="MICLELLE C DUCOTY" element="0.0036496350364963502"/>
+                <token string="ANNE G SOLLIVAN" element="0.0036496350364963502"/>
+                <token string="ALISA M RUDASILL" element="0.0036496350364963502"/>
+                <token string="SHALLY WEBSTER" element="0.0036496350364963502"/>
+                <token string="ERICK D HOLMES" element="0.0036496350364963502"/>
+                <token string="DOMINIQUE S CONYERE" element="0.0036496350364963502"/>
+                <token string="LUC M JONES" element="0.0036496350364963502"/>
+                <token string="PABLOS U GASBARRO" element="0.0036496350364963502"/>
+                <token string="HARRIETT J TONSTALL" element="0.0036496350364963502"/>
+                <token string="AGELEON M HELLER" element="0.0036496350364963502"/>
+                <token string="ALICIA B CENTURY" element="0.0036496350364963502"/>
+                <token string="JORGE L KILLION" element="0.0036496350364963502"/>
+                <token string="ROSALIND N BODNER" element="0.0036496350364963502"/>
+                <token string="RAMON L CENTURY" element="0.0036496350364963502"/>
+                <token string="DELORES PARK" element="0.0036496350364963502"/>
+                <token string="GIANNI E HILLEGAS" element="0.0036496350364963502"/>
+                <token string="HUSSEINKHEL" element="0.0036496350364963502"/>
+                <token string="COVNELIA M FLOWERS" element="0.0036496350364963502"/>
+                <token string="MELISSA J DORSEY" element="0.0036496350364963502"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.0036496350364963502"/>
+                <token string="PEARL" element="0.0036496350364963502"/>
+                <token string="ALEXANDER J WICZALKOWSKI" element="0.0036496350364963502"/>
+                <token string=" L BURGERSS" element="0.0036496350364963502"/>
+                <token string="MICHELE M GREENE" element="0.0036496350364963502"/>
+                <token string="LATISHA D CONRON" element="0.0036496350364963502"/>
+                <token string="CLEARANCE LESKO" element="0.0036496350364963502"/>
+                <token string="DOROTHEA K LASSITER" element="0.0036496350364963502"/>
+                <token string="ADMAN L CAVAJEL" element="0.0036496350364963502"/>
+                <token string="DEWIGHT B MALDONADO" element="0.0036496350364963502"/>
+                <token string="ELLA STAPPY" element="0.0036496350364963502"/>
+                <token string="JAMAR F POLLACK" element="0.0036496350364963502"/>
+                <token string="LEO E ALSTIN" element="0.0036496350364963502"/>
+                <token string="ANA C HOERRLING" element="0.0036496350364963502"/>
+                <token string="JAMEL C BODNER" element="0.0036496350364963502"/>
+                <token string="RANDOLPH E TORRES" element="0.0036496350364963502"/>
+                <token string="LASSITER" element="0.0036496350364963502"/>
+                <token string="TERRAN L 1RUMOR" element="0.0036496350364963502"/>
+                <token string="ROSELINE D CARR" element="0.0036496350364963502"/>
+                <token string="SEKOV L COSGRAVE" element="0.0036496350364963502"/>
+                <token string=" D CAMPBELL" element="0.0036496350364963502"/>
+                <token string="CHARLES P HUBRIC" element="0.0036496350364963502"/>
+                <token string="BEN LESKO" element="0.0036496350364963502"/>
+                <token string="MARY C TONSTALL" element="0.0036496350364963502"/>
+                <token string="LEANNE GASBARRO" element="0.0036496350364963502"/>
+                <token string="MABLE MALDONADO" element="0.0036496350364963502"/>
+                <token string="LOUIS W FAIRIE" element="0.0036496350364963502"/>
+                <token string="BUTLER" element="0.0036496350364963502"/>
+                <token string="WESTLEY M FISCHGRUND" element="0.0036496350364963502"/>
+                <token string=" L MATKIN" element="0.0036496350364963502"/>
+                <token string="CHARLES A SWAGOI" element="0.0036496350364963502"/>
+                <token string="ROSETTA L BODNER" element="0.0036496350364963502"/>
+                <token string="JANICE HILLEGAS" element="0.0036496350364963502"/>
+                <token string=" L GREEN" element="0.0036496350364963502"/>
+                <token string="ARY S DORSEY" element="0.0036496350364963502"/>
+                <token string="MICHEAL T HOLLEY" element="0.0036496350364963502"/>
+                <token string="WILEY A BELTRAN" element="0.0036496350364963502"/>
+                <token string="HILLIARD E ROTHSHILD" element="0.0036496350364963502"/>
+                <token string=" J CHISOLM" element="0.0036496350364963502"/>
+                <token string="TYLER DUFFY" element="0.0036496350364963502"/>
+                <token string="HOLMES" element="0.0036496350364963502"/>
+                <token string=" L BURGERSS" element="0.0036496350364963502"/>
+                <token string="GLURIA JOHNS" element="0.0036496350364963502"/>
+                <token string="ARCHIE HUSSEINKHEL" element="0.0036496350364963502"/>
+                <token string="JORGE L RUSSALL" element="0.0036496350364963502"/>
+                <token string="OLIVIA E MACCIO" element="0.0036496350364963502"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.0036496350364963502"/>
+                <token string="ENDA L DORSEY" element="0.0036496350364963502"/>
+                <token string="WAYNE H VALDES" element="0.0036496350364963502"/>
+                <token string="GEARLDINE RODRIGUEZ" element="0.0036496350364963502"/>
+                <token string="KENDALL BARRETT" element="0.0036496350364963502"/>
+                <token string="HAILLE E HILLEGAS" element="0.0036496350364963502"/>
+                <token string="TYLER D DUFFY" element="0.0036496350364963502"/>
+                <token string="DANYCE L FISCHGRUND" element="0.0036496350364963502"/>
+                <token string="MALISSA L CAVAJEL" element="0.0036496350364963502"/>
+                <token string="MALENDES" element="0.0036496350364963502"/>
+                <token string="TRAINA A HOERRLING" element="0.0036496350364963502"/>
+                <token string="SHEILA SINEFIELD" element="0.0036496350364963502"/>
+                <token string=" A HELLER" element="0.0036496350364963502"/>
+                <token string="SILYIA M SPINWATO" element="0.0036496350364963502"/>
+                <token string=" C PEARL" element="0.0036496350364963502"/>
+                <token string="ANTONINO E CAMPBELL" element="0.0036496350364963502"/>
+                <token string="RUTH BELTRAN" element="0.0036496350364963502"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.0036496350364963502"/>
+                <token string="ORESTE S MACCIO" element="0.0036496350364963502"/>
+                <token string="LAWRENCE CHAMBARS" element="0.0036496350364963502"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.0036496350364963502"/>
+                <token string="ANDREW E POLLACK" element="0.0036496350364963502"/>
+                <token string="RALPAL T GECKLE" element="0.0036496350364963502"/>
+                <token string="NICHOLE L TONSTALL" element="0.0036496350364963502"/>
+                <token string="MATTHEW EASLEY" element="0.0036496350364963502"/>
+                <token string="MICHEAL A DECANAY" element="0.0036496350364963502"/>
+                <token string="ROSE ALSTIN" element="0.0036496350364963502"/>
+                <token string="TOWANDA S RODRIGUEZ" element="0.0036496350364963502"/>
+                <token string="DOREN J HELLER" element="0.0036496350364963502"/>
+                <token string=" A MALENDES" element="0.0036496350364963502"/>
+                <token string="LUCILLE W HOLMES" element="0.0036496350364963502"/>
+                <token string="GISELA M BELTRAN" element="0.0036496350364963502"/>
+                <token string="KATHERINE A HOLLEY" element="0.0036496350364963502"/>
+                <token string="FRANKLIN E STAPPY" element="0.0036496350364963502"/>
+                <token string="JEFF J BELTRAN" element="0.0036496350364963502"/>
+                <token string="CHERYL ELLIOTT" element="0.0036496350364963502"/>
+                <token string="MARIEA A HALLORAW" element="0.0036496350364963502"/>
+                <token string="DOUGLAS D GIERINGER" element="0.0036496350364963502"/>
+                <token string="DIANE M HULLEY" element="0.0036496350364963502"/>
+                <token string="ROSA C HILLEGAS" element="0.0036496350364963502"/>
+                <token string="FLAINE A ELLIOTT" element="0.0036496350364963502"/>
+                <token string="MICHAEL C GENE" element="0.0036496350364963502"/>
+                <token string="CAROLYN L BODNER" element="0.0036496350364963502"/>
+                <token string="FREDRICK W KELLEY" element="0.0036496350364963502"/>
+                <token string="KELLY" element="0.0036496350364963502"/>
+                <token string="SARAH L CAVAJEL" element="0.0036496350364963502"/>
+                <token string=" J ROTHSHILD" element="0.0036496350364963502"/>
+                <token string="TEGIRA J HELLER" element="0.0036496350364963502"/>
+                <token string="ISRAEL M SWAGOI" element="0.0036496350364963502"/>
+                <token string="ELMER A BELTRAN" element="0.0036496350364963502"/>
+                <token string="THRESA VALDES" element="0.0036496350364963502"/>
+                <token string="WELLS PAINE" element="0.0036496350364963502"/>
+                <token string="LELIA LASSITER" element="0.0036496350364963502"/>
+                <token string="GERAR SQUILLANTE" element="0.0036496350364963502"/>
+                <token string="LAWRENCE C BELTRAN" element="0.0036496350364963502"/>
+                <token string="ANTONIO B KLEIMAN" element="0.0036496350364963502"/>
+                <token string="GUILLERMO E CRIDER" element="0.0036496350364963502"/>
+                <token string="JAMIE E HILLEGAS" element="0.0036496350364963502"/>
+                <token string="ASHELY E KEARNEY" element="0.0036496350364963502"/>
+                <token string="NATHANIAL N GLICK" element="0.0036496350364963502"/>
+                <token string="DARYL A MORGAN" element="0.0036496350364963502"/>
+                <token string="MICHEAL ALSTIN" element="0.0036496350364963502"/>
+                <token string="REYAN RAGLIN" element="0.0036496350364963502"/>
+            </list>
+            <name>SUSAN L KEICHENBERG</name>
+            <passed>true</passed>
+            <query>SUE L REICHENBERG</query>
+            <time>13575</time>
+        </result>
+        <result>
+            <expected>true</expected>
+            <list>
+                <token string="GHOLOM W GIERINGER" element="0.007326007326007326"/>
+                <token string="MICHELLE M GALIDEZ" element="0.007326007326007326"/>
+                <token string="GLORIANNE M BELL" element="0.007326007326007326"/>
+                <token string="ENZELEE E GALIDEZ" element="0.007326007326007326"/>
+                <token string="CHATERAH M GALIDEZ" element="0.007326007326007326"/>
+                <token string="ALLAN R DEGRAENED" element="0.007326007326007326"/>
+                <token string="KEN E GALIDEZ" element="0.007326007326007326"/>
+                <token string="GEARLDINE RODRIGUEZ" element="0.007326007326007326"/>
+                <token string="DOUGLAS D GIERINGER" element="0.007326007326007326"/>
+                <token string="GERALDO S HOLMES" element="0.007326007326007326"/>
+                <token string="WELLS PAINE" element="0.003663003663003663"/>
+                <token string="TYLER DUFFY" element="0.003663003663003663"/>
+                <token string="CLARA J AQUENDO" element="0.003663003663003663"/>
+                <token string="DANEILLE S LAKATOS" element="0.003663003663003663"/>
+                <token string="INGER B SMALLS" element="0.003663003663003663"/>
+                <token string="ELIZABETH L VARGAS" element="0.003663003663003663"/>
+                <token string="RAYMOND G HILL" element="0.003663003663003663"/>
+                <token string=" L COSGRAVE" element="0.003663003663003663"/>
+                <token string="PHYLLIS L HENRIKSON" element="0.003663003663003663"/>
+                <token string="LYNNETTE C RUSSALL" element="0.003663003663003663"/>
+                <token string="JEANETTE M MCALLISTER" element="0.003663003663003663"/>
+                <token string="JOANNIE FLEEK" element="0.003663003663003663"/>
+                <token string="SOUTA M BELTRAN" element="0.003663003663003663"/>
+                <token string="ALLEN J BRAWD" element="0.003663003663003663"/>
+                <token string="MARINELA E CAMPBELL" element="0.003663003663003663"/>
+                <token string="SHAWN P POLLACK" element="0.003663003663003663"/>
+                <token string="SHERRI V WILLIAMS" element="0.003663003663003663"/>
+                <token string="YUNAISY L BARRETT" element="0.003663003663003663"/>
+                <token string=" L HENNEGGEY" element="0.003663003663003663"/>
+                <token string="DIXION J HELLER" element="0.003663003663003663"/>
+                <token string="MICHELE N DAVIES" element="0.003663003663003663"/>
+                <token string="ELFRIEDA C ROWEN" element="0.003663003663003663"/>
+                <token string="JACQUELINE HUDSON" element="0.003663003663003663"/>
+                <token string="ANNTIONETTE FLEEK" element="0.003663003663003663"/>
+                <token string="GEOFFREY M MCALLISTER" element="0.003663003663003663"/>
+                <token string="PHILLIP ROTHSHILD" element="0.003663003663003663"/>
+                <token string="MAIRE T GIERINGER" element="0.003663003663003663"/>
+                <token string="LENWOOD M HAMMONDS" element="0.003663003663003663"/>
+                <token string="DIMON T HOLLEY" element="0.003663003663003663"/>
+                <token string=" J LASSITER" element="0.003663003663003663"/>
+                <token string="JEROME J MITCHELLL" element="0.003663003663003663"/>
+                <token string="WELLS PAINE" element="0.003663003663003663"/>
+                <token string="EARLE M CAGER" element="0.003663003663003663"/>
+                <token string="TYLER DUFFY" element="0.003663003663003663"/>
+                <token string="JEFFERY W GIERINGER" element="0.003663003663003663"/>
+                <token string="CHANTEL A STEWARD" element="0.003663003663003663"/>
+                <token string="SCOT C HOLLOWAY" element="0.003663003663003663"/>
+                <token string="BEN W WILKES" element="0.003663003663003663"/>
+                <token string="ALEXANDER R VARGAS" element="0.003663003663003663"/>
+                <token string="STANLY J FLOWERS" element="0.003663003663003663"/>
+                <token string="ALFREDRICK S YETES" element="0.003663003663003663"/>
+                <token string=" A CHISOLM" element="0.003663003663003663"/>
+                <token string=" A SMALLS" element="0.003663003663003663"/>
+                <token string="LASHIWN Y COBY" element="0.003663003663003663"/>
+                <token string="JEFFREY P SMALLS" element="0.003663003663003663"/>
+                <token string="RUNEE GECKLE" element="0.003663003663003663"/>
+                <token string=" L HENNEGGEY" element="0.003663003663003663"/>
+                <token string="MELISSA A RUEHLING" element="0.003663003663003663"/>
+                <token string="TYLER L DUFFY" element="0.003663003663003663"/>
+                <token string="TONYA M LAKATOS" element="0.003663003663003663"/>
+                <token string="ZACHARY B HOERRLING" element="0.003663003663003663"/>
+                <token string="SHIRLEG MOSES" element="0.003663003663003663"/>
+                <token string="JOCELYN V KLEIMAN" element="0.003663003663003663"/>
+                <token string="JEFFERY W GIERINGER" element="0.003663003663003663"/>
+                <token string="CHARLOTTE E HOLLEY" element="0.003663003663003663"/>
+                <token string="LEAH A POLLACK" element="0.003663003663003663"/>
+                <token string=" J SMALLS" element="0.003663003663003663"/>
+                <token string=" L BURGESS" element="0.003663003663003663"/>
+                <token string="DELORES R BENITEZ" element="0.003663003663003663"/>
+                <token string="LEIVA DANIEL" element="0.003663003663003663"/>
+                <token string="CHRISTOPHER D HOERRLING" element="0.003663003663003663"/>
+                <token string="SUSAN L KEICHENBERG" element="0.003663003663003663"/>
+                <token string="MARQUISE MALDONADO" element="0.003663003663003663"/>
+                <token string="HARRIETTE L WILKES" element="0.003663003663003663"/>
+                <token string="NILSA D EASLEY" element="0.003663003663003663"/>
+                <token string="GEORGE L SANTIAGO" element="0.003663003663003663"/>
+                <token string="ISAAE ENGELSKIRCH" element="0.003663003663003663"/>
+                <token string="ZUNZELL M HACKER" element="0.003663003663003663"/>
+                <token string=" M LEVEN" element="0.003663003663003663"/>
+                <token string="STEPHEN D CAVAJEL" element="0.003663003663003663"/>
+                <token string="NICOLAS G SAUNDERS" element="0.003663003663003663"/>
+                <token string="BERNADINA 1RUMOR" element="0.003663003663003663"/>
+                <token string="MILEORD J DIVERS" element="0.003663003663003663"/>
+                <token string="LEIVA DANIEL" element="0.003663003663003663"/>
+                <token string="LUIS A SQUILLANTE" element="0.003663003663003663"/>
+                <token string="REFUS D HOERRLING" element="0.003663003663003663"/>
+                <token string="TYLER DUFFY" element="0.003663003663003663"/>
+                <token string="DIWALDO A 1RUMOR" element="0.003663003663003663"/>
+                <token string="DARON S POLLACK" element="0.003663003663003663"/>
+                <token string="THE MITCHELL" element="0.003663003663003663"/>
+                <token string="ALMA C MASLIN" element="0.003663003663003663"/>
+                <token string="WILLPAMINA S JIMENCZ" element="0.003663003663003663"/>
+                <token string="LAKESHIA O MOSQUERA" element="0.003663003663003663"/>
+                <token string="PELHAM SANTIAGO" element="0.003663003663003663"/>
+                <token string="CATHERINE L SAUNDERS" element="0.003663003663003663"/>
+                <token string="LEARONAD A BENITEZ" element="0.003663003663003663"/>
+                <token string="DOLORES A WICZALKOWSKI" element="0.003663003663003663"/>
+                <token string="TRACIE D RUEHLING" element="0.003663003663003663"/>
+                <token string=" L MATKIN" element="0.003663003663003663"/>
+                <token string=" J COLBY" element="0.003663003663003663"/>
+                <token string="ANTHONY B HULLEY" element="0.003663003663003663"/>
+                <token string=" L OWENS" element="0.003663003663003663"/>
+                <token string="DOMINIC A RUDASILL" element="0.003663003663003663"/>
+                <token string="ALISA Y HACHETT" element="0.003663003663003663"/>
+                <token string="FLORIPE D EASLEY" element="0.003663003663003663"/>
+                <token string="CARLOS C HOPPER" element="0.003663003663003663"/>
+                <token string="DEREK ROUNSEVELLE" element="0.003663003663003663"/>
+                <token string="JESSICA A CAMPBELL" element="0.003663003663003663"/>
+                <token string="JOSEPH E LETO" element="0.003663003663003663"/>
+                <token string="ETHEL J EHM" element="0.003663003663003663"/>
+                <token string="SAMUEL R BENITEZ" element="0.003663003663003663"/>
+                <token string="JEFF L RHODES" element="0.003663003663003663"/>
+                <token string="MIRIAM J POLLACK" element="0.003663003663003663"/>
+                <token string="STEVE M WILKES" element="0.003663003663003663"/>
+                <token string="KRISTY L GORDON" element="0.003663003663003663"/>
+                <token string="CHARLIE A WILLIAMS" element="0.003663003663003663"/>
+                <token string="WELLS PAINE" element="0.003663003663003663"/>
+                <token string="JEANELLE ENGELSKIRCH" element="0.003663003663003663"/>
+                <token string="DANIEL GRANER" element="0.003663003663003663"/>
+                <token string="CORNLIUS M HACKER" element="0.003663003663003663"/>
+                <token string="KERI D EASLEY" element="0.003663003663003663"/>
+                <token string="KIMBERLY L RUDASILL" element="0.003663003663003663"/>
+                <token string="DARRYL B CARR" element="0.003663003663003663"/>
+                <token string="WILSREVO HEAVAENER" element="0.003663003663003663"/>
+                <token string="SEPTIMIA E RUDASILL" element="0.003663003663003663"/>
+                <token string="MCCLAIN" element="0.003663003663003663"/>
+                <token string="ARLIE A STAPPY" element="0.003663003663003663"/>
+                <token string="WELLS PAINE" element="0.003663003663003663"/>
+                <token string="FRANCISCO D HOLMES" element="0.003663003663003663"/>
+                <token string=" J HELLER" element="0.003663003663003663"/>
+                <token string="LESKO" element="0.003663003663003663"/>
+                <token string="ALE ERVINE" element="0.003663003663003663"/>
+                <token string=" L GOINS" element="0.003663003663003663"/>
+                <token string="DONETTA M MITCHELLL" element="0.003663003663003663"/>
+                <token string="ANGELA E SANTIAGO" element="0.003663003663003663"/>
+                <token string="DONYA L CHEESMAN" element="0.003663003663003663"/>
+                <token string="MICLELLE C DUCOTY" element="0.003663003663003663"/>
+                <token string="ANNE G SOLLIVAN" element="0.003663003663003663"/>
+                <token string="ALISA M RUDASILL" element="0.003663003663003663"/>
+                <token string="SHALLY WEBSTER" element="0.003663003663003663"/>
+                <token string="ERICK D HOLMES" element="0.003663003663003663"/>
+                <token string="LUC M JONES" element="0.003663003663003663"/>
+                <token string="PABLOS U GASBARRO" element="0.003663003663003663"/>
+                <token string="HARRIETT J TONSTALL" element="0.003663003663003663"/>
+                <token string="AGELEON M HELLER" element="0.003663003663003663"/>
+                <token string="ALICIA B CENTURY" element="0.003663003663003663"/>
+                <token string="JORGE L KILLION" element="0.003663003663003663"/>
+                <token string="ROSALIND N BODNER" element="0.003663003663003663"/>
+                <token string="RAMON L CENTURY" element="0.003663003663003663"/>
+                <token string="DELORES PARK" element="0.003663003663003663"/>
+                <token string="GIANNI E HILLEGAS" element="0.003663003663003663"/>
+                <token string="HUSSEINKHEL" element="0.003663003663003663"/>
+                <token string="COVNELIA M FLOWERS" element="0.003663003663003663"/>
+                <token string="MELISSA J DORSEY" element="0.003663003663003663"/>
+                <token string="JACQUELINE M TREZEVANT" element="0.003663003663003663"/>
+                <token string="PEARL" element="0.003663003663003663"/>
+                <token string="ALEXANDER J WICZALKOWSKI" element="0.003663003663003663"/>
+                <token string=" L BURGERSS" element="0.003663003663003663"/>
+                <token string="MICHELE M GREENE" element="0.003663003663003663"/>
+                <token string="LATISHA D CONRON" element="0.003663003663003663"/>
+                <token string="CLEARANCE LESKO" element="0.003663003663003663"/>
+                <token string="DOROTHEA K LASSITER" element="0.003663003663003663"/>
+                <token string="LENORA S SKANOS" element="0.003663003663003663"/>
+                <token string="ADMAN L CAVAJEL" element="0.003663003663003663"/>
+                <token string="DEWIGHT B MALDONADO" element="0.003663003663003663"/>
+                <token string="BIANCA A GEHRING" element="0.003663003663003663"/>
+                <token string="ELLA STAPPY" element="0.003663003663003663"/>
+                <token string="JAMAR F POLLACK" element="0.003663003663003663"/>
+                <token string="LEO E ALSTIN" element="0.003663003663003663"/>
+                <token string="ANA C HOERRLING" element="0.003663003663003663"/>
+                <token string="JAMEL C BODNER" element="0.003663003663003663"/>
+                <token string="GERARDO D DEGRAENED" element="0.003663003663003663"/>
+                <token string="RANDOLPH E TORRES" element="0.003663003663003663"/>
+                <token string="LASSITER" element="0.003663003663003663"/>
+                <token string="TERRAN L 1RUMOR" element="0.003663003663003663"/>
+                <token string="ROSELINE D CARR" element="0.003663003663003663"/>
+                <token string="SEKOV L COSGRAVE" element="0.003663003663003663"/>
+                <token string=" D CAMPBELL" element="0.003663003663003663"/>
+                <token string="CHARLES P HUBRIC" element="0.003663003663003663"/>
+                <token string="BEN LESKO" element="0.003663003663003663"/>
+                <token string=" S RUDASILL" element="0.003663003663003663"/>
+                <token string="MARY C TONSTALL" element="0.003663003663003663"/>
+                <token string="LEANNE GASBARRO" element="0.003663003663003663"/>
+                <token string="MABLE MALDONADO" element="0.003663003663003663"/>
+                <token string="LOUIS W FAIRIE" element="0.003663003663003663"/>
+                <token string="BUTLER" element="0.003663003663003663"/>
+                <token string="WESTLEY M FISCHGRUND" element="0.003663003663003663"/>
+                <token string=" L MATKIN" element="0.003663003663003663"/>
+                <token string="CHARLES A SWAGOI" element="0.003663003663003663"/>
+                <token string="ROSETTA L BODNER" element="0.003663003663003663"/>
+                <token string="JANICE HILLEGAS" element="0.003663003663003663"/>
+                <token string=" L GREEN" element="0.003663003663003663"/>
+                <token string="MICHEAL T HOLLEY" element="0.003663003663003663"/>
+                <token string="WILEY A BELTRAN" element="0.003663003663003663"/>
+                <token string="HILLIARD E ROTHSHILD" element="0.003663003663003663"/>
+                <token string=" J CHISOLM" element="0.003663003663003663"/>
+                <token string="HOLMES" element="0.003663003663003663"/>
+                <token string="TYLER DUFFY" element="0.003663003663003663"/>
+                <token string=" L BURGERSS" element="0.003663003663003663"/>
+                <token string="GLURIA JOHNS" element="0.003663003663003663"/>
+                <token string="ARCHIE HUSSEINKHEL" element="0.003663003663003663"/>
+                <token string="JORGE L RUSSALL" element="0.003663003663003663"/>
+                <token string="OLIVIA E MACCIO" element="0.003663003663003663"/>
+                <token string="FRANKLIN K DOMINGUEZ" element="0.003663003663003663"/>
+                <token string="ENDA L DORSEY" element="0.003663003663003663"/>
+                <token string="WAYNE H VALDES" element="0.003663003663003663"/>
+                <token string="KENDALL BARRETT" element="0.003663003663003663"/>
+                <token string="HAILLE E HILLEGAS" element="0.003663003663003663"/>
+                <token string="TYLER D DUFFY" element="0.003663003663003663"/>
+                <token string="DANYCE L FISCHGRUND" element="0.003663003663003663"/>
+                <token string="MALISSA L CAVAJEL" element="0.003663003663003663"/>
+                <token string="MALENDES" element="0.003663003663003663"/>
+                <token string="TRAINA A HOERRLING" element="0.003663003663003663"/>
+                <token string="SHEILA SINEFIELD" element="0.003663003663003663"/>
+                <token string=" A HELLER" element="0.003663003663003663"/>
+                <token string="SILYIA M SPINWATO" element="0.003663003663003663"/>
+                <token string=" C PEARL" element="0.003663003663003663"/>
+                <token string="ANTONINO E CAMPBELL" element="0.003663003663003663"/>
+                <token string="RUTH BELTRAN" element="0.003663003663003663"/>
+                <token string="JENIFFER T HOLLOWAY" element="0.003663003663003663"/>
+                <token string="LAWRENCE CHAMBARS" element="0.003663003663003663"/>
+                <token string="JEANNE L FENSTER-PENNE" element="0.003663003663003663"/>
+                <token string="ANDREW E POLLACK" element="0.003663003663003663"/>
+                <token string="RALPAL T GECKLE" element="0.003663003663003663"/>
+                <token string="NICHOLE L TONSTALL" element="0.003663003663003663"/>
+                <token string="MATTHEW EASLEY" element="0.003663003663003663"/>
+                <token string="MICHEAL A DECANAY" element="0.003663003663003663"/>
+                <token string="ROSE ALSTIN" element="0.003663003663003663"/>
+                <token string="DOREN J HELLER" element="0.003663003663003663"/>
+                <token string=" A MALENDES" element="0.003663003663003663"/>
+                <token string="LUCILLE W HOLMES" element="0.003663003663003663"/>
+                <token string="GISELA M BELTRAN" element="0.003663003663003663"/>
+                <token string="MYRIAM S RUSSALL" element="0.003663003663003663"/>
+                <token string="KATHERINE A HOLLEY" element="0.003663003663003663"/>
+                <token string="FRANKLIN E STAPPY" element="0.003663003663003663"/>
+                <token string="JEFF J BELTRAN" element="0.003663003663003663"/>
+                <token string="CHERYL ELLIOTT" element="0.003663003663003663"/>
+                <token string="MARIEA A HALLORAW" element="0.003663003663003663"/>
+                <token string="DIANE M HULLEY" element="0.003663003663003663"/>
+                <token string="ROSA C HILLEGAS" element="0.003663003663003663"/>
+                <token string="FLAINE A ELLIOTT" element="0.003663003663003663"/>
+                <token string="MICHAEL C GENE" element="0.003663003663003663"/>
+                <token string="CAROLYN L BODNER" element="0.003663003663003663"/>
+                <token string="FREDRICK W KELLEY" element="0.003663003663003663"/>
+                <token string="KELLY" element="0.003663003663003663"/>
+                <token string="SARAH L CAVAJEL" element="0.003663003663003663"/>
+                <token string=" J ROTHSHILD" element="0.003663003663003663"/>
+                <token string="TEGIRA J HELLER" element="0.003663003663003663"/>
+                <token string="ISRAEL M SWAGOI" element="0.003663003663003663"/>
+                <token string="ELMER A BELTRAN" element="0.003663003663003663"/>
+                <token string="THRESA VALDES" element="0.003663003663003663"/>
+                <token string="WELLS PAINE" element="0.003663003663003663"/>
+                <token string="LELIA LASSITER" element="0.003663003663003663"/>
+                <token string="GERAR SQUILLANTE" element="0.003663003663003663"/>
+                <token string="LAWRENCE C BELTRAN" element="0.003663003663003663"/>
+                <token string="ANTONIO B KLEIMAN" element="0.003663003663003663"/>
+                <token string="GUILLERMO E CRIDER" element="0.003663003663003663"/>
+                <token string="JAMIE E HILLEGAS" element="0.003663003663003663"/>
+                <token string="ASHELY E KEARNEY" element="0.003663003663003663"/>
+                <token string="NATHANIAL N GLICK" element="0.003663003663003663"/>
+                <token string="DARYL A MORGAN" element="0.003663003663003663"/>
+                <token string="MICHEAL ALSTIN" element="0.003663003663003663"/>
+                <token string="REYAN RAGLIN" element="0.003663003663003663"/>
+            </list>
+            <name>TYLER DUFFY</name>
+            <passed>false</passed>
+            <query>GERALDINE L DUFFY-TYLER</query>
+            <time>17071</time>
+        </result>
+    </searchResults>
+</ns2:dataset>

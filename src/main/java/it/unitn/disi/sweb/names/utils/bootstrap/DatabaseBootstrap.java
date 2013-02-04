@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service("dbBootstrap")
@@ -101,9 +103,10 @@ public class DatabaseBootstrap {
 	void storeHistoricalTitles(String fileName) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		String line = null;
-
 		TriggerWordType title = twtDao.findByNameEType("HistoricalTitle".toLowerCase(),
 				etypeManager.getEtype(EtypeName.PERSON));
+
+		System.out.println(title.getType());
 
 		while ((line = reader.readLine()) != null) {
 			String[] token = line.split("\t");
@@ -196,6 +199,15 @@ public class DatabaseBootstrap {
 		}
 		reader.close();
 	}
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"META-INF/applicationContext.xml");
+		DatabaseBootstrap db = context.getBean(DatabaseBootstrap.class);
+//		db.bootstrapHistoricalTitles();
+		db.bootstrapLocationQualifier();
+		db.bootstrapTitles();
+		db.bootstrapToponym();
+	}
 	public void bootstrapAll() throws IOException {
 
 		storeEtypeList("src/main/resources/INIT-DATA/EtypeList");
@@ -208,7 +220,7 @@ public class DatabaseBootstrap {
 
 		storePersonTitles("src/main/resources/INIT-DATA/PersonTitles");
 
-		storeHistoricalTitles("src/main/resources/INIT-DATA/HistoricalTitles");
+		storeHistoricalTitles("src/main/resources/INIT-DATA/HistorticalTitles");
 		storeLocationQualifiers("src/main/resources/INIT-DATA/LocationQualifier");
 	}
 
@@ -222,7 +234,7 @@ public class DatabaseBootstrap {
 
 	public void bootstrapLocationQualifier() {
 		try {
-			storeEtypeList("src/main/resources/INIT-DATA/LocationQualifier");
+			storeLocationQualifiers("src/main/resources/INIT-DATA/LocationQualifier");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -238,7 +250,7 @@ public class DatabaseBootstrap {
 
 	public void bootstrapHistoricalTitles() {
 		try {
-			storePersonTitles("src/main/resources/INIT-DATA/HistoricalTitles");
+			storeHistoricalTitles("src/main/resources/INIT-DATA/HistoricalTitles");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

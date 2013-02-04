@@ -68,10 +68,15 @@ public class NameElementDAOImpl implements NameElementDAO {
 
 	@Override
 	public NameElement findByNameEType(String name, EType etype) {
-		return em
+		List<NameElement> el= em
 				.createNamedQuery("NameElement.byNameEtype", NameElement.class)
 				.setParameter("eType", etype).setParameter("name", name)
-				.getSingleResult();
+				.getResultList();
+		if (el == null || el.size() == 0) {
+			return null;
+		} else {
+			return el.get(0);
+		}
 	}
 
 	@Override

@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -34,7 +36,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Component("nameManager")
 public class NameManagerImpl implements NameManager {
@@ -53,11 +54,47 @@ public class NameManagerImpl implements NameManager {
 	@Override
 	public FullName createFullName(String name,
 			List<Entry<String, Object>> tokens, NamedEntity en) {
-		if (en == null || tokens == null || name == null || name.isEmpty()
-				|| tokens.isEmpty()) {
+		FullName fullname = retrieveExistingName(name, en);
+		if (fullname != null) {
+			return fullname;
+		}
+
+		if (tokens == null || tokens.isEmpty()) {
 			return null;
 		}
 
+		fullname = buildFullName(name, tokens);
+		fullname.setEntity(en);
+
+		return fullnameDao.save(fullname);
+	}
+
+	@Override
+	public FullName createFullName(String name, NamedEntity en) {
+		FullName fullname = retrieveExistingName(name, en);
+		if (fullname != null) {
+			return fullname;
+		}
+		fullname = buildFullName(name, en.getEType());
+		fullname.setEntity(en);
+		return fullnameDao.save(fullname);
+	}
+
+	/**
+	 * search in the system database if there is already a full name with the
+	 * same name and entity. If this is the case, return the database object,
+	 * otherwise null
+	 *
+	 * @param name
+	 * @param en
+	 * @return
+	 */
+	private FullName retrieveExistingName(String name, NamedEntity en) {
+		if (en == null || name == null || name.isEmpty()) {
+			return null;
+		}
+
+		// search for fullnames with the same name (to compare)
 		List<FullName> foundList = find(name, SearchType.TOCOMPARE);
 
 		// if the name is already saved in the database, return the stored
@@ -68,87 +105,160 @@ public class NameManagerImpl implements NameManager {
 			}
 		}
 
+		// if nothing is found, return null
+		return null;
+	}
+
+	@Override
+	public FullName buildFullName(String name, EType e) {
+		return buildFullName(name, parseFullName(name, e));
+	}
+
+	private FullName buildFullName(String name,
+			List<Entry<String, Object>> tokens) {
+		if (tokens == null || name == null || name.isEmpty()
+				|| tokens.isEmpty()) {
+			return null;
+		}
+
 		FullName fullname = new FullName();
 		fullname.setName(name);
-		fullname.setEntity(en);
 
 		fullname = buildFullName(fullname, tokens);
 
 		fullname.setNameToCompare(getNameToCompare(fullname));
 		fullname.setNameNormalized(getNameNormalized(fullname));
 		fullname.setnGramCode(StringCompareUtils.computeNGram(name));
-		FullName returned = fullnameDao.update(fullname);
-
-		return returned;
-	}
-
-	@Override
-	public FullName createFullName(String name, NamedEntity en) {
-		// TODO edit with new methods
-		// call parseFullName
-		// and then create fullname(list tokens)
-
-		if (en == null || name == null || name.equals("")) {
-			return null;
-		}
-
-		List<Entry<String, Object>> tokens = parseFullName(name, en.getEType());
-		return createFullName(name, tokens, en);
-		//
-		// List<FullName> foundList = find(name, SearchType.TOCOMPARE);
-		//
-		// for (FullName f : foundList) {
-		// if (en.equals(f.getEntity())) {
-		// return f;
-		// }
-		// }
-		// FullName fullname = new FullName();
-		// fullname.setName(name);
-		// fullname.setEntity(en);
-		//
-		// fullname = parse(fullname, en.getEType());
-		//
-		// fullname.setNameToCompare(getNameToCompare(fullname));
-		// fullname.setNameNormalized(getNameNormalized(fullname));
-		// fullname.setnGramCode(StringCompareUtils.computeNGram(name));
-		// FullName returned = fullnameDao.update(fullname);
-		//
-		// return returned;
+		return fullname;
 	}
 
 	@Override
 	public List<Entry<String, Object>> parseFullName(String name, EType e) {
 		List<Entry<String, Object>> result = new ArrayList<>();
+		List<String> laterTokens = new ArrayList<>();
+		Set<NameElement> assigned = new HashSet<>();
 
 		// Tokenize
 		String[] tokens = StringCompareUtils.generateTokens(name);
 
 		// for each token
 		for (String tok : tokens) {
-			Entry<String, Object> token = new AbstractMap.SimpleEntry(tok, null);
+			boolean assignLater = false;
+			boolean chooseNameElement = false;
+
+			Entry<String, Object> token = new AbstractMap.SimpleEntry<String, Object>(
+					tok, null);
 
 			// is Individual Name?
 			Entry<NameElement, Double> nameElement = chooseNameElement(tok, e);
 
 			// is trigger word?
-			Entry<TriggerWordType, Double> triggerElement = chooseTriggerWordElement(
+			Entry<TriggerWord, Double> triggerElement = chooseTriggerWordElement(
 					tok, e);
 
-			// choose one with highest probability
-			if (nameElement.getValue() >= triggerElement.getValue()) {
-				token.setValue(nameElement.getKey());
-			} else {
-				token.setValue(triggerElement.getKey());
+			if (nameElement == null && triggerElement == null) {
+				// if both search failed, then maybe the token could be a
+				// misspelled token
+				List<Object> element = elementManager.findMisspellings(tok);
+
+				// if this is the case, then add the new token with the selected
+				// element type, but maintain its spelling
+				if (element.size() > 0) {
+					Object first = element.get(0);
+					if (first instanceof IndividualName) {
+						nameElement = new AbstractMap.SimpleEntry<NameElement, Double>(
+								((IndividualName) first).getNameElement(), 1.0);
+					} else if (first instanceof TriggerWord) {
+						triggerElement = new AbstractMap.SimpleEntry<TriggerWord, Double>(
+								(TriggerWord) first, 1.0);
+					}
+				} else {
+					// add to a list of elements that will be assigned later
+					laterTokens.add(tok);
+					assignLater = true;
+				}
+
 			}
 
-			// add token to list
-			result.add(token);
+			// choose one with highest probability and not null
+			if (!assignLater) {
+				if (nameElement != null) {
+					if (triggerElement != null) {
+						if (nameElement.getValue() >= triggerElement.getValue()) {
+							chooseNameElement = true;
+						} else {
+							chooseNameElement = false;
+						}
+					} else {
+						chooseNameElement = true;
+					}
+				} else {
+					chooseNameElement = false;
+				}
+
+				if (chooseNameElement) {
+					token.setValue(nameElement.getKey());
+					assigned.add(nameElement.getKey());
+				} else {
+					token.setValue(triggerElement.getKey());
+				}
+				// add token to list
+				result.add(token);
+			}
+
+		}
+
+		result.addAll(assignNameTokens(laterTokens, assigned, e));
+		return result;
+	}
+
+	/**
+	 * function called after {@link #parseFullName(String, EType) parseFullName}
+	 * method. It assign a {@link NameElement} to tokens not yet assigned. The
+	 * NameElement choice is made based in a heuristics: assign first name
+	 * elements not yet assigned
+	 *
+	 * @param tokensToAssign
+	 *            list of tokens not yet assigned
+	 * @param assigned
+	 *            name elements already used in the name
+	 * @param etype
+	 *            EType of the name
+	 * @return pair of tokens, NameElement assigned
+	 */
+	private List<Entry<String, Object>> assignNameTokens(
+			List<String> tokensToAssign, Set<NameElement> assigned, EType etype) {
+		List<Entry<String, Object>> result = new ArrayList<>();
+
+		// retrieves all name elements for the given etype
+		Set<NameElement> typeElements = new HashSet<>(
+				elementManager.findNameElement(etype));
+		// removes already assigned NameElements
+		for (NameElement element : assigned) {
+			typeElements.remove(element);
+		}
+
+		Iterator<NameElement> iterator;
+		// for each not assigned token
+		for (String token : tokensToAssign) {
+			NameElement el;
+			iterator = typeElements.iterator();
+
+			// if there are yet name element to assign, use that
+			if (iterator.hasNext()) {
+				el = iterator.next();
+				typeElements.remove(el);
+			} else {
+				// otherwise find the most probable name element
+				el = getNewNameElement(etype);
+			}
+			result.add(new AbstractMap.SimpleEntry<String, Object>(token, el));
 		}
 		return result;
 	}
 
 	/**
-	 * based on heuristics, finds the most probable triggerwork element that
+	 * based on heuristics, finds the most probable triggerword element that
 	 * corresponds to the given string and return it with a measure of
 	 * confidence
 	 *
@@ -156,18 +266,21 @@ public class NameManagerImpl implements NameManager {
 	 * @param e
 	 * @return
 	 */
-	private Entry<TriggerWordType, Double> chooseTriggerWordElement(String tok,
+	private Entry<TriggerWord, Double> chooseTriggerWordElement(String tok,
 			EType etype) {
-		// TODO Auto-generated method stub
-		// TODO add heristics and statistics
-		List<TriggerWord> listTW = twDao.findByTriggerWordEtype(tok, etype);
+
+		// search for trigger words of of the given etype
+		List<TriggerWord> listTW = twDao.findByTriggerWordEtype(
+				tok.toLowerCase(), etype);
+
+		// TODO order the list according to some heuristic
+
+		// returns the first one
 		if (listTW != null && listTW.size() > 0) {
-			return new AbstractMap.SimpleEntry(listTW.get(0), 1.0);
+			return new AbstractMap.SimpleEntry<TriggerWord, Double>(
+					listTW.get(0), Double.MAX_VALUE);
 		}
-		elementManager.findTriggerWordType(etype).get(0);
-		// return new AbstractMap.SimpleEntry( ,1.0);
-		return new AbstractMap.SimpleEntry(elementManager.findTriggerWordType(
-				etype).get(0), 1.0);
+		return null;
 	}
 
 	/**
@@ -182,8 +295,12 @@ public class NameManagerImpl implements NameManager {
 	private Entry<NameElement, Double> chooseNameElement(String tok, EType etype) {
 		Entry<NameElement, Double> result = null;
 		int max = 0;
+
+		// TODO add recognition NUMERI ROMANI
+
 		// for each namelement in etype
 		for (NameElement el : elementManager.findNameElement(etype)) {
+			// retrives its frequency of token as specific NameElement
 			int freq = elementManager.frequency(tok, el);
 			if (freq > max) {
 				max = freq;
@@ -191,15 +308,7 @@ public class NameManagerImpl implements NameManager {
 						new Double(freq));
 			}
 		}
-		if (max == 0) {
-			// improve search with misspellings
-			// TODO
-
-			if (max == 0) {
-				result = new AbstractMap.SimpleEntry<NameElement, Double>(
-						getNewNameElement(etype, 0), 1.0);
-			}
-		}
+		// returns most probable NameElement
 		return result;
 	}
 
@@ -226,11 +335,28 @@ public class NameManagerImpl implements NameManager {
 		return getNameModified(fullname, true, false);
 	}
 
+	/**
+	 * constructs the name modified according to the input parameters. The
+	 * function can construct the nameToCompare or the nameNormalized depending
+	 * on the value of {@code normalized} and {@code compare}.
+	 *
+	 * NameToCompare is the name without trigger word which are not comparable.
+	 * NameNormalized is the name with tokens ordered alphabetically
+	 *
+	 * @param fullname
+	 * @param normalized
+	 *            flag for computing the name normalized
+	 * @param compare
+	 *            flag for computing the name to compare
+	 * @return string representing either the name to compare or name normalized
+	 */
 	private String getNameModified(FullName fullname, boolean normalized,
 			boolean compare) {
 		String name = "";
 		Collection<NameToken> a = fullname.getNameTokens();
 		Collection<TriggerWordToken> b = fullname.getTriggerWordTokens();
+
+		// determine the maximum number of tokens
 		int max = 0;
 		if (a != null) {
 			max = a.size();
@@ -238,12 +364,16 @@ public class NameManagerImpl implements NameManager {
 				max += b.size();
 			}
 		}
+
+		// place name tokens and trigger word tokens in the proper position
 		String[] tokenArray = new String[max];
 		for (NameToken n : fullname.getNameTokens()) {
 			tokenArray[n.getPosition()] = n.getIndividualName().getName();
 		}
 		if (fullname.getTriggerWordTokens() != null) {
 			for (TriggerWordToken t : fullname.getTriggerWordTokens()) {
+
+				// for name to compare, adds only trigger words comparable
 				if (compare && t.getTriggerWord().getType().isComparable()
 						|| !compare) {
 					tokenArray[t.getPosition()] = t.getTriggerWord()
@@ -254,6 +384,7 @@ public class NameManagerImpl implements NameManager {
 
 		List<String> tokens = Arrays.asList(tokenArray);
 
+		// for name normalized, order tokens
 		if (normalized) {
 			Collections.sort(tokens);
 		}
@@ -290,116 +421,70 @@ public class NameManagerImpl implements NameManager {
 	 */
 	private FullName buildFullName(FullName name,
 			List<Entry<String, Object>> tokens) {
+		int position = 0;
 		for (int i = 0; i < tokens.size(); i++) {
 			Entry<String, Object> token = tokens.get(i);
 
-			// token is a name token
-			if (token.getValue() instanceof NameElement) {
-				NameToken nt = new NameToken();
-				nt.setFullName(name);
-
-				// search for the individual name in the database
-				IndividualName indName = nameDao.findByNameElement(
-						token.getKey(), (NameElement) token.getValue());
-				// if new individual name, create a new one, otherwise add the
-				// retrieved from db
-				nt.setIndividualName(indName != null
-						? indName
-						: createIndividualName(token.getKey(),
-								(NameElement) token.getValue()));
-				nt.setPosition(i);
-				name.addNameToken(nt);
-
-				// token is a trigger word token
-			} else if (token.getValue() instanceof TriggerWordType) {
-				TriggerWordToken tk = new TriggerWordToken();
-				tk.setFullName(name);
-				tk.setPosition(i);
-
-				TriggerWord t = twDao.findByTriggerWordType(token.getKey(),
-						(TriggerWordType) token.getValue());
-				tk.setTriggerWord(t != null ? t : elementManager
-						.createTriggerWord(token.getKey(),
-								(TriggerWordType) token.getValue()));
-				name.addTriggerWordToken(tk);
-			}
-		}
-		return name;
-	}
-
-	// specificare tokenizzazione euristica (con behind the name, census)
-	protected FullName parse(FullName fullname, EType eType) {
-		String name = fullname.getName();
-
-		String[] tokens = StringCompareUtils.generateTokens(name);
-		int position = 0;
-		for (String s : tokens) {
-			if (!s.equals(" ")) {
-				// check if it is a known name
-				List<IndividualName> listName = nameDao.findByNameEtype(
-						s.toLowerCase(), eType);
-				if (listName == null || listName.isEmpty()) {
-					listName = nameDao.findByName(s);
-				}
-				if (listName != null && listName.size() > 0) {
+			if (token.getKey() != null) {
+				// token is a name token
+				if (token.getValue() instanceof NameElement) {
 					NameToken nt = new NameToken();
-					nt.setFullName(fullname);
-					nt.setIndividualName(listName.get(0));
+					nt.setFullName(name);
+
+					// search for the individual name in the database
+					IndividualName indName = nameDao.findByNameElement(token
+							.getKey().toLowerCase(), (NameElement) token
+							.getValue());
+					// if new individual name, create a new one, otherwise add
+					// the
+					// retrieved from db
+					nt.setIndividualName(indName != null
+							? indName
+							: createIndividualName(token.getKey(),
+									(NameElement) token.getValue()));
 					nt.setPosition(position);
-					fullname.addNameToken(nt);
-				} else {
-					// check if it is a known triggerword
-					List<TriggerWord> listTW = twDao.findByTriggerWordEtype(
-							s.toLowerCase(), eType);
-					if (listTW != null && listTW.size() > 0) {
-						TriggerWordToken twt = new TriggerWordToken();
-						twt.setFullName(fullname);
-						twt.setPosition(position);
-						twt.setTriggerWord(listTW.get(0));
-						fullname.addTriggerWordToken(twt);
-					} else {
-						// add not existing token
-						NameToken nt = new NameToken();
-						nt.setIndividualName(addNewIndividualName(s, eType,
-								position));
-						nt.setFullName(fullname);
-						nt.setPosition(position);
-						fullname.addNameToken(nt);
-					}
+					name.addNameToken(nt);
+
+					// token is a trigger word token
+				} else if (token.getValue() instanceof TriggerWord) {
+					TriggerWordToken tk = new TriggerWordToken();
+					tk.setFullName(name);
+
+					TriggerWord t = (TriggerWord) token.getValue();
+					tk.setTriggerWord(t != null ? t : elementManager
+							.createTriggerWord(token.getKey(),
+									(TriggerWordType) token.getValue()));
+					tk.setPosition(position);
+					name.addTriggerWordToken(tk);
 				}
-				position++;
 			}
+			position++;
+
 		}
-
-		return fullname;
-	}
-
-	private IndividualName addNewIndividualName(String s, EType eType,
-			int position) {
-		IndividualName name = createIndividualName(s,
-				getNewNameElement(eType, position));
-		// addTranslations(name);
 		return name;
 	}
 
 	/**
-	 * check wheter the name in input has some known translations, and if this
+	 * check whether the name in input has some known translations, and if this
 	 * is the case, adds them in the proper table
 	 *
 	 * @param name
 	 */
 	protected void addTranslations(IndividualName name) {
+		// retrieve translation for the name
 		List<String> translationsString = translationManager
 				.findTranslation(name.getName());
 
 		NameElement el = name.getNameElement();
 
+		// adds translation to the name
 		List<IndividualName> translations = new ArrayList<>();
 		for (String s : translationsString) {
 			translations.add(createIndividualName(s, el));
 		}
 		translations.add(name);
 
+		// stores translations
 		for (int i = 0; i < translations.size(); i++) {
 			IndividualName n = translations.get(i);
 			n.addTranslations(translations);
@@ -416,7 +501,16 @@ public class NameManagerImpl implements NameManager {
 		return i;
 	}
 
-	public IndividualName createIndividualName(String name, NameElement el) {
+	/**
+	 * creates and stores a new individual name
+	 *
+	 * @param name
+	 *            string for the name
+	 * @param el
+	 *            NameElement corresponding
+	 * @return stored instance
+	 */
+	private IndividualName createIndividualName(String name, NameElement el) {
 		IndividualName nameDb = nameDao.findByNameElement(name, el);
 		if (nameDb != null) {
 			return nameDb;
@@ -429,7 +523,16 @@ public class NameManagerImpl implements NameManager {
 		return nameDao.save(i);
 	}
 
-	private NameElement getNewNameElement(EType eType, int position) {
+	/**
+	 * returns the NameElement to assign to a token of etype in input. This
+	 * function is used when a token is not recognized as individual name or
+	 * trigger word already in the db, then it will be assigned to the most used
+	 * NameElement depending on the EType
+	 *
+	 * @param eType
+	 * @return name element for not assigned token
+	 */
+	private NameElement getNewNameElement(EType eType) {
 		switch (eType.getEtype()) {
 			case "Location" :
 				return nameElementDao.findByNameEType(
@@ -440,46 +543,22 @@ public class NameManagerImpl implements NameManager {
 			case "Person" :
 				return nameElementDao.findByNameEType(
 						"GivenName".toLowerCase(), eType);
-				// switch (position) {
-				// case 0 :
-				// return nameElementDao.findByNameEType(
-				// "GivenName".toLowerCase(), eType);
-				// case 2 :
-				// return nameElementDao.findByNameEType(
-				// "MiddleName".toLowerCase(), eType);
-				// default :
-				// return nameElementDao.findByNameEType(
-				// "FamilyName".toLowerCase(), eType);
-				// }
 			default :
 				return null;
 		}
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> retrieveVariants(String name, EType etype) {
-
-		// List<NamedEntity> entities = etype != null ? entityManager.find(
-		// name.toLowerCase(), etype) : entityManager.find(name
-		// .toLowerCase());
-		// List<FullName> result = new ArrayList<>();
-		// for (NamedEntity en : entities) {
-		// result.addAll(fullnameDao.findByEntity(en));
-		// }
-
 		return fullnameDao.findVariant(name.toLowerCase(), etype);
-		// return result;
 	}
 
 	@Override
-	@Transactional
 	public FullName find(int id) {
 		return fullnameDao.findById(id);
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> find(String name, EType etype) {
 		if (etype != null) {
 			return fullnameDao.findByNameEtype(name.toLowerCase(), etype);
@@ -489,7 +568,6 @@ public class NameManagerImpl implements NameManager {
 	}
 
 	@Override
-	@Transactional
 	public List<FullName> find(String name) {
 		return fullnameDao.findByName(name.toLowerCase());
 	}
@@ -579,6 +657,16 @@ public class NameManagerImpl implements NameManager {
 		this.translationManager = translationManager;
 	}
 
+	/**
+	 * static function for parsing a string to its tokens structure, which used
+	 * {@link #parseFullName(String, EType) parseFullName} method
+	 *
+	 * @param name
+	 *            string representing a name
+	 * @param etype
+	 *            etype for the name
+	 * @return list of tokens with the corresponding name element or triggerword
+	 */
 	public static List<Entry<String, Object>> parse(String name, EType etype) {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"META-INF/applicationContext.xml");

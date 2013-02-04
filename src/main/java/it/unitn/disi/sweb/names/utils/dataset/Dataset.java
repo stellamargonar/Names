@@ -12,6 +12,7 @@ public class Dataset {
 	private List<Entry> entries;
 	private List<MatchEntry> matchEntries;
 	private List<Result> results;
+	private List<SearchResult> searchResult;
 
 	void addEntry(Entry e) {
 		if (getEntries() == null) {
@@ -45,6 +46,12 @@ public class Dataset {
 		}
 		results.add(r);
 	}
+	void addResult(SearchResult r) {
+		if (searchResult == null) {
+			searchResult = new ArrayList<>();
+		}
+		searchResult.add(r);
+	}
 
 	@XmlElement(name = "entry")
 	public List<Entry> getEntries() {
@@ -69,8 +76,16 @@ public class Dataset {
 	public List<Result> getResults() {
 		return results;
 	}
-
 	public void setResults(List<Result> results) {
 		this.results = results;
+	}
+
+	@XmlElementWrapper(name = "searchResults")
+	@XmlElement(name = "result")
+	public List<SearchResult> getSearchResult() {
+		return searchResult;
+	}
+	public void setSearchResult(List<SearchResult> searchResult) {
+		this.searchResult = searchResult;
 	}
 }

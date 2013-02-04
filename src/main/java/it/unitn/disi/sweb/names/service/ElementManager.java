@@ -50,5 +50,7 @@ public interface ElementManager {
 
 	List<TriggerWord> findTriggerWord(String t);
 
+	TriggerWord findTriggerWord(String t, TriggerWordType type);
+
 	int frequency(String token, NameElement el);
 }

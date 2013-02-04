@@ -9,7 +9,9 @@ import it.unitn.disi.sweb.names.service.NameManager;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -23,7 +25,7 @@ import org.springframework.stereotype.Service;
 public class PersonNamesFrequency {
 
 	private String givennameFile;
-	private String familynameFile;
+	private List<String> familynameFile;
 
 	private NameManager nameManager;
 	private ElementManager elementManager;
@@ -33,18 +35,25 @@ public class PersonNamesFrequency {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"META-INF/applicationContext.xml");
 		PersonNamesFrequency bean = context.getBean(PersonNamesFrequency.class);
-//		bean.extractFamilyNames();
-		bean.extractGivenNames();
+		bean.extractFamilyNames();
+		// bean.extractGivenNames();
 
 	}
 
 	public void extractFamilyNames() {
-		Map<String, String> names = readFromFile(familynameFile);
+		Map<String, String> names = new HashMap<>();
+		for (String filename : familynameFile) {
+			if (!filename.contains("Census")) {
+				names.putAll(readFromFile(filename));
+			}
+		}
 		storeNames(names, "FamilyName");
 	}
 
 	public void extractGivenNames() {
 		Map<String, String> names = readFromFile(givennameFile);
+		storeNames(names, "GivenName");
+		names = readFromFile(givennameFile);
 		storeNames(names, "GivenName");
 	}
 
@@ -99,8 +108,8 @@ public class PersonNamesFrequency {
 		this.givennameFile = givennameFile;
 	}
 
-	@Value("${english.familyname.file}")
+	@Value("${familyname.files}")
 	public void setFamilynameFile(String familynameFile) {
-		this.familynameFile = familynameFile;
+		this.familynameFile = Arrays.asList(familynameFile.split(","));
 	}
 }

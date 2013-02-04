@@ -6,6 +6,7 @@ import it.unitn.disi.sweb.names.model.IndividualName;
 import it.unitn.disi.sweb.names.model.NameElement;
 import it.unitn.disi.sweb.names.model.NameToken;
 import it.unitn.disi.sweb.names.model.TriggerWord;
+import it.unitn.disi.sweb.names.model.TriggerWordStatistic;
 import it.unitn.disi.sweb.names.model.TriggerWordToken;
 import it.unitn.disi.sweb.names.model.TriggerWordType;
 import it.unitn.disi.sweb.names.repository.IndividualNameDAO;
@@ -15,9 +16,12 @@ import it.unitn.disi.sweb.names.repository.TriggerWordDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTokenDAO;
 import it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO;
 import it.unitn.disi.sweb.names.service.ElementManager;
+import it.unitn.disi.sweb.names.service.NameMatch;
 import it.unitn.disi.sweb.names.utils.StringCompareUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,12 +38,16 @@ public class ElementManagerImpl implements ElementManager {
 	private TriggerWordDAO tDao;
 	private NameTokenDAO nameTokenDao;
 	private TriggerWordTokenDAO twTokenDao;
+	private NameMatch nameMatch;
 
+	@Autowired
+	public void setNameMatch(NameMatch nameMatch) {
+		this.nameMatch = nameMatch;
+	}
 	@Autowired
 	public void setNameDao(NameElementDAO nameDao) {
 		this.nameDao = nameDao;
 	}
-
 	@Autowired
 	public void setTwDao(TriggerWordTypeDAO twDao) {
 		this.twDao = twDao;
@@ -92,11 +100,23 @@ public class ElementManagerImpl implements ElementManager {
 
 		List<Object> result = new ArrayList<>();
 		if (names != null) {
-			result.addAll(names);
+			for (IndividualName i : names) {
+				if (nameMatch.stringSimilarity(s, i.getName(), null) > 0) {
+					result.add(i);
+				}
+			}
 		}
 		if (words != null) {
-			result.addAll(words);
+			for (TriggerWord t : words) {
+				if (nameMatch.stringSimilarity(s, t.getTriggerWord(), null) > 0) {
+					result.add(t);
+				}
+			}
 		}
+
+		// Sort by frequency
+		Collections.sort(result, new FrequencyComparator());
+
 		return result;
 	}
 
@@ -150,4 +170,49 @@ public class ElementManagerImpl implements ElementManager {
 		}
 	}
 
+	private class FrequencyComparator implements Comparator<Object> {
+
+		@Override
+		public int compare(Object o1, Object o2) {
+			if (o1 == null) {
+				if (o2 == null) {
+					return 0;
+				} else {
+					return -1;
+				}
+			} else {
+				if (o2 == null) {
+					return 1;
+				}
+
+				// both not null
+				int f1 = retrieveFrequency(o1);
+				int f2 = retrieveFrequency(o2);
+				return f1 - f2;
+			}
+		}
+
+		private int retrieveFrequency(Object o) {
+			int f = 0;
+			if (o instanceof IndividualName) {
+				f = ((IndividualName) o).getFrequency();
+			} else if (o instanceof TriggerWord) {
+				Set<TriggerWordStatistic> stat = ((TriggerWord) o)
+						.geteTypeStats();
+
+				// TODO does not work
+				// if (stat != null) {
+				// for (TriggerWordStatistic s : stat) {
+				// f += s.getFrequency();
+				// }
+				// }
+			}
+			return f;
+		}
+	}
+
+	@Override
+	public TriggerWord findTriggerWord(String t, TriggerWordType type) {
+		return tDao.findByTriggerWordType(t.toLowerCase(), type);
+	}
 }

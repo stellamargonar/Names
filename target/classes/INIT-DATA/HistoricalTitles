@@ -1,4 +1,5 @@
-San	Saint	Santo	Santa	Sant	St	S.
+San	Saint	Santo	Santa	Sant	St	S
+Beato	Blessed
 Prince
 Princess
 Archduke
@@ -19,8 +20,8 @@ Lord
 Lady
 Emperor
 Empress
-King
-Queen
+King	Re
+Queen	Regina	Dronning
 Tsar
 Tsarina
 Leader

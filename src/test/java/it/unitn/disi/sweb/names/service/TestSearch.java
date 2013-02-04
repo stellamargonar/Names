@@ -4,9 +4,9 @@ import it.unitn.disi.sweb.names.model.FullName;
 import it.unitn.disi.sweb.names.model.NamedEntity;
 import it.unitn.disi.sweb.names.model.UsageStatistic;
 import it.unitn.disi.sweb.names.repository.UsageStatisticsDAO;
-import it.unitn.disi.sweb.names.utils.Pair;
 
 import java.util.List;
+import java.util.Map;
 
 import junit.framework.TestCase;
 
@@ -169,7 +169,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch3() {
-		List<Pair<String, Double>> result = nameSearch.nameSearch("roman");
+		List<Map.Entry<String, Double>> result = nameSearch.nameSearch("roman");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
 		assertTrue(contains("Roma", result));
@@ -179,7 +179,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch4() {
-		List<Pair<String, Double>> result = nameSearch.nameSearch("roma");
+		List<Map.Entry<String, Double>> result = nameSearch.nameSearch("roma");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
 		assertTrue(contains("Rome", result));
@@ -189,7 +189,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch5() {
-		List<Pair<String, Double>> result = nameSearch.nameSearch("rom");
+		List<Map.Entry<String, Double>> result = nameSearch.nameSearch("rom");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
 		assertTrue(contains("Roma", result));
@@ -198,7 +198,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch6() {
-		List<Pair<String, Double>> result = nameSearch.nameSearch("aroma");
+		List<Map.Entry<String, Double>> result = nameSearch.nameSearch("aroma");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
 		assertTrue(contains("Roma", result));
@@ -207,10 +207,10 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch7() {
-		List<Pair<String, Double>> result =nameSearch.nameSearch("");
+		List<Map.Entry<String, Double>> result =nameSearch.nameSearch("");
 		assertNotNull(result);
-		for (Pair<String,Double>p: result) {
-			System.out.println(p.key);
+		for (Map.Entry<String,Double>p: result) {
+			System.out.println(p.getKey());
 		}
 		assertTrue(result.isEmpty());
 
@@ -218,7 +218,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch8() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Giunchiglia");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -228,7 +228,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch9() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Prof Giunchiglia");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -238,7 +238,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch10() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Giunchiglia Fausto");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -248,7 +248,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch11() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Roma As");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -259,7 +259,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch12() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("San Pietro piazza");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -269,7 +269,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch13() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Fasuto Giunchiglia");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -279,7 +279,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch14() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Santo Pietro Piaza");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -289,7 +289,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch15() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Ramano d0eZelino");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -299,7 +299,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch16() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Santo Pietro");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -311,7 +311,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch17() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Piazza");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -321,7 +321,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch18() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("Piaza");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -331,7 +331,7 @@ public class TestSearch extends TestCase {
 
 	@Test
 	public void testSearch19() {
-		List<Pair<String, Double>> result = nameSearch
+		List<Map.Entry<String, Double>> result = nameSearch
 				.nameSearch("santo petro");
 		assertNotNull(result);
 		assertTrue(result.size() > 0);
@@ -340,10 +340,10 @@ public class TestSearch extends TestCase {
 		assertTrue(contains("San Pietro in Vincoli", result));
 	}
 
-	private boolean contains(String s, List<Pair<String, Double>> result) {
+	private boolean contains(String s, List<Map.Entry<String, Double>> result) {
 		boolean found = false;
-		for (Pair<String, Double> p : result) {
-			if (p.key.equals(s)) {
+		for (Map.Entry<String, Double> p : result) {
+			if (p.getKey().equals(s)) {
 				found = true;
 			}
 		}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<BugCollection version="2.0.1" sequence="0" timestamp="1357751980000" analysisTimestamp="1357754026060" release="">
+<BugCollection version="2.0.1" sequence="0" timestamp="1359556222000" analysisTimestamp="1359556239653" release="">
   <Project>
     <Jar>/Users/stella/Documents/Programming/workspace/names/target/classes</Jar>
     <AuxClasspathEntry>/Users/stella/.m2/repository/org/hibernate/hibernate-core/4.1.9.Final/hibernate-core-4.1.9.Final.jar</AuxClasspathEntry>
@@ -37,28 +37,325 @@
     <AuxClasspathEntry>/Users/stella/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar</AuxClasspathEntry>
     <AuxClasspathEntry>/Users/stella/.m2/repository/cglib/cglib/2.2/cglib-2.2.jar</AuxClasspathEntry>
     <AuxClasspathEntry>/Users/stella/.m2/repository/asm/asm/3.1/asm-3.1.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs3115820668147764869.jar</AuxClasspathEntry>
-    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs8363542771291233832.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/org/apache/poi/poi/3.9/poi-3.9.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/Users/stella/.m2/repository/commons-codec/commons-codec/1.5/commons-codec-1.5.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs6325270591233259847.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/var/folders/26/_3shcd7j45j4wgv623_sgf7r0000gn/T/findbugs8624167105838911527.jar</AuxClasspathEntry>
     <SrcDir>/Users/stella/Documents/Programming/workspace/names/src/main/java</SrcDir>
     <WrkDir>/Users/stella/Documents/Programming/workspace/names/target</WrkDir>
   </Project>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE" instanceHash="579363a590f051f99830c16399d82e41" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to stat in it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator.retrieveFrequency(Object)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator" start="174" end="211" sourcefile="ElementManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java">
+        <Message>At ElementManagerImpl.java:[lines 174-211]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator" name="retrieveFrequency" signature="(Ljava/lang/Object;)I" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator" start="197" end="211" startBytecode="0" endBytecode="18" sourcefile="ElementManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator.retrieveFrequency(Object)</Message>
+    </Method>
+    <LocalVariable name="stat" register="3" pc="35" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named stat</Message>
+    </LocalVariable>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator" primary="true" start="201" end="201" startBytecode="34" endBytecode="34" sourcefile="ElementManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java">
+      <Message>At ElementManagerImpl.java:[line 201]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="stat"/>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE" instanceHash="6901c52c1d52aa22033f118dd6f4a59a" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="17">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to combinations in it.unitn.disi.sweb.names.service.impl.NameMatchImpl.pairByBestCombination(List, List)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="pairByBestCombination" signature="(Ljava/util/List;Ljava/util/List;)Ljava/util/Map;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="421" end="431" startBytecode="0" endBytecode="44" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.pairByBestCombination(List, List)</Message>
+    </Method>
+    <LocalVariable name="combinations" register="4" pc="101" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named combinations</Message>
+    </LocalVariable>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="429" end="429" startBytecode="99" endBytecode="99" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 429]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="combinations"/>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="4f0ffb78217debaed4cb66ce77c8a889" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.FASTTESTING from instance method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setFastTesting(boolean)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="setFastTesting" signature="(Z)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="713" end="714" startBytecode="0" endBytecode="60" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setFastTesting(boolean)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="FASTTESTING" signature="Z" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>In NameMatchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.FASTTESTING</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="713" end="713" startBytecode="1" endBytecode="1" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 713]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="275d3bcdff7163efc5ced1d57080f6d8" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.MAXLENGTHDIFFERENCE from instance method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setMaxLengthDifference(int)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="setMaxLengthDifference" signature="(I)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="695" end="696" startBytecode="0" endBytecode="60" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setMaxLengthDifference(int)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="MAXLENGTHDIFFERENCE" signature="I" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>In NameMatchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.MAXLENGTHDIFFERENCE</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="695" end="695" startBytecode="1" endBytecode="1" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 695]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="1be9bd77281255b5395f98d507148ea8" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.THRESHOLD from instance method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setThreshold(double)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="setThreshold" signature="(D)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="708" end="709" startBytecode="0" endBytecode="60" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setThreshold(double)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="THRESHOLD" signature="D" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>In NameMatchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.THRESHOLD</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="708" end="708" startBytecode="1" endBytecode="1" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 708]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="4dea28f50729eb538a1ae74de5273303" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.THRESHOLDDICTIONARY from instance method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setThresholdDictionary(double)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="setThresholdDictionary" signature="(D)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="704" end="705" startBytecode="0" endBytecode="60" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setThresholdDictionary(double)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="THRESHOLDDICTIONARY" signature="D" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>In NameMatchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.THRESHOLDDICTIONARY</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="704" end="704" startBytecode="1" endBytecode="1" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 704]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="9cab9e354a0facbfdf26828b2cfaef87" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.THRESHOLDMISSPELLINGS from instance method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setThresholdMisspellings(double)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="setThresholdMisspellings" signature="(D)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="700" end="701" startBytecode="0" endBytecode="60" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.setThresholdMisspellings(double)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="THRESHOLDMISSPELLINGS" signature="D" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>In NameMatchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameMatchImpl.THRESHOLDMISSPELLINGS</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="700" end="700" startBytecode="1" endBytecode="1" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 700]</Message>
+    </SourceLine>
+  </BugInstance>
   <BugInstance type="WMI_WRONG_MAP_ITERATOR" priority="2" abbrev="WMI" category="PERFORMANCE" instanceHash="c0f6b0ea379ae4f0b321839e99e69cf1" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
     <ShortMessage>Inefficient use of keySet iterator instead of entrySet iterator</ShortMessage>
     <LongMessage>it.unitn.disi.sweb.names.service.impl.NameMatchImpl.pairByLexicalGraphicOrder(List, List) makes inefficient use of keySet iterator instead of entrySet iterator</LongMessage>
     <Class classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true">
-      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="49" end="554" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
-        <Message>At NameMatchImpl.java:[lines 49-554]</Message>
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="57" end="750" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+        <Message>At NameMatchImpl.java:[lines 57-750]</Message>
       </SourceLine>
       <Message>In class it.unitn.disi.sweb.names.service.impl.NameMatchImpl</Message>
     </Class>
     <Method classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" name="pairByLexicalGraphicOrder" signature="(Ljava/util/List;Ljava/util/List;)Ljava/util/Map;" isStatic="false" primary="true">
-      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="342" end="382" startBytecode="0" endBytecode="1065" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" start="467" end="500" startBytecode="0" endBytecode="895" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java"/>
       <Message>In method it.unitn.disi.sweb.names.service.impl.NameMatchImpl.pairByLexicalGraphicOrder(List, List)</Message>
     </Method>
-    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="368" end="368" startBytecode="286" endBytecode="286" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
-      <Message>At NameMatchImpl.java:[line 368]</Message>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" primary="true" start="493" end="493" startBytecode="279" endBytecode="279" sourcefile="NameMatchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java">
+      <Message>At NameMatchImpl.java:[line 493]</Message>
     </SourceLine>
   </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="1be3ef6aac36964b55e6cebe02f71290" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameSearchImpl.MAXRESULT from instance method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.setMaxResult(int)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="33" end="443" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 33-443]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="setMaxResult" signature="(I)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="432" end="433" startBytecode="0" endBytecode="60" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.setMaxResult(int)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="MAXRESULT" signature="I" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>In NameSearchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameSearchImpl.MAXRESULT</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="432" end="432" startBytecode="1" endBytecode="1" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 432]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="b7b1540fcd5104ce0ff758ffb689d940" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameSearchImpl.WEIGHTEQUALS from instance method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.setWeightEquals(double)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="33" end="443" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 33-443]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="setWeightEquals" signature="(D)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="437" end="438" startBytecode="0" endBytecode="60" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.setWeightEquals(double)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="WEIGHTEQUALS" signature="D" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>In NameSearchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameSearchImpl.WEIGHTEQUALS</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="437" end="437" startBytecode="1" endBytecode="1" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 437]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="2bc2618900331a1cac9b419591b664aa" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.NameSearchImpl.WEIGHTREORDER from instance method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.setWeightReorder(double)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="33" end="443" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>At NameSearchImpl.java:[lines 33-443]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.NameSearchImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="setWeightReorder" signature="(D)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" start="442" end="443" startBytecode="0" endBytecode="60" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.NameSearchImpl.setWeightReorder(double)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" name="WEIGHTREORDER" signature="D" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+        <Message>In NameSearchImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.NameSearchImpl.WEIGHTREORDER</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" primary="true" start="442" end="442" startBytecode="1" endBytecode="1" sourcefile="NameSearchImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java">
+      <Message>At NameSearchImpl.java:[line 442]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="effb7cddf990b6d4873685133ff50a6c" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl.NORMALIZE from instance method it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl.setNormalize(boolean)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" start="23" end="125" sourcefile="PrefixManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java">
+        <Message>At PrefixManagerImpl.java:[lines 23-125]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" name="setNormalize" signature="(Z)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" start="122" end="123" startBytecode="0" endBytecode="60" sourcefile="PrefixManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java"/>
+      <Message>In method it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl.setNormalize(boolean)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" name="NORMALIZE" signature="Z" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" sourcefile="PrefixManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java">
+        <Message>In PrefixManagerImpl.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl.NORMALIZE</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" primary="true" start="122" end="122" startBytecode="1" endBytecode="1" sourcefile="PrefixManagerImpl.java" sourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" relSourcepath="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java">
+      <Message>At PrefixManagerImpl.java:[line 122]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="1" abbrev="ST" category="STYLE" instanceHash="5d23558e10184bc6c2789122e5349fcc" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="15">
+    <ShortMessage>Write to static field from instance method</ShortMessage>
+    <LongMessage>Write to static field it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator.THRESHOLD from instance method it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator.setThreshold(double)</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" start="38" end="260" sourcefile="DataSetEvaluator.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java">
+        <Message>At DataSetEvaluator.java:[lines 38-260]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" name="setThreshold" signature="(D)V" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" start="82" end="83" startBytecode="0" endBytecode="60" sourcefile="DataSetEvaluator.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java"/>
+      <Message>In method it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator.setThreshold(double)</Message>
+    </Method>
+    <Field classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" name="THRESHOLD" signature="D" isStatic="true" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" sourcefile="DataSetEvaluator.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java">
+        <Message>In DataSetEvaluator.java</Message>
+      </SourceLine>
+      <Message>Field it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator.THRESHOLD</Message>
+    </Field>
+    <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" primary="true" start="82" end="82" startBytecode="1" endBytecode="1" sourcefile="DataSetEvaluator.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java">
+      <Message>At DataSetEvaluator.java:[line 82]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" abbrev="SBSC" category="PERFORMANCE" instanceHash="e274015ea58ce151e881a5d2cbede581" instanceOccurrenceNum="0" instanceOccurrenceMax="0" rank="18">
+    <ShortMessage>Method concatenates strings using + in a loop</ShortMessage>
+    <LongMessage>it.unitn.disi.sweb.names.utils.dataset.Entry.toString() concatenates strings using + in a loop</LongMessage>
+    <Class classname="it.unitn.disi.sweb.names.utils.dataset.Entry" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.Entry" start="16" end="76" sourcefile="Entry.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/Entry.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/Entry.java">
+        <Message>At Entry.java:[lines 16-76]</Message>
+      </SourceLine>
+      <Message>In class it.unitn.disi.sweb.names.utils.dataset.Entry</Message>
+    </Class>
+    <Method classname="it.unitn.disi.sweb.names.utils.dataset.Entry" name="toString" signature="()Ljava/lang/String;" isStatic="false" primary="true">
+      <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.Entry" start="69" end="76" startBytecode="0" endBytecode="289" sourcefile="Entry.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/Entry.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/Entry.java"/>
+      <Message>In method it.unitn.disi.sweb.names.utils.dataset.Entry.toString()</Message>
+    </Method>
+    <SourceLine classname="it.unitn.disi.sweb.names.utils.dataset.Entry" primary="true" start="71" end="71" startBytecode="32" endBytecode="32" sourcefile="Entry.java" sourcepath="it/unitn/disi/sweb/names/utils/dataset/Entry.java" relSourcepath="it/unitn/disi/sweb/names/utils/dataset/Entry.java">
+      <Message>At Entry.java:[line 71]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
   <BugCategory category="PERFORMANCE">
     <Description>Performance</Description>
   </BugCategory>
@@ -72,19 +369,88 @@ Map.get(key) lookup.</p>
 
         ]]></Details>
   </BugPattern>
+  <BugPattern type="SBSC_USE_STRINGBUFFER_CONCATENATION" abbrev="SBSC" category="PERFORMANCE">
+    <ShortDescription>Method concatenates strings using + in a loop</ShortDescription>
+    <Details><![CDATA[
+
+<p> The method seems to be building a String using concatenation in a loop.
+In each iteration, the String is converted to a StringBuffer/StringBuilder,
+   appended to, and converted back to a String.
+   This can lead to a cost quadratic in the number of iterations,
+   as the growing string is recopied in each iteration. </p>
+
+<p>Better performance can be obtained by using
+a StringBuffer (or StringBuilder in Java 1.5) explicitly.</p>
+
+<p> For example:</p>
+<pre>
+  // This is bad
+  String s = "";
+  for (int i = 0; i &lt; field.length; ++i) {
+    s = s + field[i];
+  }
+
+  // This is better
+  StringBuffer buf = new StringBuffer();
+  for (int i = 0; i &lt; field.length; ++i) {
+    buf.append(field[i]);
+  }
+  String s = buf.toString();
+</pre>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" abbrev="ST" category="STYLE">
+    <ShortDescription>Write to static field from instance method</ShortDescription>
+    <Details><![CDATA[
+
+  <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="SBSC">
+    <Description>String concatenation in loop using + operator</Description>
+  </BugCode>
+  <BugCode abbrev="ST">
+    <Description>Misuse of static fields</Description>
+  </BugCode>
   <BugCode abbrev="WMI">
     <Description>Inefficient Map Iterator</Description>
   </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
   <Errors errors="0" missingClasses="0"></Errors>
-  <FindBugsSummary timestamp="Wed, 9 Jan 2013 18:19:40 +0100" total_classes="80" referenced_classes="179" total_bugs="1" total_size="2809" num_packages="8" vm_version="23.3-b01" cpu_seconds="36.97" clock_seconds="14.02" peak_mbytes="209.80" alloc_mbytes="1118.25" gc_seconds="0.56" priority_2="1">
+  <FindBugsSummary timestamp="Wed, 30 Jan 2013 15:30:22 +0100" total_classes="96" referenced_classes="217" total_bugs="14" total_size="3870" num_packages="9" vm_version="23.3-b01" cpu_seconds="35.27" clock_seconds="15.11" peak_mbytes="161.68" alloc_mbytes="216.56" gc_seconds="1.15" priority_2="4" priority_1="10">
     <FileStats path="it/unitn/disi/sweb/names/MisspellingsComparator.java" bugCount="0" size="2"/>
     <FileStats path="it/unitn/disi/sweb/names/model/EType.java" bugCount="0" size="39"/>
-    <FileStats path="it/unitn/disi/sweb/names/model/FullName.java" bugCount="0" size="117"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/FullName.java" bugCount="0" size="121"/>
     <FileStats path="it/unitn/disi/sweb/names/model/IndividualName.java" bugCount="0" size="78"/>
     <FileStats path="it/unitn/disi/sweb/names/model/NameElement.java" bugCount="0" size="51"/>
     <FileStats path="it/unitn/disi/sweb/names/model/NameStatistics.java" bugCount="0" size="52"/>
     <FileStats path="it/unitn/disi/sweb/names/model/NameToken.java" bugCount="0" size="59"/>
-    <FileStats path="it/unitn/disi/sweb/names/model/NamedEntity.java" bugCount="0" size="45"/>
+    <FileStats path="it/unitn/disi/sweb/names/model/NamedEntity.java" bugCount="0" size="47"/>
     <FileStats path="it/unitn/disi/sweb/names/model/Prefix.java" bugCount="0" size="58"/>
     <FileStats path="it/unitn/disi/sweb/names/model/Translation.java" bugCount="0" size="28"/>
     <FileStats path="it/unitn/disi/sweb/names/model/TriggerWord.java" bugCount="0" size="89"/>
@@ -101,7 +467,7 @@ Map.get(key) lookup.</p>
     <FileStats path="it/unitn/disi/sweb/names/repository/NameStatisticDAO.java" bugCount="0" size="7"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/NameTokenDAO.java" bugCount="0" size="8"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/PrefixDAO.java" bugCount="0" size="7"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordDAO.java" bugCount="0" size="11"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordDAO.java" bugCount="0" size="12"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordStatisticDAO.java" bugCount="0" size="7"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordTokenDAO.java" bugCount="0" size="9"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/TriggerWordTypeDAO.java" bugCount="0" size="10"/>
@@ -109,57 +475,66 @@ Map.get(key) lookup.</p>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/DictionaryDAOImpl.java" bugCount="0" size="19"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/EntityDAOImpl.java" bugCount="0" size="31"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/EtypeDAOImpl.java" bugCount="0" size="28"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/impl/FullNameDAOImpl.java" bugCount="0" size="44"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/FullNameDAOImpl.java" bugCount="0" size="45"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/IndividualNameDAOImpl.java" bugCount="0" size="40"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameElementDAOImpl.java" bugCount="0" size="32"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameStatisticDAOImpl.java" bugCount="0" size="23"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/NameTokenDAOImpl.java" bugCount="0" size="25"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/PrefixDAOImpl.java" bugCount="0" size="26"/>
-    <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordDAOImpl.java" bugCount="0" size="36"/>
+    <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordDAOImpl.java" bugCount="0" size="38"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordStatisticDAOImpl.java" bugCount="0" size="23"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordTokenDAOImpl.java" bugCount="0" size="27"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/TriggerWordTypeDAOImpl.java" bugCount="0" size="32"/>
     <FileStats path="it/unitn/disi/sweb/names/repository/impl/UsageStatisticsDAOImpl.java" bugCount="0" size="28"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/ElementManager.java" bugCount="0" size="9"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/ElementManager.java" bugCount="0" size="11"/>
     <FileStats path="it/unitn/disi/sweb/names/service/EntityManager.java" bugCount="0" size="8"/>
     <FileStats path="it/unitn/disi/sweb/names/service/EtypeManager.java" bugCount="0" size="2"/>
     <FileStats path="it/unitn/disi/sweb/names/service/EtypeName.java" bugCount="0" size="11"/>
     <FileStats path="it/unitn/disi/sweb/names/service/NameAutocompletion.java" bugCount="0" size="3"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/NameManager.java" bugCount="0" size="8"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/NameMatch.java" bugCount="0" size="5"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameManager.java" bugCount="0" size="13"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/NameMatch.java" bugCount="0" size="6"/>
     <FileStats path="it/unitn/disi/sweb/names/service/NameSearch.java" bugCount="0" size="3"/>
     <FileStats path="it/unitn/disi/sweb/names/service/PrefixManager.java" bugCount="0" size="5"/>
     <FileStats path="it/unitn/disi/sweb/names/service/SearchType.java" bugCount="0" size="12"/>
     <FileStats path="it/unitn/disi/sweb/names/service/StatisticsManager.java" bugCount="0" size="5"/>
     <FileStats path="it/unitn/disi/sweb/names/service/TranslationManager.java" bugCount="0" size="2"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" bugCount="0" size="60"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/EntityManagerImpl.java" bugCount="0" size="45"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/ElementManagerImpl.java" bugCount="1" size="106" bugHash="d79a6d3848582cd90fbcfa54089a17cb"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/EntityManagerImpl.java" bugCount="0" size="55"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/EtypeManagerImpl.java" bugCount="0" size="23"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/NameAutocompletionImpl.java" bugCount="0" size="11"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" bugCount="0" size="164"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" bugCount="1" size="245" bugHash="c79d67cb84d9aafba3820fe1bbcace64"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" bugCount="0" size="210"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" bugCount="0" size="73"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameManagerImpl.java" bugCount="0" size="262"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameMatchImpl.java" bugCount="7" size="366" bugHash="d97dc9da4e7c5aef3ffbc97ebfb96bd9"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/NameSearchImpl.java" bugCount="3" size="208" bugHash="60c39806023db516b1fd52b129ca2fd1"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/PrefixManagerImpl.java" bugCount="1" size="76" bugHash="0c421aa5d83b8d7c7e882ad57d1136dc"/>
     <FileStats path="it/unitn/disi/sweb/names/service/impl/StatisticsManagerImpl.java" bugCount="0" size="41"/>
-    <FileStats path="it/unitn/disi/sweb/names/service/impl/TranslationManagerImpl.java" bugCount="0" size="42"/>
+    <FileStats path="it/unitn/disi/sweb/names/service/impl/TranslationManagerImpl.java" bugCount="0" size="48"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/HtmlParser.java" bugCount="0" size="105"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/JaroWinkler.java" bugCount="0" size="67"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/LevenstheinDamearau.java" bugCount="0" size="25"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/Pair.java" bugCount="0" size="8"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/StringCompareUtils.java" bugCount="0" size="58"/>
     <FileStats path="it/unitn/disi/sweb/names/utils/TokenPositionComparator.java" bugCount="0" size="9"/>
-    <FileStats path="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" bugCount="0" size="166"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/bootstrap/DatabaseBootstrap.java" bugCount="0" size="195"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/bootstrap/PersonNamesFrequency.java" bugCount="0" size="68"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/DataSetEvaluator.java" bugCount="1" size="207" bugHash="1483cc14aae9cd9e0a9c90be7428ad04"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/Dataset.java" bugCount="0" size="44"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/Entry.java" bugCount="1" size="47" bugHash="6373ac5292d88369c42d4e24f0a807c9"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/MapAdapter.java" bugCount="0" size="42"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/MatchCombinator.java" bugCount="0" size="114"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/MatchEntry.java" bugCount="0" size="35"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/Name.java" bugCount="0" size="20"/>
+    <FileStats path="it/unitn/disi/sweb/names/utils/dataset/XlsExtraction.java" bugCount="0" size="155"/>
     <PackageStats package="it.unitn.disi.sweb.names" total_bugs="0" total_types="1" total_size="2">
       <ClassStats class="it.unitn.disi.sweb.names.MisspellingsComparator" sourceFile="MisspellingsComparator.java" interface="true" size="2" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.model" total_bugs="0" total_types="14" total_size="843">
+    <PackageStats package="it.unitn.disi.sweb.names.model" total_bugs="0" total_types="14" total_size="849">
       <ClassStats class="it.unitn.disi.sweb.names.model.EType" sourceFile="EType.java" interface="false" size="39" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.model.FullName" sourceFile="FullName.java" interface="false" size="117" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.FullName" sourceFile="FullName.java" interface="false" size="121" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.IndividualName" sourceFile="IndividualName.java" interface="false" size="78" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.NameElement" sourceFile="NameElement.java" interface="false" size="51" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.NameStatistics" sourceFile="NameStatistics.java" interface="false" size="52" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.NameToken" sourceFile="NameToken.java" interface="false" size="59" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.model.NamedEntity" sourceFile="NamedEntity.java" interface="false" size="45" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.model.NamedEntity" sourceFile="NamedEntity.java" interface="false" size="47" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.Prefix" sourceFile="Prefix.java" interface="false" size="58" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.Translation" sourceFile="Translation.java" interface="false" size="28" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWord" sourceFile="TriggerWord.java" interface="false" size="89" bugs="0"/>
@@ -168,7 +543,7 @@ Map.get(key) lookup.</p>
       <ClassStats class="it.unitn.disi.sweb.names.model.TriggerWordType" sourceFile="TriggerWordType.java" interface="false" size="59" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.model.UsageStatistic" sourceFile="UsageStatistic.java" interface="false" size="52" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.repository" total_bugs="0" total_types="14" total_size="125">
+    <PackageStats package="it.unitn.disi.sweb.names.repository" total_bugs="0" total_types="14" total_size="126">
       <ClassStats class="it.unitn.disi.sweb.names.repository.DictionaryDAO" sourceFile="DictionaryDAO.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.ETypeDAO" sourceFile="ETypeDAO.java" interface="true" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.EntityDAO" sourceFile="EntityDAO.java" interface="true" size="10" bugs="0"/>
@@ -178,59 +553,63 @@ Map.get(key) lookup.</p>
       <ClassStats class="it.unitn.disi.sweb.names.repository.NameStatisticDAO" sourceFile="NameStatisticDAO.java" interface="true" size="7" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.NameTokenDAO" sourceFile="NameTokenDAO.java" interface="true" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.PrefixDAO" sourceFile="PrefixDAO.java" interface="true" size="7" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordDAO" sourceFile="TriggerWordDAO.java" interface="true" size="11" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordDAO" sourceFile="TriggerWordDAO.java" interface="true" size="12" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordStatisticDAO" sourceFile="TriggerWordStatisticDAO.java" interface="true" size="7" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordTokenDAO" sourceFile="TriggerWordTokenDAO.java" interface="true" size="9" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.TriggerWordTypeDAO" sourceFile="TriggerWordTypeDAO.java" interface="true" size="10" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.UsageStatisticsDAO" sourceFile="UsageStatisticsDAO.java" interface="true" size="8" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.repository.impl" total_bugs="0" total_types="14" total_size="414">
+    <PackageStats package="it.unitn.disi.sweb.names.repository.impl" total_bugs="0" total_types="14" total_size="417">
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.DictionaryDAOImpl" sourceFile="DictionaryDAOImpl.java" interface="false" size="19" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.EntityDAOImpl" sourceFile="EntityDAOImpl.java" interface="false" size="31" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.EtypeDAOImpl" sourceFile="EtypeDAOImpl.java" interface="false" size="28" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.FullNameDAOImpl" sourceFile="FullNameDAOImpl.java" interface="false" size="44" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.FullNameDAOImpl" sourceFile="FullNameDAOImpl.java" interface="false" size="45" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.IndividualNameDAOImpl" sourceFile="IndividualNameDAOImpl.java" interface="false" size="40" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameElementDAOImpl" sourceFile="NameElementDAOImpl.java" interface="false" size="32" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameStatisticDAOImpl" sourceFile="NameStatisticDAOImpl.java" interface="false" size="23" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.NameTokenDAOImpl" sourceFile="NameTokenDAOImpl.java" interface="false" size="25" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.PrefixDAOImpl" sourceFile="PrefixDAOImpl.java" interface="false" size="26" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordDAOImpl" sourceFile="TriggerWordDAOImpl.java" interface="false" size="36" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordDAOImpl" sourceFile="TriggerWordDAOImpl.java" interface="false" size="38" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordStatisticDAOImpl" sourceFile="TriggerWordStatisticDAOImpl.java" interface="false" size="23" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordTokenDAOImpl" sourceFile="TriggerWordTokenDAOImpl.java" interface="false" size="27" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.TriggerWordTypeDAOImpl" sourceFile="TriggerWordTypeDAOImpl.java" interface="false" size="32" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.repository.impl.UsageStatisticsDAOImpl" sourceFile="UsageStatisticsDAOImpl.java" interface="false" size="28" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.service" total_bugs="0" total_types="12" total_size="73">
-      <ClassStats class="it.unitn.disi.sweb.names.service.ElementManager" sourceFile="ElementManager.java" interface="true" size="9" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.service" total_bugs="0" total_types="12" total_size="81">
+      <ClassStats class="it.unitn.disi.sweb.names.service.ElementManager" sourceFile="ElementManager.java" interface="true" size="11" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.EntityManager" sourceFile="EntityManager.java" interface="true" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.EtypeManager" sourceFile="EtypeManager.java" interface="true" size="2" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.EtypeName" sourceFile="EtypeName.java" interface="false" size="11" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.NameAutocompletion" sourceFile="NameAutocompletion.java" interface="true" size="3" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.NameManager" sourceFile="NameManager.java" interface="true" size="8" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.NameMatch" sourceFile="NameMatch.java" interface="true" size="5" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameManager" sourceFile="NameManager.java" interface="true" size="13" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.NameMatch" sourceFile="NameMatch.java" interface="true" size="6" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.NameSearch" sourceFile="NameSearch.java" interface="true" size="3" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.PrefixManager" sourceFile="PrefixManager.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.SearchType" sourceFile="SearchType.java" interface="false" size="12" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.StatisticsManager" sourceFile="StatisticsManager.java" interface="true" size="5" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.TranslationManager" sourceFile="TranslationManager.java" interface="true" size="2" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.service.impl" total_bugs="1" total_types="16" total_size="914" priority_2="1">
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl" sourceFile="ElementManagerImpl.java" interface="false" size="60" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.EntityManagerImpl" sourceFile="EntityManagerImpl.java" interface="false" size="45" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.service.impl" total_bugs="12" total_types="20" total_size="1196" priority_2="3" priority_1="9">
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl" sourceFile="ElementManagerImpl.java" interface="false" size="83" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$1" sourceFile="ElementManagerImpl.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.ElementManagerImpl$FrequencyComparator" sourceFile="ElementManagerImpl.java" interface="false" size="22" bugs="1" priority_2="1"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.EntityManagerImpl" sourceFile="EntityManagerImpl.java" interface="false" size="55" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.EtypeManagerImpl" sourceFile="EtypeManagerImpl.java" interface="false" size="19" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.EtypeManagerImpl$1" sourceFile="EtypeManagerImpl.java" interface="false" size="4" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameAutocompletionImpl" sourceFile="NameAutocompletionImpl.java" interface="false" size="11" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" sourceFile="NameManagerImpl.java" interface="false" size="160" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl$1" sourceFile="NameManagerImpl.java" interface="false" size="4" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourceFile="NameMatchImpl.java" interface="false" size="245" bugs="1" priority_2="1"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourceFile="NameSearchImpl.java" interface="false" size="203" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl" sourceFile="NameManagerImpl.java" interface="false" size="256" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameManagerImpl$1" sourceFile="NameManagerImpl.java" interface="false" size="6" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl" sourceFile="NameMatchImpl.java" interface="false" size="354" bugs="7" priority_2="2" priority_1="5"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl$1" sourceFile="NameMatchImpl.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameMatchImpl$PairComparator" sourceFile="NameMatchImpl.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl" sourceFile="NameSearchImpl.java" interface="false" size="201" bugs="3" priority_1="3"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.NameSearchImpl$1" sourceFile="NameSearchImpl.java" interface="false" size="7" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" sourceFile="PrefixManagerImpl.java" interface="false" size="64" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl" sourceFile="PrefixManagerImpl.java" interface="false" size="67" bugs="1" priority_1="1"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl$1" sourceFile="PrefixManagerImpl.java" interface="false" size="1" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.PrefixManagerImpl$PrefixComparator" sourceFile="PrefixManagerImpl.java" interface="false" size="8" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.StatisticsManagerImpl" sourceFile="StatisticsManagerImpl.java" interface="false" size="34" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.service.impl.StatisticsManagerImpl$1" sourceFile="StatisticsManagerImpl.java" interface="false" size="7" bugs="0"/>
-      <ClassStats class="it.unitn.disi.sweb.names.service.impl.TranslationManagerImpl" sourceFile="TranslationManagerImpl.java" interface="false" size="42" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.service.impl.TranslationManagerImpl" sourceFile="TranslationManagerImpl.java" interface="false" size="48" bugs="0"/>
     </PackageStats>
     <PackageStats package="it.unitn.disi.sweb.names.utils" total_bugs="0" total_types="8" total_size="272">
       <ClassStats class="it.unitn.disi.sweb.names.utils.HtmlParser" sourceFile="HtmlParser.java" interface="false" size="68" bugs="0"/>
@@ -242,36 +621,48 @@ Map.get(key) lookup.</p>
       <ClassStats class="it.unitn.disi.sweb.names.utils.StringCompareUtils" sourceFile="StringCompareUtils.java" interface="false" size="58" bugs="0"/>
       <ClassStats class="it.unitn.disi.sweb.names.utils.TokenPositionComparator" sourceFile="TokenPositionComparator.java" interface="false" size="9" bugs="0"/>
     </PackageStats>
-    <PackageStats package="it.unitn.disi.sweb.names.utils.bootstrap" total_bugs="0" total_types="1" total_size="166">
-      <ClassStats class="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" sourceFile="DatabaseBootstrap.java" interface="false" size="166" bugs="0"/>
+    <PackageStats package="it.unitn.disi.sweb.names.utils.bootstrap" total_bugs="0" total_types="2" total_size="263">
+      <ClassStats class="it.unitn.disi.sweb.names.utils.bootstrap.DatabaseBootstrap" sourceFile="DatabaseBootstrap.java" interface="false" size="195" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.bootstrap.PersonNamesFrequency" sourceFile="PersonNamesFrequency.java" interface="false" size="68" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.unitn.disi.sweb.names.utils.dataset" total_bugs="2" total_types="11" total_size="664" priority_2="1" priority_1="1">
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.DataSetEvaluator" sourceFile="DataSetEvaluator.java" interface="false" size="151" bugs="1" priority_1="1"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.Dataset" sourceFile="Dataset.java" interface="false" size="44" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.Entry" sourceFile="Entry.java" interface="false" size="47" bugs="1" priority_2="1"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.MapAdapter" sourceFile="MapAdapter.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.MatchCombinator" sourceFile="MatchCombinator.java" interface="false" size="114" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.MatchEntry" sourceFile="MatchEntry.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.Name" sourceFile="Name.java" interface="false" size="20" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.Pair" sourceFile="MapAdapter.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.PairList" sourceFile="MapAdapter.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.Result" sourceFile="DataSetEvaluator.java" interface="false" size="56" bugs="0"/>
+      <ClassStats class="it.unitn.disi.sweb.names.utils.dataset.XlsExtraction" sourceFile="XlsExtraction.java" interface="false" size="155" bugs="0"/>
     </PackageStats>
     <FindBugsProfile>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="1127" invocations="516" avgMicrosecondsPerInvocation="2184" maxMicrosecondsPerInvocation="439997" standardDeviationMircosecondsPerInvocation="19526"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="747" invocations="516" avgMicrosecondsPerInvocation="1449" maxMicrosecondsPerInvocation="21943" standardDeviationMircosecondsPerInvocation="2500"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="747" invocations="513" avgMicrosecondsPerInvocation="1456" maxMicrosecondsPerInvocation="27548" standardDeviationMircosecondsPerInvocation="2705"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="632" invocations="666" avgMicrosecondsPerInvocation="949" maxMicrosecondsPerInvocation="43423" standardDeviationMircosecondsPerInvocation="2296"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="579" invocations="518" avgMicrosecondsPerInvocation="1118" maxMicrosecondsPerInvocation="26289" standardDeviationMircosecondsPerInvocation="2547"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="577" invocations="179" avgMicrosecondsPerInvocation="3226" maxMicrosecondsPerInvocation="54776" standardDeviationMircosecondsPerInvocation="7753"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="539" invocations="516" avgMicrosecondsPerInvocation="1046" maxMicrosecondsPerInvocation="26301" standardDeviationMircosecondsPerInvocation="2104"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="480" invocations="179" avgMicrosecondsPerInvocation="2682" maxMicrosecondsPerInvocation="47602" standardDeviationMircosecondsPerInvocation="6388"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="470" invocations="669" avgMicrosecondsPerInvocation="702" maxMicrosecondsPerInvocation="54520" standardDeviationMircosecondsPerInvocation="2996"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="425" invocations="338" avgMicrosecondsPerInvocation="1258" maxMicrosecondsPerInvocation="24478" standardDeviationMircosecondsPerInvocation="2322"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="344" invocations="516" avgMicrosecondsPerInvocation="667" maxMicrosecondsPerInvocation="20338" standardDeviationMircosecondsPerInvocation="1188"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="266" invocations="179" avgMicrosecondsPerInvocation="1491" maxMicrosecondsPerInvocation="33862" standardDeviationMircosecondsPerInvocation="3566"/>
-      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="245" invocations="761" avgMicrosecondsPerInvocation="322" maxMicrosecondsPerInvocation="12576" standardDeviationMircosecondsPerInvocation="679"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="235" invocations="516" avgMicrosecondsPerInvocation="457" maxMicrosecondsPerInvocation="10359" standardDeviationMircosecondsPerInvocation="941"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="185" invocations="179" avgMicrosecondsPerInvocation="1037" maxMicrosecondsPerInvocation="9709" standardDeviationMircosecondsPerInvocation="1402"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="158" invocations="179" avgMicrosecondsPerInvocation="887" maxMicrosecondsPerInvocation="22912" standardDeviationMircosecondsPerInvocation="2585"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="155" invocations="238" avgMicrosecondsPerInvocation="651" maxMicrosecondsPerInvocation="55321" standardDeviationMircosecondsPerInvocation="3933"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="154" invocations="668" avgMicrosecondsPerInvocation="231" maxMicrosecondsPerInvocation="66210" standardDeviationMircosecondsPerInvocation="2560"/>
-      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="145" invocations="510" avgMicrosecondsPerInvocation="284" maxMicrosecondsPerInvocation="10732" standardDeviationMircosecondsPerInvocation="755"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="141" invocations="179" avgMicrosecondsPerInvocation="791" maxMicrosecondsPerInvocation="23768" standardDeviationMircosecondsPerInvocation="2222"/>
-      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="118" invocations="648" avgMicrosecondsPerInvocation="182" maxMicrosecondsPerInvocation="19010" standardDeviationMircosecondsPerInvocation="795"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="109" invocations="179" avgMicrosecondsPerInvocation="612" maxMicrosecondsPerInvocation="12642" standardDeviationMircosecondsPerInvocation="1524"/>
-      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="102" invocations="7998" avgMicrosecondsPerInvocation="12" maxMicrosecondsPerInvocation="1591" standardDeviationMircosecondsPerInvocation="43"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="101" invocations="80" avgMicrosecondsPerInvocation="1272" maxMicrosecondsPerInvocation="20777" standardDeviationMircosecondsPerInvocation="2780"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="98" invocations="80" avgMicrosecondsPerInvocation="1229" maxMicrosecondsPerInvocation="6858" standardDeviationMircosecondsPerInvocation="1502"/>
-      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNullDeref$CheckCallSitesAndReturnInstructions" totalMilliseconds="93" invocations="513" avgMicrosecondsPerInvocation="181" maxMicrosecondsPerInvocation="20676" standardDeviationMircosecondsPerInvocation="925"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="1278" invocations="924" avgMicrosecondsPerInvocation="1383" maxMicrosecondsPerInvocation="61625" standardDeviationMircosecondsPerInvocation="4543"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="768" invocations="687" avgMicrosecondsPerInvocation="1118" maxMicrosecondsPerInvocation="267431" standardDeviationMircosecondsPerInvocation="10316"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="716" invocations="919" avgMicrosecondsPerInvocation="779" maxMicrosecondsPerInvocation="45198" standardDeviationMircosecondsPerInvocation="2311"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="650" invocations="687" avgMicrosecondsPerInvocation="946" maxMicrosecondsPerInvocation="22158" standardDeviationMircosecondsPerInvocation="2047"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="585" invocations="681" avgMicrosecondsPerInvocation="860" maxMicrosecondsPerInvocation="22053" standardDeviationMircosecondsPerInvocation="1776"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="553" invocations="696" avgMicrosecondsPerInvocation="795" maxMicrosecondsPerInvocation="30185" standardDeviationMircosecondsPerInvocation="2416"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="504" invocations="217" avgMicrosecondsPerInvocation="2326" maxMicrosecondsPerInvocation="250772" standardDeviationMircosecondsPerInvocation="17174"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="504" invocations="217" avgMicrosecondsPerInvocation="2324" maxMicrosecondsPerInvocation="40245" standardDeviationMircosecondsPerInvocation="5607"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="491" invocations="694" avgMicrosecondsPerInvocation="708" maxMicrosecondsPerInvocation="45354" standardDeviationMircosecondsPerInvocation="2058"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="420" invocations="217" avgMicrosecondsPerInvocation="1937" maxMicrosecondsPerInvocation="32580" standardDeviationMircosecondsPerInvocation="4486"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="343" invocations="435" avgMicrosecondsPerInvocation="790" maxMicrosecondsPerInvocation="12586" standardDeviationMircosecondsPerInvocation="1225"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="328" invocations="687" avgMicrosecondsPerInvocation="478" maxMicrosecondsPerInvocation="30048" standardDeviationMircosecondsPerInvocation="1518"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="229" invocations="1022" avgMicrosecondsPerInvocation="224" maxMicrosecondsPerInvocation="5387" standardDeviationMircosecondsPerInvocation="470"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="208" invocations="279" avgMicrosecondsPerInvocation="747" maxMicrosecondsPerInvocation="47376" standardDeviationMircosecondsPerInvocation="3335"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="181" invocations="844" avgMicrosecondsPerInvocation="215" maxMicrosecondsPerInvocation="88606" standardDeviationMircosecondsPerInvocation="3047"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="178" invocations="687" avgMicrosecondsPerInvocation="259" maxMicrosecondsPerInvocation="9371" standardDeviationMircosecondsPerInvocation="676"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="177" invocations="217" avgMicrosecondsPerInvocation="818" maxMicrosecondsPerInvocation="11669" standardDeviationMircosecondsPerInvocation="1356"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="165" invocations="217" avgMicrosecondsPerInvocation="762" maxMicrosecondsPerInvocation="44456" standardDeviationMircosecondsPerInvocation="3316"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="138" invocations="217" avgMicrosecondsPerInvocation="639" maxMicrosecondsPerInvocation="20311" standardDeviationMircosecondsPerInvocation="1867"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="125" invocations="900" avgMicrosecondsPerInvocation="139" maxMicrosecondsPerInvocation="15049" standardDeviationMircosecondsPerInvocation="640"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="120" invocations="676" avgMicrosecondsPerInvocation="178" maxMicrosecondsPerInvocation="21191" standardDeviationMircosecondsPerInvocation="914"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="105" invocations="95" avgMicrosecondsPerInvocation="1108" maxMicrosecondsPerInvocation="21779" standardDeviationMircosecondsPerInvocation="2821"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="102" invocations="11373" avgMicrosecondsPerInvocation="9" maxMicrosecondsPerInvocation="2200" standardDeviationMircosecondsPerInvocation="38"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.obl.ObligationAnalysis" totalMilliseconds="95" invocations="100" avgMicrosecondsPerInvocation="950" maxMicrosecondsPerInvocation="23114" standardDeviationMircosecondsPerInvocation="2482"/>
     </FindBugsProfile>
   </FindBugsSummary>
   <ClassFeatures></ClassFeatures>

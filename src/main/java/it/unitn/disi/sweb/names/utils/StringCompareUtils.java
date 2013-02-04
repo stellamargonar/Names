@@ -106,7 +106,7 @@ public final class StringCompareUtils {
 //			}
 //			return token;
 //
-			StringTokenizer tokenizer = new StringTokenizer(input, " .");
+			StringTokenizer tokenizer = new StringTokenizer(input, " .  ");
 			List<String> tokens = new ArrayList<>();
 			while (tokenizer.hasMoreTokens()) {
 				tokens.add(tokenizer.nextToken());

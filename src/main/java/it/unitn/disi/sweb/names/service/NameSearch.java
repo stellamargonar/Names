@@ -1,13 +1,13 @@
 package it.unitn.disi.sweb.names.service;
 
 import it.unitn.disi.sweb.names.model.NamedEntity;
-import it.unitn.disi.sweb.names.utils.Pair;
 
 import java.util.List;
+import java.util.Map;
 
 public interface NameSearch {
 
-	List<Pair<String, Double>> nameSearch(String input);
+	List<Map.Entry<String, Double>> nameSearch(String input);
 
-	List<Pair<NamedEntity, Double>> entityNameSearch(String input);
+	List<Map.Entry<NamedEntity, Double>> entityNameSearch(String input);
 }

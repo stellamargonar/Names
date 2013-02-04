@@ -35,7 +35,7 @@ public class Name {
 	}
 
 	@XmlElement(name = "tokens")
-	@XmlJavaTypeAdapter(MapAdapter.class)
+	@XmlJavaTypeAdapter(ListAdapter.class)
 	public List<Entry<String, String>> getTokens() {
 		return tokens;
 	}

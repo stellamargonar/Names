@@ -86,7 +86,6 @@ public class FullName implements Serializable {
 	@Column(name = "etype")
 	private EType etype;
 
-
 	private static final long serialVersionUID = 1L;
 
 	public void setEtype(EType etype) {
@@ -277,9 +276,9 @@ public class FullName implements Serializable {
 	@Override
 	public String toString() {
 		return name;
-//		return "FullName [id=" + id + ", name=" + name + ", entity=" + entity
-//				+ ", nameTokens=" + nameTokens + ", triggerWordTokens="
-//				+ triggerWordTokens + "]";
+		// return "FullName [id=" + id + ", name=" + name + ", entity=" + entity
+		// + ", nameTokens=" + nameTokens + ", triggerWordTokens="
+		// + triggerWordTokens + "]";
 	}
 
 }

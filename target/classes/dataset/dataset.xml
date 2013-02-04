@@ -4,95 +4,95 @@
         <etype name="Person" id="50"/>
         <variant name="King Henry VII">
             <tokens>
-                <token string="King" element="GivenName"/>
+                <token string="King" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="VII" element="GivenName"/>
+                <token string="VII" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Re Enrico VIII">
             <tokens>
-                <token string="Re" element="GivenName"/>
+                <token string="Re" element="HistoricalTitle"/>
                 <token string="Enrico" element="GivenName"/>
-                <token string="VIII" element="GivenName"/>
+                <token string="VIII" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Re Henry VII">
             <tokens>
-                <token string="Re" element="GivenName"/>
+                <token string="Re" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="VII" element="GivenName"/>
+                <token string="VII" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Henry VIII of England">
             <tokens>
                 <token string="Henry" element="GivenName"/>
-                <token string="VIII" element="GivenName"/>
-                <token string="of" element="GivenName"/>
-                <token string="England" element="GivenName"/>
+                <token string="VIII" element="Qualifier"/>
+                <token string="of" element="Qualifier"/>
+                <token string="England" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="King Henry VIII">
             <tokens>
-                <token string="King" element="GivenName"/>
+                <token string="King" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="VIII" element="GivenName"/>
+                <token string="VIII" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Enrico VIII d’Inghilterra">
             <tokens>
                 <token string="Enrico" element="GivenName"/>
-                <token string="VIII" element="GivenName"/>
-                <token string="d’Inghilterra" element="GivenName"/>
+                <token string="VIII" element="Qualifier"/>
+                <token string="d’Inghilterra" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Re Enrico VIII">
             <tokens>
-                <token string="Re" element="GivenName"/>
+                <token string="Re" element="HistoricalTitle"/>
                 <token string="Enrico" element="GivenName"/>
-                <token string="VIII" element="GivenName"/>
+                <token string="VIII" element="Qualifier"/>
             </tokens>
         </variant>
         <variation name="King Henry xviii">
             <tokens>
-                <token string="King" element="GivenName"/>
+                <token string="King" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="xviii" element="GivenName"/>
+                <token string="xviii" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="king henry">
             <tokens>
-                <token string="king" element="GivenName"/>
+                <token string="king" element="HistoricalTitle"/>
                 <token string="henry" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Henry  VIII">
             <tokens>
                 <token string="Henry" element="GivenName"/>
-                <token string="VIII" element="GivenName"/>
+                <token string="VIII" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="Kin Henry VII">
             <tokens>
-                <token string="Kin" element="GivenName"/>
+                <token string="Kin" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="VII" element="GivenName"/>
+                <token string="VII" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="King Hennry">
             <tokens>
-                <token string="King" element="GivenName"/>
+                <token string="King" element="HistoricalTitle"/>
                 <token string="Hennry" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Re Enricp">
             <tokens>
-                <token string="Re" element="GivenName"/>
+                <token string="Re" element="HistoricalTitle"/>
                 <token string="Enricp" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Kign Henry">
             <tokens>
-                <token string="Kign" element="GivenName"/>
+                <token string="Kign" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
             </tokens>
         </variation>
@@ -101,85 +101,85 @@
         <etype name="Person" id="50"/>
         <variant name="Dronning Margrethe II">
             <tokens>
-                <token string="Dronning" element="GivenName"/>
+                <token string="Dronning" element="HistoricalTitle"/>
                 <token string="Margrethe" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Queen Margrethe II">
             <tokens>
-                <token string="Queen" element="GivenName"/>
+                <token string="Queen" element="HistoricalTitle"/>
                 <token string="Margrethe" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Dronning Margrethe II">
             <tokens>
-                <token string="Dronning" element="GivenName"/>
+                <token string="Dronning" element="HistoricalTitle"/>
                 <token string="Margrethe" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Margaret II">
             <tokens>
                 <token string="Margaret" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Margrethe II">
             <tokens>
                 <token string="Margrethe" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Margrethe Alexandrine dórhildur Ingrid">
             <tokens>
                 <token string="Margrethe" element="GivenName"/>
-                <token string="Alexandrine" element="GivenName"/>
-                <token string="dórhildur" element="GivenName"/>
-                <token string="Ingrid" element="GivenName"/>
+                <token string="Alexandrine" element="MiddleName"/>
+                <token string="Ingrid" element="MiddleName"/>
+                <token string="dórhildur" element="MiddleName"/>
             </tokens>
         </variant>
         <variation name="Dronning Margrethe ii">
             <tokens>
-                <token string="Dronning" element="GivenName"/>
+                <token string="Dronning" element="HistoricalTitle"/>
                 <token string="Margrethe" element="GivenName"/>
-                <token string="ii" element="GivenName"/>
+                <token string="ii" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="dronning margrethe">
             <tokens>
-                <token string="dronning" element="GivenName"/>
+                <token string="dronning" element="HistoricalTitle"/>
                 <token string="margrethe" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Queen  Margrethe">
             <tokens>
-                <token string="Queen" element="GivenName"/>
+                <token string="Queen" element="HistoricalTitle"/>
                 <token string="Margrethe" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Queen Margrete">
             <tokens>
-                <token string="Queen" element="GivenName"/>
+                <token string="Queen" element="HistoricalTitle"/>
                 <token string="Margrete" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Dronning Marrgrethe">
             <tokens>
-                <token string="Dronning" element="GivenName"/>
+                <token string="Dronning" element="HistoricalTitle"/>
                 <token string="Marrgrethe" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Dronning Margrwthe">
             <tokens>
-                <token string="Dronning" element="GivenName"/>
+                <token string="Dronning" element="HistoricalTitle"/>
                 <token string="Margrwthe" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Queen Margerthe">
             <tokens>
-                <token string="Queen" element="GivenName"/>
+                <token string="Queen" element="HistoricalTitle"/>
                 <token string="Margerthe" element="GivenName"/>
             </tokens>
         </variation>
@@ -189,127 +189,127 @@
         <variant name="John Paul II">
             <tokens>
                 <token string="John" element="GivenName"/>
-                <token string="Paul" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paul" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Giovanni Paolo II">
             <tokens>
                 <token string="Giovanni" element="GivenName"/>
-                <token string="Paolo" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paolo" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Papa Giovanni Paolo II">
             <tokens>
-                <token string="Papa" element="GivenName"/>
+                <token string="Papa" element="HistoricalTitle"/>
                 <token string="Giovanni" element="GivenName"/>
-                <token string="Paolo" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paolo" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Pope John Paul II">
             <tokens>
-                <token string="Pope" element="GivenName"/>
+                <token string="Pope" element="HistoricalTitle"/>
                 <token string="John" element="GivenName"/>
-                <token string="Paul" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paul" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Beato Giovanni Paolo II">
             <tokens>
-                <token string="Beato" element="GivenName"/>
+                <token string="Beato" element="HistoricalTitle"/>
                 <token string="Giovanni" element="GivenName"/>
-                <token string="Paolo" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paolo" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Blessed John Paul II">
             <tokens>
-                <token string="Blessed" element="GivenName"/>
+                <token string="Blessed" element="HistoricalTitle"/>
                 <token string="John" element="GivenName"/>
-                <token string="Paul" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paul" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Karol Józef Wojtyła">
             <tokens>
                 <token string="Karol" element="GivenName"/>
-                <token string="Józef" element="GivenName"/>
-                <token string="Wojtyła" element="GivenName"/>
+                <token string="Wojtyła" element="FamilyName"/>
+                <token string="Józef" element="MiddleName"/>
             </tokens>
         </variant>
         <variant name="Beato Giovanni Paolo II">
             <tokens>
-                <token string="Beato" element="GivenName"/>
+                <token string="Beato" element="HistoricalTitle"/>
                 <token string="Giovanni" element="GivenName"/>
-                <token string="Paolo" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paolo" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Papa Giovanni Paolo II">
             <tokens>
-                <token string="Papa" element="GivenName"/>
+                <token string="Papa" element="HistoricalTitle"/>
                 <token string="Giovanni" element="GivenName"/>
-                <token string="Paolo" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paolo" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Pope John Paul II">
             <tokens>
-                <token string="Pope" element="GivenName"/>
+                <token string="Pope" element="HistoricalTitle"/>
                 <token string="John" element="GivenName"/>
-                <token string="Paul" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paul" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Blessed Pope John Paul II">
             <tokens>
-                <token string="Blessed" element="GivenName"/>
-                <token string="Pope" element="GivenName"/>
+                <token string="Blessed" element="HistoricalTitle"/>
+                <token string="Pope" element="HistoricalTitle"/>
                 <token string="John" element="GivenName"/>
-                <token string="Paul" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paul" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variation name="papa giovanni paolo ii">
             <tokens>
-                <token string="papa" element="GivenName"/>
+                <token string="papa" element="HistoricalTitle"/>
                 <token string="giovanni" element="GivenName"/>
-                <token string="paolo" element="GivenName"/>
-                <token string="ii" element="GivenName"/>
+                <token string="paolo" element="MiddleName"/>
+                <token string="ii" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="John Paul  II">
             <tokens>
                 <token string="John" element="GivenName"/>
-                <token string="Paul" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paul" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="Karl Wojtyla">
             <tokens>
                 <token string="Karl" element="GivenName"/>
-                <token string="Wojtyla" element="GivenName"/>
+                <token string="Wojtyla" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Giovvanni Paolo II">
             <tokens>
                 <token string="Giovvanni" element="GivenName"/>
-                <token string="Paolo" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="Paolo" element="MiddleName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="Karpl Wojtyla">
             <tokens>
                 <token string="Karpl" element="GivenName"/>
-                <token string="Wojtyla" element="GivenName"/>
+                <token string="Wojtyla" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Giovanni Paloo">
             <tokens>
                 <token string="Giovanni" element="GivenName"/>
-                <token string="Paloo" element="GivenName"/>
+                <token string="Paloo" element="MiddleName"/>
             </tokens>
         </variation>
     </entry>
@@ -318,96 +318,96 @@
         <variant name="Antonio da Padova">
             <tokens>
                 <token string="Antonio" element="GivenName"/>
-                <token string="da" element="GivenName"/>
+                <token string="da" element="Qualifier"/>
                 <token string="Padova" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Anthony of Padua">
             <tokens>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Padua" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Sant’Antonio da Padova">
             <tokens>
-                <token string="Sant’Antonio" element="GivenName"/>
-                <token string="da" element="GivenName"/>
+                <token string="da" element="Qualifier"/>
                 <token string="Padova" element="GivenName"/>
+                <token string="Sant’Antonio" element="MiddleName"/>
             </tokens>
         </variant>
         <variant name="Saint Anthony of Padua">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Padua" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="S. Antonio da Padova">
             <tokens>
-                <token string="S" element="GivenName"/>
                 <token string="Antonio" element="GivenName"/>
-                <token string="da" element="GivenName"/>
+                <token string="da" element="Qualifier"/>
                 <token string="Padova" element="GivenName"/>
+                <token string="S" element="HistoricalTitle"/>
             </tokens>
         </variant>
         <variant name="St Anthony of Padua">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Padua" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Anthony of Lisbon">
             <tokens>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Lisbon" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Saint Anthony of Padua">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Padua" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Saint Anthony of Lisbon">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Lisbon" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Saint Anthony">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="St Anthony of Lisbon">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Lisbon" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="St Anthony of Padua">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Padua" element="GivenName"/>
             </tokens>
         </variant>
         <variation name="St. Anthony of Padua">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
                 <token string="of" element="GivenName"/>
                 <token string="Padua" element="GivenName"/>
@@ -415,28 +415,28 @@
         </variation>
         <variation name="st anthony of padua">
             <tokens>
-                <token string="st" element="GivenName"/>
+                <token string="st" element="HistoricalTitle"/>
                 <token string="anthony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="padua" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="St  Anthony">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Antony of Padua">
             <tokens>
                 <token string="Antony" element="GivenName"/>
-                <token string="of" element="GivenName"/>
+                <token string="of" element="Qualifier"/>
                 <token string="Padua" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Saint Anthonny">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Anthonny" element="GivenName"/>
             </tokens>
         </variation>
@@ -447,13 +447,13 @@
         </variation>
         <variation name="St Anthony">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Anthony" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="St Antohny">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Antohny" element="GivenName"/>
             </tokens>
         </variation>
@@ -462,116 +462,119 @@
         <etype name="Person" id="50"/>
         <variant name="Saint Henry">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Sant’Enrico">
             <tokens>
-                <token string="Sant’Enrico" element="GivenName"/>
+                <token string="Sant" element="HistoricalTitle"/>
+				<token string="Enrico" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="S. Enrico">
             <tokens>
-                <token string="S" element="GivenName"/>
                 <token string="Enrico" element="GivenName"/>
+                <token string="S" element="HistoricalTitle"/>
             </tokens>
         </variant>
         <variant name="St Henry">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Re Enrico">
             <tokens>
-                <token string="Re" element="GivenName"/>
+                <token string="Re" element="HistoricalTitle"/>
                 <token string="Enrico" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="King Henry">
             <tokens>
-                <token string="King" element="GivenName"/>
+                <token string="King" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Henry II">
             <tokens>
                 <token string="Henry" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="King Henry II">
             <tokens>
-                <token string="King" element="GivenName"/>
+                <token string="King" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="St Henry">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Re Enrico II">
             <tokens>
-                <token string="Re" element="GivenName"/>
+                <token string="Re" element="HistoricalTitle"/>
                 <token string="Enrico" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Enrico II">
             <tokens>
                 <token string="Enrico" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variant>
         <variation name="Saint Henry ii">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
-                <token string="ii" element="GivenName"/>
+                <token string="ii" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="Saint henry">
             <tokens>
-                <token string="Saint" element="GivenName"/>
+                <token string="Saint" element="HistoricalTitle"/>
                 <token string="henry" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Henry  II">
             <tokens>
                 <token string="Henry" element="GivenName"/>
-                <token string="II" element="GivenName"/>
+                <token string="II" element="Qualifier"/>
             </tokens>
         </variation>
         <variation name="Sant’Enric">
             <tokens>
-                <token string="Sant’Enric" element="GivenName"/>
+                <token string="Sant" element="HistoricalTitle"/>
+                <token string="Enric" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Sant’Ennrico">
             <tokens>
-                <token string="Sant’Ennrico" element="GivenName"/>
+                <token string="Sant" element="HistoricalTitle"/>
+                <token string="Ennrico" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Sant Enroco">
             <tokens>
-                <token string="Sant" element="GivenName"/>
+                <token string="Sant" element="HistoricalTitle"/>
                 <token string="Enroco" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="St Henry">
             <tokens>
-                <token string="St" element="GivenName"/>
+                <token string="St" element="HistoricalTitle"/>
                 <token string="Henry" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="S. Enricio">
             <tokens>
-                <token string="S" element="GivenName"/>
                 <token string="Enricio" element="GivenName"/>
+                <token string="S" element="HistoricalTitle"/>
             </tokens>
         </variation>
     </entry>
@@ -579,62 +582,62 @@
         <etype name="Person" id="50"/>
         <variant name="Julius Caesar">
             <tokens>
-                <token string="Julius" element="GivenName"/>
-                <token string="Caesar" element="GivenName"/>
+                <token string="Julius" element="MiddleName"/>
+                <token string="Caesar" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Giulio Cesare">
             <tokens>
-                <token string="Giulio" element="GivenName"/>
-                <token string="Cesare" element="GivenName"/>
+                <token string="Giulio" element="MiddleName"/>
+                <token string="Cesare" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Gaius Julius Caesar">
             <tokens>
                 <token string="Gaius" element="GivenName"/>
-                <token string="Julius" element="GivenName"/>
-                <token string="Caesar" element="GivenName"/>
+                <token string="Julius" element="MiddleName"/>
+                <token string="Caesar" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Gaio Giulio Cesare">
             <tokens>
                 <token string="Gaio" element="GivenName"/>
-                <token string="Giulio" element="GivenName"/>
-                <token string="Cesare" element="GivenName"/>
+                <token string="Giulio" element="MiddleName"/>
+                <token string="Cesare" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="giulio cesare">
             <tokens>
-                <token string="giulio" element="GivenName"/>
-                <token string="cesare" element="GivenName"/>
+                <token string="giulio" element="MiddleName"/>
+                <token string="cesare" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Giulio  Cesare">
             <tokens>
-                <token string="Giulio" element="GivenName"/>
-                <token string="Cesare" element="GivenName"/>
+                <token string="Giulio" element="MiddleName"/>
+                <token string="Cesare" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Giulio Cesre">
             <tokens>
-                <token string="Giulio" element="GivenName"/>
-                <token string="Cesre" element="GivenName"/>
+                <token string="Giulio" element="MiddleName"/>
+                <token string="Cesre" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Giulio Cessare">
             <tokens>
-                <token string="Giulio" element="GivenName"/>
-                <token string="Cessare" element="GivenName"/>
+                <token string="Giulio" element="MiddleName"/>
+                <token string="Cessare" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Cessre">
             <tokens>
-                <token string="Cessre" element="GivenName"/>
+                <token string="Cessre" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Caesre">
             <tokens>
-                <token string="Caesre" element="GivenName"/>
+                <token string="Caesre" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -653,19 +656,19 @@
         <variant name="Napoleon Bonaparte">
             <tokens>
                 <token string="Napoleon" element="GivenName"/>
-                <token string="Bonaparte" element="GivenName"/>
+                <token string="Bonaparte" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Napoleon I">
             <tokens>
                 <token string="Napoleon" element="GivenName"/>
-                <token string="I" element="GivenName"/>
+                <token string="I" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Napoléon Bonaparte">
             <tokens>
                 <token string="Napoléon" element="GivenName"/>
-                <token string="Bonaparte" element="GivenName"/>
+                <token string="Bonaparte" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Napoléon">
@@ -681,13 +684,13 @@
         <variation name="Napoleone  Bonaparte">
             <tokens>
                 <token string="Napoleone" element="GivenName"/>
-                <token string="Bonaparte" element="GivenName"/>
+                <token string="Bonaparte" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Napoleone Bonapart">
             <tokens>
                 <token string="Napoleone" element="GivenName"/>
-                <token string="Bonapart" element="GivenName"/>
+                <token string="Bonapart" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Napolleon">
@@ -697,12 +700,12 @@
         </variation>
         <variation name="Bonsparte">
             <tokens>
-                <token string="Bonsparte" element="GivenName"/>
+                <token string="Bonsparte" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Bonaprate">
             <tokens>
-                <token string="Bonaprate" element="GivenName"/>
+                <token string="Bonaprate" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -749,86 +752,89 @@
         <variant name="Alex Catania Zampieri">
             <tokens>
                 <token string="Alex" element="GivenName"/>
-                <token string="Catania" element="GivenName"/>
-                <token string="Zampieri" element="GivenName"/>
+                <token string="Catania" element="FamilyName"/>
+                <token string="Zampieri" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Alex Catania">
             <tokens>
                 <token string="Alex" element="GivenName"/>
-                <token string="Catania" element="GivenName"/>
+                <token string="Catania" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Alex Zampieri">
             <tokens>
                 <token string="Alex" element="GivenName"/>
-                <token string="Zampieri" element="GivenName"/>
+                <token string="Zampieri" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="A. Catania">
             <tokens>
+                <token string="Catania" element="FamilyName"/>
                 <token string="A" element="GivenName"/>
-                <token string="Catania" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="A. Zampieri">
             <tokens>
+                <token string="Zampieri" element="FamilyName"/>
                 <token string="A" element="GivenName"/>
-                <token string="Zampieri" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="A. C.">
             <tokens>
                 <token string="A" element="GivenName"/>
-                <token string="C" element="GivenName"/>
+                <token string="C" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="A. Z.">
             <tokens>
                 <token string="A" element="GivenName"/>
-                <token string="Z" element="GivenName"/>
+                <token string="Z" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="AC Zampieri">
             <tokens>
-                <token string="AC" element="GivenName"/>
-                <token string="Zampieri" element="GivenName"/>
+                <token string="A" element="GivenName"/>
+                <token string="C" element="FamilyName"/>
+                <token string="Zampieri" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="ac zampieri">
             <tokens>
-                <token string="ac" element="GivenName"/>
-                <token string="zampieri" element="GivenName"/>
+                <token string="a" element="GivenName"/>
+                <token string="c" element="FamilyName"/>
+                <token string="zampieri" element="FamilyName"/>
+
             </tokens>
         </variation>
         <variation name="Alex  Catania">
             <tokens>
                 <token string="Alex" element="GivenName"/>
-                <token string="Catania" element="GivenName"/>
+                <token string="Catania" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Zamperi Alex">
             <tokens>
-                <token string="Zamperi" element="GivenName"/>
+                <token string="Zamperi" element="FamilyName"/>
                 <token string="Alex" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Allex Catania">
             <tokens>
                 <token string="Allex" element="GivenName"/>
-                <token string="Catania" element="GivenName"/>
+                <token string="Catania" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Alex Catanoa">
             <tokens>
                 <token string="Alex" element="GivenName"/>
-                <token string="Catanoa" element="GivenName"/>
+                <token string="Catanoa" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Aelx Catania">
             <tokens>
                 <token string="Aelx" element="GivenName"/>
-                <token string="Catania" element="GivenName"/>
+                <token string="Catania" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -837,33 +843,33 @@
         <variant name="Enrico Bignotti">
             <tokens>
                 <token string="Enrico" element="GivenName"/>
-                <token string="Bignotti" element="GivenName"/>
+                <token string="Bignotti" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Sig. Enrico Bignotti">
             <tokens>
-                <token string="Sig" element="GivenName"/>
+                <token string="Sig" element="Title"/>
                 <token string="Enrico" element="GivenName"/>
-                <token string="Bignotti" element="GivenName"/>
+                <token string="Bignotti" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Sig. Enrico Bignotti">
             <tokens>
-                <token string="Sig" element="GivenName"/>
+                <token string="Sig" element="Title"/>
                 <token string="Enrico" element="GivenName"/>
-                <token string="Bignotti" element="GivenName"/>
+                <token string="Bignotti" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="E. Bignotti">
             <tokens>
+                <token string="Bignotti" element="FamilyName"/>
                 <token string="E" element="GivenName"/>
-                <token string="Bignotti" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Enrico B.">
             <tokens>
                 <token string="Enrico" element="GivenName"/>
-                <token string="B" element="GivenName"/>
+                <token string="B" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Bigno">
@@ -879,55 +885,56 @@
         <variant name="E. B.">
             <tokens>
                 <token string="E" element="GivenName"/>
-                <token string="B" element="GivenName"/>
+                <token string="B" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="SIgn Bignotti Enrico">
             <tokens>
-                <token string="SIgn" element="GivenName"/>
-                <token string="Bignotti" element="GivenName"/>
+                <token string="SIgn" element="Title"/>
+                <token string="Bignotti" element="FamilyName"/>
                 <token string="Enrico" element="GivenName"/>
             </tokens>
         </variant>
         <variation name="EB">
             <tokens>
-                <token string="EB" element="GivenName"/>
+                <token string="E" element="GivenName"/>
+                <token string="B" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="enrico bignotti">
             <tokens>
                 <token string="enrico" element="GivenName"/>
-                <token string="bignotti" element="GivenName"/>
+                <token string="bignotti" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="E.  B.">
             <tokens>
                 <token string="E" element="GivenName"/>
-                <token string="B" element="GivenName"/>
+                <token string="B" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Bignoti Enrico">
             <tokens>
-                <token string="Bignoti" element="GivenName"/>
+                <token string="Bignoti" element="FamilyName"/>
                 <token string="Enrico" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Bignnotti Enrico">
             <tokens>
-                <token string="Bignnotti" element="GivenName"/>
+                <token string="Bignnotti" element="FamilyName"/>
                 <token string="Enrico" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Enrico Bignptti">
             <tokens>
                 <token string="Enrico" element="GivenName"/>
-                <token string="Bignptti" element="GivenName"/>
+                <token string="Bignptti" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Enrico Bingotti">
             <tokens>
                 <token string="Enrico" element="GivenName"/>
-                <token string="Bingotti" element="GivenName"/>
+                <token string="Bingotti" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -936,14 +943,14 @@
         <variant name="Fausto Giunchiglia">
             <tokens>
                 <token string="Fausto" element="GivenName"/>
-                <token string="Giunchiglia" element="GivenName"/>
+                <token string="Giunchiglia" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Prof. Fausto Giunchiglia">
             <tokens>
-                <token string="Prof" element="GivenName"/>
+                <token string="Prof" element="Title"/>
                 <token string="Fausto" element="GivenName"/>
-                <token string="Giunchiglia" element="GivenName"/>
+                <token string="Giunchiglia" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Papi">
@@ -953,45 +960,45 @@
         </variant>
         <variant name="Prof. Giunchiglia">
             <tokens>
-                <token string="Prof" element="GivenName"/>
-                <token string="Giunchiglia" element="GivenName"/>
+                <token string="Prof" element="Title"/>
+                <token string="Giunchiglia" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="prof fausto giunchiglia">
             <tokens>
-                <token string="prof" element="GivenName"/>
+                <token string="prof" element="Title"/>
                 <token string="fausto" element="GivenName"/>
-                <token string="giunchiglia" element="GivenName"/>
+                <token string="giunchiglia" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Fausto  Giunchiglia">
             <tokens>
                 <token string="Fausto" element="GivenName"/>
-                <token string="Giunchiglia" element="GivenName"/>
+                <token string="Giunchiglia" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Giuchilia Fausto">
             <tokens>
-                <token string="Giuchilia" element="GivenName"/>
+                <token string="Giuchilia" element="FamilyName"/>
                 <token string="Fausto" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Fausto Giunnchiglia">
             <tokens>
                 <token string="Fausto" element="GivenName"/>
-                <token string="Giunnchiglia" element="GivenName"/>
+                <token string="Giunnchiglia" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Fausto Giynchiglia">
             <tokens>
                 <token string="Fausto" element="GivenName"/>
-                <token string="Giynchiglia" element="GivenName"/>
+                <token string="Giynchiglia" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Fasuto Ghiunichiglia">
             <tokens>
                 <token string="Fasuto" element="GivenName"/>
-                <token string="Ghiunichiglia" element="GivenName"/>
+                <token string="Ghiunichiglia" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -1000,55 +1007,55 @@
         <variant name="Freddie Mercury">
             <tokens>
                 <token string="Freddie" element="GivenName"/>
-                <token string="Mercury" element="GivenName"/>
+                <token string="Mercury" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Farookh Bulsara">
             <tokens>
                 <token string="Farookh" element="GivenName"/>
-                <token string="Bulsara" element="GivenName"/>
+                <token string="Bulsara" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="freddie mercury">
             <tokens>
                 <token string="freddie" element="GivenName"/>
-                <token string="mercury" element="GivenName"/>
+                <token string="mercury" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Freddie  Mercury">
             <tokens>
                 <token string="Freddie" element="GivenName"/>
-                <token string="Mercury" element="GivenName"/>
+                <token string="Mercury" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Mrcury Freddie">
             <tokens>
-                <token string="Mrcury" element="GivenName"/>
+                <token string="Mrcury" element="FamilyName"/>
                 <token string="Freddie" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Freddie Merrcury">
             <tokens>
                 <token string="Freddie" element="GivenName"/>
-                <token string="Merrcury" element="GivenName"/>
+                <token string="Merrcury" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Freddie Mercyry">
             <tokens>
                 <token string="Freddie" element="GivenName"/>
-                <token string="Mercyry" element="GivenName"/>
+                <token string="Mercyry" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Freddy Mercury">
             <tokens>
                 <token string="Freddy" element="GivenName"/>
-                <token string="Mercury" element="GivenName"/>
+                <token string="Mercury" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Freddie Merucry">
             <tokens>
                 <token string="Freddie" element="GivenName"/>
-                <token string="Merucry" element="GivenName"/>
+                <token string="Merucry" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -1057,63 +1064,63 @@
         <variant name="Mark Twain">
             <tokens>
                 <token string="Mark" element="GivenName"/>
-                <token string="Twain" element="GivenName"/>
+                <token string="Twain" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Samuel Clemens">
             <tokens>
                 <token string="Samuel" element="GivenName"/>
-                <token string="Clemens" element="GivenName"/>
+                <token string="Clemens" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Samuel Langhorne Clemens">
             <tokens>
                 <token string="Samuel" element="GivenName"/>
-                <token string="Langhorne" element="GivenName"/>
-                <token string="Clemens" element="GivenName"/>
+                <token string="Langhorne" element="FamilyName"/>
+                <token string="Clemens" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Samuel L. Clemens">
             <tokens>
                 <token string="Samuel" element="GivenName"/>
-                <token string="L" element="GivenName"/>
-                <token string="Clemens" element="GivenName"/>
+                <token string="Clemens" element="FamilyName"/>
+                <token string="L" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="mark twain">
             <tokens>
                 <token string="mark" element="GivenName"/>
-                <token string="twain" element="GivenName"/>
+                <token string="twain" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Mask  Twain">
             <tokens>
                 <token string="Mask" element="GivenName"/>
-                <token string="Twain" element="GivenName"/>
+                <token string="Twain" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Twin Mark">
             <tokens>
                 <token string="Twin" element="GivenName"/>
-                <token string="Mark" element="GivenName"/>
+                <token string="Mark" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Mark Twainn">
             <tokens>
                 <token string="Mark" element="GivenName"/>
-                <token string="Twainn" element="GivenName"/>
+                <token string="Twainn" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Mark Twsin">
             <tokens>
                 <token string="Mark" element="GivenName"/>
-                <token string="Twsin" element="GivenName"/>
+                <token string="Twsin" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Mark Tawin">
             <tokens>
                 <token string="Mark" element="GivenName"/>
-                <token string="Tawin" element="GivenName"/>
+                <token string="Tawin" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -1127,25 +1134,25 @@
         <variant name="Saul Hudson">
             <tokens>
                 <token string="Saul" element="GivenName"/>
-                <token string="Hudson" element="GivenName"/>
+                <token string="Hudson" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="S. Hudson">
             <tokens>
+                <token string="Hudson" element="FamilyName"/>
                 <token string="S" element="GivenName"/>
-                <token string="Hudson" element="GivenName"/>
             </tokens>
         </variant>
         <variant name="Saul H.">
             <tokens>
                 <token string="Saul" element="GivenName"/>
-                <token string="H" element="GivenName"/>
+                <token string="H" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="S. H.">
             <tokens>
                 <token string="S" element="GivenName"/>
-                <token string="H" element="GivenName"/>
+                <token string="H" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="saul">
@@ -1156,7 +1163,7 @@
         <variation name="Saul  Hudson">
             <tokens>
                 <token string="Saul" element="GivenName"/>
-                <token string="Hudson" element="GivenName"/>
+                <token string="Hudson" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Slsh">
@@ -1191,21 +1198,21 @@
             <tokens>
                 <token string="Francisco" element="GivenName"/>
                 <token string="Franco" element="GivenName"/>
-                <token string="y" element="GivenName"/>
-                <token string="Bahamonde" element="GivenName"/>
+                <token string="Bahamonde" element="MiddleName"/>
+                <token string="y" element="Qualifier"/>
             </tokens>
         </variant>
         <variant name="Generalísimo Franco">
             <tokens>
-                <token string="Generalísimo" element="GivenName"/>
                 <token string="Franco" element="GivenName"/>
+                <token string="Generalísimo" element="Title"/>
             </tokens>
         </variant>
         <variant name="Caudillo de España">
             <tokens>
                 <token string="Caudillo" element="GivenName"/>
-                <token string="de" element="GivenName"/>
-                <token string="España" element="GivenName"/>
+                <token string="de" element="Qualifier"/>
+                <token string="España" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="franco">
@@ -1247,15 +1254,15 @@
         <variant name="José Chilavert">
             <tokens>
                 <token string="José" element="GivenName"/>
-                <token string="Chilavert" element="GivenName"/>
+                <token string="Chilavert" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Josè Felix Chilavert Gonzalez">
             <tokens>
                 <token string="Josè" element="GivenName"/>
                 <token string="Felix" element="GivenName"/>
-                <token string="Chilavert" element="GivenName"/>
-                <token string="Gonzalez" element="GivenName"/>
+                <token string="Chilavert" element="FamilyName"/>
+                <token string="Gonzalez" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="josè">
@@ -1278,19 +1285,19 @@
         <variation name="José Chillavert">
             <tokens>
                 <token string="José" element="GivenName"/>
-                <token string="Chillavert" element="GivenName"/>
+                <token string="Chillavert" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="José Gonzálwz">
             <tokens>
                 <token string="José" element="GivenName"/>
-                <token string="Gonzálwz" element="GivenName"/>
+                <token string="Gonzálwz" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Joès Chilavert">
             <tokens>
+                <token string="Chilavert" element="FamilyName"/>
                 <token string="Joès" element="GivenName"/>
-                <token string="Chilavert" element="GivenName"/>
             </tokens>
         </variation>
     </entry>
@@ -1299,15 +1306,15 @@
         <variant name="Juan Pane">
             <tokens>
                 <token string="Juan" element="GivenName"/>
-                <token string="Pane" element="GivenName"/>
+                <token string="Pane" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Juan Ignacio Pane Fernández">
             <tokens>
                 <token string="Juan" element="GivenName"/>
                 <token string="Ignacio" element="GivenName"/>
-                <token string="Pane" element="GivenName"/>
-                <token string="Fernández" element="GivenName"/>
+                <token string="Pane" element="FamilyName"/>
+                <token string="Fernández" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Juanito">
@@ -1323,31 +1330,31 @@
         <variation name="Juan  Ignacio">
             <tokens>
                 <token string="Juan" element="GivenName"/>
-                <token string="Ignacio" element="GivenName"/>
+                <token string="Ignacio" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Juan Pan">
             <tokens>
                 <token string="Juan" element="GivenName"/>
-                <token string="Pan" element="GivenName"/>
+                <token string="Pan" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Juan Panne">
             <tokens>
                 <token string="Juan" element="GivenName"/>
-                <token string="Panne" element="GivenName"/>
+                <token string="Panne" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Juan Panw">
             <tokens>
                 <token string="Juan" element="GivenName"/>
-                <token string="Panw" element="GivenName"/>
+                <token string="Panw" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Jaun Pane">
             <tokens>
                 <token string="Jaun" element="GivenName"/>
-                <token string="Pane" element="GivenName"/>
+                <token string="Pane" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -1356,44 +1363,44 @@
         <variant name="Alberto Asor Rosa">
             <tokens>
                 <token string="Alberto" element="GivenName"/>
-                <token string="Asor" element="GivenName"/>
-                <token string="Rosa" element="GivenName"/>
+                <token string="Asor" element="FamilyName"/>
+                <token string="Rosa" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="asor alberto">
             <tokens>
-                <token string="asor" element="GivenName"/>
+                <token string="asor" element="FamilyName"/>
                 <token string="alberto" element="GivenName"/>
             </tokens>
         </variation>
         <variation name="Asor  Rosa">
             <tokens>
                 <token string="Asor" element="GivenName"/>
-                <token string="Rosa" element="GivenName"/>
+                <token string="Rosa" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Albert Rosa">
             <tokens>
                 <token string="Albert" element="GivenName"/>
-                <token string="Rosa" element="GivenName"/>
+                <token string="Rosa" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Alberto Assor">
             <tokens>
                 <token string="Alberto" element="GivenName"/>
-                <token string="Assor" element="GivenName"/>
+                <token string="Assor" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Alberto ROsd">
             <tokens>
                 <token string="Alberto" element="GivenName"/>
-                <token string="ROsd" element="GivenName"/>
+                <token string="ROsd" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Albreto Rosa">
             <tokens>
                 <token string="Albreto" element="GivenName"/>
-                <token string="Rosa" element="GivenName"/>
+                <token string="Rosa" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -1402,64 +1409,64 @@
         <variant name="Philip Dick">
             <tokens>
                 <token string="Philip" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="Philip K. Dick">
             <tokens>
                 <token string="Philip" element="GivenName"/>
-                <token string="K" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
+                <token string="K" element="MiddleName"/>
             </tokens>
         </variant>
         <variant name="Philip Kindred Dick">
             <tokens>
                 <token string="Philip" element="GivenName"/>
-                <token string="Kindred" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Kindred" element="MiddleName"/>
+                <token string="Dick" element="FamilyName"/>
             </tokens>
         </variant>
         <variation name="Philip K Dick">
             <tokens>
                 <token string="Philip" element="GivenName"/>
-                <token string="K" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
+                <token string="K" element="MiddleName"/>
             </tokens>
         </variation>
         <variation name="philip dick">
             <tokens>
                 <token string="philip" element="GivenName"/>
-                <token string="dick" element="GivenName"/>
+                <token string="dick" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Philip  Dick">
             <tokens>
                 <token string="Philip" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Pilip Dick">
             <tokens>
                 <token string="Pilip" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Phillip Dick">
             <tokens>
                 <token string="Phillip" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Pholip Dick">
             <tokens>
                 <token string="Pholip" element="GivenName"/>
-                <token string="Dick" element="GivenName"/>
+                <token string="Dick" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Philip Dikc">
             <tokens>
                 <token string="Philip" element="GivenName"/>
-                <token string="Dikc" element="GivenName"/>
+                <token string="Dikc" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
@@ -1468,52 +1475,52 @@
         <variant name="William Carlos Williams">
             <tokens>
                 <token string="William" element="GivenName"/>
-                <token string="Carlos" element="GivenName"/>
-                <token string="Williams" element="GivenName"/>
+                <token string="Carlos" element="MiddleName"/>
+                <token string="Williams" element="FamilyName"/>
             </tokens>
         </variant>
         <variant name="William C. Williams">
             <tokens>
                 <token string="William" element="GivenName"/>
-                <token string="C" element="GivenName"/>
-                <token string="Williams" element="GivenName"/>
+                <token string="Williams" element="FamilyName"/>
+                <token string="C" element="MiddleName"/>
             </tokens>
         </variant>
         <variation name="William C Williams">
             <tokens>
                 <token string="William" element="GivenName"/>
-                <token string="C" element="GivenName"/>
-                <token string="Williams" element="GivenName"/>
+                <token string="Williams" element="FamilyName"/>
+                <token string="C" element="MiddleName"/>
             </tokens>
         </variation>
         <variation name="William  Carlos">
             <tokens>
                 <token string="William" element="GivenName"/>
-                <token string="Carlos" element="GivenName"/>
+                <token string="Carlos" element="MiddleName"/>
             </tokens>
         </variation>
         <variation name="Wiliam Wiliams">
             <tokens>
                 <token string="Wiliam" element="GivenName"/>
-                <token string="Wiliams" element="GivenName"/>
+                <token string="Wiliams" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Williamm Williams">
             <tokens>
                 <token string="Williamm" element="GivenName"/>
-                <token string="Williams" element="GivenName"/>
+                <token string="Williams" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Willism Willisms">
             <tokens>
                 <token string="Willism" element="GivenName"/>
-                <token string="Willisms" element="GivenName"/>
+                <token string="Willisms" element="FamilyName"/>
             </tokens>
         </variation>
         <variation name="Willaim Williams">
             <tokens>
                 <token string="Willaim" element="GivenName"/>
-                <token string="Williams" element="GivenName"/>
+                <token string="Williams" element="FamilyName"/>
             </tokens>
         </variation>
     </entry>
